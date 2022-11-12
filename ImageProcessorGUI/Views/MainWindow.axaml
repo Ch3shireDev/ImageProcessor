@@ -1,0 +1,131 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:ImageProcessorGUI.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="ImageProcessorGUI.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="{Binding Title}"
+
+        MinWidth="600"
+        MinHeight="400"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="PreferSystemChrome"
+        Background="{x:Null}"
+        SizeToContent="WidthAndHeight">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Top">
+            <Image Source="/Assets/avalonia-logo.ico" Height="16" Margin="10,5" />
+            <Label DockPanel.Dock="Left" Content="{Binding Title}" Padding="0,5" />
+        </DockPanel>
+        <Menu DockPanel.Dock="Top" IsHitTestVisible="True">
+            <MenuItem Header="_Plik">
+                <MenuItem Header="_Otwórz" Command="{Binding OpenImageCommand}" />
+                <MenuItem Header="_Zapisz" Command="{Binding SaveImageCommand}" />
+                <MenuItem Header="_Duplikuj" Command="{Binding DuplicateImageCommand}" />
+            </MenuItem>
+            <MenuItem Header="Wyświetl">
+                <MenuItem Header="_Histogramy">
+                    <MenuItem Header="Histogram intensywności" Command="{Binding ShowValueHistogramCommand}" />
+                    <MenuItem Header="RGB" Command="{Binding ShowRgbHistogramCommand}" />
+                    <MenuItem Header="R" Command="{Binding ShowRHistogramCommand}" />
+                    <MenuItem Header="G" Command="{Binding ShowGHistogramCommand}" />
+                    <MenuItem Header="B" Command="{Binding ShowBHistogramCommand}" />
+                </MenuItem>
+                <MenuItem Header="Skaluj">
+                    <MenuItem Header="Skaluj 200%" Command="{Binding ShowScaledUp200PercentCommand}" />
+                    <MenuItem Header="Skaluj 150%" Command="{Binding ShowScaledUp150PercentCommand}" />
+                    <MenuItem Header="Skaluj 50%" Command="{Binding ShowScaledDown50PercentCommand}" />
+                    <MenuItem Header="Skaluj 25%" Command="{Binding ShowScaledDown25PercentCommand}" />
+                    <MenuItem Header="Skaluj 20%" Command="{Binding ShowScaledDown20PercentCommand}" />
+                    <MenuItem Header="Skaluj 10%" Command="{Binding ShowScaledDown10PercentCommand}" />
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Transformuj">
+                <MenuItem Header="Rozciągnij liniowo" Command="{Binding LinearStretchingCommand}" />
+                <MenuItem Header="Rozciągnij z użyciem funkcji gamma" Command="{Binding GammaStretchingCommand}" />
+                <MenuItem Header="Wyrównaj poprzez equalizację histogramu" Command="{Binding EqualizeHistogramCommand}" />
+                <MenuItem Header="Negacja" Command="{Binding NegateImageCommand}" />
+                <MenuItem Header="Progowanie binarne" Command="{Binding BinaryThresholdCommand}" />
+                <MenuItem Header="Progowanie z zachowaniem poziomów szarości"
+                          Command="{Binding GreyscaleThresholdCommand}" />
+                <MenuItem Header="Dodaj obraz z wysyceniem" Command="{Binding AddImageCommand}" />
+                <MenuItem Header="Dodaj obraz bez wysycenia" Command="{Binding AddImageWithoutSaturateCommand}" />
+                <MenuItem Header="Uzyskaj różnicę obrazów" Command="{Binding ImagesDifferenceCommand}" />
+                <MenuItem Header="Dodaj liczbę całkowitą" Command="{Binding AddNumberToImageCommand}" />
+                <MenuItem Header="Odejmij liczbę całkowitą" Command="{Binding SubtractNumberFromImageCommand}" />
+            </MenuItem>
+            <MenuItem Header="_Operacje logiczne">
+                <MenuItem Header="Operacja BinaryAnd" Command="{Binding BinaryAndCommand}" />
+                <MenuItem Header="Operacja BinaryOr" Command="{Binding BinaryOrCommand}" />
+                <MenuItem Header="Operacja BinaryXor" Command="{Binding BinaryXorCommand}" />
+                <MenuItem Header="Operacja BinaryNot" Command="{Binding BinaryNotCommand}" />
+                <MenuItem Header="Zamiana na maskę binarną" Command="{Binding GetBinaryMaskCommand}" />
+                <MenuItem Header="Zamiana na maskę 8-bitową" Command="{Binding Get8BitMaskCommand}" />
+            </MenuItem>
+            <MenuItem Header="_OpenCV">
+                <MenuItem Header="Wygładzanie liniowe">
+                    <MenuItem Header="Uśrednianie bez wag" Command="{Binding MedianBlurCommand}" />
+                    <MenuItem Header="Uśrednianie z wagami" Command="{Binding MedianBlurCommand}" />
+                    <MenuItem Header="Filtr gaussowski" Command="{Binding GaussianBlurCommand}" />
+                </MenuItem>
+                <MenuItem Header="Wyostrzanie liniowe">
+                    <MenuItem Header="Maska 1" Command="{Binding SharpeningCommand}" />
+                    <MenuItem Header="Maska 2" Command="{Binding SharpeningCommand}" />
+                    <MenuItem Header="Maska 3" Command="{Binding SharpeningCommand}" />
+                </MenuItem>
+                <MenuItem Header="Detekcja krawędzi metodą Sobela">
+                    <MenuItem Header="E" Command="{Binding EdgeSobelEastCommand}" />
+                    <MenuItem Header="NE" Command="{Binding EdgeSobelNorthEastCommand}" />
+                    <MenuItem Header="N" Command="{Binding EdgeSobelNorthCommand}" />
+                    <MenuItem Header="NW" Command="{Binding EdgeSobelNorthWestCommand}" />
+                    <MenuItem Header="W" Command="{Binding EdgeSobelWestCommand}" />
+                    <MenuItem Header="SW" Command="{Binding EdgeSobelSouthWestCommand}" />
+                    <MenuItem Header="S" Command="{Binding EdgeSobelSouthCommand}" />
+                    <MenuItem Header="SE" Command="{Binding EdgeSobelSouthEastCommand}" />
+                </MenuItem>
+                <MenuItem Header="Uzupełnianie marginesów/brzegów">
+                    <MenuItem Header="Wypełnianie ramki BORDER CONSTANT" Command="{Binding FillBorderConstantCommand}" />
+                    <MenuItem Header="Wypełnianie wyniku wybraną wartością stałą n"
+                              Command="{Binding FillResultBorderConstantCommand}" />
+                    <MenuItem Header="Wyliczenie ramki według BORDER REFLECT"
+                              Command="{Binding FillBorderReflectCommand}" />
+                    <MenuItem Header="Wyliczenie ramki według BORDER WRAP" Command="{Binding FillBorderWrapCommand}" />
+                </MenuItem>
+                <MenuItem Header="Operacja medianowa">
+                    <MenuItem Header="3x3" Command="{Binding CalculateMedian3x3Command}" />
+                    <MenuItem Header="5x5" Command="{Binding CalculateMedian5x5Command}" />
+                    <MenuItem Header="7x7" Command="{Binding CalculateMedian7x7Command}" />
+                    <MenuItem Header="9x9" Command="{Binding CalculateMedian9x9Command}" />
+                </MenuItem>
+                <MenuItem Header="Detekcja krawędzi">
+                    <MenuItem Header="Metoda Sobela" Command="{Binding SobelEdgeDetectionCommand}" />
+                    <MenuItem Header="Metoda Prewitta" Command="{Binding PrewittEdgeDetectionCommand}" />
+                    <MenuItem Header="Operator Canny'ego" Command="{Binding CannyOperatorEdgeDetectionCommand}" />
+                </MenuItem>
+                <MenuItem Header="Segmentacja obrazu">
+                    <MenuItem Header="Metoda Otsu" Command="{Binding OtsuSegmentationCommand}" />
+                    <MenuItem Header="Progowanie adaptacyjne" Command="{Binding AdaptiveThresholdSegmentationCommand}" />
+                </MenuItem>
+                <MenuItem Header="Morfologia">
+                    <MenuItem Header="Erozja" Command="{Binding MorphologyErosionCommand}" />
+                    <MenuItem Header="Dylatacja" Command="{Binding MorphologyDilationCommand}" />
+                    <MenuItem Header="Otwarcie" Command="{Binding MorphologyOpeningCommand}" />
+                    <MenuItem Header="Zamknięcie" Command="{Binding MorphologyClosingCommand}" />
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Analiza">
+                <MenuItem Header="Oblicz wektor cech" Command="{Binding CalculateFeatureVectorCommand}" />
+            </MenuItem>
+            <MenuItem Header="Likwidacja zakłóceń">
+                <MenuItem Header="Manipulacja widmem amplitudowym" Command="{Binding ModifyAmplitudeSpectrumCommand}" />
+            </MenuItem>
+        </Menu>
+        <Panel />
+    </DockPanel>
+</Window>
