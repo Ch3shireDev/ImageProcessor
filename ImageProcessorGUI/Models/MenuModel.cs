@@ -1,9 +1,20 @@
+using ImageProcessorLibrary.ServiceProviders;
+
 namespace ImageProcessorGUI.Models;
 
 public class MenuModel
 {
+    private readonly IServiceProvider _serviceProvider;
+
+    internal MenuModel(){}
+    public MenuModel(IServiceProvider serviceProvider)
+    {
+        _serviceProvider = serviceProvider;
+    }
+
     public void OpenImage()
     {
+        _serviceProvider.FileService.OpenImage();
     }
 
     public void SaveImage()
