@@ -19,10 +19,12 @@ public class MenuModel
 
     public void SaveImage()
     {
+        _serviceProvider.FileService.SaveImage();
     }
 
     public void DuplicateImage()
     {
+        _serviceProvider.FileService.DuplicateImage();
     }
 
     public void ShowValueHistogram()
