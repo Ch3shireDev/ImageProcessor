@@ -1,3 +1,4 @@
+using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.Services;
 
 namespace ImageProcessorTests.Mockups;
@@ -8,17 +9,17 @@ public class MockFileService : IFileService
     public bool IsSaved { get; set; }
     public bool IsDuplicated { get; set; }
 
-    public void OpenImage()
+    public async Task OpenImage()
     {
         IsOpen = true;
     }
 
-    public void DuplicateImage()
+    public void DuplicateImage(ImageData imageData)
     {
         IsDuplicated = true;
     }
 
-    public void SaveImage()
+    public void SaveImage(ImageData imageData)
     {
         IsSaved = true;
     }
