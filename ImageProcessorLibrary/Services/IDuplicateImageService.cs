@@ -2,7 +2,7 @@
 
 namespace ImageProcessorLibrary.Services;
 
-public interface IDialogService
+public interface IDuplicateImageService
 {
-    Task<ImageData[]> SelectImages();
+    public void DuplicateImage(ImageData imageData);
 }

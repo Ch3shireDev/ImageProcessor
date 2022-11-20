@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.ServiceProviders;
 
@@ -8,8 +9,9 @@ public class ImageModel
     private readonly IServiceProvider _serviceProvider;
 
     public ImageData ImageData { get; set; }
-    
-    internal ImageModel(){}
+    public int ImageWidth { get; set; }
+    public int ImageHeight { get; set; }
+
     public ImageModel(ImageData imageData, IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
@@ -18,37 +20,47 @@ public class ImageModel
 
     public void OpenImage()
     {
-        _serviceProvider.FileService.OpenImage();
+        _serviceProvider.OpenImageService.OpenImage();
     }
 
-    public void SaveImage()
+    public async Task SaveImage()
     {
-        _serviceProvider.FileService.SaveImage(ImageData);
+        await _serviceProvider.SaveImageService.SaveImageAsync(ImageData);
     }
 
     public void DuplicateImage()
     {
-        _serviceProvider.FileService.DuplicateImage(ImageData);
+        _serviceProvider.DuplicateImageService.DuplicateImage(ImageData);
     }
 
     public void ShowValueHistogram()
     {
+        var valueHistogram = _serviceProvider.HistogramService.GetValueHistogram(ImageData);
+        _serviceProvider.WindowService.ShowImageWindow(valueHistogram);
     }
 
     public void ShowRgbHistogram()
     {
+        var valueHistogram = _serviceProvider.HistogramService.GetRgbHistogram(ImageData);
+        _serviceProvider.WindowService.ShowImageWindow(valueHistogram);
     }
 
     public void ShowRHistogram()
     {
+        var valueHistogram = _serviceProvider.HistogramService.GetRedHistogram(ImageData);
+        _serviceProvider.WindowService.ShowImageWindow(valueHistogram);
     }
 
     public void ShowGHistogram()
     {
+        var valueHistogram = _serviceProvider.HistogramService.GetGreenHistogram(ImageData);
+        _serviceProvider.WindowService.ShowImageWindow(valueHistogram);
     }
 
     public void ShowBHistogram()
     {
+        var valueHistogram = _serviceProvider.HistogramService.GetBlueHistogram(ImageData);
+        _serviceProvider.WindowService.ShowImageWindow(valueHistogram);
     }
 
     public void ShowScaledUp200Percent()

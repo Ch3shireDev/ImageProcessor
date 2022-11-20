@@ -24,7 +24,7 @@
             <Image Source="/Assets/avalonia-logo.ico" Height="16" Margin="10,5" />
             <Label DockPanel.Dock="Left" Content="{Binding Title}" Padding="0,5" />
         </DockPanel>
-        <Menu DockPanel.Dock="Top" IsHitTestVisible="True" DataContext="{Binding MenuViewModel}">
+        <Menu DockPanel.Dock="Top" IsHitTestVisible="True">
 
 
             <MenuItem Header="_Plik">
@@ -132,7 +132,7 @@
         </Menu>
         <Panel>
             <Panel.ContextMenu>
-                <ContextMenu DataContext="{Binding MenuViewModel}">
+                <ContextMenu>
 
 
                     <MenuItem Header="_Plik">
@@ -244,7 +244,7 @@
                     </MenuItem>
                 </ContextMenu>
             </Panel.ContextMenu>
-            <Image Source="/Resources/lion.jpg" Height="500" Width="385" />
+            <Image Source="{Binding ImageModel.ImageData.Bitmap}" Width="{Binding ImageWidth}" Height="{Binding ImageHeight}" />
         </Panel>
     </DockPanel>
 </Window>

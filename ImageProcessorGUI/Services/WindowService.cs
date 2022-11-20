@@ -2,28 +2,20 @@
 using ImageProcessorGUI.ViewModels;
 using ImageProcessorGUI.Views;
 using ImageProcessorLibrary.DataStructures;
+using ImageProcessorLibrary.ServiceProviders;
 using ImageProcessorLibrary.Services;
 
 namespace ImageProcessorGUI.Services;
 
 public class WindowService : IWindowService
 {
+    public IServiceProvider ServiceProvider { get; set; }
+    
     public void ShowImageWindow(ImageData imageData)
     {
-        var imageModel = new ImageModel
-        {
-            ImageData = imageData
-        };
+        var imageModel = new ImageModel(imageData, ServiceProvider);
 
-        var menuViewModel = new MenuViewModel
-        {
-            ImageModel = imageModel
-        };
-
-        var viewModel = new MainWindowViewModel
-        {
-            MenuViewModel = menuViewModel
-        };
+        var viewModel = new MainWindowViewModel(imageModel);
 
         var mainWindow = new MainWindow
         {

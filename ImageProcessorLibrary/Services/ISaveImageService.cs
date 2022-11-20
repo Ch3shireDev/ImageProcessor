@@ -2,7 +2,8 @@
 
 namespace ImageProcessorLibrary.Services;
 
-public interface IWindowService
+public interface ISaveImageService
 {
-    public void ShowImageWindow(ImageData imageData);
+    
+    public Task SaveImageAsync(ImageData imageData);
 }
