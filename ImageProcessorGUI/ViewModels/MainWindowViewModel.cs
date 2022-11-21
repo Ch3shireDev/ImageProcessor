@@ -6,6 +6,7 @@ namespace ImageProcessorGUI.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
+    public MainWindowViewModel(){}
     public MainWindowViewModel(ImageModel imageModel)
     {
         ImageModel = imageModel;
@@ -94,7 +95,7 @@ public class MainWindowViewModel : ViewModelBase
     public ICommand ModifyAmplitudeSpectrumCommand =>
         ReactiveCommand.Create(() => ImageModel.ModifyAmplitudeSpectrum());
 
-    public ImageModel ImageModel { get; set; }
+    public ImageModel? ImageModel { get; set; }
 
     public int ImageWidth => ImageModel.ImageWidth;
     public int ImageHeight => ImageModel.ImageHeight;

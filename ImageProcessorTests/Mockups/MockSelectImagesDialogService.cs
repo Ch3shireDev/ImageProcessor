@@ -18,18 +18,3 @@ public class MockSelectImagesDialogService : ISelectImagesDialogService
         return Task.FromResult(_images);
     }
 }
-
-public class MockSaveImageDialogService : ISaveImageDialogService
-{
-    public MockSaveImageDialogService(string filename)
-    {
-        Filename = filename;
-    }
-
-    public string Filename { get; set; }
-
-    public Task<string?> GetSaveImageFileName(ImageData imageData)
-    {
-        return Task.FromResult(Filename);
-    }
-}

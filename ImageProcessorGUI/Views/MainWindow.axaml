@@ -17,8 +17,6 @@
     <Design.DataContext>
         <vm:MainWindowViewModel />
     </Design.DataContext>
-
-
     <DockPanel>
         <DockPanel DockPanel.Dock="Top">
             <Image Source="/Assets/avalonia-logo.ico" Height="16" Margin="10,5" />
@@ -244,7 +242,8 @@
                     </MenuItem>
                 </ContextMenu>
             </Panel.ContextMenu>
-            <Image Source="{Binding ImageModel.ImageData.Bitmap}" Width="{Binding ImageWidth}" Height="{Binding ImageHeight}" />
+            <Image Source="{Binding ImageModel.ImageData.Bitmap}" Width="{Binding ImageWidth}"
+                   Height="{Binding ImageHeight}" />
         </Panel>
     </DockPanel>
 </Window>

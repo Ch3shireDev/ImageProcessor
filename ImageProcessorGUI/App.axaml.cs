@@ -24,7 +24,6 @@ public class App : Application
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             desktop!.Startup += (sender, args) =>
             {
-                var path = args.Args[0];
 
                 var dialogService = new SelectImagesDialogService();
                 var windowService = new WindowService();
@@ -46,13 +45,15 @@ public class App : Application
                 };
 
                 windowService.ServiceProvider = serviceProvider;
-
+                
+                var path = args.Args[0];
                 var imageData = new ImageData(path, File.ReadAllBytes(path));
                 var mainModel = new ImageModel(imageData, serviceProvider);
+                var mainViewModel = new MainWindowViewModel(mainModel);
 
                 desktop.MainWindow = new MainWindow
                 {
-                    DataContext = new MainWindowViewModel(mainModel)
+                    DataContext = mainViewModel
                 };
             };
 

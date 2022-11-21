@@ -9,8 +9,8 @@ public class ImageModel
     private readonly IServiceProvider _serviceProvider;
 
     public ImageData ImageData { get; set; }
-    public int ImageWidth { get; set; }
-    public int ImageHeight { get; set; }
+    public int ImageWidth { get; set; } = 100;
+    public int ImageHeight { get; set; } = 100;
 
     public ImageModel(ImageData imageData, IServiceProvider serviceProvider)
     {
