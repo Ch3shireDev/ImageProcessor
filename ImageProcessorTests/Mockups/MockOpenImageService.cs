@@ -5,7 +5,7 @@ namespace ImageProcessorTests.Mockups;
 
 public class MockOpenImageService : IOpenImageService
 {
-    public bool IsOpen { get; set; } = false;
+    public bool IsOpen { get; set; }
     public bool IsSaved { get; set; }
     public bool IsDuplicated { get; set; }
 
@@ -23,5 +23,4 @@ public class MockOpenImageService : IOpenImageService
     {
         IsSaved = true;
     }
-
 }

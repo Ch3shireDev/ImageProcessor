@@ -7,5 +7,4 @@ public interface IProcessService
     void BinaryThreshold();
 
     void GreyscaleThreshold();
-    
 }

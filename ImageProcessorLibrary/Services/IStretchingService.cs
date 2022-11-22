@@ -7,5 +7,4 @@ public interface IStretchingService
     void GammaStretching();
 
     void EqualizeHistogram();
-
 }

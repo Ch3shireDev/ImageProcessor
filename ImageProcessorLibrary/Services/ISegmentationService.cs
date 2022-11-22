@@ -2,9 +2,7 @@
 
 public interface ISegmentationService
 {
-    
     void OtsuSegmentation();
 
     void AdaptativeThresholdSegmentation();
-
 }

@@ -1,12 +1,19 @@
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using Avalonia.Media.Imaging;
 using ImageProcessorGUI.Models;
 using ReactiveUI;
 
 namespace ImageProcessorGUI.ViewModels;
 
-public class MainWindowViewModel : ViewModelBase
+public class MainWindowViewModel : ViewModelBase, INotifyPropertyChanged
 {
-    public MainWindowViewModel(){}
+    public MainWindowViewModel()
+    {
+    }
+
     public MainWindowViewModel(ImageModel imageModel)
     {
         ImageModel = imageModel;
@@ -23,12 +30,48 @@ public class MainWindowViewModel : ViewModelBase
     public ICommand ShowRHistogramCommand => ReactiveCommand.Create(() => ImageModel.ShowRHistogram());
     public ICommand ShowGHistogramCommand => ReactiveCommand.Create(() => ImageModel.ShowGHistogram());
     public ICommand ShowBHistogramCommand => ReactiveCommand.Create(() => ImageModel.ShowBHistogram());
-    public ICommand ShowScaledUp200PercentCommand => ReactiveCommand.Create(() => ImageModel.ShowScaledUp200Percent());
-    public ICommand ShowScaledUp150PercentCommand => ReactiveCommand.Create(() => ImageModel.ShowScaledUp150Percent());
-    public ICommand ShowScaledDown50PercentCommand => ReactiveCommand.Create(() => ImageModel.ShowScaledDown50Percent());
-    public ICommand ShowScaledDown25PercentCommand => ReactiveCommand.Create(() => ImageModel.ShowScaledDown25Percent());
-    public ICommand ShowScaledDown20PercentCommand => ReactiveCommand.Create(() => ImageModel.ShowScaledDown20Percent());
-    public ICommand ShowScaledDown10PercentCommand => ReactiveCommand.Create(() => ImageModel.ShowScaledDown10Percent());
+
+    public ICommand ShowScaledUp200PercentCommand => ReactiveCommand.Create(() =>
+    {
+        ImageModel.ShowScaledUp200Percent();
+        OnPropertyChanged(nameof(ImageWidth));
+        OnPropertyChanged(nameof(ImageHeight));
+    });
+
+    public ICommand ShowScaledUp150PercentCommand => ReactiveCommand.Create(() =>
+    {
+        ImageModel.ShowScaledUp150Percent();
+        OnPropertyChanged(nameof(ImageWidth));
+        OnPropertyChanged(nameof(ImageHeight));
+    });
+
+    public ICommand ShowScaledDown50PercentCommand => ReactiveCommand.Create(() =>
+    {
+        ImageModel.ShowScaledDown50Percent();
+        OnPropertyChanged(nameof(ImageWidth));
+        OnPropertyChanged(nameof(ImageHeight));
+    });
+
+    public ICommand ShowScaledDown25PercentCommand => ReactiveCommand.Create(() =>
+    {
+        ImageModel.ShowScaledDown25Percent();
+        OnPropertyChanged(nameof(ImageWidth));
+        OnPropertyChanged(nameof(ImageHeight));
+    });
+
+    public ICommand ShowScaledDown20PercentCommand => ReactiveCommand.Create(() =>
+    {
+        ImageModel.ShowScaledDown20Percent();
+        OnPropertyChanged(nameof(ImageWidth));
+        OnPropertyChanged(nameof(ImageHeight));
+    });
+
+    public ICommand ShowScaledDown10PercentCommand => ReactiveCommand.Create(() =>
+    {
+        ImageModel.ShowScaledDown10Percent();
+        OnPropertyChanged(nameof(ImageWidth));
+        OnPropertyChanged(nameof(ImageHeight));
+    });
 
     public ICommand LinearStretchingCommand => ReactiveCommand.Create(() => ImageModel.LinearStretching());
     public ICommand GammaStretchingCommand => ReactiveCommand.Create(() => ImageModel.GammaStretching());
@@ -97,6 +140,22 @@ public class MainWindowViewModel : ViewModelBase
 
     public ImageModel? ImageModel { get; set; }
 
-    public int ImageWidth => ImageModel.ImageWidth;
-    public int ImageHeight => ImageModel.ImageHeight;
+    public double ImageWidth => ImageModel.ImageWidth;
+    public double ImageHeight => ImageModel.ImageHeight;
+
+    public Bitmap Bitmap => ImageModel.ImageData.Bitmap;
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    protected bool SetField<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
+    {
+        if (EqualityComparer<T>.Default.Equals(field, value)) return false;
+        field = value;
+        OnPropertyChanged(propertyName);
+        return true;
+    }
 }

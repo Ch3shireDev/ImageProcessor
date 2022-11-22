@@ -4,9 +4,9 @@ namespace ImageProcessorTests.Mockups;
 
 public class MockFileSystemService : IFileSystemService
 {
-    public string Filename{ get; set; }
-    public byte[] Filebytes{ get; set; }
-    
+    public string Filename { get; set; }
+    public byte[] Filebytes { get; set; }
+
     public Task<byte[]> ReadAllBytesAsync(string filename)
     {
         return Task.FromResult(Filebytes);

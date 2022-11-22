@@ -1,5 +1,4 @@
 ﻿using Avalonia.Media.Imaging;
-using SkiaSharp;
 
 namespace ImageProcessorLibrary.DataStructures;
 
@@ -18,7 +17,7 @@ public class ImageData
         Filebytes = imageData.Filebytes.Clone() as byte[];
         Extension = imageData.Extension;
     }
-    
+
 
     public Bitmap Bitmap => GetBitmap();
 
@@ -29,6 +28,8 @@ public class ImageData
     public string Extension { get; set; }
     public double HorizontalDPI => WBitmap.HorizontalResolution;
     public double VerticalDPI => WBitmap.VerticalResolution;
+    public double Width => WBitmap.Width;
+    public double Height => WBitmap.Height;
 
     private Bitmap GetBitmap()
     {

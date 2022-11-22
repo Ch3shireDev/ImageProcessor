@@ -1,5 +1,6 @@
 ﻿namespace ImageProcessorLibrary.Services;
 
-public interface  IFourierTransformService{
+public interface IFourierTransformService
+{
     void ModifyAmplitudeSpectrum();
 }

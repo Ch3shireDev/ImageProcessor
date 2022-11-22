@@ -8,15 +8,17 @@ public class ImageModel
 {
     private readonly IServiceProvider _serviceProvider;
 
-    public ImageData ImageData { get; set; }
-    public int ImageWidth { get; set; } = 100;
-    public int ImageHeight { get; set; } = 100;
-
     public ImageModel(ImageData imageData, IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
         ImageData = imageData;
     }
+
+    public ImageData ImageData { get; set; }
+    public double ImageWidth => (double)((decimal)ImageData.Width * Scale);
+    public double ImageHeight => (double)((decimal)ImageData.Height * Scale);
+
+    public decimal Scale { get; set; } = 1;
 
     public void OpenImage()
     {
@@ -65,26 +67,32 @@ public class ImageModel
 
     public void ShowScaledUp200Percent()
     {
+        Scale *= 2;
     }
 
     public void ShowScaledUp150Percent()
     {
+        Scale *= 1.5m;
     }
 
     public void ShowScaledDown50Percent()
     {
+        Scale *= 0.5m;
     }
 
     public void ShowScaledDown25Percent()
     {
+        Scale *= 0.25m;
     }
 
     public void ShowScaledDown20Percent()
     {
+        Scale *= 0.2m;
     }
 
     public void ShowScaledDown10Percent()
     {
+        Scale *= 0.1m;
     }
 
     public void LinearStretching()

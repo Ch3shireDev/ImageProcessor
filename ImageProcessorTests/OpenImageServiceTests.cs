@@ -7,8 +7,8 @@ namespace ImageProcessorTests;
 [TestClass]
 public class OpenImageServiceTests
 {
-    private MockSelectImagesDialogService _selectImagesDialogService;
     private OpenImageService _openImageService;
+    private MockSelectImagesDialogService _selectImagesDialogService;
     private ImageData ImageData;
     private MockWindowService windowService;
 
@@ -23,7 +23,8 @@ public class OpenImageServiceTests
     }
 
     /// <summary>
-    ///     Wywołanie metody OpenImage związane jest z wybraniem pliku przez otwarcie okna dialogowego z SelectImagesDialogService, a
+    ///     Wywołanie metody OpenImage związane jest z wybraniem pliku przez otwarcie okna dialogowego z
+    ///     SelectImagesDialogService, a
     ///     następnie otwarciem okna z wybranym obrazem.
     /// </summary>
     /// <returns></returns>

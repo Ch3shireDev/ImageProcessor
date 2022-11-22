@@ -2,8 +2,6 @@
 
 public interface IScaleService
 {
-    
-
     void ShowScaledUp200Percent();
 
     void ShowScaledUp150Percent();
@@ -15,5 +13,4 @@ public interface IScaleService
     void ShowScaledDown20Percent();
 
     void ShowScaledDown10Percent();
-
 }

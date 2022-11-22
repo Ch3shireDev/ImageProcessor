@@ -1,10 +1,7 @@
-﻿using ImageProcessorLibrary.DataStructures;
+﻿namespace ImageProcessorLibrary.Services;
 
-namespace ImageProcessorLibrary.Services
+public interface IFileSystemService
 {
-    public interface IFileSystemService
-    {
-        Task<byte[]> ReadAllBytesAsync(string filename);
-        Task WriteAllBytesAsync(string filename, byte[] filebytes);
-    }
+    Task<byte[]> ReadAllBytesAsync(string filename);
+    Task WriteAllBytesAsync(string filename, byte[] filebytes);
 }

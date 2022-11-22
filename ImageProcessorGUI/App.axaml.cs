@@ -24,7 +24,6 @@ public class App : Application
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             desktop!.Startup += (sender, args) =>
             {
-
                 var dialogService = new SelectImagesDialogService();
                 var windowService = new WindowService();
 
@@ -34,18 +33,18 @@ public class App : Application
                 var fileSystemService = new FileSystemService();
                 var saveImageService = new SaveImageService(saveImageDialogService, fileSystemService);
                 var duplicateImageService = new DuplicateImageService(windowService);
-                
+
                 var serviceProvider = new ServiceProvider
                 {
                     OpenImageService = fileService,
                     SaveImageService = saveImageService,
                     DuplicateImageService = duplicateImageService,
                     SelectImagesDialogService = dialogService,
-                    WindowService = windowService,
+                    WindowService = windowService
                 };
 
                 windowService.ServiceProvider = serviceProvider;
-                
+
                 var path = args.Args[0];
                 var imageData = new ImageData(path, File.ReadAllBytes(path));
                 var mainModel = new ImageModel(imageData, serviceProvider);

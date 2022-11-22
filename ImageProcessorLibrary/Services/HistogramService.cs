@@ -32,7 +32,6 @@ public class HistogramService : IHistogramService
 
     public ImageData GetValueHistogram(ImageData imageData)
     {
-        
         var plot = new Plot(600, 400);
         GetHistogram(imageData, plot, x => _lutService.GetIntensityHistogram(x.Filebytes), Color.Gray, "Intensity");
         var bytes = plot.GetImageBytes();
@@ -61,7 +60,7 @@ public class HistogramService : IHistogramService
         var bytes = plot.GetImageBytes();
 
         var image = new ImageData("histogram green.png", bytes);
-        
+
 
         return image;
     }
@@ -76,7 +75,8 @@ public class HistogramService : IHistogramService
         return image;
     }
 
-    private void GetHistogram(ImageData imageData, Plot plot, Func<ImageData, int[]> func, Color color, string title="")
+    private void GetHistogram(ImageData imageData, Plot plot, Func<ImageData, int[]> func, Color color,
+        string title = "")
     {
         var dataX = Enumerable.Range(0, 256).Select(x => (double)x).ToArray();
         var dataY = func(imageData).Select(x => (double)x).ToArray();

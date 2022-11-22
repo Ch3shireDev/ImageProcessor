@@ -9,6 +9,4 @@ public interface IMorphologyService
     void MorphologyOpening();
 
     void MorphologyClosing();
-
-
 }

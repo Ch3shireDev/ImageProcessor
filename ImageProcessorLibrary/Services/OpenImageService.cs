@@ -16,10 +16,6 @@ public class OpenImageService : IOpenImageService
     public async Task OpenImage()
     {
         var images = await _selectImagesDialogService.SelectImages();
-        foreach (var image in images)
-        {
-            _windowService.ShowImageWindow(image);
-        }
+        foreach (var image in images) _windowService.ShowImageWindow(image);
     }
-
 }

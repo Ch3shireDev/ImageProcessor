@@ -7,8 +7,9 @@ namespace ImageProcessorTests;
 [TestClass]
 public class DuplicateImageServiceTests
 {
-    private MockWindowService WindowService;
     private DuplicateImageService _duplicateImageService;
+    private MockWindowService WindowService;
+
     [TestInitialize]
     public void TestInitialize()
     {

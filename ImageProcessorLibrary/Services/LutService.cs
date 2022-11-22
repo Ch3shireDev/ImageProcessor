@@ -13,10 +13,12 @@ public class LutService : ILutService
     {
         return GetHistogram(image, pixel => pixel.R);
     }
+
     public int[] GetGreenHistogram(byte[] image)
     {
         return GetHistogram(image, pixel => pixel.G);
     }
+
     public int[] GetBlueHistogram(byte[] image)
     {
         return GetHistogram(image, pixel => pixel.B);
@@ -24,7 +26,7 @@ public class LutService : ILutService
 
     private int[] GetHistogram(byte[] image, Func<Color, int> func)
     {
-        var bitmap = new System.Drawing.Bitmap(new MemoryStream(image));
+        var bitmap = new Bitmap(new MemoryStream(image));
         var histogram = new int[256];
 
         for (var i = 0; i < bitmap.Width; i++)

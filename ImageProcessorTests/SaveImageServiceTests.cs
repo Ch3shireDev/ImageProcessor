@@ -4,16 +4,14 @@ using ImageProcessorTests.Mockups;
 
 namespace ImageProcessorTests;
 
-
 [TestClass]
 public class SaveImageServiceTests
 {
-    
     private MockSaveImageDialogService _saveImageDialogService;
     private SaveImageService _saveImageService;
-    private ImageData ImageData;
     private MockFileSystemService fileSystemService;
-    
+    private ImageData ImageData;
+
     [TestInitialize]
     public void TestInitialize()
     {
@@ -23,9 +21,10 @@ public class SaveImageServiceTests
         fileSystemService = new MockFileSystemService();
         _saveImageService = new SaveImageService(_saveImageDialogService, fileSystemService);
     }
-    
+
     /// <summary>
-    ///     Proces zapisu obrazu powinien zacząć się od wybrania ścieżki przez otwarcie okna dialogowego z SelectImagesDialogService, a
+    ///     Proces zapisu obrazu powinien zacząć się od wybrania ścieżki przez otwarcie okna dialogowego z
+    ///     SelectImagesDialogService, a
     ///     następnie zapisaniem tego obrazu pod wybraną ścieżką.
     /// </summary>
     /// <returns></returns>

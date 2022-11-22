@@ -242,8 +242,12 @@
                     </MenuItem>
                 </ContextMenu>
             </Panel.ContextMenu>
-            <Image Source="{Binding ImageModel.ImageData.Bitmap}" Width="{Binding ImageWidth}"
-                   Height="{Binding ImageHeight}" />
+            <ScrollViewer AllowAutoHide="False" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                          HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <Image Source="{Binding Bitmap}"
+                       Width="{Binding ImageWidth}"
+                       Height="{Binding ImageHeight}" />
+            </ScrollViewer>
         </Panel>
     </DockPanel>
 </Window>

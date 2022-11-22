@@ -1,16 +1,17 @@
-﻿using ImageProcessorGUI.Models;
+﻿using System;
+using ImageProcessorGUI.Models;
 using ImageProcessorGUI.ViewModels;
 using ImageProcessorGUI.Views;
 using ImageProcessorLibrary.DataStructures;
-using ImageProcessorLibrary.ServiceProviders;
 using ImageProcessorLibrary.Services;
+using IServiceProvider = ImageProcessorLibrary.ServiceProviders.IServiceProvider;
 
 namespace ImageProcessorGUI.Services;
 
 public class WindowService : IWindowService
 {
     public IServiceProvider ServiceProvider { get; set; }
-    
+
     public void ShowImageWindow(ImageData imageData)
     {
         var imageModel = new ImageModel(imageData, ServiceProvider);
@@ -23,5 +24,10 @@ public class WindowService : IWindowService
         };
 
         mainWindow.Show();
+    }
+
+    public void ShowOptionWindow(ImageData imageData)
+    {
+        throw new NotImplementedException();
     }
 }

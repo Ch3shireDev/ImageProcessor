@@ -1,5 +1,4 @@
 ﻿using ImageProcessorLibrary.DataStructures;
-using Bitmap = Avalonia.Media.Imaging.Bitmap;
 
 namespace ImageProcessorLibrary.Services;
 

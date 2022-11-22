@@ -150,47 +150,101 @@ public class ImageModelTests
         Assert.IsTrue(_histogramService.IsShowBHistogramCalled);
     }
 
-    //[TestMethod]
-    //public void ShowScaledUp200PercentTest()
-    //{
-    //    Assert.Fail();
-    //}
+    /// <summary>
+    ///     Po kliknięciu w menu "Scale -> ScaleUp200" wywoływana jest metoda ScaleUp200Percent(). Powinna ona skutkować zmianą
+    ///     skali obrazka o 200%.
+    /// </summary>
+    [TestMethod]
+    public void ShowScaledUp200PercentTest()
+    {
+        Assert.AreEqual(385, model.ImageWidth);
+        Assert.AreEqual(500, model.ImageHeight);
+        model.ShowScaledUp200Percent();
+        Assert.AreEqual(770, model.ImageWidth);
+        Assert.AreEqual(1000, model.ImageHeight);
+    }
 
-    //[TestMethod]
-    //public void ShowScaledUp150PercentTest()
-    //{
-    //    Assert.Fail();
-    //}
+    /// <summary>
+    ///     Po kliknięciu w menu "Scale -> ScaleDown50" wywoływana jest metoda ScaleUp150Percent(). Powinna ona skutkować
+    ///     zmianą skali obrazka o 150%.
+    /// </summary>
+    [TestMethod]
+    public void ShowScaledUp150PercentTest()
+    {
+        Assert.AreEqual(385, model.ImageWidth);
+        Assert.AreEqual(500, model.ImageHeight);
+        model.ShowScaledUp150Percent();
+        Assert.AreEqual(577.5, model.ImageWidth);
+        Assert.AreEqual(750, model.ImageHeight);
+    }
 
-    //[TestMethod]
-    //public void ShowScaledDown50PercentTest()
-    //{
-    //    Assert.Fail();
-    //}
+    /// <summary>
+    ///     Po kliknięciu w menu "Scale -> ScaleDown50" wywoływana jest metoda ScaleDown50Percent(). Powinna ona skutkować
+    ///     zmianą skali obrazka do 50%.
+    /// </summary>
+    [TestMethod]
+    public void ShowScaledDown50PercentTest()
+    {
+        Assert.AreEqual(385, model.ImageWidth);
+        Assert.AreEqual(500, model.ImageHeight);
+        model.ShowScaledDown50Percent();
+        Assert.AreEqual(192.5, model.ImageWidth);
+        Assert.AreEqual(250, model.ImageHeight);
+    }
 
-    //[TestMethod]
-    //public void ShowScaledDown25PercentTest()
-    //{
-    //    Assert.Fail();
-    //}
+    /// <summary>
+    ///     Po kliknięciu w menu "Scale -> ScaleDown25" wywoływana jest metoda ScaleDown25Percent(). Powinna ona skutkować
+    ///     zmianą skali obrazka do 25%.
+    /// </summary>
+    [TestMethod]
+    public void ShowScaledDown25PercentTest()
+    {
+        Assert.AreEqual(385, model.ImageWidth);
+        Assert.AreEqual(500, model.ImageHeight);
+        model.ShowScaledDown25Percent();
+        Assert.AreEqual(96.25, model.ImageWidth);
+        Assert.AreEqual(125, model.ImageHeight);
+    }
 
-    //[TestMethod]
-    //public void ShowScaledDown20PercentTest()
-    //{
-    //    Assert.Fail();
-    //}
+    /// <summary>
+    ///     Po kliknięciu w menu "Scale -> ScaleDown20Percent" wywoływana jest metoda ScaleDown20Percent(). Powinna ona
+    ///     skutkować zmianą skali obrazka do 20%.
+    /// </summary>
+    [TestMethod]
+    public void ShowScaledDown20PercentTest()
+    {
+        Assert.AreEqual(385, model.ImageWidth);
+        Assert.AreEqual(500, model.ImageHeight);
+        model.ShowScaledDown20Percent();
+        Assert.AreEqual(77, model.ImageWidth);
+        Assert.AreEqual(100, model.ImageHeight);
+    }
 
-    //[TestMethod]
-    //public void ShowScaledDown10PercentTest()
-    //{
-    //    Assert.Fail();
-    //}
+    /// <summary>
+    ///     Po kliknięciu w menu "Scale -> ScaleDown10Percent" wywoływana jest metoda ScaleDown10Percent(). Powinna ona
+    ///     skutkować zmianą skali obrazka do 10%.
+    /// </summary>
+    [TestMethod]
+    public void ShowScaledDown10PercentTest()
+    {
+        Assert.AreEqual(385, model.ImageWidth);
+        Assert.AreEqual(500, model.ImageHeight);
+        model.ShowScaledDown10Percent();
+        Assert.AreEqual(38.5, model.ImageWidth);
+        Assert.AreEqual(50, model.ImageHeight);
+    }
 
-    //[TestMethod]
-    //public void LinearStretchingTest()
-    //{
-    //    Assert.Fail();
-    //}
+    /// <summary>
+    ///     Po kliknięciu w menu opcji rozciągania liniowego, otwierane są dwa okna - okno z obrazkiem oraz okno z opcjami w
+    ///     postaci suwaków. W trakcie przesuwania suwaków powinny być wyświetlane zmieniane obrazki.
+    /// </summary>
+    [TestMethod]
+    public void LinearStretchingTest()
+    {
+        Assert.AreEqual(false, _windowService.IsShowImageWindowCalled);
+        Assert.AreEqual(false, _windowService.IsOptionWindowCalled);
+        Assert.Fail();
+    }
 
     //[TestMethod]
     //public void GammaStretchingTest()

@@ -22,5 +22,4 @@ public interface IEdgeService
     void EdgeSobelSouth();
 
     void EdgeSobelSouthEast();
-
 }
