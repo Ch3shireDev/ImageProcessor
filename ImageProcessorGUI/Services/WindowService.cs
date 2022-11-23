@@ -28,6 +28,11 @@ public class WindowService : IWindowService
 
     public void ShowOptionWindow(ImageData imageData)
     {
-        throw new NotImplementedException();
+        var optionWindow = new OptionsWindow
+        {
+            DataContext = new LinearStretchingViewModel()
+        };
+
+        optionWindow.Show();
     }
 }

@@ -97,6 +97,8 @@ public class ImageModel
 
     public void LinearStretching()
     {
+        var imageData = new ImageData(ImageData);
+        _serviceProvider.WindowService.ShowOptionWindow(imageData);
     }
 
     public void GammaStretching()
