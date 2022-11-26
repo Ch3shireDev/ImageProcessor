@@ -11,5 +11,7 @@ public class ServiceProvider : IServiceProvider
     public IBinaryOperationService BinaryOperationService { get; set; }
     public IBlurService BlurService { get; set; }
     public IWindowService WindowService { get; set; }
+    public IStretchingOptionsService StretchingOptionsService { get; set; }
     public IHistogramService HistogramService { get; set; }
+    public IProcessService ProcessService { get; set; }
 }

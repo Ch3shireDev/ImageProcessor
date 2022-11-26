@@ -53,8 +53,8 @@
                 <MenuItem Header="Wyrównaj poprzez equalizację histogramu" Command="{Binding EqualizeHistogramCommand}" />
                 <MenuItem Header="Negacja" Command="{Binding NegateImageCommand}" />
                 <MenuItem Header="Progowanie binarne" Command="{Binding BinaryThresholdCommand}" />
-                <MenuItem Header="Progowanie z zachowaniem poziomów szarości"
-                          Command="{Binding GreyscaleThresholdCommand}" />
+                <MenuItem Header="Progowanie z zachowaniem poziomów szarości" Command="{Binding GreyscaleThresholdCommand}" />
+                <MenuItem Header="Progowanie z zachowaniem poziomów szarości (dwa progi)" Command="{Binding GreyscaleThresholdTwoSlidersCommand}" />
                 <MenuItem Header="Dodaj obraz z wysyceniem" Command="{Binding AddImageCommand}" />
                 <MenuItem Header="Dodaj obraz bez wysycenia" Command="{Binding AddImageWithoutSaturateCommand}" />
                 <MenuItem Header="Uzyskaj różnicę obrazów" Command="{Binding ImagesDifferenceCommand}" />
@@ -244,7 +244,7 @@
             </Panel.ContextMenu>
             <ScrollViewer AllowAutoHide="False" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                           HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                <Image Source="{Binding Bitmap}"
+                <Image Source="{Binding Image}"
                        Width="{Binding ImageWidth}"
                        Height="{Binding ImageHeight}" />
             </ScrollViewer>

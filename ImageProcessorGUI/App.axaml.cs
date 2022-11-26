@@ -33,6 +33,9 @@ public class App : Application
                 var fileSystemService = new FileSystemService();
                 var saveImageService = new SaveImageService(saveImageDialogService, fileSystemService);
                 var duplicateImageService = new DuplicateImageService(windowService);
+                var histogramService = new HistogramService();
+                var stretchingOptionsService = new StretchingOptionsService(windowService);
+                var processService = new ProcessService();
 
                 var serviceProvider = new ServiceProvider
                 {
@@ -40,7 +43,9 @@ public class App : Application
                     SaveImageService = saveImageService,
                     DuplicateImageService = duplicateImageService,
                     SelectImagesDialogService = dialogService,
-                    WindowService = windowService
+                    WindowService = windowService,
+                    HistogramService = histogramService ,
+                    StretchingOptionsService = stretchingOptionsService
                 };
 
                 windowService.ServiceProvider = serviceProvider;

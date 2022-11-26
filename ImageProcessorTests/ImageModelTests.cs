@@ -1,9 +1,61 @@
 ﻿using ImageProcessorGUI.Models;
 using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.ServiceProviders;
+using ImageProcessorLibrary.Services;
 using ImageProcessorTests.Mockups;
 
 namespace ImageProcessorTests;
+
+public class MockProcessService:IProcessService
+{
+    public bool IsNegated{ get; set; }
+    public ImageData NegateImage(ImageData imageData)
+    {
+        IsNegated = true;
+        return imageData;
+    }
+
+    public void BinaryThreshold(ImageData imageData)
+    {
+        IsBinaryThresholdWindowOpen = true;
+    }
+
+    public bool IsBinaryThresholdWindowOpen { get; set; }
+
+    public void GreyscaleThreshold(ImageData imageData)
+    {
+        IsGreyscaleThresholdWindowOpen = true;
+    }
+
+    public void GreyscaleThresholdTwoSliders(ImageData imageData)
+    {
+        IsGreyscaleThresholdTwoSlidersWindowOpen = true;
+    }
+
+    public bool IsGreyscaleThresholdTwoSlidersWindowOpen { get; set; }
+
+    public bool IsGreyscaleThresholdWindowOpen { get; set; }
+}
+public class MockStretchingOptionsWindowService:IStretchingOptionsService
+{
+    public bool IsLinearStretchingWindowShown { get; set; }
+    public bool IsGammaStretchingWindowShown{ get; set; }
+    public bool IsEqualizeHistogramWindowShown{ get; set; }
+    public void ShowGammaStretchingWindow(ImageData imageData)
+    {
+        IsGammaStretchingWindowShown = true;
+    }
+
+    public ImageData GetEqualizedImage(ImageData imageData)
+    {
+        return imageData;
+    }
+
+    public void ShowLinearStretchingWindow(ImageData imageData)
+    {
+        IsLinearStretchingWindowShown = true;
+    }
+}
 
 [TestClass]
 public class ImageModelTests
@@ -14,7 +66,8 @@ public class ImageModelTests
     private MockSaveImageService _saveImageService;
     private MockWindowService _windowService;
     private ImageModel model;
-
+    private MockStretchingOptionsWindowService stretchingOptionsWindowService;
+    private MockProcessService processService;
     [TestInitialize]
     public void TestInitialize()
     {
@@ -26,14 +79,18 @@ public class ImageModelTests
         _duplicateImageService = new MockDuplicateImageService();
         _windowService = new MockWindowService();
         _histogramService = new MockHistogramService();
-
+        stretchingOptionsWindowService = new MockStretchingOptionsWindowService();
+        processService = new MockProcessService();
+        
         var serviceProvider = new ServiceProvider
         {
             OpenImageService = _openImageService,
             SaveImageService = _saveImageService,
             DuplicateImageService = _duplicateImageService,
             WindowService = _windowService,
-            HistogramService = _histogramService
+            HistogramService = _histogramService,
+            StretchingOptionsService = stretchingOptionsWindowService,
+            ProcessService = processService
         };
 
         model = new ImageModel(imageData, serviceProvider);
@@ -81,7 +138,7 @@ public class ImageModelTests
     }
 
     /// <summary>
-    ///     Po kliknięciu w menu "Histogram -> Value" wywoływana jest metoda ShowValueHistogram(). Powinna ona skutkować
+    ///     Po kliknięciu w menu "Histogram -> LMin" wywoływana jest metoda ShowValueHistogram(). Powinna ona skutkować
     ///     wyświetleniem histogramu wartości.
     /// </summary>
     [TestMethod]
@@ -242,39 +299,69 @@ public class ImageModelTests
     public void LinearStretchingTest()
     {
         Assert.AreEqual(false, _windowService.IsShowImageWindowCalled);
-        Assert.AreEqual(false, _windowService.IsOptionWindowCalled);
-        Assert.Fail();
+        Assert.AreEqual(false, stretchingOptionsWindowService.IsLinearStretchingWindowShown);
+        model.OpenLinearStretchingWindow();
+        Assert.AreEqual(true, _windowService.IsShowImageWindowCalled);
+        Assert.AreEqual(true, stretchingOptionsWindowService.IsLinearStretchingWindowShown);
     }
 
-    //[TestMethod]
-    //public void GammaStretchingTest()
-    //{
-    //    Assert.Fail();
-    //}
+    [TestMethod]
+    public void GammaStretchingTest()
+    {
+        Assert.AreEqual(false, _windowService.IsShowImageWindowCalled);
+        Assert.AreEqual(false, stretchingOptionsWindowService.IsGammaStretchingWindowShown);
+        model.OpenGammaStretchingWindow();
+        Assert.AreEqual(true, _windowService.IsShowImageWindowCalled);
+        Assert.AreEqual(true, stretchingOptionsWindowService.IsGammaStretchingWindowShown);
+    }
 
-    //[TestMethod]
-    //public void EqualizeHistogramTest()
-    //{
-    //    Assert.Fail();
-    //}
+    [TestMethod]
+    public void EqualizeHistogramTest()
+    {
+        Assert.AreEqual(false, _windowService.IsShowImageWindowCalled);
+        model.OpenEqualizeHistogramWindow();
+        Assert.AreEqual(true, _windowService.IsShowImageWindowCalled);
+    }
 
-    //[TestMethod]
-    //public void NegateImageTest()
-    //{
-    //    Assert.Fail();
-    //}
+    [TestMethod]
+    public void NegateImageTest()
+    {
+        Assert.AreEqual(false, _windowService.IsShowImageWindowCalled);
+        Assert.AreEqual(false, processService.IsNegated);
+        model.NegateImage();
+        Assert.AreEqual(true, _windowService.IsShowImageWindowCalled);
+        Assert.AreEqual(true, processService.IsNegated);
+    }
 
-    //[TestMethod]
-    //public void BinaryThresholdTest()
-    //{
-    //    Assert.Fail();
-    //}
+    [TestMethod]
+    public void BinaryThresholdTest()
+    {
+        Assert.AreEqual(false, _windowService.IsShowImageWindowCalled);
+        Assert.AreEqual(false, processService.IsBinaryThresholdWindowOpen);
+        model.BinaryThreshold();
+        Assert.AreEqual(true, _windowService.IsShowImageWindowCalled);
+        Assert.AreEqual(true, processService.IsBinaryThresholdWindowOpen);
+    }
 
-    //[TestMethod]
-    //public void GreyscaleThresholdTest()
-    //{
-    //    Assert.Fail();
-    //}
+    [TestMethod]
+    public void GreyscaleThresholdTest()
+    {
+        Assert.AreEqual(false, _windowService.IsShowImageWindowCalled);
+        Assert.AreEqual(false, processService.IsGreyscaleThresholdWindowOpen);
+        model.GreyscaleThreshold();
+        Assert.AreEqual(true, _windowService.IsShowImageWindowCalled);
+        Assert.AreEqual(true, processService.IsGreyscaleThresholdWindowOpen);
+    }
+
+    [TestMethod]
+    public void GreyscaleThresholdTwoSlidersTest()
+    {
+        Assert.AreEqual(false, _windowService.IsShowImageWindowCalled);
+        Assert.AreEqual(false, processService.IsGreyscaleThresholdTwoSlidersWindowOpen);
+        model.GreyscaleThresholdTwoSliders();
+        Assert.AreEqual(true, _windowService.IsShowImageWindowCalled);
+        Assert.AreEqual(true, processService.IsGreyscaleThresholdTwoSlidersWindowOpen);
+    }
 
     //[TestMethod]
     //public void AddImageTest()

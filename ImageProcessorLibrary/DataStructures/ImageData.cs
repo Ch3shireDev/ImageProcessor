@@ -1,29 +1,35 @@
-﻿using Avalonia.Media.Imaging;
+﻿using System.Drawing;
+using Avalonia.Media;
 
 namespace ImageProcessorLibrary.DataStructures;
 
 public class ImageData
 {
-    public ImageData(string filename, byte[] filebytes)
+    public ImageData(string filepath, byte[] filebytes)
     {
-        Filename = filename;
+        Filepath = filepath;
+        Filename = Path.GetFileName(filepath);
         Filebytes = filebytes;
-        Extension = Path.GetExtension(Filename);
+        Extension = Path.GetExtension(Filepath);
     }
 
     public ImageData(ImageData imageData)
     {
-        Filename = imageData.Filename;
-        Filebytes = imageData.Filebytes.Clone() as byte[];
+        Filepath = imageData.Filepath;
+        Filename = Path.GetFileName(Filepath);
+        //Filebytes = imageData.Filebytes.Clone() as byte[];
+        Filebytes = new byte[imageData.Filebytes.Length];
+        for (int i = 0; i < imageData.Filebytes.Length; i++) Filebytes[i] = imageData.Filebytes[i];
         Extension = imageData.Extension;
     }
 
+    public event EventHandler<EventArgs> ImageChanged;
+    public string Filename{ get; set; }
+    public IImage Bitmap => GetBitmap();
 
-    public Bitmap Bitmap => GetBitmap();
+    public Bitmap WBitmap => new(new MemoryStream(Filebytes));
 
-    private System.Drawing.Bitmap WBitmap => new(new MemoryStream(Filebytes));
-
-    public string Filename { get; set; }
+    public string Filepath { get; set; }
     public byte[] Filebytes { get; set; }
     public string Extension { get; set; }
     public double HorizontalDPI => WBitmap.HorizontalResolution;
@@ -31,10 +37,18 @@ public class ImageData
     public double Width => WBitmap.Width;
     public double Height => WBitmap.Height;
 
-    private Bitmap GetBitmap()
+    private Avalonia.Media.Imaging.Bitmap GetBitmap()
     {
         var stream = new MemoryStream(Filebytes);
         stream.Position = 0;
-        return new Bitmap(stream);
+        return new Avalonia.Media.Imaging.Bitmap(stream);
+    }
+
+    public void Update(ImageData result)
+    {
+        Filepath = result.Filepath;
+        Filebytes = result.Filebytes;
+        Extension = result.Extension;
+        ImageChanged.Invoke(null, EventArgs.Empty);
     }
 }

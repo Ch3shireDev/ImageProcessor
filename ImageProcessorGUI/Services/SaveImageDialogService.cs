@@ -21,7 +21,7 @@ public class SaveImageDialogService : ISaveImageDialogService
             Title = "Save image",
             //Directory = null,
             //Filters = null,
-            InitialFileName = imageData.Filename,
+            InitialFileName = imageData.Filepath,
             DefaultExtension = imageData.Extension
         };
 

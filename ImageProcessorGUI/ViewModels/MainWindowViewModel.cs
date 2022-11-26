@@ -1,14 +1,11 @@
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using Avalonia.Media.Imaging;
+using Avalonia.Media;
 using ImageProcessorGUI.Models;
 using ReactiveUI;
 
 namespace ImageProcessorGUI.ViewModels;
 
-public class MainWindowViewModel : ViewModelBase, INotifyPropertyChanged
+public class MainWindowViewModel : ViewModelBase
 {
     public MainWindowViewModel()
     {
@@ -17,15 +14,17 @@ public class MainWindowViewModel : ViewModelBase, INotifyPropertyChanged
     public MainWindowViewModel(ImageModel imageModel)
     {
         ImageModel = imageModel;
+        ImageModel.ImageChanged += (a, b) => { this.RaisePropertyChanged(nameof(Image));};
     }
 
-    public string Title { get; set; } = "Image processor";
-    //public MenuViewModel MenuViewModel { get; set; } = new();
+    public string Title => ImageModel.ImageData.Filename;
 
     public ICommand OpenImageCommand => ReactiveCommand.Create(() => ImageModel.OpenImage());
     public ICommand SaveImageCommand => ReactiveCommand.Create(() => ImageModel.SaveImage());
     public ICommand DuplicateImageCommand => ReactiveCommand.Create(() => ImageModel.DuplicateImage());
-    public ICommand ShowValueHistogramCommand => ReactiveCommand.Create(() => ImageModel.ShowValueHistogram());
+    public ICommand ShowValueHistogramCommand => ReactiveCommand.Create(() => 
+    ImageModel.ShowValueHistogram()
+    );
     public ICommand ShowRgbHistogramCommand => ReactiveCommand.Create(() => ImageModel.ShowRgbHistogram());
     public ICommand ShowRHistogramCommand => ReactiveCommand.Create(() => ImageModel.ShowRHistogram());
     public ICommand ShowGHistogramCommand => ReactiveCommand.Create(() => ImageModel.ShowGHistogram());
@@ -34,51 +33,52 @@ public class MainWindowViewModel : ViewModelBase, INotifyPropertyChanged
     public ICommand ShowScaledUp200PercentCommand => ReactiveCommand.Create(() =>
     {
         ImageModel.ShowScaledUp200Percent();
-        OnPropertyChanged(nameof(ImageWidth));
-        OnPropertyChanged(nameof(ImageHeight));
+        this.RaisePropertyChanged(nameof(ImageWidth));
+        this.RaisePropertyChanged(nameof(ImageHeight));
     });
 
     public ICommand ShowScaledUp150PercentCommand => ReactiveCommand.Create(() =>
     {
         ImageModel.ShowScaledUp150Percent();
-        OnPropertyChanged(nameof(ImageWidth));
-        OnPropertyChanged(nameof(ImageHeight));
+        this.RaisePropertyChanged(nameof(ImageWidth));
+        this.RaisePropertyChanged(nameof(ImageHeight));
     });
 
     public ICommand ShowScaledDown50PercentCommand => ReactiveCommand.Create(() =>
     {
         ImageModel.ShowScaledDown50Percent();
-        OnPropertyChanged(nameof(ImageWidth));
-        OnPropertyChanged(nameof(ImageHeight));
+        this.RaisePropertyChanged(nameof(ImageWidth));
+        this.RaisePropertyChanged(nameof(ImageHeight));
     });
 
     public ICommand ShowScaledDown25PercentCommand => ReactiveCommand.Create(() =>
     {
         ImageModel.ShowScaledDown25Percent();
-        OnPropertyChanged(nameof(ImageWidth));
-        OnPropertyChanged(nameof(ImageHeight));
+        this.RaisePropertyChanged(nameof(ImageWidth));
+        this.RaisePropertyChanged(nameof(ImageHeight));
     });
 
     public ICommand ShowScaledDown20PercentCommand => ReactiveCommand.Create(() =>
     {
         ImageModel.ShowScaledDown20Percent();
-        OnPropertyChanged(nameof(ImageWidth));
-        OnPropertyChanged(nameof(ImageHeight));
+        this.RaisePropertyChanged(nameof(ImageWidth));
+        this.RaisePropertyChanged(nameof(ImageHeight));
     });
 
     public ICommand ShowScaledDown10PercentCommand => ReactiveCommand.Create(() =>
     {
         ImageModel.ShowScaledDown10Percent();
-        OnPropertyChanged(nameof(ImageWidth));
-        OnPropertyChanged(nameof(ImageHeight));
+        this.RaisePropertyChanged(nameof(ImageWidth));
+        this.RaisePropertyChanged(nameof(ImageHeight));
     });
 
-    public ICommand LinearStretchingCommand => ReactiveCommand.Create(() => ImageModel.LinearStretching());
-    public ICommand GammaStretchingCommand => ReactiveCommand.Create(() => ImageModel.GammaStretching());
-    public ICommand EqualizeHistogramCommand => ReactiveCommand.Create(() => ImageModel.EqualizeHistogram());
+    public ICommand LinearStretchingCommand => ReactiveCommand.Create(() => ImageModel.OpenLinearStretchingWindow());
+    public ICommand GammaStretchingCommand => ReactiveCommand.Create(() => ImageModel.OpenGammaStretchingWindow());
+    public ICommand EqualizeHistogramCommand => ReactiveCommand.Create(() => ImageModel.OpenEqualizeHistogramWindow());
     public ICommand NegateImageCommand => ReactiveCommand.Create(() => ImageModel.NegateImage());
     public ICommand BinaryThresholdCommand => ReactiveCommand.Create(() => ImageModel.BinaryThreshold());
     public ICommand GreyscaleThresholdCommand => ReactiveCommand.Create(() => ImageModel.GreyscaleThreshold());
+    public ICommand GreyscaleThresholdTwoSlidersCommand => ReactiveCommand.Create(() => ImageModel.GreyscaleThresholdTwoSliders());
     public ICommand AddImageCommand => ReactiveCommand.Create(() => ImageModel.AddImage());
 
     public ICommand AddImageWithoutSaturateCommand =>
@@ -139,23 +139,9 @@ public class MainWindowViewModel : ViewModelBase, INotifyPropertyChanged
         ReactiveCommand.Create(() => ImageModel.ModifyAmplitudeSpectrum());
 
     public ImageModel? ImageModel { get; set; }
-
+    
     public double ImageWidth => ImageModel.ImageWidth;
     public double ImageHeight => ImageModel.ImageHeight;
 
-    public Bitmap Bitmap => ImageModel.ImageData.Bitmap;
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    protected bool SetField<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
-    {
-        if (EqualityComparer<T>.Default.Equals(field, value)) return false;
-        field = value;
-        OnPropertyChanged(propertyName);
-        return true;
-    }
+    public IImage Image => ImageModel.ImageData.Bitmap;
 }

@@ -36,4 +36,9 @@
   <ItemGroup>
     <ProjectReference Include="..\ImageProcessorLibrary\ImageProcessorLibrary.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Views\LinearStretchingOptionsWindow.axaml.cs">
+      <DependentUpon>LinearStretchingOptionsWindow.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

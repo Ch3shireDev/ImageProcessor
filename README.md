@@ -28,10 +28,10 @@ Aplikacja powinna:
 
 ## 3. Operacje na histogramach
 
-- [ ] opracować algorytmy (metodami przedstawionymi na wykładzie): 
-	- [ ] rozciągania liniowego
-	- [ ] rozciągania nieliniowego
-	- [ ] wyrównywania przez eqalizację histogramu.
+- [x] opracować algorytmy (metodami przedstawionymi na wykładzie): 
+  - [x] rozciągania liniowego
+  - [x] rozciągania nieliniowego
+  - [x] wyrównywania przez eqalizację histogramu.
 
 Rozciąganie histogramu: w zakresach `[min; max]` i `[a; b]` zarówno gdy a i b są większe lub mniejsze od zakresu poziomów jasności występujących w obrazie w wersji liniowej i nielinowej.
 
@@ -80,21 +80,21 @@ Proszę o przygotowanie własnych monochromatycznych i binarnych obrazów testow
 Proszę dołączyć bibliotekę OpenCV i korzystać z niej przygotowując poszczególne funkcjonalności.
 
 - [ ] Opracowanie algorytmu i uruchomienie funkcjonalności realizującej operacje:
-	- [ ] wygładzania liniowego oparte na typowych maskach wygładzania (uśrednienie, uśrednienie z wagami, filtr gaussowski – przedstawione na wykładzie) przestawionych użytkownikowi jako maski do wyboru,
-	- [ ] wyostrzania liniowego oparte na 3 maskach laplasjanowych (podanych w wykładzie) przestawionych użytkownikowi maski do wyboru,
-	- [ ] kierunkowej detekcji krawędzi w oparciu o maski 8 kierunkowych masek Sobela (podstawowe 8 kierunków) przestawionych użytkownikowi do wyboru,
+    - [ ] wygładzania liniowego oparte na typowych maskach wygładzania (uśrednienie, uśrednienie z wagami, filtr gaussowski – przedstawione na wykładzie) przestawionych użytkownikowi jako maski do wyboru,
+    - [ ] wyostrzania liniowego oparte na 3 maskach laplasjanowych (podanych w wykładzie) przestawionych użytkownikowi maski do wyboru,
+    - [ ] kierunkowej detekcji krawędzi w oparciu o maski 8 kierunkowych masek Sobela (podstawowe 8 kierunków) przestawionych użytkownikowi do wyboru,
 
 - [ ] Zaimplementować wybór sposobu uzupełnienie marginesów/brzegów w operacjach sąsiedztwa według zasady wybranej spośród następujących zasad:
-	- [ ] wypełnienie ramki wybraną wartością stałą `n` narzuconą przez użytkownika: `BORDER_CONSTANT`
-	- [ ] wypełnienie wyniku wybraną wartością stałą `n` narzuconą przez użytkownika
-	- [ ] wyliczenie ramki według `BORDER_REFLECT`
-	- [ ] wyliczenie ramki według `BORDER_WRAP`
+    - [ ] wypełnienie ramki wybraną wartością stałą `n` narzuconą przez użytkownika: `BORDER_CONSTANT`
+    - [ ] wypełnienie wyniku wybraną wartością stałą `n` narzuconą przez użytkownika
+    - [ ] wyliczenie ramki według `BORDER_REFLECT`
+    - [ ] wyliczenie ramki według `BORDER_WRAP`
 
 - [ ] Opracowanie algorytmu i uruchomienie aplikacji realizującej uniwersalną operację medianową opartą na:
-	- [ ] otoczeniu 3x3, 
-	- [ ] 5x5, 
-	- [ ] 7x7, 
-	- [ ] 9x9 
+    - [ ] otoczeniu 3x3, 
+    - [ ] 5x5, 
+    - [ ] 7x7, 
+    - [ ] 9x9 
  zadawanym w sposób interaktywny: wybór z list, przesuwanie baru lub wpisanie w przygotowane pole). 
  
 Zastosować powyższych metod uzupełniania brzegowych pikselach obrazu, dając użytkownikowi możliwość wyboru, jak w zadaniu 1.
@@ -103,27 +103,27 @@ Zastosować powyższych metod uzupełniania brzegowych pikselach obrazu, dając 
 
 - [ ] Implementacja detekcji krawędzi operatorami opartymi na maskach Sobela i Prewitta oraz operatorem Cannyego.
 - [ ] Opracować algorytm i uruchomić funkcjonalność realizującą segmentację obrazów następującymi metodami:
-	- [ ] Dostosowanie obsługi do wykonywania prostego interaktywnego progowania z jednym i dwoma progami (zad 2 lab 2) tak, aby prezentować wyniki w chwili zmiany progu związanego z przesunięciem wskaźnika lub wpisania nowej wartości.
+    - [ ] Dostosowanie obsługi do wykonywania prostego interaktywnego progowania z jednym i dwoma progami (zad 2 lab 2) tak, aby prezentować wyniki w chwili zmiany progu związanego z przesunięciem wskaźnika lub wpisania nowej wartości.
 
 - [ ] Ponadto jako część "interface" operacji występuje wykonanie pozostałych dwóch poniżej wymienionych wersji progowania:
-	- [ ] Progowanie metodą Otsu,
-	- [ ] Progowanie adaptacyjne (adaptive threshold).
+    - [ ] Progowanie metodą Otsu,
+    - [ ] Progowanie adaptacyjne (adaptive threshold).
 
 ## 9. Algorytmy morfologii
 
 - [ ] Opracować algorytm i uruchomić funkcjonalność wykonywania podstawowych operacji morfologii matematycznej: 
-	- [ ] erozji, 
-	- [ ] dylatacji, 
-	- [ ] otwarcia,
-	- [ ] zamknięcia 
-	wykorzystując podstawowy element strukturalny dysk 3x3.
-	
+    - [ ] erozji, 
+    - [ ] dylatacji, 
+    - [ ] otwarcia,
+    - [ ] zamknięcia 
+    wykorzystując podstawowy element strukturalny dysk 3x3.
+    
 ## 10. Składowe wektora cech obiektu binarnego
 
 - [ ] Opracować algorytm i uruchomić funkcjonalność realizującą wyznaczanie następujących składowych wektora cech obiektu binarnego:
-	- [ ] Momenty
-	- [ ] Pole powierzchni i obwód
-	- [ ] Współczynniki kształtu: aspectRatio, extent, solidity, equivalentDiameter
+    - [ ] Momenty
+    - [ ] Pole powierzchni i obwód
+    - [ ] Współczynniki kształtu: aspectRatio, extent, solidity, equivalentDiameter
 
 - [ ] Przygotować zapis wyników w postaci pliku tekstowego do wczytania do oprogramowania Excel.
 

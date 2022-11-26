@@ -11,4 +11,6 @@ public interface IServiceProvider
     public IBlurService BlurService { get; }
     public IHistogramService HistogramService { get; }
     public IWindowService WindowService { get; }
+    public IStretchingOptionsService StretchingOptionsService { get; }
+    public IProcessService ProcessService { get; }
 }

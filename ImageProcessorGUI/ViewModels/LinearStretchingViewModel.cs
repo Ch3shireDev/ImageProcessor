@@ -1,38 +1,59 @@
-﻿using ReactiveUI;
-using ScottPlot.Renderable;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
+using ImageProcessorLibrary.DataStructures;
+using ImageProcessorLibrary.Services;
+using ReactiveUI;
 
-namespace ImageProcessorGUI.ViewModels
+namespace ImageProcessorGUI.ViewModels;
+
+public class LinearStretchingViewModel : ViewModelBase
 {
-    public class LinearStretchingViewModel: ViewModelBase
+    private int _lMin = 0;
+    private int _lMax = 255;
+
+    public StretchingService stretchingService = new StretchingService();
+
+    public LinearStretchingViewModel(ImageData imageData)
     {
+        ImageData = imageData;
+        OriginalImageData = new ImageData(imageData);
+    }
 
-        private float value;
-        public string Text { get; set; } = "0.00";
+    public ImageData OriginalImageData { get; set; }
 
-        public ICommand RefreshCommand => ReactiveCommand.Create(() =>
+    private ImageData ImageData { get; }
+    public string Text1 { get; set; } = "0";
+    public string Text2 { get; set; } = "255";
+
+    public ICommand RefreshCommand => ReactiveCommand.Create(() =>
+    {
+        var result = stretchingService.LinearStretching(OriginalImageData, LMin, LMax);
+        ImageData.Update(result);
+    });
+
+    public int LMin
+    {
+        get => _lMin;
+        set
         {
-        Console.WriteLine("Value: " + value);
-            Console.WriteLine("Text: " + Text);
-        });
+            if (value < 0) value = 0;
+            if (value > LMax) value = LMax;
+            _lMin = value;
+            Text1 = value.ToString();
+            this.RaisePropertyChanged();
+            this.RaisePropertyChanged(nameof(Text1));
+        }
+    }
 
-        public float Value
+    public int LMax
+    {
+        get => _lMax;
+        set
         {
-            get => value;
-            set
-            {
-                this.value = value;
-                Text = value.ToString();
-                this.RaisePropertyChanged();
-                this.RaisePropertyChanged(nameof(Text));
-            }
+            if (value < LMin) value = LMin;
+            _lMax = value;
+            Text2 = value.ToString();
+            this.RaisePropertyChanged();
+            this.RaisePropertyChanged(nameof(Text2));
         }
     }
 }

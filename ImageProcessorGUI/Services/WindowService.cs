@@ -25,14 +25,4 @@ public class WindowService : IWindowService
 
         mainWindow.Show();
     }
-
-    public void ShowOptionWindow(ImageData imageData)
-    {
-        var optionWindow = new OptionsWindow
-        {
-            DataContext = new LinearStretchingViewModel()
-        };
-
-        optionWindow.Show();
-    }
 }

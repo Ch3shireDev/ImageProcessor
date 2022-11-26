@@ -1,0 +1,32 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="ImageProcessorGUI.Views.GammaStretchingOptionsWindow"
+        Title="Gamma Stretching"
+		Width="300"
+		Height="400"
+		>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<Label Grid.Row="0">Gamma stretching</Label>
+		<Label  Grid.Row="1" Content="{Binding GammaValueText}"/>
+
+			<Grid  Grid.Row="2">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+					<Slider Grid.Column="0" Value="{Binding GammaValue, Mode=TwoWay}" Minimum="0.001" Maximum="2"/>
+				<TextBox Grid.Column="1" Text="{Binding GammaValue, Mode=TwoWay}"/>
+	</Grid>
+		<Button Grid.Row="3" Command="{Binding RefreshCommand}">Refresh</Button>
+	</Grid>
+</Window>

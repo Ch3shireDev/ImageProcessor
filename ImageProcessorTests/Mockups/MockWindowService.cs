@@ -6,8 +6,8 @@ namespace ImageProcessorTests.Mockups;
 public class MockWindowService : IWindowService
 {
     public bool IsShowImageWindowCalled { get; set; }
-    public ImageData ImageData { get; set; }
     public bool IsOptionWindowCalled { get; set; }
+    public ImageData ImageData { get; set; }
 
     public void ShowImageWindow(ImageData imageData)
     {
@@ -15,8 +15,8 @@ public class MockWindowService : IWindowService
         ImageData = imageData;
     }
 
-    public void ShowOptionWindow(ImageData imageData)
+    public void ShowLinearStretchingWindow(ImageData imageData)
     {
-        throw new NotImplementedException();
+        IsOptionWindowCalled = true;
     }
 }

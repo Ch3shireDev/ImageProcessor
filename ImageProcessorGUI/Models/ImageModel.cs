@@ -1,6 +1,7 @@
+using System;
 using System.Threading.Tasks;
 using ImageProcessorLibrary.DataStructures;
-using ImageProcessorLibrary.ServiceProviders;
+using IServiceProvider = ImageProcessorLibrary.ServiceProviders.IServiceProvider;
 
 namespace ImageProcessorGUI.Models;
 
@@ -19,6 +20,12 @@ public class ImageModel
     public double ImageHeight => (double)((decimal)ImageData.Height * Scale);
 
     public decimal Scale { get; set; } = 1;
+
+    public event EventHandler<EventArgs> ImageChanged
+    {
+        add => ImageData.ImageChanged += value;
+        remove => ImageData.ImageChanged -= value;
+    }
 
     public void OpenImage()
     {
@@ -95,32 +102,52 @@ public class ImageModel
         Scale *= 0.1m;
     }
 
-    public void LinearStretching()
+    public void OpenLinearStretchingWindow()
     {
         var imageData = new ImageData(ImageData);
-        _serviceProvider.WindowService.ShowOptionWindow(imageData);
+        _serviceProvider.StretchingOptionsService.ShowLinearStretchingWindow(imageData);
+        _serviceProvider.WindowService.ShowImageWindow(imageData);
     }
 
-    public void GammaStretching()
+    public void OpenGammaStretchingWindow()
     {
+        var imageData = new ImageData(ImageData);
+        _serviceProvider.StretchingOptionsService.ShowGammaStretchingWindow(imageData);
+        _serviceProvider.WindowService.ShowImageWindow(imageData);
     }
 
-    public void EqualizeHistogram()
+    public void OpenEqualizeHistogramWindow()
     {
+        var imageData = _serviceProvider.StretchingOptionsService.GetEqualizedImage(ImageData);
+        _serviceProvider.WindowService.ShowImageWindow(imageData);
     }
 
     public void NegateImage()
     {
+        var imageData = _serviceProvider.ProcessService.NegateImage(ImageData);
+        _serviceProvider.WindowService.ShowImageWindow(imageData);
     }
 
     public void BinaryThreshold()
     {
+        var imageData = new ImageData(ImageData);
+        _serviceProvider.ProcessService.BinaryThreshold(imageData);
+        _serviceProvider.WindowService.ShowImageWindow(imageData);
     }
 
     public void GreyscaleThreshold()
     {
+        var imageData = new ImageData(ImageData);
+        _serviceProvider.ProcessService.GreyscaleThreshold(imageData);
+        _serviceProvider.WindowService.ShowImageWindow(imageData);
     }
-
+    
+    public void GreyscaleThresholdTwoSliders()
+    {
+        var imageData = new ImageData(ImageData);
+        _serviceProvider.ProcessService.GreyscaleThresholdTwoSliders(imageData);
+        _serviceProvider.WindowService.ShowImageWindow(imageData);
+    }
     public void AddImage()
     {
     }
@@ -284,4 +311,5 @@ public class ImageModel
     public void Sharpening()
     {
     }
+
 }

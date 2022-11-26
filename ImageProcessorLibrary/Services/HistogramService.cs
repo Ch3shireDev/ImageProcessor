@@ -6,13 +6,8 @@ namespace ImageProcessorLibrary.Services;
 
 public class HistogramService : IHistogramService
 {
-    private readonly ILutService _lutService;
-
-    public HistogramService(ILutService lutService)
-    {
-        _lutService = lutService;
-    }
-
+    private readonly ILutService _lutService = new LutService();
+    
     public ImageData GetRgbHistogram(ImageData imageData)
     {
         var plot = new Plot(600, 400);
@@ -24,7 +19,7 @@ public class HistogramService : IHistogramService
         plot.Title("All histograms");
 
         var bytes = plot.GetImageBytes();
-
+                    
         var image = new ImageData("histogram.png", bytes);
 
         return image;
