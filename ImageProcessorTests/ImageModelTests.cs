@@ -15,19 +15,19 @@ public class MockProcessService:IProcessService
         return imageData;
     }
 
-    public void BinaryThreshold(ImageData imageData)
+    public void OpenBinaryThresholdWindow(ImageData imageData)
     {
         IsBinaryThresholdWindowOpen = true;
     }
 
     public bool IsBinaryThresholdWindowOpen { get; set; }
 
-    public void GreyscaleThreshold(ImageData imageData)
+    public void OpenGreyscaleThresholdOneSliderWindow(ImageData imageData)
     {
         IsGreyscaleThresholdWindowOpen = true;
     }
 
-    public void GreyscaleThresholdTwoSliders(ImageData imageData)
+    public void OpenGreyscaleThresholdTwoSlidersWindow(ImageData imageData)
     {
         IsGreyscaleThresholdTwoSlidersWindowOpen = true;
     }
@@ -348,7 +348,7 @@ public class ImageModelTests
     {
         Assert.AreEqual(false, _windowService.IsShowImageWindowCalled);
         Assert.AreEqual(false, processService.IsGreyscaleThresholdWindowOpen);
-        model.GreyscaleThreshold();
+        model.GreyscaleThresholdOneSlider();
         Assert.AreEqual(true, _windowService.IsShowImageWindowCalled);
         Assert.AreEqual(true, processService.IsGreyscaleThresholdWindowOpen);
     }

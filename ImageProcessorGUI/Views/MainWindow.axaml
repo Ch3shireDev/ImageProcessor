@@ -32,7 +32,7 @@
             </MenuItem>
             <MenuItem Header="Wyświetl">
                 <MenuItem Header="_Histogramy">
-                    <MenuItem Header="Histogram intensywności" Command="{Binding ShowValueHistogramCommand}" />
+                    <MenuItem Header="Histogram intensywności" Command="{Binding ShowValueHistogramCommand}"/>
                     <MenuItem Header="Histogram RGB" Command="{Binding ShowRgbHistogramCommand}" />
                     <MenuItem Header="Histogram R" Command="{Binding ShowRHistogramCommand}" />
                     <MenuItem Header="Histogram G" Command="{Binding ShowGHistogramCommand}" />
@@ -53,7 +53,7 @@
                 <MenuItem Header="Wyrównaj poprzez equalizację histogramu" Command="{Binding EqualizeHistogramCommand}" />
                 <MenuItem Header="Negacja" Command="{Binding NegateImageCommand}" />
                 <MenuItem Header="Progowanie binarne" Command="{Binding BinaryThresholdCommand}" />
-                <MenuItem Header="Progowanie z zachowaniem poziomów szarości" Command="{Binding GreyscaleThresholdCommand}" />
+                <MenuItem Header="Progowanie z zachowaniem poziomów szarości" Command="{Binding GreyscaleThresholdOneSliderCommand}" />
                 <MenuItem Header="Progowanie z zachowaniem poziomów szarości (dwa progi)" Command="{Binding GreyscaleThresholdTwoSlidersCommand}" />
                 <MenuItem Header="Dodaj obraz z wysyceniem" Command="{Binding AddImageCommand}" />
                 <MenuItem Header="Dodaj obraz bez wysycenia" Command="{Binding AddImageWithoutSaturateCommand}" />
@@ -134,7 +134,7 @@
 
 
                     <MenuItem Header="_Plik">
-                        <MenuItem Header="_Otwórz" Command="{Binding OpenImageCommand}" />
+                        <MenuItem Header="_Otwórz" Command="{Binding OpenImageCommand}"/>
                         <MenuItem Header="_Zapisz" Command="{Binding SaveImageCommand}" />
                         <MenuItem Header="_Duplikuj" Command="{Binding DuplicateImageCommand}" />
                     </MenuItem>
@@ -161,16 +161,19 @@
                                   Command="{Binding GammaStretchingCommand}" />
                         <MenuItem Header="Wyrównaj poprzez equalizację histogramu"
                                   Command="{Binding EqualizeHistogramCommand}" />
-                        <MenuItem Header="Negacja" Command="{Binding NegateImageCommand}" />
-                        <MenuItem Header="Progowanie binarne" Command="{Binding BinaryThresholdCommand}" />
-                        <MenuItem Header="Progowanie z zachowaniem poziomów szarości"
-                                  Command="{Binding GreyscaleThresholdCommand}" />
-                        <MenuItem Header="Dodaj obraz z wysyceniem" Command="{Binding AddImageCommand}" />
-                        <MenuItem Header="Dodaj obraz bez wysycenia" Command="{Binding AddImageWithoutSaturateCommand}" />
-                        <MenuItem Header="Uzyskaj różnicę obrazów" Command="{Binding ImagesDifferenceCommand}" />
-                        <MenuItem Header="Dodaj liczbę całkowitą" Command="{Binding AddNumberToImageCommand}" />
-                        <MenuItem Header="Odejmij liczbę całkowitą" Command="{Binding SubtractNumberFromImageCommand}" />
-                    </MenuItem>
+                                         </MenuItem>
+					<MenuItem Header="_Operacje punktowe">
+						<MenuItem Header="Negacja" Command="{Binding NegateImageCommand}" />
+						<MenuItem Header="Progowanie binarne" Command="{Binding BinaryThresholdCommand}" />
+						<MenuItem Header="Progowanie z zachowaniem poziomów szarości z jednym suwakiem" Command="{Binding GreyscaleThresholdOneSliderCommand}" />
+						<MenuItem Header="Progowanie z zachowaniem poziomów szarości z dwoma suwakami" Command="{Binding GreyscaleThresholdTwoSlidersCommand}" />
+						<MenuItem Header="Dodaj obraz z wysyceniem" Command="{Binding AddImageCommand}" />
+						<MenuItem Header="Dodaj obraz bez wysycenia" Command="{Binding AddImageWithoutSaturateCommand}" />
+						<MenuItem Header="Uzyskaj różnicę obrazów" Command="{Binding ImagesDifferenceCommand}" />
+						<MenuItem Header="Dodaj liczbę całkowitą" Command="{Binding AddNumberToImageCommand}" />
+						<MenuItem Header="Odejmij liczbę całkowitą" Command="{Binding SubtractNumberFromImageCommand}" />
+
+					</MenuItem>
                     <MenuItem Header="_Operacje logiczne">
                         <MenuItem Header="Operacja BinaryAnd" Command="{Binding BinaryAndCommand}" />
                         <MenuItem Header="Operacja BinaryOr" Command="{Binding BinaryOrCommand}" />

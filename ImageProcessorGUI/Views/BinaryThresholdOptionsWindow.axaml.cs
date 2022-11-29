@@ -1,12 +1,11 @@
 using Avalonia.Controls;
 
-namespace ImageProcessorGUI.Views
+namespace ImageProcessorGUI.Views;
+
+public partial class BinaryThresholdOptionsWindow : Window
 {
-    public partial class BinaryThresholdOptionsWindow : Window
+    public BinaryThresholdOptionsWindow()
     {
-        public BinaryThresholdOptionsWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

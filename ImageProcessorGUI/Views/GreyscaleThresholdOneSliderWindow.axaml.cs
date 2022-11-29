@@ -2,9 +2,9 @@ using Avalonia.Controls;
 
 namespace ImageProcessorGUI.Views
 {
-    public partial class BinaryThresholdGrayscaleWindow : Window
+    public partial class GreyscaleThresholdOneSliderWindow : Window
     {
-        public BinaryThresholdGrayscaleWindow()
+        public GreyscaleThresholdOneSliderWindow()
         {
             InitializeComponent();
         }

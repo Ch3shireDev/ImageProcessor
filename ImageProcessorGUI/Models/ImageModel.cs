@@ -131,21 +131,21 @@ public class ImageModel
     public void BinaryThreshold()
     {
         var imageData = new ImageData(ImageData);
-        _serviceProvider.ProcessService.BinaryThreshold(imageData);
+        _serviceProvider.ProcessService.OpenBinaryThresholdWindow(imageData);
         _serviceProvider.WindowService.ShowImageWindow(imageData);
     }
 
-    public void GreyscaleThreshold()
+    public void GreyscaleThresholdOneSlider()
     {
         var imageData = new ImageData(ImageData);
-        _serviceProvider.ProcessService.GreyscaleThreshold(imageData);
+        _serviceProvider.ProcessService.OpenGreyscaleThresholdOneSliderWindow(imageData);
         _serviceProvider.WindowService.ShowImageWindow(imageData);
     }
     
     public void GreyscaleThresholdTwoSliders()
     {
         var imageData = new ImageData(ImageData);
-        _serviceProvider.ProcessService.GreyscaleThresholdTwoSliders(imageData);
+        _serviceProvider.ProcessService.OpenGreyscaleThresholdTwoSlidersWindow(imageData);
         _serviceProvider.WindowService.ShowImageWindow(imageData);
     }
     public void AddImage()

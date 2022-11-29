@@ -22,9 +22,7 @@ public class MainWindowViewModel : ViewModelBase
     public ICommand OpenImageCommand => ReactiveCommand.Create(() => ImageModel.OpenImage());
     public ICommand SaveImageCommand => ReactiveCommand.Create(() => ImageModel.SaveImage());
     public ICommand DuplicateImageCommand => ReactiveCommand.Create(() => ImageModel.DuplicateImage());
-    public ICommand ShowValueHistogramCommand => ReactiveCommand.Create(() => 
-    ImageModel.ShowValueHistogram()
-    );
+    public ICommand ShowValueHistogramCommand => ReactiveCommand.Create(() => ImageModel.ShowValueHistogram());
     public ICommand ShowRgbHistogramCommand => ReactiveCommand.Create(() => ImageModel.ShowRgbHistogram());
     public ICommand ShowRHistogramCommand => ReactiveCommand.Create(() => ImageModel.ShowRHistogram());
     public ICommand ShowGHistogramCommand => ReactiveCommand.Create(() => ImageModel.ShowGHistogram());
@@ -77,7 +75,7 @@ public class MainWindowViewModel : ViewModelBase
     public ICommand EqualizeHistogramCommand => ReactiveCommand.Create(() => ImageModel.OpenEqualizeHistogramWindow());
     public ICommand NegateImageCommand => ReactiveCommand.Create(() => ImageModel.NegateImage());
     public ICommand BinaryThresholdCommand => ReactiveCommand.Create(() => ImageModel.BinaryThreshold());
-    public ICommand GreyscaleThresholdCommand => ReactiveCommand.Create(() => ImageModel.GreyscaleThreshold());
+    public ICommand GreyscaleThresholdOneSliderCommand => ReactiveCommand.Create(() => ImageModel.GreyscaleThresholdOneSlider());
     public ICommand GreyscaleThresholdTwoSlidersCommand => ReactiveCommand.Create(() => ImageModel.GreyscaleThresholdTwoSliders());
     public ICommand AddImageCommand => ReactiveCommand.Create(() => ImageModel.AddImage());
 

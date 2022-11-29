@@ -41,7 +41,7 @@ Rozciąganie nieliniowe zaimplementować przez funkcję korekcji gamma ze wspó�
 
 - [ ] opracować algorytm i uruchomić aplikację realizującą typowe operacje punktowe jednoargumentowe takie jak:
 
-  - [ ] negacja,
+  - [x] negacja,
   - [ ] progowanie binarne z zamianą liczby poziomów szarości z jednym lub dwoma progami wskazywanymi suwakiem i wpisanymi jako parametr,
   - [ ] progowanie bez zamiany liczby poziomów szarości z dwoma progami wskazanymi przez wskazywanym suwakiem i wpisanym jako parametr.
 

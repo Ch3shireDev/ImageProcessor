@@ -45,7 +45,8 @@ public class App : Application
                     SelectImagesDialogService = dialogService,
                     WindowService = windowService,
                     HistogramService = histogramService ,
-                    StretchingOptionsService = stretchingOptionsService
+                    StretchingOptionsService = stretchingOptionsService,
+                    ProcessService = processService
                 };
 
                 windowService.ServiceProvider = serviceProvider;

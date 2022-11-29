@@ -15,18 +15,16 @@ public class ImageData
 
     public ImageData(ImageData imageData)
     {
-        Filepath = imageData.Filepath;
+        Filepath = imageData.Filename;
         Filename = Path.GetFileName(Filepath);
-        //Filebytes = imageData.Filebytes.Clone() as byte[];
-        Filebytes = new byte[imageData.Filebytes.Length];
-        for (int i = 0; i < imageData.Filebytes.Length; i++) Filebytes[i] = imageData.Filebytes[i];
+        Filebytes = imageData.Filebytes.Clone() as byte[];
         Extension = imageData.Extension;
     }
 
     public event EventHandler<EventArgs> ImageChanged;
     public string Filename{ get; set; }
     public IImage Bitmap => GetBitmap();
-
+    
     public Bitmap WBitmap => new(new MemoryStream(Filebytes));
 
     public string Filepath { get; set; }
