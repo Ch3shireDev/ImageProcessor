@@ -14,7 +14,7 @@ public class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel(ImageModel imageModel)
     {
         ImageModel = imageModel;
-        ImageModel.ImageChanged += (a, b) => { this.RaisePropertyChanged(nameof(Image));};
+        ImageModel.ImageChanged += (a, b) => { this.RaisePropertyChanged(nameof(Image)); };
     }
 
     public string Title => ImageModel.ImageData.Filename;
@@ -78,20 +78,14 @@ public class MainWindowViewModel : ViewModelBase
     public ICommand GreyscaleThresholdOneSliderCommand => ReactiveCommand.Create(() => ImageModel.GreyscaleThresholdOneSlider());
     public ICommand GreyscaleThresholdTwoSlidersCommand => ReactiveCommand.Create(() => ImageModel.GreyscaleThresholdTwoSliders());
     public ICommand AddImageCommand => ReactiveCommand.Create(() => ImageModel.AddImage());
-
-    public ICommand AddImageWithoutSaturateCommand =>
-        ReactiveCommand.Create(() => ImageModel.AddImageWithoutSaturate());
-
+    public ICommand AddImageWithoutSaturateCommand => ReactiveCommand.Create(() => ImageModel.AddImageWithoutSaturate());
     public ICommand ImagesDifferenceCommand => ReactiveCommand.Create(() => ImageModel.ImagesDifference());
     public ICommand AddNumberToImageCommand => ReactiveCommand.Create(() => ImageModel.AddNumberToImage());
-
-    public ICommand SubtractNumberFromImageCommand =>
-        ReactiveCommand.Create(() => ImageModel.SubtractNumberFromImage());
-
+    public ICommand SubtractNumberFromImageCommand => ReactiveCommand.Create(() => ImageModel.SubtractNumberFromImage());
     public ICommand BinaryAndCommand => ReactiveCommand.Create(() => ImageModel.BinaryAnd());
-    public ICommand BinaryOrCommand => ReactiveCommand.Create(() => ImageModel.BinaryOr());
     public ICommand BinaryXorCommand => ReactiveCommand.Create(() => ImageModel.BinaryXor());
     public ICommand BinaryNotCommand => ReactiveCommand.Create(() => ImageModel.BinaryNot());
+    public ICommand BinaryOrCommand => ReactiveCommand.Create(() => ImageModel.BinaryOr());
     public ICommand GetBinaryMaskCommand => ReactiveCommand.Create(() => ImageModel.GetBinaryMask());
     public ICommand Get8BitMaskCommand => ReactiveCommand.Create(() => ImageModel.Get8BitMask());
     public ICommand MedianBlurCommand => ReactiveCommand.Create(() => ImageModel.MedianBlur());
@@ -106,10 +100,7 @@ public class MainWindowViewModel : ViewModelBase
     public ICommand EdgeSobelSouthCommand => ReactiveCommand.Create(() => ImageModel.EdgeSobelSouth());
     public ICommand EdgeSobelSouthEastCommand => ReactiveCommand.Create(() => ImageModel.EdgeSobelSouthEast());
     public ICommand FillBorderConstantCommand => ReactiveCommand.Create(() => ImageModel.FillBorderConstant());
-
-    public ICommand FillResultBorderConstantCommand =>
-        ReactiveCommand.Create(() => ImageModel.FillResultBorderConstant());
-
+    public ICommand FillResultBorderConstantCommand => ReactiveCommand.Create(() => ImageModel.FillResultBorderConstant());
     public ICommand FillBorderReflectCommand => ReactiveCommand.Create(() => ImageModel.FillBorderReflect());
     public ICommand FillBorderWrapCommand => ReactiveCommand.Create(() => ImageModel.FillBorderWrap());
     public ICommand CalculateMedian3x3Command => ReactiveCommand.Create(() => ImageModel.CalculateMedian3x3());
@@ -118,28 +109,17 @@ public class MainWindowViewModel : ViewModelBase
     public ICommand CalculateMedian9x9Command => ReactiveCommand.Create(() => ImageModel.CalculateMedian9x9());
     public ICommand SobelEdgeDetectionCommand => ReactiveCommand.Create(() => ImageModel.SobelEdgeDetection());
     public ICommand PrewittEdgeDetectionCommand => ReactiveCommand.Create(() => ImageModel.PrewittEdgeDetection());
-
-    public ICommand CannyOperatorEdgeDetectionCommand =>
-        ReactiveCommand.Create(() => ImageModel.CannyOperatorEdgeDetection());
-
+    public ICommand CannyOperatorEdgeDetectionCommand => ReactiveCommand.Create(() => ImageModel.CannyOperatorEdgeDetection());
     public ICommand OtsuSegmentationCommand => ReactiveCommand.Create(() => ImageModel.OtsuSegmentation());
-
-    public ICommand AdaptiveThresholdSegmentationCommand =>
-        ReactiveCommand.Create(() => ImageModel.AdaptativeThresholdSegmentation());
-
+    public ICommand AdaptiveThresholdSegmentationCommand => ReactiveCommand.Create(() => ImageModel.AdaptativeThresholdSegmentation());
     public ICommand MorphologyErosionCommand => ReactiveCommand.Create(() => ImageModel.MorphologyErosion());
     public ICommand MorphologyDilationCommand => ReactiveCommand.Create(() => ImageModel.MorphologyDilation());
     public ICommand MorphologyOpeningCommand => ReactiveCommand.Create(() => ImageModel.MorphologyOpening());
     public ICommand MorphologyClosingCommand => ReactiveCommand.Create(() => ImageModel.MorphologyClosing());
     public ICommand CalculateFeatureVectorCommand => ReactiveCommand.Create(() => ImageModel.CalculateFeatureVector());
-
-    public ICommand ModifyAmplitudeSpectrumCommand =>
-        ReactiveCommand.Create(() => ImageModel.ModifyAmplitudeSpectrum());
-
-    public ImageModel? ImageModel { get; set; }
-    
+    public ICommand ModifyAmplitudeSpectrumCommand => ReactiveCommand.Create(() => ImageModel.ModifyAmplitudeSpectrum());
     public double ImageWidth => ImageModel.ImageWidth;
     public double ImageHeight => ImageModel.ImageHeight;
-
     public IImage Image => ImageModel.ImageData.Bitmap;
+    public ImageModel? ImageModel { get; set; }
 }

@@ -1,19 +1,20 @@
-﻿using System.Windows.Input;
-using ImageProcessorLibrary.DataStructures;
-using ImageProcessorLibrary.Services;
+﻿using ImageProcessorLibrary.DataStructures;
 using ReactiveUI;
+using System.Windows.Input;
+using ImageProcessorLibrary.Services;
 
-namespace ImageProcessorGUI.ViewModels;
+namespace ImageProcessorGUI.ViewModels.Old;
 
-public class BinaryThresholdViewModel : ViewModelBase
+public class GreyscaleThresholdOneSliderViewModel : ViewModelBase
 {
     private int thresholdValue;
 
-    public BinaryThresholdViewModel(ImageData imageData)
+    public GreyscaleThresholdOneSliderViewModel(ImageData imageData)
     {
         ImageData = imageData;
         OriginalImageData = new ImageData(imageData);
     }
+
 
     public ImageData ImageData { get; set; }
     public ImageData OriginalImageData { get; set; }
@@ -25,16 +26,13 @@ public class BinaryThresholdViewModel : ViewModelBase
         {
             thresholdValue = value;
             this.RaisePropertyChanged();
-            //Refresh();
         }
     }
 
-    public ICommand RefreshCommand => ReactiveCommand.Create(() => { Refresh(); });
-
-    private void Refresh()
+    public ICommand RefreshCommand => ReactiveCommand.Create(() =>
     {
         var threshold = new ThresholdService();
-        var newImageData = threshold.BinaryThreshold(OriginalImageData, ThresholdValue);
+        var newImageData = threshold.GreyscaleThresholdOneSlider(OriginalImageData, ThresholdValue);
         ImageData.Update(newImageData);
-    }
+    });
 }

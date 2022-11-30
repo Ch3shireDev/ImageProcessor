@@ -3,7 +3,7 @@ using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.Services;
 using ReactiveUI;
 
-namespace ImageProcessorGUI.ViewModels;
+namespace ImageProcessorGUI.ViewModels.Old;
 
 public class GreyscaleThresholdTwoSlidersViewModel : ViewModelBase
 {
@@ -16,7 +16,7 @@ public class GreyscaleThresholdTwoSlidersViewModel : ViewModelBase
 
     public ImageData ImageData { get; set; }
     public ImageData OriginalImageData { get; set; }
-    
+
     private int _thresholdValue1;
 
     public int ThresholdValue1

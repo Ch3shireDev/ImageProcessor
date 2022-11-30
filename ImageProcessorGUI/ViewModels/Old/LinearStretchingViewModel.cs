@@ -3,7 +3,7 @@ using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.Services;
 using ReactiveUI;
 
-namespace ImageProcessorGUI.ViewModels;
+namespace ImageProcessorGUI.ViewModels.Old;
 
 public class LinearStretchingViewModel : ViewModelBase
 {

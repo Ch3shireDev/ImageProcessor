@@ -3,7 +3,7 @@ using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.Services;
 using ReactiveUI;
 
-namespace ImageProcessorGUI.ViewModels;
+namespace ImageProcessorGUI.ViewModels.Old;
 
 internal class EqualizeStretchingViewModel : ViewModelBase
 {
@@ -18,8 +18,8 @@ internal class EqualizeStretchingViewModel : ViewModelBase
     ImageData OriginalImageData;
     private int _lowerLimit;
     private int _upperLimit;
-    
-        private StretchingService stretchingService = new StretchingService();
+
+    private StretchingService stretchingService = new StretchingService();
 
     public ICommand RefreshCommand => ReactiveCommand.Create(() =>
     {

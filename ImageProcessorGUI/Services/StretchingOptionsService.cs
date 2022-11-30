@@ -1,5 +1,4 @@
-﻿using System;
-using ImageProcessorGUI.ViewModels;
+﻿using ImageProcessorGUI.ViewModels.Old;
 using ImageProcessorGUI.Views;
 using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.Services;
@@ -9,7 +8,7 @@ namespace ImageProcessorGUI.Services;
 public class StretchingOptionsService : IStretchingOptionsService
 {
     private readonly IWindowService _windowService;
-    
+
     public StretchingOptionsService(IWindowService windowService)
     {
         _windowService = windowService;
@@ -29,7 +28,7 @@ public class StretchingOptionsService : IStretchingOptionsService
     {
         var optionWindow = new GammaStretchingOptionsWindow
         {
-            DataContext = new  GammaStretchingViewModel(imageData)
+            DataContext = new GammaStretchingViewModel(imageData)
         };
 
         optionWindow.Show();

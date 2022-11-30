@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using ImageProcessorGUI.ViewModels;
+using ImageProcessorGUI.ViewModels.Old;
 using ImageProcessorGUI.Views;
 using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.Services;

@@ -26,6 +26,36 @@ public class ImageModel
         add => ImageData.ImageChanged += value;
         remove => ImageData.ImageChanged -= value;
     }
+    
+    public void ShowScaledUp200Percent()
+    {
+        Scale *= 2;
+    }
+
+    public void ShowScaledUp150Percent()
+    {
+        Scale *= 1.5m;
+    }
+
+    public void ShowScaledDown50Percent()
+    {
+        Scale *= 0.5m;
+    }
+
+    public void ShowScaledDown25Percent()
+    {
+        Scale *= 0.25m;
+    }
+
+    public void ShowScaledDown20Percent()
+    {
+        Scale *= 0.2m;
+    }
+
+    public void ShowScaledDown10Percent()
+    {
+        Scale *= 0.1m;
+    }
 
     public void OpenImage()
     {
@@ -71,37 +101,7 @@ public class ImageModel
         var valueHistogram = _serviceProvider.HistogramService.GetBlueHistogram(ImageData);
         _serviceProvider.WindowService.ShowImageWindow(valueHistogram);
     }
-
-    public void ShowScaledUp200Percent()
-    {
-        Scale *= 2;
-    }
-
-    public void ShowScaledUp150Percent()
-    {
-        Scale *= 1.5m;
-    }
-
-    public void ShowScaledDown50Percent()
-    {
-        Scale *= 0.5m;
-    }
-
-    public void ShowScaledDown25Percent()
-    {
-        Scale *= 0.25m;
-    }
-
-    public void ShowScaledDown20Percent()
-    {
-        Scale *= 0.2m;
-    }
-
-    public void ShowScaledDown10Percent()
-    {
-        Scale *= 0.1m;
-    }
-
+    
     public void OpenLinearStretchingWindow()
     {
         var imageData = new ImageData(ImageData);
