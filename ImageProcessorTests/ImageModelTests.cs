@@ -1,61 +1,9 @@
 ﻿using ImageProcessorGUI.Models;
 using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.ServiceProviders;
-using ImageProcessorLibrary.Services;
 using ImageProcessorTests.Mockups;
 
 namespace ImageProcessorTests;
-
-public class MockProcessService:IProcessService
-{
-    public bool IsNegated{ get; set; }
-    public ImageData NegateImage(ImageData imageData)
-    {
-        IsNegated = true;
-        return imageData;
-    }
-
-    public void OpenBinaryThresholdWindow(ImageData imageData)
-    {
-        IsBinaryThresholdWindowOpen = true;
-    }
-
-    public bool IsBinaryThresholdWindowOpen { get; set; }
-
-    public void OpenGreyscaleThresholdOneSliderWindow(ImageData imageData)
-    {
-        IsGreyscaleThresholdWindowOpen = true;
-    }
-
-    public void OpenGreyscaleThresholdTwoSlidersWindow(ImageData imageData)
-    {
-        IsGreyscaleThresholdTwoSlidersWindowOpen = true;
-    }
-
-    public bool IsGreyscaleThresholdTwoSlidersWindowOpen { get; set; }
-
-    public bool IsGreyscaleThresholdWindowOpen { get; set; }
-}
-public class MockStretchingOptionsWindowService:IStretchingOptionsService
-{
-    public bool IsLinearStretchingWindowShown { get; set; }
-    public bool IsGammaStretchingWindowShown{ get; set; }
-    public bool IsEqualizeHistogramWindowShown{ get; set; }
-    public void ShowGammaStretchingWindow(ImageData imageData)
-    {
-        IsGammaStretchingWindowShown = true;
-    }
-
-    public ImageData GetEqualizedImage(ImageData imageData)
-    {
-        return imageData;
-    }
-
-    public void ShowLinearStretchingWindow(ImageData imageData)
-    {
-        IsLinearStretchingWindowShown = true;
-    }
-}
 
 [TestClass]
 public class ImageModelTests
@@ -65,7 +13,7 @@ public class ImageModelTests
     private MockOpenImageService _openImageService;
     private MockSaveImageService _saveImageService;
     private MockWindowService _windowService;
-    private ImageModel model;
+    private MainModel model;
     private MockStretchingOptionsWindowService stretchingOptionsWindowService;
     private MockProcessService processService;
     [TestInitialize]
@@ -93,7 +41,7 @@ public class ImageModelTests
             ProcessService = processService
         };
 
-        model = new ImageModel(imageData, serviceProvider);
+        model = new MainModel(imageData, serviceProvider);
     }
 
     /// <summary>
@@ -299,20 +247,20 @@ public class ImageModelTests
     public void LinearStretchingTest()
     {
         Assert.AreEqual(false, _windowService.IsShowImageWindowCalled);
-        Assert.AreEqual(false, stretchingOptionsWindowService.IsLinearStretchingWindowShown);
+        Assert.AreEqual(false, _windowService.IsOptionWindowCalled);
         model.OpenLinearStretchingWindow();
         Assert.AreEqual(true, _windowService.IsShowImageWindowCalled);
-        Assert.AreEqual(true, stretchingOptionsWindowService.IsLinearStretchingWindowShown);
+        Assert.AreEqual(true, _windowService.IsOptionWindowCalled);
     }
 
     [TestMethod]
     public void GammaStretchingTest()
     {
         Assert.AreEqual(false, _windowService.IsShowImageWindowCalled);
-        Assert.AreEqual(false, stretchingOptionsWindowService.IsGammaStretchingWindowShown);
+        Assert.AreEqual(false, _windowService.IsOptionWindowCalled);
         model.OpenGammaStretchingWindow();
         Assert.AreEqual(true, _windowService.IsShowImageWindowCalled);
-        Assert.AreEqual(true, stretchingOptionsWindowService.IsGammaStretchingWindowShown);
+        Assert.AreEqual(true, _windowService.IsOptionWindowCalled);
     }
 
     [TestMethod]
@@ -337,10 +285,10 @@ public class ImageModelTests
     public void BinaryThresholdTest()
     {
         Assert.AreEqual(false, _windowService.IsShowImageWindowCalled);
-        Assert.AreEqual(false, processService.IsBinaryThresholdWindowOpen);
+        Assert.AreEqual(false, _windowService.IsOptionWindowCalled);
         model.BinaryThreshold();
         Assert.AreEqual(true, _windowService.IsShowImageWindowCalled);
-        Assert.AreEqual(true, processService.IsBinaryThresholdWindowOpen);
+        Assert.AreEqual(true, _windowService.IsOptionWindowCalled);
     }
 
     [TestMethod]

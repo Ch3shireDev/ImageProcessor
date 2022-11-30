@@ -15,7 +15,12 @@ public class MockWindowService : IWindowService
         ImageData = imageData;
     }
 
-    public void ShowLinearStretchingWindow(ImageData imageData)
+    public void ShowOptionsWindowOneValue(object viewModel)
+    {
+        IsOptionWindowCalled = true;
+    }
+
+    public void ShowOptionsWindowTwoValues(object viewModel)
     {
         IsOptionWindowCalled = true;
     }

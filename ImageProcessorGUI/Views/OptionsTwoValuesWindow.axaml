@@ -1,0 +1,38 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" Width="400" Height="250"
+        x:Class="ImageProcessorGUI.Views.OptionsTwoValuesWindow"
+        Title="{Binding Header}">
+	<Grid Margin="10">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<Label Grid.Row="0" Content="{Binding Header}"/>
+		<Label Grid.Row="1" Content="{Binding Value1Label}" />
+		<Grid Grid.Row="2">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition Width="80" />
+			</Grid.ColumnDefinitions>
+			<Slider Grid.Column="0" Value="{Binding Value1, Mode=TwoWay}" Minimum="0" Maximum="500" />
+			<TextBox Grid.Column="1" Text="{Binding Value1, Mode=TwoWay}" />
+		</Grid>
+		<Label Grid.Row="3" Content="{Binding Value2Label}" />
+		<Grid Grid.Row="4">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition Width="80" />
+			</Grid.ColumnDefinitions>
+			<Slider Grid.Column="0" Value="{Binding Value2, Mode=TwoWay}" Minimum="0" Maximum="500" />
+			<TextBox Grid.Column="1" Text="{Binding Value2, Mode=TwoWay}" />
+		</Grid>
+		<Button Grid.Row="5" Command="{Binding RefreshCommand}">Refresh</Button>
+	</Grid>
+</Window>

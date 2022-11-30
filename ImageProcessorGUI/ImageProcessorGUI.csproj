@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
@@ -35,16 +35,5 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ImageProcessorLibrary\ImageProcessorLibrary.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Update="Views\Old\GreyscaleThresholdTwoSlidersWindow.axaml.cs">
-      <DependentUpon>GreyscaleThresholdTwoSlidersWindow.axaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\Old\GreyscaleThresholdOneSliderWindow.axaml.cs">
-      <DependentUpon>GreyscaleThresholdOneSliderWindow.axaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\Old\LinearStretchingOptionsWindow.axaml.cs">
-      <DependentUpon>LinearStretchingOptionsWindow.axaml</DependentUpon>
-    </Compile>
   </ItemGroup>
 </Project>

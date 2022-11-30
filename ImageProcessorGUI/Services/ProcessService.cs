@@ -1,8 +1,6 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using ImageProcessorGUI.ViewModels.Old;
-using ImageProcessorGUI.Views;
 using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.Services;
 
@@ -28,35 +26,5 @@ public class ProcessService : IProcessService
         var stream = new MemoryStream();
         bitmap.Save(stream, ImageFormat.Png);
         return new ImageData(imageData.Filename, stream.ToArray());
-    }
-
-    public void OpenBinaryThresholdWindow(ImageData imageData)
-    {
-        var window = new BinaryThresholdOptionsWindow
-        {
-            DataContext = new BinaryThresholdViewModel(imageData)
-        };
-
-        window.Show();
-    }
-
-    public void OpenGreyscaleThresholdOneSliderWindow(ImageData imageData)
-    {
-        var window = new GreyscaleThresholdOneSliderWindow
-        {
-            DataContext = new GreyscaleThresholdOneSliderViewModel(imageData)
-        };
-
-        window.Show();
-    }
-
-    public void OpenGreyscaleThresholdTwoSlidersWindow(ImageData imageData)
-    {
-        var window = new GreyscaleThresholdTwoSlidersWindow
-        {
-            DataContext = new GreyscaleThresholdTwoSlidersViewModel(imageData)
-        };
-
-        window.Show();
     }
 }

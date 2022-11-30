@@ -1,10 +1,9 @@
-﻿using System;
-using ImageProcessorGUI.Models;
+﻿using ImageProcessorGUI.Models;
 using ImageProcessorGUI.ViewModels;
 using ImageProcessorGUI.Views;
 using ImageProcessorLibrary.DataStructures;
+using ImageProcessorLibrary.ServiceProviders;
 using ImageProcessorLibrary.Services;
-using IServiceProvider = ImageProcessorLibrary.ServiceProviders.IServiceProvider;
 
 namespace ImageProcessorGUI.Services;
 
@@ -14,7 +13,7 @@ public class WindowService : IWindowService
 
     public void ShowImageWindow(ImageData imageData)
     {
-        var imageModel = new ImageModel(imageData, ServiceProvider);
+        var imageModel = new MainModel(imageData, ServiceProvider);
 
         var viewModel = new MainWindowViewModel(imageModel);
 
@@ -24,5 +23,25 @@ public class WindowService : IWindowService
         };
 
         mainWindow.Show();
+    }
+
+    public void ShowOptionsWindowOneValue(object viewModel)
+    {
+        var optionsWindow = new OptionsOneValueWindow
+        {
+            DataContext = viewModel
+        };
+
+        optionsWindow.Show();
+    }
+
+    public void ShowOptionsWindowTwoValues(object viewModel)
+    {
+        var optionsWindow = new OptionsTwoValuesWindow
+        {
+            DataContext = viewModel
+        };
+
+        optionsWindow.Show();
     }
 }

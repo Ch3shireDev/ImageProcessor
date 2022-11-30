@@ -2,9 +2,9 @@ using Avalonia.Controls;
 
 namespace ImageProcessorGUI.Views
 {
-    public partial class EqualizeStretchingOptionsWindow : Window
+    public partial class OptionsTwoValuesWindow : Window
     {
-        public EqualizeStretchingOptionsWindow()
+        public OptionsTwoValuesWindow()
         {
             InitializeComponent();
         }

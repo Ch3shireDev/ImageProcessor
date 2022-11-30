@@ -240,8 +240,8 @@
                         <MenuItem Header="Oblicz wektor cech" Command="{Binding CalculateFeatureVectorCommand}" />
                     </MenuItem>
                     <MenuItem Header="Likwidacja zakłóceń">
-                        <MenuItem Header="Manipulacja widmem amplitudowym"
-                                  Command="{Binding ModifyAmplitudeSpectrumCommand}" />
+						<MenuItem Header="Likwidacja zakłóceń periodycznych przez manipulację widmem aplitudowym"
+                                  Command="{Binding RemovePeriodicNoiseCommand}" />
                     </MenuItem>
                 </ContextMenu>
             </Panel.ContextMenu>

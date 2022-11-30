@@ -8,13 +8,10 @@ namespace ImageProcessorTests;
 public class StretchingServiceTests
 {
     private StretchingOptionsService _stretchingOptionsService;
-    private MockWindowService windowService;
-
     [TestInitialize]
     public void TestInitialize()
     {
-        windowService = new MockWindowService();
-        _stretchingOptionsService = new StretchingOptionsService(windowService);
+        _stretchingOptionsService = new StretchingOptionsService();
     }
 
     [TestMethod]

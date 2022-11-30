@@ -34,7 +34,7 @@ public class App : Application
                 var saveImageService = new SaveImageService(saveImageDialogService, fileSystemService);
                 var duplicateImageService = new DuplicateImageService(windowService);
                 var histogramService = new HistogramService();
-                var stretchingOptionsService = new StretchingOptionsService(windowService);
+                var stretchingOptionsService = new StretchingOptionsService();
                 var processService = new ProcessService();
 
                 var serviceProvider = new ServiceProvider
@@ -53,7 +53,7 @@ public class App : Application
 
                 var path = args.Args[0];
                 var imageData = new ImageData(path, File.ReadAllBytes(path));
-                var mainModel = new ImageModel(imageData, serviceProvider);
+                var mainModel = new MainModel(imageData, serviceProvider);
                 var mainViewModel = new MainWindowViewModel(mainModel);
 
                 desktop.MainWindow = new MainWindow
