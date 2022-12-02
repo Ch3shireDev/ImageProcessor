@@ -55,8 +55,7 @@
                 <MenuItem Header="Progowanie binarne" Command="{Binding BinaryThresholdCommand}" />
                 <MenuItem Header="Progowanie z zachowaniem poziomów szarości" Command="{Binding GreyscaleThresholdOneSliderCommand}" />
                 <MenuItem Header="Progowanie z zachowaniem poziomów szarości (dwa progi)" Command="{Binding GreyscaleThresholdTwoSlidersCommand}" />
-                <MenuItem Header="Dodaj obraz z wysyceniem" Command="{Binding AddImageCommand}" />
-                <MenuItem Header="Dodaj obraz bez wysycenia" Command="{Binding AddImageWithoutSaturateCommand}" />
+                <MenuItem Header="Dodaj obrazy" Command="{Binding AddImageCommand}" />
                 <MenuItem Header="Uzyskaj różnicę obrazów" Command="{Binding ImagesDifferenceCommand}" />
                 <MenuItem Header="Dodaj liczbę całkowitą" Command="{Binding AddNumberToImageCommand}" />
                 <MenuItem Header="Odejmij liczbę całkowitą" Command="{Binding SubtractNumberFromImageCommand}" />
@@ -167,8 +166,7 @@
 						<MenuItem Header="Progowanie binarne" Command="{Binding BinaryThresholdCommand}" />
 						<MenuItem Header="Progowanie z zachowaniem poziomów szarości z jednym suwakiem" Command="{Binding GreyscaleThresholdOneSliderCommand}" />
 						<MenuItem Header="Progowanie z zachowaniem poziomów szarości z dwoma suwakami" Command="{Binding GreyscaleThresholdTwoSlidersCommand}" />
-						<MenuItem Header="Dodaj obraz z wysyceniem" Command="{Binding AddImageCommand}" />
-						<MenuItem Header="Dodaj obraz bez wysycenia" Command="{Binding AddImageWithoutSaturateCommand}" />
+						<MenuItem Header="Dodaj obrazy" Command="{Binding AddImageCommand}" />
 						<MenuItem Header="Uzyskaj różnicę obrazów" Command="{Binding ImagesDifferenceCommand}" />
 						<MenuItem Header="Dodaj liczbę całkowitą" Command="{Binding AddNumberToImageCommand}" />
 						<MenuItem Header="Odejmij liczbę całkowitą" Command="{Binding SubtractNumberFromImageCommand}" />

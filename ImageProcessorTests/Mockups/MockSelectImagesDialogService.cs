@@ -13,8 +13,9 @@ public class MockSelectImagesDialogService : ISelectImagesDialogService
         _images = images;
     }
 
-    public Task<ImageData[]> SelectImages()
+    public Task<ImageData[]> SelectImages(bool allowMultiple=false)
     {
+        if (!allowMultiple) return Task.FromResult(new[]{_images.First()});
         return Task.FromResult(_images);
     }
 }

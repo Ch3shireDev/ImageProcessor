@@ -17,12 +17,12 @@ public class SelectImagesDialogService : ISelectImagesDialogService
             ? desktop.MainWindow
             : null;
 
-    public async Task<ImageData[]> SelectImages()
+    public async Task<ImageData[]> SelectImages(bool allowMultiple=false)
     {
         var fileDialog = new OpenFileDialog
         {
             Title = "Open image",
-            AllowMultiple = true
+            AllowMultiple = allowMultiple
         };
         var filenames = await fileDialog.ShowAsync(MainWindow);
         if (filenames == null) return Array.Empty<ImageData>();

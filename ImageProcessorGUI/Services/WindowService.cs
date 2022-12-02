@@ -44,4 +44,14 @@ public class WindowService : IWindowService
 
         optionsWindow.Show();
     }
+
+    public void ShowAddImagesViewModel(object addImagesViewModel)
+    {
+        var addImagesWindow = new AddImagesWindow
+        {
+            DataContext = addImagesViewModel
+        };
+        
+        addImagesWindow.Show();
+    }
 }

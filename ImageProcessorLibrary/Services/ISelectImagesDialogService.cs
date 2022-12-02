@@ -4,5 +4,5 @@ namespace ImageProcessorLibrary.Services;
 
 public interface ISelectImagesDialogService
 {
-    Task<ImageData[]> SelectImages();
+    Task<ImageData[]> SelectImages(bool selectMultiple=false);
 }

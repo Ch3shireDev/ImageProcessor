@@ -46,7 +46,8 @@ public class App : Application
                     WindowService = windowService,
                     HistogramService = histogramService ,
                     StretchingOptionsService = stretchingOptionsService,
-                    ProcessService = processService
+                    ProcessService = processService,
+                    SelectImagesService = dialogService,
                 };
 
                 windowService.ServiceProvider = serviceProvider;

@@ -311,11 +311,15 @@ public class ImageModelTests
         Assert.AreEqual(true, processService.IsGreyscaleThresholdTwoSlidersWindowOpen);
     }
 
-    //[TestMethod]
-    //public void AddImageTest()
-    //{
-    //    Assert.Fail();
-    //}
+    [TestMethod]
+    public void AddImageTest()
+    {
+        Assert.AreEqual(false, _windowService.IsShowImageWindowCalled);
+        Assert.AreEqual(false, _windowService.IsAddImagesWindowCalled);
+        model.AddImages();
+        Assert.AreEqual(true, _windowService.IsShowImageWindowCalled);
+        Assert.AreEqual(true, _windowService.IsAddImagesWindowCalled);
+    }
 
     //[TestMethod]
     //public void AddImageWithoutSaturateTest()

@@ -13,4 +13,5 @@ public interface IServiceProvider
     public IWindowService WindowService { get; }
     public IStretchingOptionsService StretchingOptionsService { get; }
     public IProcessService ProcessService { get; }
+    public ISelectImagesDialogService SelectImagesService { get; }
 }

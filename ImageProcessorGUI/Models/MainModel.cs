@@ -251,20 +251,16 @@ public class MainModel
 
     /// <summary>
     ///     operacje punktowe wieloargumentowe:
-    ///     dodawania obrazów z wysyceniem
+    ///     dodawania obrazów z wysyceniem, bez wysycenia.
     /// </summary>
-    public void AddImage()
+    public void AddImages()
     {
+        var imageData = new ImageData(ImageData);
+        var addImagesViewModel = new AddImagesViewModel(_serviceProvider, imageData);
+        _serviceProvider.WindowService.ShowAddImagesViewModel(addImagesViewModel);
+        _serviceProvider.WindowService.ShowImageWindow(imageData);
     }
-
-    /// <summary>
-    ///     operacje punktowe wieloargumentowe:
-    ///     dodawania obrazów bez wysycenia.
-    /// </summary>
-    public void AddImageWithoutSaturate()
-    {
-    }
-
+    
     /// <summary>
     ///     liczenia różnicy bezwzględnej obrazów.
     /// </summary>
