@@ -30,4 +30,11 @@ public class MockWindowService : IWindowService
     {
         IsAddImagesWindowCalled = true;
     }
+
+    public void ShowMathOperationViewModel(object mathOperationViewModel)
+    {
+        IsMathOperationWindowCalled = true;
+    }
+
+    public bool IsMathOperationWindowCalled { get; set; }
 }

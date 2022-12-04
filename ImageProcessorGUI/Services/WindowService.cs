@@ -9,11 +9,11 @@ namespace ImageProcessorGUI.Services;
 
 public class WindowService : IWindowService
 {
-    public IServiceProvider ServiceProvider { get; set; }
+    public IImageServiceProvider ImageServiceProvider { get; set; }
 
     public void ShowImageWindow(ImageData imageData)
     {
-        var imageModel = new MainModel(imageData, ServiceProvider);
+        var imageModel = new MainModel(imageData, ImageServiceProvider);
 
         var viewModel = new MainWindowViewModel(imageModel);
 
@@ -53,5 +53,15 @@ public class WindowService : IWindowService
         };
         
         addImagesWindow.Show();
+    }
+
+    public void ShowMathOperationViewModel(object mathOperationViewModel)
+    {
+        var mathOperationWindow = new MathOperationWindow
+        {
+            DataContext = mathOperationViewModel
+        };
+
+        mathOperationWindow.Show();
     }
 }

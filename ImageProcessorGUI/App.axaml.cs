@@ -37,7 +37,7 @@ public class App : Application
                 var stretchingOptionsService = new StretchingOptionsService();
                 var processService = new ProcessService();
 
-                var serviceProvider = new ServiceProvider
+                var serviceProvider = new ImageServiceProvider
                 {
                     OpenImageService = fileService,
                     SaveImageService = saveImageService,
@@ -50,7 +50,7 @@ public class App : Application
                     SelectImagesService = dialogService,
                 };
 
-                windowService.ServiceProvider = serviceProvider;
+                windowService.ImageServiceProvider = serviceProvider;
 
                 var path = args.Args[0];
                 var imageData = new ImageData(path, File.ReadAllBytes(path));

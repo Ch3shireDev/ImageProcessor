@@ -21,7 +21,7 @@ public class ImageData
         Extension = imageData.Extension;
     }
 
-    public event EventHandler<EventArgs> ImageChanged;
+    public event EventHandler<EventArgs>? ImageChanged;
     public string Filename{ get; set; }
     public IImage Bitmap => GetBitmap();
     
@@ -47,6 +47,6 @@ public class ImageData
         Filepath = result.Filepath;
         Filebytes = result.Filebytes;
         Extension = result.Extension;
-        ImageChanged.Invoke(null, EventArgs.Empty);
+        ImageChanged?.Invoke(null, EventArgs.Empty);
     }
 }

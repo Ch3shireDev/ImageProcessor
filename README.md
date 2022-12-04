@@ -52,11 +52,10 @@ Powyższe funkcjonalności proszę przetestować na obrazach, których histogram
 
 Opracowanie algorytmu i uruchomienie funkcjonalności realizującej operacje punktowe wieloargumentowe:
 
-- [ ] dodawania obrazów z wysyceniem
-- [ ] dodawanie obrazów bez wysycenia
-- [ ] dodawanie, dzielenie i mnożenie obrazów przez liczbę całkowitą z wysyceniem i bez wysycenia
-- [ ] dodawanie, dzielenie i mnożenie obrazów przez liczbę całkowitą bez wysycenia
-- [ ] liczenia różnicy bezwzględnej obrazów.
+- [x] dodawania obrazów z wysyceniem
+- [x] dodawanie obrazów bez wysycenia
+- [x] dodawanie, dzielenie i mnożenie obrazów przez liczbę całkowitą z wysyceniem i bez wysycenia
+- [x] liczenia różnicy bezwzględnej obrazów.
 
 ## 6. Operacje logiczne
 

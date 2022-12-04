@@ -7,7 +7,6 @@ namespace ImageProcessorGUI.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
-
     public MainWindowViewModel(MainModel mainModel)
     {
         MainModel = mainModel;
@@ -67,6 +66,13 @@ public class MainWindowViewModel : ViewModelBase
         this.RaisePropertyChanged(nameof(ImageHeight));
     });
 
+    public ICommand CreateGrayscaleCommand => ReactiveCommand.Create(() =>
+    {
+        MainModel?.CreateGrayscale();
+        this.RaisePropertyChanged(nameof(Image));
+    });
+
+    public ICommand SwapHorizontalCommand => ReactiveCommand.Create(() => MainModel?.SwapHorizontal());
     public ICommand LinearStretchingCommand => ReactiveCommand.Create(() => MainModel?.OpenLinearStretchingWindow());
     public ICommand GammaStretchingCommand => ReactiveCommand.Create(() => MainModel?.OpenGammaStretchingWindow());
     public ICommand EqualizeHistogramCommand => ReactiveCommand.Create(() => MainModel?.OpenEqualizeHistogramWindow());
@@ -76,8 +82,7 @@ public class MainWindowViewModel : ViewModelBase
     public ICommand GreyscaleThresholdTwoSlidersCommand => ReactiveCommand.Create(() => MainModel?.GreyscaleThresholdTwoSliders());
     public ICommand AddImageCommand => ReactiveCommand.Create(() => MainModel?.AddImages());
     public ICommand ImagesDifferenceCommand => ReactiveCommand.Create(() => MainModel?.ImagesDifference());
-    public ICommand AddNumberToImageCommand => ReactiveCommand.Create(() => MainModel?.AddNumberToImage());
-    public ICommand SubtractNumberFromImageCommand => ReactiveCommand.Create(() => MainModel?.SubtractNumberFromImage());
+    public ICommand MathOperationCommand => ReactiveCommand.Create(() => MainModel?.MathOperation());
     public ICommand BinaryAndCommand => ReactiveCommand.Create(() => MainModel?.BinaryAnd());
     public ICommand BinaryXorCommand => ReactiveCommand.Create(() => MainModel?.BinaryXor());
     public ICommand BinaryNotCommand => ReactiveCommand.Create(() => MainModel?.BinaryNot());

@@ -14,8 +14,9 @@ public class ImageModelTests
     private MockSaveImageService _saveImageService;
     private MockWindowService _windowService;
     private MainModel model;
-    private MockStretchingOptionsWindowService stretchingOptionsWindowService;
     private MockProcessService processService;
+    private MockStretchingOptionsWindowService stretchingOptionsWindowService;
+
     [TestInitialize]
     public void TestInitialize()
     {
@@ -29,8 +30,8 @@ public class ImageModelTests
         _histogramService = new MockHistogramService();
         stretchingOptionsWindowService = new MockStretchingOptionsWindowService();
         processService = new MockProcessService();
-        
-        var serviceProvider = new ServiceProvider
+
+        var serviceProvider = new ImageServiceProvider
         {
             OpenImageService = _openImageService,
             SaveImageService = _saveImageService,
@@ -295,20 +296,20 @@ public class ImageModelTests
     public void GreyscaleThresholdTest()
     {
         Assert.AreEqual(false, _windowService.IsShowImageWindowCalled);
-        Assert.AreEqual(false, processService.IsGreyscaleThresholdWindowOpen);
+        Assert.AreEqual(false, _windowService.IsOptionWindowCalled);
         model.GreyscaleThresholdOneSlider();
         Assert.AreEqual(true, _windowService.IsShowImageWindowCalled);
-        Assert.AreEqual(true, processService.IsGreyscaleThresholdWindowOpen);
+        Assert.AreEqual(true, _windowService.IsOptionWindowCalled);
     }
 
     [TestMethod]
     public void GreyscaleThresholdTwoSlidersTest()
     {
         Assert.AreEqual(false, _windowService.IsShowImageWindowCalled);
-        Assert.AreEqual(false, processService.IsGreyscaleThresholdTwoSlidersWindowOpen);
+        Assert.AreEqual(false, _windowService.IsOptionWindowCalled);
         model.GreyscaleThresholdTwoSliders();
         Assert.AreEqual(true, _windowService.IsShowImageWindowCalled);
-        Assert.AreEqual(true, processService.IsGreyscaleThresholdTwoSlidersWindowOpen);
+        Assert.AreEqual(true, _windowService.IsOptionWindowCalled);
     }
 
     [TestMethod]
@@ -320,13 +321,7 @@ public class ImageModelTests
         Assert.AreEqual(true, _windowService.IsShowImageWindowCalled);
         Assert.AreEqual(true, _windowService.IsAddImagesWindowCalled);
     }
-
-    //[TestMethod]
-    //public void AddImageWithoutSaturateTest()
-    //{
-    //    Assert.Fail();
-    //}
-
+    
     //[TestMethod]
     //public void ImagesDifferenceTest()
     //{

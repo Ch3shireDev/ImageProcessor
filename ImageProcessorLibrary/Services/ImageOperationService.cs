@@ -4,9 +4,15 @@ using ImageProcessorLibrary.DataStructures;
 
 namespace ImageProcessorLibrary.Services;
 
+public enum ImageCombinationsEnum
+{
+    ADD_IMAGES,
+    SUBTRACT_IMAGES
+}
+
 public class ImageOperationService
 {
-    public ImageData AddImages(ImageData image1, ImageData image2, bool withSaturation = false)
+    public ImageData AddImages(ImageData image1, ImageData image2, ImageCombinationsEnum operation, bool withSaturation = false)
     {
         var bitmap1 = image1.WBitmap;
         var bitmap2 = image2.WBitmap;
@@ -16,7 +22,7 @@ public class ImageOperationService
 
         var bitmap = new Bitmap(width, height);
 
-        var hsls = new HSL[width, height];
+        var values = new double[width, height];
 
         double maxL = 0;
 
@@ -29,22 +35,49 @@ public class ImageOperationService
             var hsl1 = ColorTools.RGBToHSL(pixel1);
             var hsl2 = ColorTools.RGBToHSL(pixel2);
 
-            var L = hsl1.L + hsl2.L;
-            if (maxL < L) maxL = L;
+            double L;
 
-            var hsl = new HSL(hsl1.H, hsl1.S, L);
-            hsls[x, y] = hsl;
+            switch (operation)
+            {
+                case ImageCombinationsEnum.ADD_IMAGES:
+                    L = hsl1.L + hsl2.L;
+                    if (maxL < L) maxL = L;
+                    break;
+                case ImageCombinationsEnum.SUBTRACT_IMAGES:
+                    L =Math.Abs( hsl1.L - hsl2.L);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(operation), operation, null);
+            }
+
+            if (L < 0) L = 0;
+
+            values[x, y] = L;
         }
 
 
         for (var x = 0; x < width; x++)
         for (var y = 0; y < height; y++)
         {
-            if (maxL > 0 && !withSaturation) hsls[x, y].L /= maxL;
-            var pixel = ColorTools.HSLToRGB(hsls[x, y]);
+            var pixel1 = bitmap1.GetPixel(x, y);
+
+            var hsl = ColorTools.RGBToHSL(pixel1);
+            var light = values[x, y];
+
+            if (withSaturation)
+            {
+                if (light > 1) light = 1;
+            }
+            else
+            {
+                if (maxL > 0 && maxL > 1) light /= maxL;
+            }
+
+            hsl.L = light;
+
+            var pixel = ColorTools.HSLToRGB(hsl);
             bitmap.SetPixel(x, y, pixel);
         }
-
 
         var stream = new MemoryStream();
         bitmap.Save(stream, ImageFormat.Png);

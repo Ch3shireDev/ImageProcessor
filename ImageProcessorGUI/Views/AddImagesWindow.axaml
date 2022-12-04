@@ -12,15 +12,22 @@
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
 			<RowDefinition Height="*" />
 			<RowDefinition Height="Auto" />
 		</Grid.RowDefinitions>
-		<StackPanel Orientation="Horizontal" Grid.Row="0">
+		<StackPanel Grid.Row="0" Orientation="Horizontal">
 			<Button Content="Select image" Command="{Binding SelectImageCommand}"/>
 			<Label Content="{Binding Filepath}"></Label>
 		</StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="2">
-			<Button Content="Refresh" Command="{Binding ApplyCommand}" />
+		<StackPanel Grid.Row="1">
+			<ComboBox Items="{Binding Operations}" SelectedItem="{Binding SelectedOperation}"/>
+		</StackPanel>
+		<StackPanel Grid.Row="2">
+			<CheckBox Content="Dodaj z wysyceniem" IsChecked="{Binding AddWithSaturation}"/>
+		</StackPanel>
+		<StackPanel Grid.Row="3" Orientation="Horizontal">
+			<Button Content="Pokaż" Command="{Binding ApplyCommand}" />
 		</StackPanel>
 	</Grid>
 </Window>

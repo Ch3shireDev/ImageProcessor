@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.ServiceProviders;
@@ -7,39 +9,55 @@ using ReactiveUI;
 
 namespace ImageProcessorGUI.ViewModels;
 
+
+
 public class AddImagesViewModel : ViewModelBase
 {
-    private readonly IServiceProvider _serviceProvider;
+    private readonly IImageServiceProvider _imageServiceProvider;
+    private readonly Action<ImageData> _onApply;
 
-    public AddImagesViewModel(IServiceProvider serviceProvider, ImageData imageData)
+    private readonly ImageOperationService imageOperationService = new();
+
+    public AddImagesViewModel(IImageServiceProvider imageServiceProvider, ImageData imageData, Action<ImageData> onApply)
     {
         ImageData = imageData;
-        _serviceProvider = serviceProvider;
+        _imageServiceProvider = imageServiceProvider;
         OriginalImageData = new ImageData(imageData);
+        _onApply = onApply;
     }
-    
+
+    public List<ImageCombinationsEnum> Operations { get; set; } = new List<ImageCombinationsEnum>
+    {
+        ImageCombinationsEnum.ADD_IMAGES,
+        ImageCombinationsEnum.SUBTRACT_IMAGES,
+    };
+
+
+    public ImageCombinationsEnum SelectedOperation { get; set; } = ImageCombinationsEnum.ADD_IMAGES;
+
     public ImageData ImageData { get; set; }
     public ImageData OriginalImageData { get; set; }
-    public ImageData AddedImageData { get; set; }
+    public ImageData? AddedImageData { get; set; }
     public string Filepath { get; set; }
     public ICommand SelectImageCommand => ReactiveCommand.CreateFromTask(SelectFile);
     public ICommand ApplyCommand => ReactiveCommand.Create(Apply);
 
+    public bool AddWithSaturation { get; set; }
+
     public async Task SelectFile()
     {
-        var result = await _serviceProvider.SelectImagesService.SelectImages();
+        var result = await _imageServiceProvider.SelectImagesService.SelectImages();
         if (result.Length == 0) return;
         AddedImageData = result[0];
         Filepath = AddedImageData.Filepath;
         this.RaisePropertyChanged(nameof(Filepath));
     }
 
-    readonly ImageOperationService imageOperationService = new ImageOperationService();
-
     public void Apply()
     {
         if (AddedImageData == null) return;
-        var result = imageOperationService.AddImages(ImageData, AddedImageData);
+        var result = imageOperationService.AddImages(OriginalImageData, AddedImageData, SelectedOperation, AddWithSaturation);
         ImageData.Update(result);
+        _onApply.Invoke(ImageData);
     }
 }

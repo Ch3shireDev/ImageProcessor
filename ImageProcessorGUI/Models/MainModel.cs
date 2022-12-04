@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Threading.Tasks;
+using ImageProcessorGUI.Services;
 using ImageProcessorGUI.ViewModels;
 using ImageProcessorLibrary.DataStructures;
+using ImageProcessorLibrary.ServiceProviders;
 using ImageProcessorLibrary.Services;
-using IServiceProvider = ImageProcessorLibrary.ServiceProviders.IServiceProvider;
 
 namespace ImageProcessorGUI.Models;
 
 public class MainModel
 {
-    private readonly IServiceProvider _serviceProvider;
+    private readonly IImageServiceProvider _imageServiceProvider;
 
-    public MainModel(ImageData imageData, IServiceProvider serviceProvider)
+    public MainModel(ImageData imageData, IImageServiceProvider imageServiceProvider)
     {
-        _serviceProvider = serviceProvider;
+        _imageServiceProvider = imageServiceProvider;
         ImageData = imageData;
     }
 
@@ -61,47 +62,59 @@ public class MainModel
 
     public void OpenImage()
     {
-        _serviceProvider.OpenImageService.OpenImage();
+        _imageServiceProvider.OpenImageService.OpenImage();
     }
 
     public async Task SaveImage()
     {
-        await _serviceProvider.SaveImageService.SaveImageAsync(ImageData);
+        await _imageServiceProvider.SaveImageService.SaveImageAsync(ImageData);
     }
 
     public void DuplicateImage()
     {
-        _serviceProvider.DuplicateImageService.DuplicateImage(ImageData);
+        _imageServiceProvider.DuplicateImageService.DuplicateImage(ImageData);
+    }
+
+    public void CreateGrayscale()
+    {
+        var imageData = new ProcessService().ToGrayscale(ImageData);
+        ImageData.Update(imageData);
+    }
+
+    public void SwapHorizontal()
+    {
+        var imageData = new ProcessService().SwapHorizontal(ImageData);
+        ImageData.Update(imageData);
     }
 
     public void ShowValueHistogram()
     {
-        var valueHistogram = _serviceProvider.HistogramService.GetValueHistogram(ImageData);
-        _serviceProvider.WindowService.ShowImageWindow(valueHistogram);
+        var valueHistogram = _imageServiceProvider.HistogramService.GetValueHistogram(ImageData);
+        _imageServiceProvider.WindowService.ShowImageWindow(valueHistogram);
     }
 
     public void ShowRgbHistogram()
     {
-        var valueHistogram = _serviceProvider.HistogramService.GetRgbHistogram(ImageData);
-        _serviceProvider.WindowService.ShowImageWindow(valueHistogram);
+        var valueHistogram = _imageServiceProvider.HistogramService.GetRgbHistogram(ImageData);
+        _imageServiceProvider.WindowService.ShowImageWindow(valueHistogram);
     }
 
     public void ShowRHistogram()
     {
-        var valueHistogram = _serviceProvider.HistogramService.GetRedHistogram(ImageData);
-        _serviceProvider.WindowService.ShowImageWindow(valueHistogram);
+        var valueHistogram = _imageServiceProvider.HistogramService.GetRedHistogram(ImageData);
+        _imageServiceProvider.WindowService.ShowImageWindow(valueHistogram);
     }
 
     public void ShowGHistogram()
     {
-        var valueHistogram = _serviceProvider.HistogramService.GetGreenHistogram(ImageData);
-        _serviceProvider.WindowService.ShowImageWindow(valueHistogram);
+        var valueHistogram = _imageServiceProvider.HistogramService.GetGreenHistogram(ImageData);
+        _imageServiceProvider.WindowService.ShowImageWindow(valueHistogram);
     }
 
     public void ShowBHistogram()
     {
-        var valueHistogram = _serviceProvider.HistogramService.GetBlueHistogram(ImageData);
-        _serviceProvider.WindowService.ShowImageWindow(valueHistogram);
+        var valueHistogram = _imageServiceProvider.HistogramService.GetBlueHistogram(ImageData);
+        _imageServiceProvider.WindowService.ShowImageWindow(valueHistogram);
     }
 
     /// <summary>
@@ -128,8 +141,8 @@ public class MainModel
             Value2Max = 500
         };
 
-        _serviceProvider.WindowService.ShowOptionsWindowTwoValues(viewModel);
-        _serviceProvider.WindowService.ShowImageWindow(imageData);
+        _imageServiceProvider.WindowService.ShowOptionsWindowTwoValues(viewModel);
+        _imageServiceProvider.WindowService.ShowImageWindow(imageData);
     }
 
     /// <summary>
@@ -151,8 +164,8 @@ public class MainModel
             Value1Max = 10
         };
 
-        _serviceProvider.WindowService.ShowOptionsWindowOneValue(viewModel);
-        _serviceProvider.WindowService.ShowImageWindow(imageData);
+        _imageServiceProvider.WindowService.ShowOptionsWindowOneValue(viewModel);
+        _imageServiceProvider.WindowService.ShowImageWindow(imageData);
     }
 
     /// <summary>
@@ -162,7 +175,7 @@ public class MainModel
     {
         var imageData = new ImageData(ImageData);
         imageData = new StretchingService().EqualizeStretching(imageData);
-        _serviceProvider.WindowService.ShowImageWindow(imageData);
+        _imageServiceProvider.WindowService.ShowImageWindow(imageData);
     }
 
     /// <summary>
@@ -170,8 +183,8 @@ public class MainModel
     /// </summary>
     public void NegateImage()
     {
-        var imageData = _serviceProvider.ProcessService.NegateImage(ImageData);
-        _serviceProvider.WindowService.ShowImageWindow(imageData);
+        var imageData = _imageServiceProvider.ProcessService.NegateImage(ImageData);
+        _imageServiceProvider.WindowService.ShowImageWindow(imageData);
     }
 
     /// <summary>
@@ -194,8 +207,8 @@ public class MainModel
             Value1Max = 255
         };
 
-        _serviceProvider.WindowService.ShowOptionsWindowOneValue(viewModel);
-        _serviceProvider.WindowService.ShowImageWindow(imageData);
+        _imageServiceProvider.WindowService.ShowOptionsWindowOneValue(viewModel);
+        _imageServiceProvider.WindowService.ShowImageWindow(imageData);
     }
 
     /// <summary>
@@ -218,8 +231,8 @@ public class MainModel
             Value1Max = 255
         };
 
-        _serviceProvider.WindowService.ShowOptionsWindowOneValue(viewModel);
-        _serviceProvider.WindowService.ShowImageWindow(imageData);
+        _imageServiceProvider.WindowService.ShowOptionsWindowOneValue(viewModel);
+        _imageServiceProvider.WindowService.ShowImageWindow(imageData);
     }
 
     /// <summary>
@@ -245,8 +258,8 @@ public class MainModel
             Value2Max = 255
         };
 
-        _serviceProvider.WindowService.ShowOptionsWindowTwoValues(viewModel);
-        _serviceProvider.WindowService.ShowImageWindow(imageData);
+        _imageServiceProvider.WindowService.ShowOptionsWindowTwoValues(viewModel);
+        _imageServiceProvider.WindowService.ShowImageWindow(imageData);
     }
 
     /// <summary>
@@ -256,11 +269,14 @@ public class MainModel
     public void AddImages()
     {
         var imageData = new ImageData(ImageData);
-        var addImagesViewModel = new AddImagesViewModel(_serviceProvider, imageData);
-        _serviceProvider.WindowService.ShowAddImagesViewModel(addImagesViewModel);
-        _serviceProvider.WindowService.ShowImageWindow(imageData);
+        var addImagesViewModel = new AddImagesViewModel(
+            _imageServiceProvider,
+            imageData,
+            id => _imageServiceProvider.WindowService.ShowImageWindow(new ImageData(id))
+        );
+        _imageServiceProvider.WindowService.ShowAddImagesViewModel(addImagesViewModel);
     }
-    
+
     /// <summary>
     ///     liczenia różnicy bezwzględnej obrazów.
     /// </summary>
@@ -271,15 +287,15 @@ public class MainModel
     /// <summary>
     ///     dodawanie, dzielenie i mnożenie obrazów przez liczbę całkowitą z wysyceniem i bez wysycenia
     /// </summary>
-    public void AddNumberToImage()
+    public void MathOperation()
     {
-    }
+        var imageData = new ImageData(ImageData);
+        var mathOperationViewModel = new MathOperationViewModel(
+            imageData
+        );
 
-    /// <summary>
-    ///     dodawanie, dzielenie i mnożenie obrazów przez liczbę całkowitą z wysyceniem i bez wysycenia
-    /// </summary>
-    public void SubtractNumberFromImage()
-    {
+        _imageServiceProvider.WindowService.ShowMathOperationViewModel(mathOperationViewModel);
+        _imageServiceProvider.WindowService.ShowImageWindow(imageData);
     }
 
     /// <summary>
@@ -677,5 +693,4 @@ public class MainModel
     public void RemovePeriodicNoice()
     {
     }
-    
 }

@@ -8,4 +8,5 @@ public interface IWindowService
     public void ShowOptionsWindowOneValue(object viewModel);
     public void ShowOptionsWindowTwoValues(object viewModel);
     void ShowAddImagesViewModel(object addImagesViewModel);
+    void ShowMathOperationViewModel(object mathOperationViewModel);
 }
