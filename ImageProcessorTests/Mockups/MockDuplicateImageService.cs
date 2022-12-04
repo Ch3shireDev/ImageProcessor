@@ -7,9 +7,9 @@ public class MockDuplicateImageService : IDuplicateImageService
 {
     public bool IsDuplicated { get; set; }
 
-    public ImageData ImageData { get; set; }
+    public IImageData ImageData { get; set; }
 
-    public void DuplicateImage(ImageData imageData)
+    public void DuplicateImage(IImageData imageData)
     {
         IsDuplicated = true;
         ImageData = imageData;

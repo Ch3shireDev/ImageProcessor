@@ -12,7 +12,7 @@ public class DuplicateImageService : IDuplicateImageService
         _windowService = windowService;
     }
 
-    public void DuplicateImage(ImageData imageData)
+    public void DuplicateImage(IImageData imageData)
     {
         var newImageData = new ImageData(imageData);
         _windowService.ShowImageWindow(newImageData);

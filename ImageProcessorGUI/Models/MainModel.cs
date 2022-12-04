@@ -1,5 +1,8 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
+using Avalonia.Media;
+using Avalonia.Media.Imaging;
 using ImageProcessorGUI.Services;
 using ImageProcessorGUI.ViewModels;
 using ImageProcessorLibrary.DataStructures;
@@ -12,17 +15,23 @@ public class MainModel
 {
     private readonly IImageServiceProvider _imageServiceProvider;
 
-    public MainModel(ImageData imageData, IImageServiceProvider imageServiceProvider)
+    public MainModel(IImageData imageData, IImageServiceProvider imageServiceProvider)
     {
         _imageServiceProvider = imageServiceProvider;
         ImageData = imageData;
     }
 
-    public ImageData ImageData { get; set; }
+    public IImageData ImageData { get; set; }
     public double ImageWidth => (double)((decimal)ImageData.Width * Scale);
     public double ImageHeight => (double)((decimal)ImageData.Height * Scale);
 
     public decimal Scale { get; set; } = 1;
+    public IImage AvaloniaImage => GetImage();
+
+    IImage GetImage()
+    {
+        return new Bitmap(new MemoryStream(ImageData.Filebytes));
+    }
 
     public event EventHandler<EventArgs> ImageChanged
     {
@@ -276,13 +285,7 @@ public class MainModel
         );
         _imageServiceProvider.WindowService.ShowAddImagesViewModel(addImagesViewModel);
     }
-
-    /// <summary>
-    ///     liczenia różnicy bezwzględnej obrazów.
-    /// </summary>
-    public void ImagesDifference()
-    {
-    }
+    
 
     /// <summary>
     ///     dodawanie, dzielenie i mnożenie obrazów przez liczbę całkowitą z wysyceniem i bez wysycenia
@@ -311,74 +314,17 @@ public class MainModel
     ///     odpowiednich pikselach obrazów stanowiących argumenty danej operacji. W szczególności działania prowadzone są na
     ///     bitach o tej samej wadze.
     /// </summary>
-    public void BinaryAnd()
+    public void BinaryOperation()
     {
-    }
+        var imageData = new ImageData(ImageData);
+        var binaryOperationViewModel = new BinaryOperationViewModel(
+            _imageServiceProvider,
+            imageData
+        );
 
-    /// <summary>
-    ///     Opracowanie algorytmu i uruchomienie funkcjonalności realizującej operacje logiczne na obrazach monochromatycznych
-    ///     i binarnych:
-    ///     - [ ] not,
-    ///     - [ ] and,
-    ///     - [ ] or,
-    ///     - [ ] xor,
-    ///     - [ ] zamiana obrazów z maski binarnej na maskę zapisaną na 8 bitach i na odwrót
-    ///     Należy pamiętać o sprawdzeniu zgodności typów i rozmiarów obrazów stanowiących operandy.
-    ///     Proszę pamiętać: w operacjach jednopunktowych dwuargumentowych logicznych na obrazach działania prowadzone są na
-    ///     odpowiednich pikselach obrazów stanowiących argumenty danej operacji. W szczególności działania prowadzone są na
-    ///     bitach o tej samej wadze.
-    /// </summary>
-    public void BinaryOr()
-    {
+        _imageServiceProvider.WindowService.ShowBinaryOperationViewModel(binaryOperationViewModel);
     }
-
-    /// <summary>
-    ///     Opracowanie algorytmu i uruchomienie funkcjonalności realizującej operacje logiczne na obrazach monochromatycznych
-    ///     i binarnych:
-    ///     - [ ] not,
-    ///     - [ ] and,
-    ///     - [ ] or,
-    ///     - [ ] xor,
-    ///     - [ ] zamiana obrazów z maski binarnej na maskę zapisaną na 8 bitach i na odwrót
-    ///     Należy pamiętać o sprawdzeniu zgodności typów i rozmiarów obrazów stanowiących operandy.
-    ///     Proszę pamiętać: w operacjach jednopunktowych dwuargumentowych logicznych na obrazach działania prowadzone są na
-    ///     odpowiednich pikselach obrazów stanowiących argumenty danej operacji. W szczególności działania prowadzone są na
-    ///     bitach o tej samej wadze.
-    /// </summary>
-    public void BinaryXor()
-    {
-    }
-
-    /// <summary>
-    ///     Opracowanie algorytmu i uruchomienie funkcjonalności realizującej operacje logiczne na obrazach monochromatycznych
-    ///     i binarnych:
-    ///     - [ ] not,
-    ///     - [ ] and,
-    ///     - [ ] or,
-    ///     - [ ] xor,
-    ///     - [ ] zamiana obrazów z maski binarnej na maskę zapisaną na 8 bitach i na odwrót
-    ///     Należy pamiętać o sprawdzeniu zgodności typów i rozmiarów obrazów stanowiących operandy.
-    ///     Proszę pamiętać: w operacjach jednopunktowych dwuargumentowych logicznych na obrazach działania prowadzone są na
-    ///     odpowiednich pikselach obrazów stanowiących argumenty danej operacji. W szczególności działania prowadzone są na
-    ///     bitach o tej samej wadze.
-    /// </summary>
-    public void BinaryNot()
-    {
-    }
-
-    /// <summary>
-    ///     Opracowanie algorytmu i uruchomienie funkcjonalności realizującej operacje logiczne na obrazach monochromatycznych
-    ///     i binarnych:
-    ///     - [ ] not,
-    ///     - [ ] and,
-    ///     - [ ] or,
-    ///     - [ ] xor,
-    ///     - [ ] zamiana obrazów z maski binarnej na maskę zapisaną na 8 bitach i na odwrót
-    ///     Należy pamiętać o sprawdzeniu zgodności typów i rozmiarów obrazów stanowiących operandy.
-    ///     Proszę pamiętać: w operacjach jednopunktowych dwuargumentowych logicznych na obrazach działania prowadzone są na
-    ///     odpowiednich pikselach obrazów stanowiących argumenty danej operacji. W szczególności działania prowadzone są na
-    ///     bitach o tej samej wadze.
-    /// </summary>
+    
     public void GetBinaryMask()
     {
     }
@@ -692,5 +638,10 @@ public class MainModel
     /// </summary>
     public void RemovePeriodicNoice()
     {
+    }
+
+    public void ToBinaryImage()
+    {
+        BinaryThreshold();
     }
 }

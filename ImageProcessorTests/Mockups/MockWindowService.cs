@@ -1,5 +1,4 @@
-﻿using ImageProcessorLibrary.DataStructures;
-using ImageProcessorLibrary.Services;
+﻿using ImageProcessorLibrary.Services;
 
 namespace ImageProcessorTests.Mockups;
 
@@ -7,10 +6,16 @@ public class MockWindowService : IWindowService
 {
     public bool IsShowImageWindowCalled { get; set; }
     public bool IsOptionWindowCalled { get; set; }
-    public bool IsAddImagesWindowCalled{ get; set; }
-    public ImageData ImageData { get; set; }
+    public bool IsAddImagesWindowCalled { get; set; }
+    public IImageData? ImageData { get; set; }
 
-    public void ShowImageWindow(ImageData imageData)
+    public bool IsBinaryOperationsWindowCalled { get; set; }
+
+    public bool IsMathOperationWindowCalled { get; set; }
+
+    public object BinaryOperationViewModel { get; set; }
+
+    public void ShowImageWindow(IImageData imageData)
     {
         IsShowImageWindowCalled = true;
         ImageData = imageData;
@@ -36,5 +41,9 @@ public class MockWindowService : IWindowService
         IsMathOperationWindowCalled = true;
     }
 
-    public bool IsMathOperationWindowCalled { get; set; }
+    public void ShowBinaryOperationViewModel(object binaryOperationViewModel)
+    {
+        IsBinaryOperationsWindowCalled = true;
+        BinaryOperationViewModel = binaryOperationViewModel;
+    }
 }

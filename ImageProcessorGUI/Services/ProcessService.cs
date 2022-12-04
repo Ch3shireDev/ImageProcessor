@@ -8,14 +8,15 @@ namespace ImageProcessorGUI.Services;
 
 public class ProcessService : IProcessService
 {
-    public ImageData NegateImage(ImageData imageData)
+    public IImageData NegateImage(IImageData imageData)
     {
-        var bitmap = imageData.WBitmap;
+        var bitmap = new Bitmap(imageData.Width, imageData.Height);
 
-        for (var x = 0; x < bitmap.Width; x++)
-        for (var y = 0; y < bitmap.Height; y++)
+
+        for (var x = 0; x < imageData.Width; x++)
+        for (var y = 0; y < imageData.Height; y++)
         {
-            var pixel = bitmap.GetPixel(x, y);
+            var pixel = imageData.GetPixelRgb(x, y);
             var r = 255 - pixel.R;
             var g = 255 - pixel.G;
             var b = 255 - pixel.B;
@@ -28,13 +29,14 @@ public class ProcessService : IProcessService
         return new ImageData(imageData.Filename, stream.ToArray());
     }
 
-    public ImageData ToGrayscale(ImageData imageData)
+    public IImageData ToGrayscale(IImageData imageData)
     {
-        var bitmap = imageData.WBitmap;
+        var bitmap = new Bitmap(imageData.Width, imageData.Height);
+
         for (var x = 0; x < bitmap.Width; x++)
         for (var y = 0; y < bitmap.Height; y++)
         {
-            var pixel = bitmap.GetPixel(x, y);
+            var pixel = imageData.GetPixelRgb(x, y);
             var hsl = ColorTools.RGBToHSL(pixel);
             hsl.S = 0;
             var pixel2 = ColorTools.HSLToRGB(hsl);
@@ -46,17 +48,17 @@ public class ProcessService : IProcessService
         return new ImageData(imageData.Filename, stream.ToArray());
     }
 
-    public ImageData SwapHorizontal(ImageData imageData)
+    public IImageData SwapHorizontal(IImageData imageData)
     {
-        var bitmap = imageData.WBitmap;
-        for (var x = 0; x < bitmap.Width / 2; x++)
-            for (var y = 0; y < bitmap.Height; y++)
-            {
-                var pixel1 = bitmap.GetPixel(x, y);
-                var pixel2 = bitmap.GetPixel(bitmap.Width - x - 1, y);
-                bitmap.SetPixel(x, y, pixel2);
-                bitmap.SetPixel(bitmap.Width - x - 1, y, pixel1);
-            }
+        var bitmap = new Bitmap(imageData.Width, imageData.Height);
+        for (var x = 0; x < imageData.Width / 2 + 1; x++)
+        for (var y = 0; y < imageData.Height; y++)
+        {
+            var pixel1 = imageData.GetPixelRgb(x, y);
+            var pixel2 = imageData.GetPixelRgb(imageData.Width - x - 1, y);
+            bitmap.SetPixel(x, y, pixel2);
+            bitmap.SetPixel(imageData.Width - x - 1, y, pixel1);
+        }
 
         var stream = new MemoryStream();
         bitmap.Save(stream, ImageFormat.Png);

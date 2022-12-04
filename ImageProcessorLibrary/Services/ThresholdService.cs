@@ -7,7 +7,7 @@ public class ThresholdService
 {
     public ImageData BinaryThreshold(ImageData imageData, int thresholdValue)
     {
-        var bitmap = imageData.WBitmap;
+        var bitmap = imageData.Bitmap;
 
         for (var x = 0; x < bitmap.Width; x++)
         for (var y = 0; y < bitmap.Height; y++)
@@ -27,7 +27,7 @@ public class ThresholdService
 
     public ImageData GreyscaleThresholdOneSlider(ImageData imageData, int thresholdValue)
     {
-        var bitmap = imageData.WBitmap;
+        var bitmap = imageData.Bitmap;
 
         for (var x = 0; x < bitmap.Width; x++)
         for (var y = 0; y < bitmap.Height; y++)
@@ -47,7 +47,7 @@ public class ThresholdService
 
     public ImageData GreyscaleThresholdTwoSliders(ImageData imageData, int thresholdValue1, int thresholdValue2)
     {
-        var bitmap = imageData.WBitmap;
+        var bitmap = imageData.Bitmap;
 
         for (var x = 0; x < bitmap.Width; x++)
         for (var y = 0; y < bitmap.Height; y++)

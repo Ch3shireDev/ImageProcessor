@@ -5,7 +5,7 @@ using ReactiveUI;
 
 namespace ImageProcessorGUI.ViewModels;
 
-public class MainWindowViewModel : ViewModelBase
+public class MainWindowViewModel : ReactiveObject
 {
     public MainWindowViewModel(MainModel mainModel)
     {
@@ -72,6 +72,7 @@ public class MainWindowViewModel : ViewModelBase
         this.RaisePropertyChanged(nameof(Image));
     });
 
+    public ICommand BinaryOperationCommand => ReactiveCommand.Create(() => MainModel?.BinaryOperation());
     public ICommand SwapHorizontalCommand => ReactiveCommand.Create(() => MainModel?.SwapHorizontal());
     public ICommand LinearStretchingCommand => ReactiveCommand.Create(() => MainModel?.OpenLinearStretchingWindow());
     public ICommand GammaStretchingCommand => ReactiveCommand.Create(() => MainModel?.OpenGammaStretchingWindow());
@@ -81,12 +82,7 @@ public class MainWindowViewModel : ViewModelBase
     public ICommand GreyscaleThresholdOneSliderCommand => ReactiveCommand.Create(() => MainModel?.GreyscaleThresholdOneSlider());
     public ICommand GreyscaleThresholdTwoSlidersCommand => ReactiveCommand.Create(() => MainModel?.GreyscaleThresholdTwoSliders());
     public ICommand AddImageCommand => ReactiveCommand.Create(() => MainModel?.AddImages());
-    public ICommand ImagesDifferenceCommand => ReactiveCommand.Create(() => MainModel?.ImagesDifference());
     public ICommand MathOperationCommand => ReactiveCommand.Create(() => MainModel?.MathOperation());
-    public ICommand BinaryAndCommand => ReactiveCommand.Create(() => MainModel?.BinaryAnd());
-    public ICommand BinaryXorCommand => ReactiveCommand.Create(() => MainModel?.BinaryXor());
-    public ICommand BinaryNotCommand => ReactiveCommand.Create(() => MainModel?.BinaryNot());
-    public ICommand BinaryOrCommand => ReactiveCommand.Create(() => MainModel?.BinaryOr());
     public ICommand GetBinaryMaskCommand => ReactiveCommand.Create(() => MainModel?.GetBinaryMask());
     public ICommand Get8BitMaskCommand => ReactiveCommand.Create(() => MainModel?.Get8BitMask());
     public ICommand MedianBlurCommand => ReactiveCommand.Create(() => MainModel?.MedianBlur());
@@ -121,6 +117,7 @@ public class MainWindowViewModel : ViewModelBase
     public ICommand RemovePeriodicNoiseCommand => ReactiveCommand.Create(() => MainModel?.RemovePeriodicNoice());
     public double ImageWidth => MainModel?.ImageWidth ?? 0;
     public double ImageHeight => MainModel?.ImageHeight ?? 0;
-    public IImage? Image => MainModel?.ImageData.Bitmap;
+    public IImage? Image => MainModel?.AvaloniaImage;
     public MainModel? MainModel { get; set; }
+    public ICommand ToBinaryImageCommand => ReactiveCommand.Create(() => MainModel?.ToBinaryImage());
 }

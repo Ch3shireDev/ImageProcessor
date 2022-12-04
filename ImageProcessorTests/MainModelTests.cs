@@ -1,4 +1,6 @@
-﻿using ImageProcessorGUI.Models;
+﻿using System.Drawing;
+using ImageProcessorGUI.Models;
+using ImageProcessorGUI.ViewModels;
 using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.ServiceProviders;
 using ImageProcessorTests.Mockups;
@@ -6,7 +8,7 @@ using ImageProcessorTests.Mockups;
 namespace ImageProcessorTests;
 
 [TestClass]
-public class ImageModelTests
+public class MainModelTests
 {
     private MockDuplicateImageService _duplicateImageService;
     private MockHistogramService _histogramService;
@@ -31,7 +33,7 @@ public class ImageModelTests
         stretchingOptionsWindowService = new MockStretchingOptionsWindowService();
         processService = new MockProcessService();
 
-        var serviceProvider = new ImageServiceProvider
+        serviceProvider = new ImageServiceProvider
         {
             OpenImageService = _openImageService,
             SaveImageService = _saveImageService,
@@ -43,6 +45,61 @@ public class ImageModelTests
         };
 
         model = new MainModel(imageData, serviceProvider);
+    }
+
+    private ImageServiceProvider serviceProvider;
+    
+    [TestMethod]
+    public void BinaryOperationsViewModelTest()
+    {
+        var imageData = new ImageData(new[,]
+        {
+            { Color.DarkRed, Color.White, Color.Red },
+            { Color.Blue, Color.White, Color.Black },
+            { Color.Black, Color.Purple, Color.Green }
+        });
+
+        Assert.AreEqual(Color.DarkRed.ToArgb(), imageData.GetPixelRgb(0,0).ToArgb());
+        Assert.AreEqual(Color.White.ToArgb(), imageData.GetPixelRgb(1,0).ToArgb());
+        Assert.AreEqual(Color.Red.ToArgb(), imageData.GetPixelRgb(2,0).ToArgb());
+
+        Assert.AreEqual(Color.Blue.ToArgb(), imageData.GetPixelRgb(0,1).ToArgb());
+        Assert.AreEqual(Color.White.ToArgb(), imageData.GetPixelRgb(1,1).ToArgb());
+        Assert.AreEqual(Color.Black.ToArgb(), imageData.GetPixelRgb(2,1).ToArgb());
+
+        Assert.AreEqual(Color.Black.ToArgb(), imageData.GetPixelRgb(0,2).ToArgb());
+        Assert.AreEqual(Color.Purple.ToArgb(), imageData.GetPixelRgb(1,2).ToArgb());
+        Assert.AreEqual(Color.Green.ToArgb(), imageData.GetPixelRgb(2,2).ToArgb());
+
+        var mainModel = new MainModel(imageData, serviceProvider);
+
+        mainModel.BinaryOperation();
+        var viewModel = _windowService.BinaryOperationViewModel as BinaryOperationViewModel;
+        Assert.IsNotNull(viewModel);
+
+        viewModel.SelectedOperation = ImageProcessorLibrary.Services.BinaryOperationType.BINARY_AND;
+        viewModel.SelectedImage = new ImageData(new[,]
+        {
+            { true, true, true },
+            { false, false, false },
+            { false, true, true }
+        });
+
+        viewModel.ShowCommand.Execute(null);
+
+        var image = _windowService.ImageData as ImageData;
+
+        Assert.AreEqual(Color.DarkRed.ToArgb(), image.GetPixelRgb(0, 0).ToArgb());
+        Assert.AreEqual(Color.White.ToArgb(), image.GetPixelRgb(1, 0).ToArgb());
+        Assert.AreEqual(Color.Red.ToArgb(), image.GetPixelRgb(2, 0).ToArgb());
+
+        Assert.AreEqual(Color.Black.ToArgb(), image.GetPixelRgb(0, 1).ToArgb());
+        Assert.AreEqual(Color.Black.ToArgb(), image.GetPixelRgb(1, 1).ToArgb());
+        Assert.AreEqual(Color.Black.ToArgb(), image.GetPixelRgb(2, 1).ToArgb());
+        
+        Assert.AreEqual(Color.Black.ToArgb(), image.GetPixelRgb(0, 2).ToArgb());
+        Assert.AreEqual(Color.Purple.ToArgb(), image.GetPixelRgb(1, 2).ToArgb());
+        Assert.AreEqual(Color.Green.ToArgb(), image.GetPixelRgb(2, 2).ToArgb());
     }
 
     /// <summary>
@@ -318,10 +375,10 @@ public class ImageModelTests
         Assert.AreEqual(false, _windowService.IsShowImageWindowCalled);
         Assert.AreEqual(false, _windowService.IsAddImagesWindowCalled);
         model.AddImages();
-        Assert.AreEqual(true, _windowService.IsShowImageWindowCalled);
+        Assert.AreEqual(false, _windowService.IsShowImageWindowCalled);
         Assert.AreEqual(true, _windowService.IsAddImagesWindowCalled);
     }
-    
+
     //[TestMethod]
     //public void ImagesDifferenceTest()
     //{
@@ -340,29 +397,15 @@ public class ImageModelTests
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
-    //public void BinaryAndTest()
-    //{
-    //    Assert.Fail();
-    //}
-
-    //[TestMethod]
-    //public void BinaryOrTest()
-    //{
-    //    Assert.Fail();
-    //}
-
-    //[TestMethod]
-    //public void BinaryXorTest()
-    //{
-    //    Assert.Fail();
-    //}
-
-    //[TestMethod]
-    //public void BinaryNotTest()
-    //{
-    //    Assert.Fail();
-    //}
+    [TestMethod]
+    public void BinaryOperationsTest()
+    {
+        Assert.AreEqual(false, _windowService.IsShowImageWindowCalled);
+        Assert.AreEqual(false, _windowService.IsBinaryOperationsWindowCalled);
+        model.BinaryOperation();
+        Assert.AreEqual(false, _windowService.IsShowImageWindowCalled);
+        Assert.AreEqual(true, _windowService.IsBinaryOperationsWindowCalled);
+    }
 
     //[TestMethod]
     //public void GetBinaryMaskTest()

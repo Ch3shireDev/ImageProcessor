@@ -11,7 +11,7 @@ namespace ImageProcessorGUI.ViewModels;
 
 
 
-public class AddImagesViewModel : ViewModelBase
+public class AddImagesViewModel : ReactiveObject
 {
     private readonly IImageServiceProvider _imageServiceProvider;
     private readonly Action<ImageData> _onApply;

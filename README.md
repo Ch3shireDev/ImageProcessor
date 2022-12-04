@@ -61,11 +61,11 @@ Opracowanie algorytmu i uruchomienie funkcjonalności realizującej operacje pun
 
 Opracowanie algorytmu i uruchomienie funkcjonalności realizującej operacje logiczne na obrazach monochromatycznych i binarnych:
 
-- [ ] not,
-- [ ] and,
-- [ ] or,
-- [ ] xor,
-- [ ] zamiana obrazów z maski binarnej na maskę zapisaną na 8 bitach i na odwrót
+- [x] not,
+- [x] and,
+- [x] or,
+- [x] xor,
+- [x] zamiana obrazów z maski binarnej na maskę zapisaną na 8 bitach i na odwrót
 
 Należy pamiętać o sprawdzeniu zgodności typów i rozmiarów obrazów stanowiących operandy.
 

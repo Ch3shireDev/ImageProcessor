@@ -4,5 +4,5 @@ namespace ImageProcessorLibrary.Services;
 
 public interface IDuplicateImageService
 {
-    public void DuplicateImage(ImageData imageData);
+    public void DuplicateImage(IImageData imageData);
 }

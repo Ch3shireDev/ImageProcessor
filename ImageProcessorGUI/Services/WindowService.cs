@@ -1,7 +1,6 @@
 ﻿using ImageProcessorGUI.Models;
 using ImageProcessorGUI.ViewModels;
 using ImageProcessorGUI.Views;
-using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.ServiceProviders;
 using ImageProcessorLibrary.Services;
 
@@ -11,7 +10,7 @@ public class WindowService : IWindowService
 {
     public IImageServiceProvider ImageServiceProvider { get; set; }
 
-    public void ShowImageWindow(ImageData imageData)
+    public void ShowImageWindow(IImageData imageData)
     {
         var imageModel = new MainModel(imageData, ImageServiceProvider);
 
@@ -51,7 +50,7 @@ public class WindowService : IWindowService
         {
             DataContext = addImagesViewModel
         };
-        
+
         addImagesWindow.Show();
     }
 
@@ -63,5 +62,15 @@ public class WindowService : IWindowService
         };
 
         mathOperationWindow.Show();
+    }
+
+    public void ShowBinaryOperationViewModel(object binaryOperationViewModel)
+    {
+        var binaryOperationWindow = new BinaryOperationsWindow
+        {
+            DataContext = binaryOperationViewModel
+        };
+
+        binaryOperationWindow.Show();
     }
 }

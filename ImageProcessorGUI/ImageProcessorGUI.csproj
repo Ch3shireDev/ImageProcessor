@@ -36,4 +36,9 @@
   <ItemGroup>
     <ProjectReference Include="..\ImageProcessorLibrary\ImageProcessorLibrary.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Views\BinaryOperationsWindow.axaml.cs">
+      <DependentUpon>BinaryOperationsWindow.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

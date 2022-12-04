@@ -8,7 +8,7 @@ public class StretchingService
 {
     public ImageData LinearStretching(ImageData imageData, int Lmin, int Lmax)
     {
-        var bitmap = imageData.WBitmap;
+        var bitmap = imageData.Bitmap;
 
         double min = 1;
         double max = 0;
@@ -56,7 +56,7 @@ public class StretchingService
     public ImageData GammaStretching(ImageData imageData, double gammaValue)
     {
         if (gammaValue == 0) return imageData;
-        var bitmap = imageData.WBitmap;
+        var bitmap = imageData.Bitmap;
         for (var x = 0; x < bitmap.Width; x++)
         for (var y = 0; y < bitmap.Height; y++)
         {
@@ -75,7 +75,7 @@ public class StretchingService
 
     public ImageData EqualizeStretching(ImageData imageData)
     {
-        var bitmap = imageData.WBitmap;
+        var bitmap = imageData.Bitmap;
 
         var red = new int[256];
         var green = new int[256];

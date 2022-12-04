@@ -4,9 +4,9 @@ namespace ImageProcessorLibrary.Services;
 
 public interface IHistogramService
 {
-    ImageData GetValueHistogram(ImageData imageData);
-    ImageData GetRgbHistogram(ImageData imageData);
-    ImageData GetRedHistogram(ImageData imageData);
-    ImageData GetGreenHistogram(ImageData imageData);
-    ImageData GetBlueHistogram(ImageData imageData);
+    IImageData GetValueHistogram(IImageData imageData);
+    IImageData GetRgbHistogram(IImageData imageData);
+    IImageData GetRedHistogram(IImageData imageData);
+    IImageData GetGreenHistogram(IImageData imageData);
+    IImageData GetBlueHistogram(IImageData imageData);
 }

@@ -5,7 +5,7 @@ using ReactiveUI;
 
 namespace ImageProcessorGUI.ViewModels;
 
-public class OptionsOneValueViewModel<T1> : ViewModelBase
+public class OptionsOneValueViewModel<T1> : ReactiveObject
 {
     private readonly Func<ImageData, T1, ImageData>? _transform;
     private T1? value1;

@@ -6,7 +6,7 @@ using ReactiveUI;
 
 namespace ImageProcessorGUI.ViewModels;
 
-public class MathOperationViewModel : ViewModelBase
+public class MathOperationViewModel : ReactiveObject
 {
     public MathOperationViewModel(ImageData imageData)
     {

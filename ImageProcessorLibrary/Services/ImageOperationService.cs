@@ -4,18 +4,12 @@ using ImageProcessorLibrary.DataStructures;
 
 namespace ImageProcessorLibrary.Services;
 
-public enum ImageCombinationsEnum
-{
-    ADD_IMAGES,
-    SUBTRACT_IMAGES
-}
-
 public class ImageOperationService
 {
     public ImageData AddImages(ImageData image1, ImageData image2, ImageCombinationsEnum operation, bool withSaturation = false)
     {
-        var bitmap1 = image1.WBitmap;
-        var bitmap2 = image2.WBitmap;
+        var bitmap1 = image1.Bitmap;
+        var bitmap2 = image2.Bitmap;
 
         var width = Math.Min(bitmap1.Width, bitmap2.Width);
         var height = Math.Min(bitmap1.Height, bitmap2.Height);

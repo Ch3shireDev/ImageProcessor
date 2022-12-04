@@ -7,7 +7,7 @@ namespace ImageProcessorLibrary.Services
     {
         public ImageData Operation(ImageData imageData, double value, MathOperation operation, bool withSaturation)
         {
-            var bitmap = imageData.WBitmap;
+            var bitmap = imageData.Bitmap;
 
             var width = (int)imageData.Width;
             var height = (int)imageData.Height;
@@ -68,13 +68,4 @@ namespace ImageProcessorLibrary.Services
             return new ImageData("result.png", memoryStream.ToArray());
         }
     }
-}
-
-
-public enum MathOperation
-{
-    Add,
-    Subtract,
-    Multiply,
-    Divide
 }
