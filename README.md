@@ -77,10 +77,14 @@ Proszę o przygotowanie własnych monochromatycznych i binarnych obrazów testow
 
 Proszę dołączyć bibliotekę OpenCV i korzystać z niej przygotowując poszczególne funkcjonalności.
 
-- [ ] Opracowanie algorytmu i uruchomienie funkcjonalności realizującej operacje:
-    - [ ] wygładzania liniowego oparte na typowych maskach wygładzania (uśrednienie, uśrednienie z wagami, filtr gaussowski – przedstawione na wykładzie) przestawionych użytkownikowi jako maski do wyboru,
-    - [ ] wyostrzania liniowego oparte na 3 maskach laplasjanowych (podanych w wykładzie) przestawionych użytkownikowi maski do wyboru,
-    - [ ] kierunkowej detekcji krawędzi w oparciu o maski 8 kierunkowych masek Sobela (podstawowe 8 kierunków) przestawionych użytkownikowi do wyboru,
+- [x] Opracowanie algorytmu i uruchomienie funkcjonalności realizującej operacje:
+    - [x] wygładzania liniowego oparte na typowych maskach wygładzania:
+        - [x] uśrednienie, 
+        - [x] uśrednienie z wagami, 
+        - [x] filtr gaussowski
+        przestawionych użytkownikowi jako maski do wyboru,
+    - [x] wyostrzania liniowego oparte na 3 maskach laplasjanowych (podanych w wykładzie) przestawionych użytkownikowi maski do wyboru,
+    - [x] kierunkowej detekcji krawędzi w oparciu o maski 8 kierunkowych masek Sobela (podstawowe 8 kierunków) przestawionych użytkownikowi do wyboru,
 
 - [ ] Zaimplementować wybór sposobu uzupełnienie marginesów/brzegów w operacjach sąsiedztwa według zasady wybranej spośród następujących zasad:
     - [ ] wypełnienie ramki wybraną wartością stałą `n` narzuconą przez użytkownika: `BORDER_CONSTANT`

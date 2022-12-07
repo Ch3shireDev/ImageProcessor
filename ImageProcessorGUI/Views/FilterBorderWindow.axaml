@@ -1,0 +1,27 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" Width="300" Height="200"
+        x:Class="ImageProcessorGUI.Views.FilterBorderWindow"
+        Title="{Binding Title}">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<StackPanel Orientation="Horizontal">
+			<Label VerticalContentAlignment="Center" Margin="10,0">Border type</Label>
+			<ComboBox Items="{Binding BorderTypesList}" SelectedItem="{Binding SelectedBorderType}"/>
+		</StackPanel>
+		<StackPanel Grid.Row="1" Orientation="Horizontal">
+			<Label VerticalContentAlignment="Center" Margin="10,0">N pikseli ramki</Label>
+			<TextBox Text="{Binding ValueN}"></TextBox>
+		</StackPanel>
+		<StackPanel Grid.Row="3">
+			<Button Command="{Binding ShowCommand}">Wyświetl</Button>
+		</StackPanel>
+	</Grid>
+</Window>

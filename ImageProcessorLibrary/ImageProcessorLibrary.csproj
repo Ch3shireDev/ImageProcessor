@@ -11,6 +11,7 @@
     <PackageReference Include="Avalonia.Desktop" Version="0.10.18" />
     <PackageReference Include="Avalonia.Diagnostics" Version="0.10.18" />
     <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.18" />
+    <PackageReference Include="OpenCvSharp4.Windows" Version="4.6.0.20220608" />
     <PackageReference Include="ScottPlot.Avalonia" Version="4.1.59" />
   </ItemGroup>
 

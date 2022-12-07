@@ -31,8 +31,6 @@
         <Panel>
             <Panel.ContextMenu>
                 <ContextMenu>
-
-
                     <MenuItem Header="_Plik">
                         <MenuItem Header="_Otwórz" Command="{Binding OpenImageCommand}" />
                         <MenuItem Header="_Zapisz" Command="{Binding SaveImageCommand}" />
@@ -73,19 +71,18 @@
                                   Command="{Binding GreyscaleThresholdTwoSlidersCommand}" />
                         <MenuItem Header="Dodaj obrazy / Uzyskaj różnicę obrazów" Command="{Binding AddImageCommand}" />
                         <MenuItem Header="Operacje matematyczne" Command="{Binding MathOperationCommand}" />
-
+						<MenuItem Header="Operacje logiczne"  Command="{Binding BinaryOperationCommand}"/>
                     </MenuItem>
-                    <MenuItem Header="_Operacje logiczne"  Command="{Binding BinaryOperationCommand}"/>
                         <MenuItem Header="_Przetwórz">
                         <MenuItem Header="Wygładzanie liniowe">
-                            <MenuItem Header="Uśrednianie bez wag" Command="{Binding MedianBlurCommand}" />
-                            <MenuItem Header="Uśrednianie z wagami" Command="{Binding MedianBlurCommand}" />
+                            <MenuItem Header="Uśrednianie bez wag" Command="{Binding MedianBlurWithoutWeightsCommand}" />
+                            <MenuItem Header="Uśrednianie z wagami" Command="{Binding MedianBlurWithWeightsCommand}" />
                             <MenuItem Header="Filtr gaussowski" Command="{Binding GaussianBlurCommand}" />
                         </MenuItem>
                         <MenuItem Header="Wyostrzanie liniowe">
-                            <MenuItem Header="Maska 1" Command="{Binding SharpeningCommand}" />
-                            <MenuItem Header="Maska 2" Command="{Binding SharpeningCommand}" />
-                            <MenuItem Header="Maska 3" Command="{Binding SharpeningCommand}" />
+                            <MenuItem Header="Maska 1" Command="{Binding SharpeningMask1Command}" />
+                            <MenuItem Header="Maska 2" Command="{Binding SharpeningMask2Command}" />
+                            <MenuItem Header="Maska 3" Command="{Binding SharpeningMask3Command}" />
                         </MenuItem>
                         <MenuItem Header="Detekcja krawędzi metodą Sobela">
                             <MenuItem Header="E" Command="{Binding EdgeSobelEastCommand}" />

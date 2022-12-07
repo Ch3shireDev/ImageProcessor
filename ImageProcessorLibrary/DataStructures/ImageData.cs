@@ -18,6 +18,11 @@ public class ImageData : IImageData
         Pixels = pixels;
     }
 
+    public ImageData(byte[,] pixels)
+    {
+        Pixels = ToPixels(pixels);
+    }
+
     public ImageData(int width, int height)
     {
         Pixels = new Color[height, width];
@@ -78,7 +83,7 @@ public class ImageData : IImageData
         Filebytes = result.Filebytes;
         Extension = result.Extension;
 
-        Pixels = ToPixels(new Bitmap(new MemoryStream( result.Filebytes)));
+        Pixels = ToPixels(new Bitmap(new MemoryStream(result.Filebytes)));
 
         ImageChanged?.Invoke(null, EventArgs.Empty);
     }
@@ -96,6 +101,21 @@ public class ImageData : IImageData
     public void SetPixel(int x, int y, Color pixel)
     {
         Pixels[y, x] = pixel;
+    }
+
+    private Color[,] ToPixels(byte[,] pixels)
+    {
+        var colorPixels = new Color[pixels.GetLength(0), pixels.GetLength(1)];
+
+        for (var i = 0; i < pixels.GetLength(0); i++)
+        {
+            for (var j = 0; j < pixels.GetLength(1); j++)
+            {
+                colorPixels[i, j] = Color.FromArgb(pixels[i, j], pixels[i, j], pixels[i, j]);
+            }
+        }
+
+        return colorPixels;
     }
 
     public void SetPixel(int x, int y, HSL pixel)

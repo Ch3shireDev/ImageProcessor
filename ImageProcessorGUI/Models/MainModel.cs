@@ -5,6 +5,7 @@ using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using ImageProcessorGUI.Services;
 using ImageProcessorGUI.ViewModels;
+using ImageProcessorGUI.Views;
 using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.ServiceProviders;
 using ImageProcessorLibrary.Services;
@@ -15,6 +16,8 @@ public class MainModel
 {
     private readonly IImageServiceProvider _imageServiceProvider;
 
+    private readonly OpenCvService openCvService = new();
+
     public MainModel(IImageData imageData, IImageServiceProvider imageServiceProvider)
     {
         _imageServiceProvider = imageServiceProvider;
@@ -22,13 +25,13 @@ public class MainModel
     }
 
     public IImageData ImageData { get; set; }
-    public double ImageWidth => (double)((decimal)ImageData.Width * Scale);
-    public double ImageHeight => (double)((decimal)ImageData.Height * Scale);
+    public double ImageWidth => (double)(ImageData.Width * Scale);
+    public double ImageHeight => (double)(ImageData.Height * Scale);
 
     public decimal Scale { get; set; } = 1;
     public IImage AvaloniaImage => GetImage();
 
-    IImage GetImage()
+    private IImage GetImage()
     {
         return new Bitmap(new MemoryStream(ImageData.Filebytes));
     }
@@ -285,7 +288,7 @@ public class MainModel
         );
         _imageServiceProvider.WindowService.ShowAddImagesViewModel(addImagesViewModel);
     }
-    
+
 
     /// <summary>
     ///     dodawanie, dzielenie i mnożenie obrazów przez liczbę całkowitą z wysyceniem i bez wysycenia
@@ -324,27 +327,44 @@ public class MainModel
 
         _imageServiceProvider.WindowService.ShowBinaryOperationViewModel(binaryOperationViewModel);
     }
-    
-    public void GetBinaryMask()
+
+    public void MedianBlurWithoutWeights()
     {
+        var kernel = new double[,]
+        {
+            { 1, 1, 1 },
+            { 1, 1, 1 },
+            { 1, 1, 1 }
+        };
+
+        Filter(kernel);
     }
 
-    /// <summary>
-    ///     Opracowanie algorytmu i uruchomienie funkcjonalności realizującej operacje logiczne na obrazach monochromatycznych
-    ///     i binarnych:
-    ///     - [ ] not,
-    ///     - [ ] and,
-    ///     - [ ] or,
-    ///     - [ ] xor,
-    ///     - [ ] zamiana obrazów z maski binarnej na maskę zapisaną na 8 bitach i na odwrót
-    ///     Należy pamiętać o sprawdzeniu zgodności typów i rozmiarów obrazów stanowiących operandy.
-    ///     Proszę pamiętać: w operacjach jednopunktowych dwuargumentowych logicznych na obrazach działania prowadzone są na
-    ///     odpowiednich pikselach obrazów stanowiących argumenty danej operacji. W szczególności działania prowadzone są na
-    ///     bitach o tej samej wadze.
-    /// </summary>
-    public void Get8BitMask()
+    private void Filter(double[,] kernel, string title="Filtr")
     {
+        var imageData = new ImageData(ImageData);
+        var viewModel = new FilterBorderViewModel(imageData, _imageServiceProvider.WindowService, kernel, title);
+
+        var window = new FilterBorderWindow
+        {
+            DataContext = viewModel
+        };
+
+        window.Show();
     }
+
+    public void MedianBlurWithWeights()
+    {
+        var kernel = new double[,]
+        {
+            { 1, 1, 1 },
+            { 1, 8, 1 },
+            { 1, 1, 1 }
+        };
+
+        Filter(kernel);
+    }
+
 
     /// <summary>
     ///     Proszę dołączyć bibliotekę OpenCV i korzystać z niej przygotowując poszczególne funkcjonalności.
@@ -372,102 +392,148 @@ public class MainModel
     /// </summary>
     public void GaussianBlur()
     {
+        var kernel = new double[,]
+        {
+            { 1, 2, 1 },
+            { 2, 4, 2 },
+            { 1, 2, 1 }
+        };
+
+        Filter(kernel);
     }
 
-    /// <summary>
-    ///     Proszę dołączyć bibliotekę OpenCV i korzystać z niej przygotowując poszczególne funkcjonalności.
-    ///     - [ ] Opracowanie algorytmu i uruchomienie funkcjonalności realizującej operacje:
-    ///     - [ ] wygładzania liniowego oparte na typowych maskach wygładzania (uśrednienie, uśrednienie z wagami, filtr
-    ///     gaussowski – przedstawione na wykładzie) przestawionych użytkownikowi jako maski do wyboru,
-    ///     - [ ] wyostrzania liniowego oparte na 3 maskach laplasjanowych (podanych w wykładzie) przestawionych użytkownikowi
-    ///     maski do wyboru,
-    ///     - [ ] kierunkowej detekcji krawędzi w oparciu o maski 8 kierunkowych masek Sobela (podstawowe 8 kierunków)
-    ///     przestawionych użytkownikowi do wyboru,
-    ///     - [ ] Zaimplementować wybór sposobu uzupełnienie marginesów/brzegów w operacjach sąsiedztwa według zasady wybranej
-    ///     spośród następujących zasad:
-    ///     - [ ] wypełnienie ramki wybraną wartością stałą `n` narzuconą przez użytkownika: `BORDER_CONSTANT`
-    ///     - [ ] wypełnienie wyniku wybraną wartością stałą `n` narzuconą przez użytkownika
-    ///     - [ ] wyliczenie ramki według `BORDER_REFLECT`
-    ///     - [ ] wyliczenie ramki według `BORDER_WRAP`
-    ///     - [ ] Opracowanie algorytmu i uruchomienie aplikacji realizującej uniwersalną operację medianową opartą na:
-    ///     - [ ] otoczeniu 3x3,
-    ///     - [ ] 5x5,
-    ///     - [ ] 7x7,
-    ///     - [ ] 9x9
-    ///     zadawanym w sposób interaktywny: wybór z list, przesuwanie baru lub wpisanie w przygotowane pole).
-    ///     Zastosować powyższych metod uzupełniania brzegowych pikselach obrazu, dając użytkownikowi możliwość wyboru, jak w
-    ///     zadaniu 1.
-    /// </summary>
+    public void SharpeningMask1()
+    {
+        var kernel = new double[,]
+        {
+            { 0, -1, 0 },
+            { -1, 4, -1 },
+            { 0, -1, 0 }
+        };
+
+        kernel = openCvService.Normalize(kernel);
+
+        Filter(kernel);
+    }
+
+    public void SharpeningMask2()
+    {
+        var kernel = new double[,]
+        {
+            { -1, -1, -1 },
+            { -1, 8, -1 },
+            { -1, -1, -1 }
+        };
+
+        Filter(kernel);
+    }
+
+    public void SharpeningMask3()
+    {
+        var kernel = new double[,]
+        {
+            { 1, -2, 1 },
+            { -2, 4, -2 },
+            { 1, -2, 1 }
+        };
+
+        Filter(kernel);
+    }
+    
     public void EdgeSobelEast()
     {
+        var kernel = new double[,]
+        {
+            { -1, 0, 1 },
+            { -2, 0, 2 },
+            { -1, 0, 1 }
+        };
+
+        Filter(kernel);
     }
 
     public void EdgeSobelNorthEast()
     {
+        var kernel = new double[,]
+        {
+            { 0, 1, 2 },
+            { -1, 0, 1 },
+            { -2, -1, 0 }
+        };
+
+        Filter(kernel);
     }
 
     public void EdgeSobelNorth()
     {
+        var kernel = new double[,]
+        {
+            { 1, 2, 1 },
+            { 0, 0, 0 },
+            { -1, -2, -1 }
+        };
+
+        Filter(kernel);
     }
 
     public void EdgeSobelNorthWest()
     {
+        var kernel = new double[,]
+        {
+            { 2, 1, 0 },
+            { 1, 0, -1 },
+            { 0, -1, -2 }
+        };
+
+        Filter(kernel);
     }
 
     public void EdgeSobelWest()
     {
+        var kernel = new double[,]
+        {
+            { 1, 0, -1 },
+            { 2, 0, -2 },
+            { 1, 0, -1 }
+        };
+
+        Filter(kernel);
     }
 
     public void EdgeSobelSouthWest()
     {
+        var kernel = new double[,]
+        {
+            { 0, -2, -1 },
+            { 1, 0, -1 },
+            { 1, 2, 0 }
+        };
+
+        Filter(kernel);
     }
 
     public void EdgeSobelSouth()
     {
+        var kernel = new double[,]
+        {
+            { -1, -2, -1 },
+            { 0, 0, 0 },
+            { 1, 2, 1 }
+        };
+
+        Filter(kernel);
     }
 
     public void EdgeSobelSouthEast()
     {
-    }
+        var kernel = new double[,]
+        {
+            { -2, -1, 0 },
+            { -1, 0, 1 },
+            { 0, 1, 2 }
+        };
 
-    /// <summary>
-    ///     Proszę dołączyć bibliotekę OpenCV i korzystać z niej przygotowując poszczególne funkcjonalności.
-    ///     - [ ] Opracowanie algorytmu i uruchomienie funkcjonalności realizującej operacje:
-    ///     - [ ] wygładzania liniowego oparte na typowych maskach wygładzania (uśrednienie, uśrednienie z wagami, filtr
-    ///     gaussowski – przedstawione na wykładzie) przestawionych użytkownikowi jako maski do wyboru,
-    ///     - [ ] wyostrzania liniowego oparte na 3 maskach laplasjanowych (podanych w wykładzie) przestawionych użytkownikowi
-    ///     maski do wyboru,
-    ///     - [ ] kierunkowej detekcji krawędzi w oparciu o maski 8 kierunkowych masek Sobela (podstawowe 8 kierunków)
-    ///     przestawionych użytkownikowi do wyboru,
-    ///     - [ ] Zaimplementować wybór sposobu uzupełnienie marginesów/brzegów w operacjach sąsiedztwa według zasady wybranej
-    ///     spośród następujących zasad:
-    ///     - [ ] wypełnienie ramki wybraną wartością stałą `n` narzuconą przez użytkownika: `BORDER_CONSTANT`
-    ///     - [ ] wypełnienie wyniku wybraną wartością stałą `n` narzuconą przez użytkownika
-    ///     - [ ] wyliczenie ramki według `BORDER_REFLECT`
-    ///     - [ ] wyliczenie ramki według `BORDER_WRAP`
-    ///     - [ ] Opracowanie algorytmu i uruchomienie aplikacji realizującej uniwersalną operację medianową opartą na:
-    ///     - [ ] otoczeniu 3x3,
-    ///     - [ ] 5x5,
-    ///     - [ ] 7x7,
-    ///     - [ ] 9x9
-    ///     zadawanym w sposób interaktywny: wybór z list, przesuwanie baru lub wpisanie w przygotowane pole).
-    ///     Zastosować powyższych metod uzupełniania brzegowych pikselach obrazu, dając użytkownikowi możliwość wyboru, jak w
-    ///     zadaniu 1.
-    /// </summary>
-    public void FillBorderConstant()
-    {
-    }
-
-    public void FillResultBorderConstant()
-    {
-    }
-
-    public void FillBorderReflect()
-    {
-    }
-
-    public void FillBorderWrap()
-    {
+        Filter(kernel);
     }
 
     /// <summary>
@@ -618,10 +684,6 @@ public class MainModel
     ///     średnik, itp.).
     /// </summary>
     public void CalculateFeatureVector()
-    {
-    }
-
-    public void MedianBlur()
     {
     }
 

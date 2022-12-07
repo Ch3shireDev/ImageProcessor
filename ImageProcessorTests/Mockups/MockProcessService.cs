@@ -1,11 +1,11 @@
 ﻿using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.Services;
 
-namespace ImageProcessorTests;
+namespace ImageProcessorTests.Mockups;
 
-public class MockProcessService:IProcessService
+public class MockProcessService : IProcessService
 {
-    public bool IsNegated{ get; set; }
+    public bool IsNegated { get; set; }
     public IImageData NegateImage(IImageData imageData)
     {
         IsNegated = true;

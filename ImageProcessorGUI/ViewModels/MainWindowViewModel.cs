@@ -83,11 +83,12 @@ public class MainWindowViewModel : ReactiveObject
     public ICommand GreyscaleThresholdTwoSlidersCommand => ReactiveCommand.Create(() => MainModel?.GreyscaleThresholdTwoSliders());
     public ICommand AddImageCommand => ReactiveCommand.Create(() => MainModel?.AddImages());
     public ICommand MathOperationCommand => ReactiveCommand.Create(() => MainModel?.MathOperation());
-    public ICommand GetBinaryMaskCommand => ReactiveCommand.Create(() => MainModel?.GetBinaryMask());
-    public ICommand Get8BitMaskCommand => ReactiveCommand.Create(() => MainModel?.Get8BitMask());
-    public ICommand MedianBlurCommand => ReactiveCommand.Create(() => MainModel?.MedianBlur());
+    public ICommand MedianBlurWithoutWeightsCommand => ReactiveCommand.Create(() => MainModel?.MedianBlurWithoutWeights());
+    public ICommand MedianBlurWithWeightsCommand => ReactiveCommand.Create(() => MainModel?.MedianBlurWithWeights());
     public ICommand GaussianBlurCommand => ReactiveCommand.Create(() => MainModel?.GaussianBlur());
-    public ICommand SharpeningCommand => ReactiveCommand.Create(() => MainModel?.Sharpening());
+    public ICommand SharpeningMask1Command => ReactiveCommand.Create(() => MainModel?.SharpeningMask1());
+    public ICommand SharpeningMask2Command => ReactiveCommand.Create(() => MainModel?.SharpeningMask2());
+    public ICommand SharpeningMask3Command => ReactiveCommand.Create(() => MainModel?.SharpeningMask3());
     public ICommand EdgeSobelEastCommand => ReactiveCommand.Create(() => MainModel?.EdgeSobelEast());
     public ICommand EdgeSobelNorthEastCommand => ReactiveCommand.Create(() => MainModel?.EdgeSobelNorthEast());
     public ICommand EdgeSobelNorthCommand => ReactiveCommand.Create(() => MainModel?.EdgeSobelNorth());
@@ -96,10 +97,6 @@ public class MainWindowViewModel : ReactiveObject
     public ICommand EdgeSobelSouthWestCommand => ReactiveCommand.Create(() => MainModel?.EdgeSobelSouthWest());
     public ICommand EdgeSobelSouthCommand => ReactiveCommand.Create(() => MainModel?.EdgeSobelSouth());
     public ICommand EdgeSobelSouthEastCommand => ReactiveCommand.Create(() => MainModel?.EdgeSobelSouthEast());
-    public ICommand FillBorderConstantCommand => ReactiveCommand.Create(() => MainModel?.FillBorderConstant());
-    public ICommand FillResultBorderConstantCommand => ReactiveCommand.Create(() => MainModel?.FillResultBorderConstant());
-    public ICommand FillBorderReflectCommand => ReactiveCommand.Create(() => MainModel?.FillBorderReflect());
-    public ICommand FillBorderWrapCommand => ReactiveCommand.Create(() => MainModel?.FillBorderWrap());
     public ICommand CalculateMedian3x3Command => ReactiveCommand.Create(() => MainModel?.CalculateMedian3x3());
     public ICommand CalculateMedian5x5Command => ReactiveCommand.Create(() => MainModel?.CalculateMedian5x5());
     public ICommand CalculateMedian7x7Command => ReactiveCommand.Create(() => MainModel?.CalculateMedian7x7());
