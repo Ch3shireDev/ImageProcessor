@@ -1,5 +1,6 @@
 ﻿using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.Services;
+using OpenCvSharp;
 
 namespace ImageProcessorTests;
 
@@ -85,16 +86,16 @@ public class OpenCvServiceTests
     {
         var imageData = new ImageData(new byte[,]
         {
-            { 0,255,255, },
-            { 255,0,255, },
-            { 255,255,0, },
+            { 0, 255, 255 },
+            { 255, 0, 255 },
+            { 255, 255, 0 }
         });
 
         var kernel = new double[,]
         {
-            {0,0,0},
-            {0,1,0 }, 
-            {0,0,0 }
+            { 0, 0, 0 },
+            { 0, 1, 0 },
+            { 0, 0, 0 }
         };
 
         var result = openCvService?.Filter(imageData, kernel);
@@ -117,16 +118,16 @@ public class OpenCvServiceTests
     {
         var imageData = new ImageData(new byte[,]
         {
-            { 200, 100, 100  },
-            { 100, 200, 100, },
-            { 200, 200, 200, },
+            { 200, 100, 100 },
+            { 100, 200, 100 },
+            { 200, 200, 200 }
         });
 
-        var kernel = new double[,]
+        var kernel = new[,]
         {
-            {.1,.1,.1,},
-            {.1,.1,.1,},
-            {.1,.1,.1,},
+            { .1, .1, .1 },
+            { .1, .1, .1 },
+            { .1, .1, .1 }
         };
 
         var result = openCvService?.Filter(imageData, kernel);
@@ -142,5 +143,58 @@ public class OpenCvServiceTests
         Assert.AreEqual(160, result.GetPixelRgb(0, 2).R);
         Assert.AreEqual(140, result.GetPixelRgb(1, 2).R);
         Assert.AreEqual(160, result.GetPixelRgb(2, 2).R);
+    }
+
+    [TestMethod]
+    public void BorderTest()
+    {
+        var imageData = new ImageData(new byte[,]
+        {
+            { 9, 9, 9 },
+            { 9, 9, 9 },
+            { 9, 9, 9 }
+        });
+
+        var kernel = new double[,]
+        {
+            { 0, 0, 0 },
+            { 0, 1, 0 },
+            { 0, 0, 0 }
+        };
+
+        var result = openCvService?.Filter(imageData, kernel, BorderTypes.Constant, 1);
+
+        Assert.AreEqual(5, result.Width);
+        Assert.AreEqual(5, result.Height);
+
+        Assert.AreEqual(0, result.GetPixelRgb(0, 0).R);
+        Assert.AreEqual(0, result.GetPixelRgb(1, 0).R);
+        Assert.AreEqual(0, result.GetPixelRgb(2, 0).R);
+        Assert.AreEqual(0, result.GetPixelRgb(3, 0).R);
+        Assert.AreEqual(0, result.GetPixelRgb(4, 0).R);
+
+        Assert.AreEqual(0, result.GetPixelRgb(0, 1).R);
+        Assert.AreEqual(9, result.GetPixelRgb(1, 1).R);
+        Assert.AreEqual(9, result.GetPixelRgb(2, 1).R);
+        Assert.AreEqual(9, result.GetPixelRgb(3, 1).R);
+        Assert.AreEqual(0, result.GetPixelRgb(4, 1).R);
+
+        Assert.AreEqual(0, result.GetPixelRgb(0, 2).R);
+        Assert.AreEqual(9, result.GetPixelRgb(1, 2).R);
+        Assert.AreEqual(9, result.GetPixelRgb(2, 2).R);
+        Assert.AreEqual(9, result.GetPixelRgb(3, 2).R);
+        Assert.AreEqual(0, result.GetPixelRgb(4, 2).R);
+
+        Assert.AreEqual(0, result.GetPixelRgb(0, 3).R);
+        Assert.AreEqual(9, result.GetPixelRgb(1, 3).R);
+        Assert.AreEqual(9, result.GetPixelRgb(2, 3).R);
+        Assert.AreEqual(9, result.GetPixelRgb(3, 3).R);
+        Assert.AreEqual(0, result.GetPixelRgb(4, 3).R);
+
+        Assert.AreEqual(0, result.GetPixelRgb(0, 4).R);
+        Assert.AreEqual(0, result.GetPixelRgb(1, 4).R);
+        Assert.AreEqual(0, result.GetPixelRgb(2, 4).R);
+        Assert.AreEqual(0, result.GetPixelRgb(3, 4).R);
+        Assert.AreEqual(0, result.GetPixelRgb(4, 4).R);
     }
 }

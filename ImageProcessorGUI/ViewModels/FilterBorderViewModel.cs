@@ -35,14 +35,37 @@ public class FilterBorderViewModel : ReactiveObject
     };
     public BorderTypes SelectedBorderType { get; set; }
     public int ValueN { get; set; }
+    public int BorderPixels { get; set; }
 
     public ICommand ShowCommand => ReactiveCommand.Create(Show);
 
     public void Show()
     {
-        var result = openCvService.Filter(ImageData, Kernel, SelectedBorderType, ValueN);
-        _windowService.ShowImageWindow(result);
+        try
+        {
+            ErrorMessage = "";
+            var result = openCvService.Filter(ImageData, Kernel, SelectedBorderType, BorderPixels, ValueN, BorderBeforeTransform, BorderAfterTransform);
+            _windowService.ShowImageWindow(result);
+        }
+        catch (Exception e)
+        {
+            ErrorMessage = $"Operacja niedozwolona. Informacja o błędzie: {e.Message}";
+        }
     }
 
- 
+    private string errorMessage;
+
+    public string ErrorMessage
+    {
+        get => errorMessage;
+        set
+        {
+            errorMessage = value;
+            this.RaisePropertyChanged();
+        }
+    }
+
+    public bool BorderBeforeTransform { get; set; }
+    public bool BorderAfterTransform{ get; set; }
+
 }

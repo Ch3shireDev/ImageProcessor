@@ -6,16 +6,71 @@ namespace ImageProcessorLibrary.Services;
 
 public class OpenCvService
 {
-    public IImageData Filter(IImageData imageData, double[,] kernel, BorderTypes borderType = BorderTypes.Default, int numberOfBorderPixels = 1)
+    public IImageData Filter(IImageData imageData, double[,] kernel, BorderTypes borderType = BorderTypes.Default, int numberOfBorderPixels = 0, int valueN=0, bool fillBeforeTransform = true,
+        bool fillAfterTransform = false)
     {
         var inputArray = ToInputArray(imageData);
-        var inputArray2 = new Mat(imageData.Height, imageData.Width, MatType.CV_8UC3);
-        Cv2.CopyMakeBorder(inputArray, inputArray2, numberOfBorderPixels,numberOfBorderPixels,numberOfBorderPixels,numberOfBorderPixels, borderType, numberOfBorderPixels);
+
+        var width = imageData.Width;
+        var height = imageData.Height;
+
+        Mat inputArray2;
+
+        var scalar = new Scalar(valueN, valueN, valueN);
+
+        if (fillBeforeTransform)
+        {
+            width += numberOfBorderPixels * 2;
+            height += numberOfBorderPixels * 2;
+
+            inputArray2 = new Mat(height, width, MatType.CV_8UC3);
+            ;
+
+            Cv2.CopyMakeBorder(
+                inputArray,
+                inputArray2,
+                numberOfBorderPixels,
+                numberOfBorderPixels,
+                numberOfBorderPixels,
+                numberOfBorderPixels,
+                borderType,
+                scalar
+            );
+        }
+        else
+        {
+            inputArray2 = inputArray;
+        }
 
         var kernelArray = new Mat(kernel.GetLength(0), kernel.GetLength(1), MatType.CV_64F, kernel);
-        var outputArray = new Mat(imageData.Height, imageData.Width, MatType.CV_8UC3);
-        Cv2.Filter2D(inputArray, outputArray, MatType.CV_8UC3, kernelArray, borderType: borderType);
-        return ToImageData(outputArray, imageData.Width, imageData.Height);
+        var outputArray = new Mat(height, width, MatType.CV_8UC3);
+        Cv2.Filter2D(inputArray2, outputArray, MatType.CV_8UC3, kernelArray, borderType: borderType);
+
+        Mat outputArray2;
+
+        if (fillAfterTransform)
+        {
+            width += numberOfBorderPixels * 2;
+            height += numberOfBorderPixels * 2;
+            outputArray2 = new Mat(height, width, MatType.CV_8UC3);
+            
+            Cv2.CopyMakeBorder(
+                outputArray,
+                outputArray2,
+                numberOfBorderPixels,
+                numberOfBorderPixels,
+                numberOfBorderPixels,
+                numberOfBorderPixels,
+                borderType,
+                scalar
+            );
+        }
+        else
+        {
+            outputArray2 = outputArray;
+        }
+
+        return ToImageData(outputArray2, width, height);
     }
 
     public double[,] Normalize(double[,] kernel)

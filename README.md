@@ -86,11 +86,11 @@ Proszę dołączyć bibliotekę OpenCV i korzystać z niej przygotowując poszcz
     - [x] wyostrzania liniowego oparte na 3 maskach laplasjanowych (podanych w wykładzie) przestawionych użytkownikowi maski do wyboru,
     - [x] kierunkowej detekcji krawędzi w oparciu o maski 8 kierunkowych masek Sobela (podstawowe 8 kierunków) przestawionych użytkownikowi do wyboru,
 
-- [ ] Zaimplementować wybór sposobu uzupełnienie marginesów/brzegów w operacjach sąsiedztwa według zasady wybranej spośród następujących zasad:
-    - [ ] wypełnienie ramki wybraną wartością stałą `n` narzuconą przez użytkownika: `BORDER_CONSTANT`
-    - [ ] wypełnienie wyniku wybraną wartością stałą `n` narzuconą przez użytkownika
-    - [ ] wyliczenie ramki według `BORDER_REFLECT`
-    - [ ] wyliczenie ramki według `BORDER_WRAP`
+- [x] Zaimplementować wybór sposobu uzupełnienie marginesów/brzegów w operacjach sąsiedztwa według zasady wybranej spośród następujących zasad:
+    - [x] wypełnienie ramki wybraną wartością stałą `n` narzuconą przez użytkownika: `BORDER_CONSTANT`
+    - [x] wypełnienie wyniku wybraną wartością stałą `n` narzuconą przez użytkownika
+    - [x] wyliczenie ramki według `BORDER_REFLECT`
+    - [x] wyliczenie ramki według `BORDER_WRAP`
 
 - [ ] Opracowanie algorytmu i uruchomienie aplikacji realizującej uniwersalną operację medianową opartą na:
     - [ ] otoczeniu 3x3, 

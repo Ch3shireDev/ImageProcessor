@@ -94,17 +94,7 @@
                             <MenuItem Header="S" Command="{Binding EdgeSobelSouthCommand}" />
                             <MenuItem Header="SE" Command="{Binding EdgeSobelSouthEastCommand}" />
                         </MenuItem>
-                        <MenuItem Header="Uzupełnianie marginesów/brzegów">
-                            <MenuItem Header="Wypełnianie ramki BORDER CONSTANT"
-                                      Command="{Binding FillBorderConstantCommand}" />
-                            <MenuItem Header="Wypełnianie wyniku wybraną wartością stałą n"
-                                      Command="{Binding FillResultBorderConstantCommand}" />
-                            <MenuItem Header="Wyliczenie ramki według BORDER REFLECT"
-                                      Command="{Binding FillBorderReflectCommand}" />
-                            <MenuItem Header="Wyliczenie ramki według BORDER WRAP"
-                                      Command="{Binding FillBorderWrapCommand}" />
-                        </MenuItem>
-                        <MenuItem Header="Operacja medianowa">
+                            <MenuItem Header="Operacja medianowa">
                             <MenuItem Header="3x3" Command="{Binding CalculateMedian3x3Command}" />
                             <MenuItem Header="5x5" Command="{Binding CalculateMedian5x5Command}" />
                             <MenuItem Header="7x7" Command="{Binding CalculateMedian7x7Command}" />
