@@ -560,21 +560,17 @@ public class MainModel
     ///     Zastosować powyższych metod uzupełniania brzegowych pikselach obrazu, dając użytkownikowi możliwość wyboru, jak w
     ///     zadaniu 1.
     /// </summary>
-    public void CalculateMedian3x3()
+    public void CalculateMedian()
     {
+        var imageData = new ImageData(ImageData);
+        var viewModel = new UniversalMedianOperationViewModel(imageData, _imageServiceProvider.WindowService);
+        var window = new UniversalMedianOperationWindow
+        {
+            DataContext = viewModel
+        };
+        window.Show();
     }
 
-    public void CalculateMedian5x5()
-    {
-    }
-
-    public void CalculateMedian7x7()
-    {
-    }
-
-    public void CalculateMedian9x9()
-    {
-    }
 
     /// <summary>
     ///     - [ ] Implementacja detekcji krawędzi operatorami opartymi na maskach Sobela i Prewitta oraz operatorem Cannyego.
@@ -706,4 +702,5 @@ public class MainModel
     {
         BinaryThreshold();
     }
+
 }

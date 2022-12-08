@@ -24,7 +24,7 @@
 			<TextBox Text="{Binding BorderPixels}"></TextBox>
 		</StackPanel>
 		<StackPanel Grid.Row="2" Orientation="Horizontal">
-			<Label VerticalContentAlignment="Center" Margin="10,0">Wartość</Label>
+			<Label VerticalContentAlignment="Center" Margin="10,0">Wartość pikseli w ramce</Label>
 			<TextBox Text="{Binding ValueN}"></TextBox>
 		</StackPanel>
 		<CheckBox Grid.Row="3" Content="Wypełnij ramkę przed transformacją" IsChecked="{Binding BorderBeforeTransform}" Margin="10,0"/>

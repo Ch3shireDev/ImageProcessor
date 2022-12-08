@@ -97,10 +97,7 @@ public class MainWindowViewModel : ReactiveObject
     public ICommand EdgeSobelSouthWestCommand => ReactiveCommand.Create(() => MainModel?.EdgeSobelSouthWest());
     public ICommand EdgeSobelSouthCommand => ReactiveCommand.Create(() => MainModel?.EdgeSobelSouth());
     public ICommand EdgeSobelSouthEastCommand => ReactiveCommand.Create(() => MainModel?.EdgeSobelSouthEast());
-    public ICommand CalculateMedian3x3Command => ReactiveCommand.Create(() => MainModel?.CalculateMedian3x3());
-    public ICommand CalculateMedian5x5Command => ReactiveCommand.Create(() => MainModel?.CalculateMedian5x5());
-    public ICommand CalculateMedian7x7Command => ReactiveCommand.Create(() => MainModel?.CalculateMedian7x7());
-    public ICommand CalculateMedian9x9Command => ReactiveCommand.Create(() => MainModel?.CalculateMedian9x9());
+    public ICommand CalculateMedianCommand => ReactiveCommand.Create(() => MainModel?.CalculateMedian());
     public ICommand SobelEdgeDetectionCommand => ReactiveCommand.Create(() => MainModel?.SobelEdgeDetection());
     public ICommand PrewittEdgeDetectionCommand => ReactiveCommand.Create(() => MainModel?.PrewittEdgeDetection());
     public ICommand CannyOperatorEdgeDetectionCommand => ReactiveCommand.Create(() => MainModel?.CannyOperatorEdgeDetection());

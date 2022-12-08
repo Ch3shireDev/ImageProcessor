@@ -6,71 +6,39 @@ namespace ImageProcessorLibrary.Services;
 
 public class OpenCvService
 {
-    public IImageData Filter(IImageData imageData, double[,] kernel, BorderTypes borderType = BorderTypes.Default, int numberOfBorderPixels = 0, int valueN=0, bool fillBeforeTransform = true,
-        bool fillAfterTransform = false)
+    public Mat Filter(Mat inputArray, Mat kernelArray, BorderTypes borderType)
     {
-        var inputArray = ToInputArray(imageData);
+        var outputArray = new Mat(inputArray.Rows, inputArray.Cols, MatType.CV_8UC3);
+        Cv2.Filter2D(inputArray, outputArray, MatType.CV_8UC3, kernelArray, borderType: borderType);
+        return outputArray;
+    }
 
-        var width = imageData.Width;
-        var height = imageData.Height;
+    public Mat AddBorder(Mat inputArray, BorderTypes borderType, int numberOfBorderPixels, Scalar scalar)
+    {
+        if (numberOfBorderPixels == 0) return inputArray;
 
-        Mat inputArray2;
+        var rows = inputArray.Rows + numberOfBorderPixels * 2;
+        var cols = inputArray.Cols + numberOfBorderPixels * 2;
 
-        var scalar = new Scalar(valueN, valueN, valueN);
+        var outputArray = new Mat(rows, cols, MatType.CV_8UC3);
 
-        if (fillBeforeTransform)
-        {
-            width += numberOfBorderPixels * 2;
-            height += numberOfBorderPixels * 2;
+        Cv2.CopyMakeBorder(
+            inputArray,
+            outputArray,
+            numberOfBorderPixels,
+            numberOfBorderPixels,
+            numberOfBorderPixels,
+            numberOfBorderPixels,
+            borderType,
+            scalar
+        );
 
-            inputArray2 = new Mat(height, width, MatType.CV_8UC3);
-            ;
+        return outputArray;
+    }
 
-            Cv2.CopyMakeBorder(
-                inputArray,
-                inputArray2,
-                numberOfBorderPixels,
-                numberOfBorderPixels,
-                numberOfBorderPixels,
-                numberOfBorderPixels,
-                borderType,
-                scalar
-            );
-        }
-        else
-        {
-            inputArray2 = inputArray;
-        }
-
-        var kernelArray = new Mat(kernel.GetLength(0), kernel.GetLength(1), MatType.CV_64F, kernel);
-        var outputArray = new Mat(height, width, MatType.CV_8UC3);
-        Cv2.Filter2D(inputArray2, outputArray, MatType.CV_8UC3, kernelArray, borderType: borderType);
-
-        Mat outputArray2;
-
-        if (fillAfterTransform)
-        {
-            width += numberOfBorderPixels * 2;
-            height += numberOfBorderPixels * 2;
-            outputArray2 = new Mat(height, width, MatType.CV_8UC3);
-            
-            Cv2.CopyMakeBorder(
-                outputArray,
-                outputArray2,
-                numberOfBorderPixels,
-                numberOfBorderPixels,
-                numberOfBorderPixels,
-                numberOfBorderPixels,
-                borderType,
-                scalar
-            );
-        }
-        else
-        {
-            outputArray2 = outputArray;
-        }
-
-        return ToImageData(outputArray2, width, height);
+    public Mat GetKernel(double[,] kernel)
+    {
+        return new Mat(kernel.GetLength(0), kernel.GetLength(1), MatType.CV_64F, kernel);
     }
 
     public double[,] Normalize(double[,] kernel)
@@ -81,20 +49,18 @@ public class OpenCvService
         return result;
     }
 
-    public IImageData MedianBlur(IImageData imageData, int medianBoxSize)
+    public Mat MedianBlur(Mat inputArray, int medianBoxSize)
     {
-        var inputArray = ToInputArray(imageData);
-
-        var width = imageData.Width;
-        var height = imageData.Height;
+        var height = inputArray.Rows;
+        var width = inputArray.Cols;
         var outputArray = new Mat(height, width, MatType.CV_8UC3);
         Cv2.MedianBlur(inputArray, outputArray, medianBoxSize);
-        return ToImageData(outputArray, width, height);
+        return outputArray;
     }
 
-    private static Mat ToInputArray(IImageData imageData)
+    public Mat ToInputArray(IImageData imageData)
     {
-        var mat = new Mat(imageData.Width, imageData.Height, MatType.CV_8UC3);
+        var mat = new Mat(imageData.Height, imageData.Width, MatType.CV_8UC3);
 
         for (var x = 0; x < imageData.Width; x++)
         {
@@ -108,9 +74,10 @@ public class OpenCvService
         return mat;
     }
 
-    private static ImageData ToImageData(OutputArray outputArray, int width, int height)
+    public IImageData ToImageData(Mat outputMat)
     {
-        var outputMat = outputArray.GetMat();
+        var width = outputMat.Cols;
+        var height = outputMat.Rows;
 
         var result = new ImageData(width, height);
 
@@ -119,11 +86,7 @@ public class OpenCvService
             for (var y = 0; y < height; y++)
             {
                 var pixel = outputMat.Get<Vec3b>(x, y);
-
-                if (pixel.Item1 != 0)
-                {
-                }
-
+                
                 result.SetPixel(x, y, Color.FromArgb(pixel.Item0, pixel.Item1, pixel.Item2));
             }
         }

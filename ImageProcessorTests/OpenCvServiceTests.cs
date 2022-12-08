@@ -29,7 +29,8 @@ public class OpenCvServiceTests
         Assert.AreEqual(3, imageData.Width);
         Assert.AreEqual(4, imageData.Height);
 
-        var result = openCvService?.MedianBlur(imageData, 3);
+        var inputArray = openCvService.ToInputArray(imageData);
+        var result = openCvService?.MedianBlur(inputArray, 3);
 
         Assert.AreEqual(3, result.Width);
         Assert.AreEqual(4, result.Height);
@@ -45,7 +46,9 @@ public class OpenCvServiceTests
             { 127, 127, 127 }
         });
 
-        var result = openCvService?.MedianBlur(imageData, 3);
+        var imageArray = openCvService.ToInputArray(imageData);
+        var result2 = openCvService?.MedianBlur(imageArray, 3);
+        var result = openCvService.ToImageData(result2);
 
         for (var x = 0; x < 3; x++)
         {
@@ -68,7 +71,9 @@ public class OpenCvServiceTests
             { 220, 200, 220 }
         });
 
-        var result = openCvService?.MedianBlur(imageData, 3);
+        var imageArray = openCvService.ToInputArray(imageData);
+        var result2 = openCvService?.MedianBlur(imageArray, 3);
+        var result = openCvService.ToImageData(result2);
 
         for (var x = 0; x < 3; x++)
         {
@@ -98,7 +103,32 @@ public class OpenCvServiceTests
             { 0, 0, 0 }
         };
 
-        var result = openCvService?.Filter(imageData, kernel);
+        var kernel2 = openCvService.GetKernel(kernel);
+        var inputArray = openCvService.ToInputArray(imageData);
+        var tempQualifier = openCvService;
+        IImageData ret = null;
+
+        if (tempQualifier != null)
+        {
+            var inputArray1 = inputArray;
+            var scalar = new Scalar(0, 0, 0);
+
+            if (true)
+            {
+                inputArray1 = tempQualifier.AddBorder(inputArray1, BorderTypes.Reflect101, 0, scalar);
+            }
+
+            var outputArray = tempQualifier.Filter(inputArray1, kernel2, BorderTypes.Reflect101);
+
+            if (false)
+            {
+                outputArray = tempQualifier.AddBorder(outputArray, BorderTypes.Reflect101, 0, scalar);
+            }
+
+            ret = tempQualifier.ToImageData(outputArray);
+        }
+
+        var result = ret;
 
         Assert.AreEqual(0, result.GetPixelRgb(0, 0).R);
         Assert.AreEqual(255, result.GetPixelRgb(1, 0).R);
@@ -130,7 +160,23 @@ public class OpenCvServiceTests
             { .1, .1, .1 }
         };
 
-        var result = openCvService?.Filter(imageData, kernel);
+        var kernel2 = openCvService.GetKernel(kernel);
+        var inputArray = openCvService.ToInputArray(imageData);
+        var tempQualifier = openCvService;
+        IImageData ret = null;
+
+        if (tempQualifier != null)
+        {
+            var inputArray1 = inputArray;
+            var scalar = new Scalar(0, 0, 0);
+            inputArray1 = tempQualifier.AddBorder(inputArray1, BorderTypes.Reflect101, 0, scalar);
+            var outputArray = tempQualifier.Filter(inputArray1, kernel2, BorderTypes.Reflect101);
+
+
+            ret = tempQualifier.ToImageData(outputArray);
+        }
+
+        var result = ret;
 
         Assert.AreEqual(140, result.GetPixelRgb(0, 0).R);
         Assert.AreEqual(120, result.GetPixelRgb(1, 0).R);
@@ -162,7 +208,32 @@ public class OpenCvServiceTests
             { 0, 0, 0 }
         };
 
-        var result = openCvService?.Filter(imageData, kernel, BorderTypes.Constant, 1);
+        var kernel2 = openCvService.GetKernel(kernel);
+        var inputArray = openCvService.ToInputArray(imageData);
+        var tempQualifier = openCvService;
+        IImageData ret = null;
+
+        if (tempQualifier != null)
+        {
+            var inputArray1 = inputArray;
+            var scalar = new Scalar(0, 0, 0);
+
+            if (true)
+            {
+                inputArray1 = tempQualifier.AddBorder(inputArray1, BorderTypes.Constant, 1, scalar);
+            }
+
+            var outputArray = tempQualifier.Filter(inputArray1, kernel2, BorderTypes.Constant);
+
+            if (false)
+            {
+                outputArray = tempQualifier.AddBorder(outputArray, BorderTypes.Constant, 1, scalar);
+            }
+
+            ret = tempQualifier.ToImageData(outputArray);
+        }
+
+        var result = ret;
 
         Assert.AreEqual(5, result.Width);
         Assert.AreEqual(5, result.Height);
@@ -196,5 +267,154 @@ public class OpenCvServiceTests
         Assert.AreEqual(0, result.GetPixelRgb(2, 4).R);
         Assert.AreEqual(0, result.GetPixelRgb(3, 4).R);
         Assert.AreEqual(0, result.GetPixelRgb(4, 4).R);
+    }
+
+    [TestMethod]
+    public void FillBeforeTransform()
+    {
+        var imageData = new ImageData(new byte[,]
+        {
+            { 9, 9, 9 },
+            { 9, 9, 9 },
+            { 9, 9, 9 }
+        });
+
+        var kernel = new double[,]
+        {
+            { 0, 0, 0 },
+            { 0, 2, 0 },
+            { 0, 0, 0 }
+        };
+
+
+        var kernel2 = openCvService.GetKernel(kernel);
+        var inputArray = openCvService.ToInputArray(imageData);
+        var tempQualifier = openCvService;
+        IImageData ret = null;
+
+        if (tempQualifier != null)
+        {
+            var inputArray1 = inputArray;
+            var scalar = new Scalar(20, 20, 20);
+
+            if (true)
+            {
+                inputArray1 = tempQualifier.AddBorder(inputArray1, BorderTypes.Constant, 1, scalar);
+            }
+
+            var outputArray = tempQualifier.Filter(inputArray1, kernel2, BorderTypes.Constant);
+
+            if (false)
+            {
+                outputArray = tempQualifier.AddBorder(outputArray, BorderTypes.Constant, 1, scalar);
+            }
+
+            ret = tempQualifier.ToImageData(outputArray);
+        }
+
+        var result = ret;
+
+        Assert.AreEqual(5, result.Width);
+        Assert.AreEqual(5, result.Height);
+
+        Assert.AreEqual(40, result.GetPixelRgb(0, 0).R);
+        Assert.AreEqual(40, result.GetPixelRgb(1, 0).R);
+        Assert.AreEqual(40, result.GetPixelRgb(2, 0).R);
+        Assert.AreEqual(40, result.GetPixelRgb(3, 0).R);
+        Assert.AreEqual(40, result.GetPixelRgb(4, 0).R);
+
+        Assert.AreEqual(40, result.GetPixelRgb(0, 1).R);
+        Assert.AreEqual(18, result.GetPixelRgb(1, 1).R);
+        Assert.AreEqual(18, result.GetPixelRgb(2, 1).R);
+        Assert.AreEqual(18, result.GetPixelRgb(3, 1).R);
+        Assert.AreEqual(40, result.GetPixelRgb(4, 1).R);
+
+        Assert.AreEqual(40, result.GetPixelRgb(0, 2).R);
+        Assert.AreEqual(18, result.GetPixelRgb(1, 2).R);
+        Assert.AreEqual(18, result.GetPixelRgb(2, 2).R);
+        Assert.AreEqual(18, result.GetPixelRgb(3, 2).R);
+        Assert.AreEqual(40, result.GetPixelRgb(4, 2).R);
+
+        Assert.AreEqual(40, result.GetPixelRgb(0, 3).R);
+        Assert.AreEqual(18, result.GetPixelRgb(1, 3).R);
+        Assert.AreEqual(18, result.GetPixelRgb(2, 3).R);
+        Assert.AreEqual(18, result.GetPixelRgb(3, 3).R);
+        Assert.AreEqual(40, result.GetPixelRgb(4, 3).R);
+
+        Assert.AreEqual(40, result.GetPixelRgb(0, 4).R);
+        Assert.AreEqual(40, result.GetPixelRgb(1, 4).R);
+        Assert.AreEqual(40, result.GetPixelRgb(2, 4).R);
+        Assert.AreEqual(40, result.GetPixelRgb(3, 4).R);
+        Assert.AreEqual(40, result.GetPixelRgb(4, 4).R);
+    }
+
+    [TestMethod]
+    public void FillAfterTransform()
+    {
+        var imageData = new ImageData(new byte[,]
+        {
+            { 9, 9, 9 },
+            { 9, 9, 9 },
+            { 9, 9, 9 }
+        });
+
+        var kernel = new double[,]
+        {
+            { 0, 0, 0 },
+            { 0, 2, 0 },
+            { 0, 0, 0 }
+        };
+
+
+        var kernel2 = openCvService.GetKernel(kernel);
+        var inputArray = openCvService.ToInputArray(imageData);
+        var tempQualifier = openCvService;
+        IImageData ret = null;
+
+        if (tempQualifier != null)
+        {
+            var inputArray1 = inputArray;
+            var scalar = new Scalar(20, 20, 20);
+
+
+            var outputArray = tempQualifier.Filter(inputArray1, kernel2, BorderTypes.Constant);
+            outputArray = tempQualifier.AddBorder(outputArray, BorderTypes.Constant, 1, scalar);
+            ret = tempQualifier.ToImageData(outputArray);
+        }
+
+        var result = ret;
+
+        Assert.AreEqual(5, result.Width);
+        Assert.AreEqual(5, result.Height);
+
+        Assert.AreEqual(20, result.GetPixelRgb(0, 0).R);
+        Assert.AreEqual(20, result.GetPixelRgb(1, 0).R);
+        Assert.AreEqual(20, result.GetPixelRgb(2, 0).R);
+        Assert.AreEqual(20, result.GetPixelRgb(3, 0).R);
+        Assert.AreEqual(20, result.GetPixelRgb(4, 0).R);
+
+        Assert.AreEqual(20, result.GetPixelRgb(0, 1).R);
+        Assert.AreEqual(18, result.GetPixelRgb(1, 1).R);
+        Assert.AreEqual(18, result.GetPixelRgb(2, 1).R);
+        Assert.AreEqual(18, result.GetPixelRgb(3, 1).R);
+        Assert.AreEqual(20, result.GetPixelRgb(4, 1).R);
+
+        Assert.AreEqual(20, result.GetPixelRgb(0, 2).R);
+        Assert.AreEqual(18, result.GetPixelRgb(1, 2).R);
+        Assert.AreEqual(18, result.GetPixelRgb(2, 2).R);
+        Assert.AreEqual(18, result.GetPixelRgb(3, 2).R);
+        Assert.AreEqual(20, result.GetPixelRgb(4, 2).R);
+
+        Assert.AreEqual(20, result.GetPixelRgb(0, 3).R);
+        Assert.AreEqual(18, result.GetPixelRgb(1, 3).R);
+        Assert.AreEqual(18, result.GetPixelRgb(2, 3).R);
+        Assert.AreEqual(18, result.GetPixelRgb(3, 3).R);
+        Assert.AreEqual(20, result.GetPixelRgb(4, 3).R);
+
+        Assert.AreEqual(20, result.GetPixelRgb(0, 4).R);
+        Assert.AreEqual(20, result.GetPixelRgb(1, 4).R);
+        Assert.AreEqual(20, result.GetPixelRgb(2, 4).R);
+        Assert.AreEqual(20, result.GetPixelRgb(3, 4).R);
+        Assert.AreEqual(20, result.GetPixelRgb(4, 4).R);
     }
 }

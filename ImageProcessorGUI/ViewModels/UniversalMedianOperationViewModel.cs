@@ -7,27 +7,25 @@ using ReactiveUI;
 
 namespace ImageProcessorGUI.ViewModels;
 
-public class FilterBorderViewModel : ReactiveObject
+public class UniversalMedianOperationViewModel : ReactiveObject
 {
     private readonly IWindowService _windowService;
-    private readonly IImageData ImageData;
-
-    private readonly OpenCvService openCvService = new();
 
     private string errorMessage;
 
-    public FilterBorderViewModel(IImageData imageData, IWindowService windowService, double[,] kernel, string title = "Filtr")
+    private readonly OpenCvService openCvService = new();
+
+    public UniversalMedianOperationViewModel(IImageData imageData, IWindowService windowService, string title = "Uniwersalna operacja medianowa")
     {
-        Kernel = kernel;
-        Title = title;
-        ImageData = imageData;
         _windowService = windowService;
-        Kernel = openCvService.Normalize(kernel);
+        ImageData = imageData;
+        Title = title;
     }
+
+    private IImageData ImageData { get; }
 
 
     public string Title { get; set; }
-    private double[,] Kernel { get; }
 
     public List<BorderTypes> BorderTypesList { get; set; } = new()
     {
@@ -55,29 +53,16 @@ public class FilterBorderViewModel : ReactiveObject
     public bool BorderBeforeTransform { get; set; }
     public bool BorderAfterTransform { get; set; }
 
-    public void Show()
+    public List<MedianBlurType> MedianBlurTypes { get; set; } = new()
     {
-        try
-        {
-            ErrorMessage = "";
-            var inputArray = openCvService.ToInputArray(ImageData);
-            if (BorderBeforeTransform) inputArray = AddBorder(inputArray);
-            var outputArray = openCvService.Filter(inputArray, GetKernel(), SelectedBorderType);
-            if (BorderAfterTransform) outputArray = AddBorder(outputArray);
-            var result = openCvService.ToImageData(outputArray);
-            _windowService.ShowImageWindow(result);
-        }
-        catch (Exception e)
-        {
-            ErrorMessage = $"Operacja niedozwolona. Informacja o błędzie: {e.Message}";
-        }
-    }
+        MedianBlurType.MEDIAN_BLUR_3X3,
+        MedianBlurType.MEDIAN_BLUR_5X5,
+        MedianBlurType.MEDIAN_BLUR_7X7,
+        MedianBlurType.MEDIAN_BLUR_9X9
+    };
 
-    private Mat GetKernel()
-    {
-        var kernel = openCvService.GetKernel(Kernel);
-        return kernel;
-    }
+    public MedianBlurType SelectedMedianBlurType { get; set; }
+
 
     private Mat AddBorder(Mat inputArray)
     {
@@ -88,4 +73,47 @@ public class FilterBorderViewModel : ReactiveObject
     {
         return new Scalar(ValueN, ValueN, ValueN);
     }
+
+    public void Show()
+    {
+        try
+        {
+            ErrorMessage = "";
+            var inputArray = openCvService.ToInputArray(ImageData);
+            if (BorderBeforeTransform) inputArray = AddBorder(inputArray);
+            var outputArray = openCvService.MedianBlur(inputArray, GetMedianBoxSize());
+            if (BorderAfterTransform) outputArray = AddBorder(outputArray);
+            var result = openCvService.ToImageData(outputArray);
+            _windowService.ShowImageWindow(result);
+        }
+        catch (Exception e)
+        {
+            ErrorMessage = $"Operacja niedozwolona. Informacja o błędzie: {e.Message}";
+        }
+    }
+
+    public int GetMedianBoxSize()
+    {
+        switch (SelectedMedianBlurType)
+        {
+            case MedianBlurType.MEDIAN_BLUR_3X3:
+                return 3;
+            case MedianBlurType.MEDIAN_BLUR_5X5:
+                return 5;
+            case MedianBlurType.MEDIAN_BLUR_7X7:
+                return 7;
+            case MedianBlurType.MEDIAN_BLUR_9X9:
+                return 9;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
+}
+
+public enum MedianBlurType
+{
+    MEDIAN_BLUR_3X3,
+    MEDIAN_BLUR_5X5,
+    MEDIAN_BLUR_7X7,
+    MEDIAN_BLUR_9X9
 }

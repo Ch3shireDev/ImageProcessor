@@ -1,0 +1,44 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" Height="300" Width="400"
+        x:Class="ImageProcessorGUI.Views.UniversalMedianOperationWindow"
+        Title="{Binding Title}">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<Label Grid.Row="0" VerticalContentAlignment="Center" Margin="10,0">Jądro</Label>
+		<StackPanel Grid.Row="1" Orientation="Horizontal">
+			<Label Content="Otoczenie"/>
+			<ComboBox Items="{Binding MedianBlurTypes}" SelectedItem="{Binding SelectedMedianBlurType}"/>
+		</StackPanel>
+		<StackPanel Grid.Row="2" Orientation="Horizontal">
+			<Label VerticalContentAlignment="Center" Margin="10,0">Typ obramowania</Label>
+			<ComboBox Items="{Binding BorderTypesList}" SelectedItem="{Binding SelectedBorderType}"/>
+		</StackPanel>
+		<StackPanel Grid.Row="3" Orientation="Horizontal">
+			<Label VerticalContentAlignment="Center" Margin="10,0">N pikseli ramki</Label>
+			<TextBox Text="{Binding BorderPixels}"></TextBox>
+		</StackPanel>
+		<StackPanel Grid.Row="4" Orientation="Horizontal">
+			<Label VerticalContentAlignment="Center" Margin="10,0">Wartość pikseli w ramce</Label>
+			<TextBox Text="{Binding ValueN}"></TextBox>
+		</StackPanel>
+        <CheckBox Grid.Row="5" Content="Wypełnij ramkę przed transformacją" IsChecked="{Binding BorderBeforeTransform}" Margin="10,0"/>
+		<CheckBox Grid.Row="6" Content="Wypełnij ramkę po transformacji" IsChecked="{Binding BorderAfterTransform}" Margin="10,0"/>
+		<TextBlock Grid.Row="7" Text="{Binding ErrorMessage}" Foreground="Red" FontWeight="Bold" TextWrapping="Wrap"/>
+		<StackPanel Grid.Row="8">
+			<Button Command="{Binding ShowCommand}">Wyświetl</Button>
+		</StackPanel>
+	</Grid>
+</Window>

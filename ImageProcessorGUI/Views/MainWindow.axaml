@@ -71,9 +71,9 @@
                                   Command="{Binding GreyscaleThresholdTwoSlidersCommand}" />
                         <MenuItem Header="Dodaj obrazy / Uzyskaj różnicę obrazów" Command="{Binding AddImageCommand}" />
                         <MenuItem Header="Operacje matematyczne" Command="{Binding MathOperationCommand}" />
-						<MenuItem Header="Operacje logiczne"  Command="{Binding BinaryOperationCommand}"/>
+                        <MenuItem Header="Operacje logiczne" Command="{Binding BinaryOperationCommand}" />
                     </MenuItem>
-                        <MenuItem Header="_Przetwórz">
+                    <MenuItem Header="_Przetwórz">
                         <MenuItem Header="Wygładzanie liniowe">
                             <MenuItem Header="Uśrednianie bez wag" Command="{Binding MedianBlurWithoutWeightsCommand}" />
                             <MenuItem Header="Uśrednianie z wagami" Command="{Binding MedianBlurWithWeightsCommand}" />
@@ -94,12 +94,7 @@
                             <MenuItem Header="S" Command="{Binding EdgeSobelSouthCommand}" />
                             <MenuItem Header="SE" Command="{Binding EdgeSobelSouthEastCommand}" />
                         </MenuItem>
-                            <MenuItem Header="Operacja medianowa">
-                            <MenuItem Header="3x3" Command="{Binding CalculateMedian3x3Command}" />
-                            <MenuItem Header="5x5" Command="{Binding CalculateMedian5x5Command}" />
-                            <MenuItem Header="7x7" Command="{Binding CalculateMedian7x7Command}" />
-                            <MenuItem Header="9x9" Command="{Binding CalculateMedian9x9Command}" />
-                        </MenuItem>
+                        <MenuItem Header="Operacja medianowa" Command="{Binding CalculateMedianCommand}" />
                         <MenuItem Header="Detekcja krawędzi">
                             <MenuItem Header="Metoda Sobela" Command="{Binding SobelEdgeDetectionCommand}" />
                             <MenuItem Header="Metoda Prewitta" Command="{Binding PrewittEdgeDetectionCommand}" />
