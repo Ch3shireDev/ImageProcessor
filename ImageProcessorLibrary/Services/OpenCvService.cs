@@ -50,15 +50,15 @@ public class OpenCvService
     }
 
     public Mat MedianBlur(Mat inputArray, int medianBoxSize)
-    {
+    { 
         var height = inputArray.Rows;
         var width = inputArray.Cols;
         var outputArray = new Mat(height, width, MatType.CV_8UC3);
-        Cv2.MedianBlur(inputArray, outputArray, medianBoxSize);
+        Cv2.MedianBlur(inputArray, outputArray, medianBoxSize); 
         return outputArray;
     }
 
-    public Mat ToInputArray(IImageData imageData)
+    public Mat ToMatrix(IImageData imageData)
     {
         var mat = new Mat(imageData.Height, imageData.Width, MatType.CV_8UC3);
 
@@ -67,7 +67,7 @@ public class OpenCvService
             for (var y = 0; y < imageData.Height; y++)
             {
                 var pixel = imageData.GetPixelRgb(x, y);
-                mat.Set(x, y, new Vec3b(pixel.R, pixel.G, pixel.B));
+                mat.Set(y,x, new Vec3b(pixel.R, pixel.G, pixel.B));
             }
         }
 
@@ -85,7 +85,7 @@ public class OpenCvService
         {
             for (var y = 0; y < height; y++)
             {
-                var pixel = outputMat.Get<Vec3b>(x, y);
+                var pixel = outputMat.Get<Vec3b>(y,x);
                 
                 result.SetPixel(x, y, Color.FromArgb(pixel.Item0, pixel.Item1, pixel.Item2));
             }

@@ -340,7 +340,7 @@ public class MainModel
         Filter(kernel);
     }
 
-    private void Filter(double[,] kernel, string title="Filtr")
+    private void Filter(double[,] kernel, string title = "Filtr")
     {
         var imageData = new ImageData(ImageData);
         var viewModel = new FilterBorderViewModel(imageData, _imageServiceProvider.WindowService, kernel, title);
@@ -364,7 +364,6 @@ public class MainModel
 
         Filter(kernel);
     }
-
 
     /// <summary>
     ///     Proszę dołączyć bibliotekę OpenCV i korzystać z niej przygotowując poszczególne funkcjonalności.
@@ -439,7 +438,7 @@ public class MainModel
 
         Filter(kernel);
     }
-    
+
     public void EdgeSobelEast()
     {
         var kernel = new double[,]
@@ -563,11 +562,9 @@ public class MainModel
     public void CalculateMedian()
     {
         var imageData = new ImageData(ImageData);
-        var viewModel = new UniversalMedianOperationViewModel(imageData, _imageServiceProvider.WindowService);
-        var window = new UniversalMedianOperationWindow
-        {
-            DataContext = viewModel
-        };
+        var viewModel = new UniversalMedianOperationViewModel(imageData);
+        var window = new UniversalMedianOperationWindow { DataContext = viewModel };
+        _imageServiceProvider.WindowService.ShowImageWindow(imageData);
         window.Show();
     }
 
@@ -702,5 +699,4 @@ public class MainModel
     {
         BinaryThreshold();
     }
-
 }

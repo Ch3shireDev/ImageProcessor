@@ -60,7 +60,7 @@ public class FilterBorderViewModel : ReactiveObject
         try
         {
             ErrorMessage = "";
-            var inputArray = openCvService.ToInputArray(ImageData);
+            var inputArray = openCvService.ToMatrix(ImageData);
             if (BorderBeforeTransform) inputArray = AddBorder(inputArray);
             var outputArray = openCvService.Filter(inputArray, GetKernel(), SelectedBorderType);
             if (BorderAfterTransform) outputArray = AddBorder(outputArray);

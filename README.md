@@ -92,11 +92,11 @@ Proszę dołączyć bibliotekę OpenCV i korzystać z niej przygotowując poszcz
     - [x] wyliczenie ramki według `BORDER_REFLECT`
     - [x] wyliczenie ramki według `BORDER_WRAP`
 
-- [ ] Opracowanie algorytmu i uruchomienie aplikacji realizującej uniwersalną operację medianową opartą na:
-    - [ ] otoczeniu 3x3, 
-    - [ ] 5x5, 
-    - [ ] 7x7, 
-    - [ ] 9x9 
+- [x] Opracowanie algorytmu i uruchomienie aplikacji realizującej uniwersalną operację medianową opartą na:
+    - [x] otoczeniu 3x3, 
+    - [x] 5x5, 
+    - [x] 7x7, 
+    - [x] 9x9 
  zadawanym w sposób interaktywny: wybór z list, przesuwanie baru lub wpisanie w przygotowane pole). 
  
 Zastosować powyższych metod uzupełniania brzegowych pikselach obrazu, dając użytkownikowi możliwość wyboru, jak w zadaniu 1.

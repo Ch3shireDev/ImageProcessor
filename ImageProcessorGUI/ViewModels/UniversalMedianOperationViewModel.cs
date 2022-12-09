@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Input;
+using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.Services;
 using OpenCvSharp;
 using ReactiveUI;
@@ -9,18 +10,18 @@ namespace ImageProcessorGUI.ViewModels;
 
 public class UniversalMedianOperationViewModel : ReactiveObject
 {
-    private readonly IWindowService _windowService;
+    private readonly OpenCvService openCvService = new();
 
     private string errorMessage;
 
-    private readonly OpenCvService openCvService = new();
-
-    public UniversalMedianOperationViewModel(IImageData imageData, IWindowService windowService, string title = "Uniwersalna operacja medianowa")
+    public UniversalMedianOperationViewModel(IImageData imageData, string title = "Uniwersalna operacja medianowa")
     {
-        _windowService = windowService;
         ImageData = imageData;
+        OriginalImageData = new ImageData(imageData);
         Title = title;
     }
+
+    public ImageData OriginalImageData { get; set; }
 
     private IImageData ImageData { get; }
 
@@ -79,12 +80,12 @@ public class UniversalMedianOperationViewModel : ReactiveObject
         try
         {
             ErrorMessage = "";
-            var inputArray = openCvService.ToInputArray(ImageData);
+            var inputArray = openCvService.ToMatrix(OriginalImageData);
             if (BorderBeforeTransform) inputArray = AddBorder(inputArray);
             var outputArray = openCvService.MedianBlur(inputArray, GetMedianBoxSize());
             if (BorderAfterTransform) outputArray = AddBorder(outputArray);
             var result = openCvService.ToImageData(outputArray);
-            _windowService.ShowImageWindow(result);
+            ImageData.Update(result);
         }
         catch (Exception e)
         {

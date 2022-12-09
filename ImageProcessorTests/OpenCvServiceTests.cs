@@ -29,7 +29,7 @@ public class OpenCvServiceTests
         Assert.AreEqual(3, imageData.Width);
         Assert.AreEqual(4, imageData.Height);
 
-        var inputArray = openCvService.ToInputArray(imageData);
+        var inputArray = openCvService.ToMatrix(imageData);
         var result = openCvService?.MedianBlur(inputArray, 3);
 
         Assert.AreEqual(3, result.Width);
@@ -46,8 +46,8 @@ public class OpenCvServiceTests
             { 127, 127, 127 }
         });
 
-        var imageArray = openCvService.ToInputArray(imageData);
-        imageArray= openCvService?.MedianBlur(imageArray, 3);
+        var imageArray = openCvService.ToMatrix(imageData);
+        imageArray = openCvService?.MedianBlur(imageArray, 3);
         var result = openCvService.ToImageData(imageArray);
 
         for (var x = 0; x < 3; x++)
@@ -71,7 +71,7 @@ public class OpenCvServiceTests
             { 220, 200, 220 }
         });
 
-        var imageArray = openCvService.ToInputArray(imageData);
+        var imageArray = openCvService.ToMatrix(imageData);
         var result2 = openCvService?.MedianBlur(imageArray, 3);
         var result = openCvService.ToImageData(result2);
 
@@ -104,12 +104,12 @@ public class OpenCvServiceTests
         };
 
         var kernel2 = openCvService.GetKernel(kernel);
-        
+
         var tempQualifier = openCvService;
 
         var scalar = new Scalar(0, 0, 0);
 
-        var inputArray = openCvService.ToInputArray(imageData);
+        var inputArray = openCvService.ToMatrix(imageData);
         inputArray = tempQualifier.AddBorder(inputArray, BorderTypes.Reflect101, 0, scalar);
         var outputArray = tempQualifier.Filter(inputArray, kernel2, BorderTypes.Reflect101);
         var result = tempQualifier.ToImageData(outputArray);
@@ -145,7 +145,7 @@ public class OpenCvServiceTests
         };
 
         var kernel2 = openCvService.GetKernel(kernel);
-        var inputArray = openCvService.ToInputArray(imageData);
+        var inputArray = openCvService.ToMatrix(imageData);
 
         var scalar = new Scalar(0, 0, 0);
         inputArray = openCvService.AddBorder(inputArray, BorderTypes.Reflect101, 0, scalar);
@@ -187,7 +187,7 @@ public class OpenCvServiceTests
         };
 
         var kernel2 = openCvService.GetKernel(kernel);
-        var inputArray = openCvService.ToInputArray(imageData);
+        var inputArray = openCvService.ToMatrix(imageData);
 
         var scalar = new Scalar(0, 0, 0);
         inputArray = openCvService.AddBorder(inputArray, BorderTypes.Constant, 1, scalar);
@@ -248,7 +248,7 @@ public class OpenCvServiceTests
 
         var kernel2 = openCvService.GetKernel(kernel);
 
-        var inputArray = openCvService.ToInputArray(imageData);
+        var inputArray = openCvService.ToMatrix(imageData);
         var scalar = new Scalar(20, 20, 20);
 
 
@@ -310,7 +310,7 @@ public class OpenCvServiceTests
 
 
         var kernel2 = openCvService.GetKernel(kernel);
-        var inputArray = openCvService.ToInputArray(imageData);
+        var inputArray = openCvService.ToMatrix(imageData);
 
         var scalar = new Scalar(20, 20, 20);
 
@@ -350,5 +350,42 @@ public class OpenCvServiceTests
         Assert.AreEqual(20, result.GetPixelRgb(2, 4).R);
         Assert.AreEqual(20, result.GetPixelRgb(3, 4).R);
         Assert.AreEqual(20, result.GetPixelRgb(4, 4).R);
+    }
+
+    [TestMethod]
+    public void RectangleShapeTest()
+    {
+        var inputImage = new ImageData(new byte[,]
+        {
+            { 255, 255, 255, 255, 255, 255, 255, 255 },
+            { 255, 255, 255, 255, 255, 255, 255, 255 },
+            { 255, 255, 255, 255, 255, 255, 255, 255 },
+            { 255, 255, 255, 255, 255, 255, 255, 255 },
+            { 255, 255, 255, 255, 255, 255, 255, 255 },
+            { 255, 255, 255, 100, 255, 255, 255, 255 },
+            { 255, 255, 255, 255, 255, 255, 255, 255 },
+            { 255, 255, 255, 255, 255, 255, 255, 255 },
+            { 255, 255, 255, 255, 255, 255, 255, 255 },
+            { 255, 255, 255, 255, 255, 255, 255, 255 },
+            { 100, 100, 100, 100, 100, 100, 100, 100 },
+            { 100, 100, 100, 100, 100, 100, 100, 100 },
+            { 100, 100, 100, 100, 100, 100, 100, 100 },
+            { 100, 100, 100, 100, 100, 100, 100, 100 },
+            { 100, 100, 100, 100, 100, 100, 100, 100 },
+            { 100, 100, 100, 100, 100, 100, 100, 100 }
+        });
+
+        var mat = openCvService.ToMatrix(inputImage);
+        var resultMat = openCvService.MedianBlur(mat, 3);
+        var outputImage = openCvService.ToImageData(resultMat);
+
+        for (var x = 0; x < outputImage.Width; x++)
+        {
+            for (var y = 0; y < outputImage.Height; y++)
+            {
+                var pixel = outputImage.GetPixelRgb(x, y);
+                Assert.AreEqual(y < 10 ? 255 : 100, pixel.R);
+            }
+        }
     }
 }
