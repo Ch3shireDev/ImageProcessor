@@ -47,8 +47,8 @@ public class OpenCvServiceTests
         });
 
         var imageArray = openCvService.ToInputArray(imageData);
-        var result2 = openCvService?.MedianBlur(imageArray, 3);
-        var result = openCvService.ToImageData(result2);
+        imageArray= openCvService?.MedianBlur(imageArray, 3);
+        var result = openCvService.ToImageData(imageArray);
 
         for (var x = 0; x < 3; x++)
         {
@@ -104,31 +104,15 @@ public class OpenCvServiceTests
         };
 
         var kernel2 = openCvService.GetKernel(kernel);
-        var inputArray = openCvService.ToInputArray(imageData);
+        
         var tempQualifier = openCvService;
-        IImageData ret = null;
 
-        if (tempQualifier != null)
-        {
-            var inputArray1 = inputArray;
-            var scalar = new Scalar(0, 0, 0);
+        var scalar = new Scalar(0, 0, 0);
 
-            if (true)
-            {
-                inputArray1 = tempQualifier.AddBorder(inputArray1, BorderTypes.Reflect101, 0, scalar);
-            }
-
-            var outputArray = tempQualifier.Filter(inputArray1, kernel2, BorderTypes.Reflect101);
-
-            if (false)
-            {
-                outputArray = tempQualifier.AddBorder(outputArray, BorderTypes.Reflect101, 0, scalar);
-            }
-
-            ret = tempQualifier.ToImageData(outputArray);
-        }
-
-        var result = ret;
+        var inputArray = openCvService.ToInputArray(imageData);
+        inputArray = tempQualifier.AddBorder(inputArray, BorderTypes.Reflect101, 0, scalar);
+        var outputArray = tempQualifier.Filter(inputArray, kernel2, BorderTypes.Reflect101);
+        var result = tempQualifier.ToImageData(outputArray);
 
         Assert.AreEqual(0, result.GetPixelRgb(0, 0).R);
         Assert.AreEqual(255, result.GetPixelRgb(1, 0).R);
@@ -162,19 +146,13 @@ public class OpenCvServiceTests
 
         var kernel2 = openCvService.GetKernel(kernel);
         var inputArray = openCvService.ToInputArray(imageData);
-        var tempQualifier = openCvService;
-        IImageData ret = null;
 
-        if (tempQualifier != null)
-        {
-            var inputArray1 = inputArray;
-            var scalar = new Scalar(0, 0, 0);
-            inputArray1 = tempQualifier.AddBorder(inputArray1, BorderTypes.Reflect101, 0, scalar);
-            var outputArray = tempQualifier.Filter(inputArray1, kernel2, BorderTypes.Reflect101);
+        var scalar = new Scalar(0, 0, 0);
+        inputArray = openCvService.AddBorder(inputArray, BorderTypes.Reflect101, 0, scalar);
+        var outputArray = openCvService.Filter(inputArray, kernel2, BorderTypes.Reflect101);
 
+        var ret = openCvService.ToImageData(outputArray);
 
-            ret = tempQualifier.ToImageData(outputArray);
-        }
 
         var result = ret;
 
@@ -210,30 +188,11 @@ public class OpenCvServiceTests
 
         var kernel2 = openCvService.GetKernel(kernel);
         var inputArray = openCvService.ToInputArray(imageData);
-        var tempQualifier = openCvService;
-        IImageData ret = null;
 
-        if (tempQualifier != null)
-        {
-            var inputArray1 = inputArray;
-            var scalar = new Scalar(0, 0, 0);
-
-            if (true)
-            {
-                inputArray1 = tempQualifier.AddBorder(inputArray1, BorderTypes.Constant, 1, scalar);
-            }
-
-            var outputArray = tempQualifier.Filter(inputArray1, kernel2, BorderTypes.Constant);
-
-            if (false)
-            {
-                outputArray = tempQualifier.AddBorder(outputArray, BorderTypes.Constant, 1, scalar);
-            }
-
-            ret = tempQualifier.ToImageData(outputArray);
-        }
-
-        var result = ret;
+        var scalar = new Scalar(0, 0, 0);
+        inputArray = openCvService.AddBorder(inputArray, BorderTypes.Constant, 1, scalar);
+        var outputArray = openCvService.Filter(inputArray, kernel2, BorderTypes.Constant);
+        var result = openCvService.ToImageData(outputArray);
 
         Assert.AreEqual(5, result.Width);
         Assert.AreEqual(5, result.Height);
@@ -288,31 +247,15 @@ public class OpenCvServiceTests
 
 
         var kernel2 = openCvService.GetKernel(kernel);
+
         var inputArray = openCvService.ToInputArray(imageData);
-        var tempQualifier = openCvService;
-        IImageData ret = null;
+        var scalar = new Scalar(20, 20, 20);
 
-        if (tempQualifier != null)
-        {
-            var inputArray1 = inputArray;
-            var scalar = new Scalar(20, 20, 20);
 
-            if (true)
-            {
-                inputArray1 = tempQualifier.AddBorder(inputArray1, BorderTypes.Constant, 1, scalar);
-            }
+        var outputArray = openCvService.Filter(openCvService.AddBorder(inputArray, BorderTypes.Constant, 1, scalar), kernel2, BorderTypes.Constant);
 
-            var outputArray = tempQualifier.Filter(inputArray1, kernel2, BorderTypes.Constant);
 
-            if (false)
-            {
-                outputArray = tempQualifier.AddBorder(outputArray, BorderTypes.Constant, 1, scalar);
-            }
-
-            ret = tempQualifier.ToImageData(outputArray);
-        }
-
-        var result = ret;
+        var result = openCvService.ToImageData(outputArray);
 
         Assert.AreEqual(5, result.Width);
         Assert.AreEqual(5, result.Height);
@@ -368,21 +311,12 @@ public class OpenCvServiceTests
 
         var kernel2 = openCvService.GetKernel(kernel);
         var inputArray = openCvService.ToInputArray(imageData);
-        var tempQualifier = openCvService;
-        IImageData ret = null;
 
-        if (tempQualifier != null)
-        {
-            var inputArray1 = inputArray;
-            var scalar = new Scalar(20, 20, 20);
+        var scalar = new Scalar(20, 20, 20);
 
-
-            var outputArray = tempQualifier.Filter(inputArray1, kernel2, BorderTypes.Constant);
-            outputArray = tempQualifier.AddBorder(outputArray, BorderTypes.Constant, 1, scalar);
-            ret = tempQualifier.ToImageData(outputArray);
-        }
-
-        var result = ret;
+        var outputArray = openCvService.Filter(inputArray, kernel2, BorderTypes.Constant);
+        outputArray = openCvService.AddBorder(outputArray, BorderTypes.Constant, 1, scalar);
+        var result = openCvService.ToImageData(outputArray);
 
         Assert.AreEqual(5, result.Width);
         Assert.AreEqual(5, result.Height);
