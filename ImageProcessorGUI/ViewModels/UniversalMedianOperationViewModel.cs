@@ -10,7 +10,7 @@ namespace ImageProcessorGUI.ViewModels;
 
 public class UniversalMedianOperationViewModel : ReactiveObject
 {
-    private readonly OpenCvService openCvService = new();
+    private readonly FilterService _filterService = new();
 
     private string errorMessage;
 
@@ -67,7 +67,7 @@ public class UniversalMedianOperationViewModel : ReactiveObject
 
     private Mat AddBorder(Mat inputArray)
     {
-        return openCvService.AddBorder(inputArray, SelectedBorderType, BorderPixels, GetScalar());
+        return _filterService.AddBorder(inputArray, SelectedBorderType, BorderPixels, GetScalar());
     }
 
     private Scalar GetScalar()
@@ -80,11 +80,11 @@ public class UniversalMedianOperationViewModel : ReactiveObject
         try
         {
             ErrorMessage = "";
-            var inputArray = openCvService.ToMatrix(OriginalImageData);
+            var inputArray = _filterService.ToMatrix(OriginalImageData);
             if (BorderBeforeTransform) inputArray = AddBorder(inputArray);
-            var outputArray = openCvService.MedianBlur(inputArray, GetMedianBoxSize());
+            var outputArray = _filterService.MedianBlur(inputArray, GetMedianBoxSize());
             if (BorderAfterTransform) outputArray = AddBorder(outputArray);
-            var result = openCvService.ToImageData(outputArray);
+            var result = _filterService.ToImageData3b(outputArray);
             ImageData.Update(result);
         }
         catch (Exception e)

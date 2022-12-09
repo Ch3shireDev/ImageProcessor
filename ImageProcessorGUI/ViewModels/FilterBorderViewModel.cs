@@ -12,7 +12,7 @@ public class FilterBorderViewModel : ReactiveObject
     private readonly IWindowService _windowService;
     private readonly IImageData ImageData;
 
-    private readonly OpenCvService openCvService = new();
+    private readonly FilterService _filterService = new();
 
     private string errorMessage;
 
@@ -22,7 +22,7 @@ public class FilterBorderViewModel : ReactiveObject
         Title = title;
         ImageData = imageData;
         _windowService = windowService;
-        Kernel = openCvService.Normalize(kernel);
+        Kernel = _filterService.Normalize(kernel);
     }
 
 
@@ -60,11 +60,11 @@ public class FilterBorderViewModel : ReactiveObject
         try
         {
             ErrorMessage = "";
-            var inputArray = openCvService.ToMatrix(ImageData);
+            var inputArray = _filterService.ToMatrix(ImageData);
             if (BorderBeforeTransform) inputArray = AddBorder(inputArray);
-            var outputArray = openCvService.Filter(inputArray, GetKernel(), SelectedBorderType);
+            var outputArray = _filterService.Filter(inputArray, GetKernel(), SelectedBorderType);
             if (BorderAfterTransform) outputArray = AddBorder(outputArray);
-            var result = openCvService.ToImageData(outputArray);
+            var result = _filterService.ToImageData3b(outputArray);
             _windowService.ShowImageWindow(result);
         }
         catch (Exception e)
@@ -75,13 +75,13 @@ public class FilterBorderViewModel : ReactiveObject
 
     private Mat GetKernel()
     {
-        var kernel = openCvService.GetKernel(Kernel);
+        var kernel = _filterService.GetKernel(Kernel);
         return kernel;
     }
 
     private Mat AddBorder(Mat inputArray)
     {
-        return openCvService.AddBorder(inputArray, SelectedBorderType, BorderPixels, GetScalar());
+        return _filterService.AddBorder(inputArray, SelectedBorderType, BorderPixels, GetScalar());
     }
 
     private Scalar GetScalar()

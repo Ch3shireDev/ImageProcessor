@@ -16,7 +16,7 @@ public class MainModel
 {
     private readonly IImageServiceProvider _imageServiceProvider;
 
-    private readonly OpenCvService openCvService = new();
+    private readonly FilterService _filterService = new();
 
     public MainModel(IImageData imageData, IImageServiceProvider imageServiceProvider)
     {
@@ -410,7 +410,7 @@ public class MainModel
             { 0, -1, 0 }
         };
 
-        kernel = openCvService.Normalize(kernel);
+        kernel = _filterService.Normalize(kernel);
 
         Filter(kernel);
     }
