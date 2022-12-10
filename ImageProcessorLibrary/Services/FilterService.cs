@@ -73,12 +73,30 @@ public class OpenCvService
         return mat;
     }
 
+    public Mat ToGrayMatrix(IImageData imageData)
+    {
+        var mat = new Mat(imageData.Height, imageData.Width, MatType.CV_8UC1);
+
+        for (var x = 0; x < imageData.Width; x++)
+        {
+            for (var y = 0; y < imageData.Height; y++)
+            {
+                var value = imageData.GetGrayValue(x, y);
+                if (value > 255) value = 255;
+                if (value < 0) value = 0;
+                mat.Set(y, x, (byte)value);
+            }
+        }
+
+        return mat;
+    }
+
     public Mat GetKernel(double[,] kernel)
     {
         return new Mat(kernel.GetLength(0), kernel.GetLength(1), MatType.CV_64F, kernel);
     }
 
-    public IImageData ToImageData3b(Mat outputMat)
+    public IImageData ToImageData(Mat outputMat)
     {
         var width = outputMat.Cols;
         var height = outputMat.Rows;
@@ -97,5 +115,4 @@ public class OpenCvService
 
         return result;
     }
-
 }

@@ -64,7 +64,7 @@ public class FilterBorderViewModel : ReactiveObject
             if (BorderBeforeTransform) inputArray = AddBorder(inputArray);
             var outputArray = _filterService.Filter(inputArray, GetKernel(), SelectedBorderType);
             if (BorderAfterTransform) outputArray = AddBorder(outputArray);
-            var result = _filterService.ToImageData3b(outputArray);
+            var result = _filterService.ToImageData(outputArray);
             _windowService.ShowImageWindow(result);
         }
         catch (Exception e)

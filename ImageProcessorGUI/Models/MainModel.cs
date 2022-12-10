@@ -216,9 +216,11 @@ public class MainModel
             Header = "Binary threshold",
             Value1Label = "Threshold",
             Value1Min = 0,
-            Value1Max = 255
+            Value1Max = 255,
+            Value1 = 128
         };
 
+        viewModel.Refresh();
         _imageServiceProvider.WindowService.ShowOptionsWindowOneValue(viewModel);
         _imageServiceProvider.WindowService.ShowImageWindow(imageData);
     }
@@ -652,18 +654,32 @@ public class MainModel
     /// </summary>
     public void MorphologyErosion()
     {
+        var imageData = new ImageData(ImageData);
+        var result = morphologyService.Erosion(imageData);
+        _imageServiceProvider.WindowService.ShowImageWindow(result);
     }
+
+    private MorphologyService morphologyService = new MorphologyService();
 
     public void MorphologyDilation()
     {
+        var imageData = new ImageData(ImageData);
+        var result = morphologyService.Dilation(imageData);
+        _imageServiceProvider.WindowService.ShowImageWindow(result);
     }
 
     public void MorphologyOpening()
     {
+        var imageData = new ImageData(ImageData);
+        var result = morphologyService.Opening(imageData);
+        _imageServiceProvider.WindowService.ShowImageWindow(result);
     }
 
     public void MorphologyClosing()
     {
+        var imageData = new ImageData(ImageData);
+        var result = morphologyService.Closing(imageData);
+        _imageServiceProvider.WindowService.ShowImageWindow(result);
     }
 
     /// <summary>
@@ -678,6 +694,14 @@ public class MainModel
     /// </summary>
     public void CalculateFeatureVector()
     {
+        var imageData = new ImageData(ImageData);
+        var featureVectorViewModel = new FeatureVectorViewModel(imageData);
+        featureVectorViewModel.Run();
+        var featureVectorWindow = new FeatureVectorWindow
+        {
+            DataContext = featureVectorViewModel
+        };
+        featureVectorWindow.Show();
     }
 
     /// <summary>

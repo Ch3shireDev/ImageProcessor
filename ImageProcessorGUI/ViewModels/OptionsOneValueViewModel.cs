@@ -26,8 +26,30 @@ public class OptionsOneValueViewModel<T1> : ReactiveObject
     public string? Value1Label { get; set; }
     public ImageData ImageData { get; set; }
     public ImageData OriginalImageData { get; set; }
-    public T1 Value1Min { get; set; }
-    public T1 Value1Max { get; set; }
+
+    T1 value1Min;
+    T1 value1Max;
+
+    public T1 Value1Min
+    {
+        get => value1Min;
+        set
+        {
+            value1Min = value;
+            this.RaisePropertyChanged();
+        }
+    }
+
+    public T1 Value1Max
+    {
+        get => value1Max;
+        set
+        {
+            value1Max = value;
+            this.RaisePropertyChanged();
+        }
+    }
+
     public T1? Value1
     {
         get => value1;
@@ -42,7 +64,7 @@ public class OptionsOneValueViewModel<T1> : ReactiveObject
 
     public virtual ICommand RefreshCommand => ReactiveCommand.Create(Refresh);
 
-    private void Refresh()
+    public void Refresh()
     {
         if (_transform == null) return;
         var newImageData = _transform(OriginalImageData, Value1);

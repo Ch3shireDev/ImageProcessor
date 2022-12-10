@@ -103,6 +103,44 @@ public class ImageData : IImageData
         Pixels[y, x] = pixel;
     }
 
+    public void Write(string filepath)
+    {
+        Filepath = filepath;
+        Filename = Path.GetFileName(filepath);
+        File.WriteAllBytes(filepath, Filebytes);
+    }
+
+    public bool IsEqual(IImageData imageData)
+    {
+        if (Width != imageData.Width || Height != imageData.Height)
+        {
+            return false;
+        }
+
+        for (var x = 0; x < Width; x++)
+        {
+            for (var y = 0; y < Height; y++)
+            {
+                var pixel1 = GetPixelRgb(x, y);
+                var pixel2 = imageData.GetPixelRgb(x, y);
+                if (pixel1.R != pixel2.R) return false;
+                if (pixel1.G != pixel2.G) return false;
+                if (pixel1.B != pixel2.B) return false;
+            }
+        }
+
+        return true;
+    }
+    
+    public byte GetGrayValue(int x, int y)
+    {
+        var pixel = GetPixelRgb(x, y);
+        var value = 0.299 * pixel.R + 0.587 * pixel.G + 0.114 * pixel.B;
+        if (value > 255) value = 255;
+        if (value < 0) value = 0;
+        return (byte)value;
+    }
+
     private Color[,] ToPixels(byte[,] pixels)
     {
         var colorPixels = new Color[pixels.GetLength(0), pixels.GetLength(1)];
@@ -194,5 +232,10 @@ public class ImageData : IImageData
         var stream = new MemoryStream();
         bitmap.Save(stream, ImageFormat.Png);
         return stream.ToArray();
+    }
+
+    public static IImageData Read(string imagePath)
+    {
+        return new ImageData(imagePath, File.ReadAllBytes(imagePath));
     }
 }

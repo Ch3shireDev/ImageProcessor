@@ -22,7 +22,7 @@ public class EdgeDetectionServiceTests
             { 0, 0, 0 },
             { 0, 0, 0 },
             { 0, 0, 0 },
-            { 0, 0, 0 },
+            { 0, 0, 0 }
         });
 
         var result = edgeDetectionService.SobelEdgeDetection(imageData);
@@ -30,6 +30,7 @@ public class EdgeDetectionServiceTests
         Assert.AreEqual(3, result.Width);
         Assert.AreEqual(4, result.Height);
     }
+
     [TestMethod]
     public void PrewittOperatorSimpleTest()
     {
@@ -38,7 +39,7 @@ public class EdgeDetectionServiceTests
             { 0, 0, 0 },
             { 0, 0, 0 },
             { 0, 0, 0 },
-            { 0, 0, 0 },
+            { 0, 0, 0 }
         });
 
         var result = edgeDetectionService.PrewittEdgeDetection(imageData);
@@ -46,6 +47,7 @@ public class EdgeDetectionServiceTests
         Assert.AreEqual(3, result.Width);
         Assert.AreEqual(4, result.Height);
     }
+
     [TestMethod]
     public void CannyOperatorSimpleTest()
     {
@@ -54,7 +56,7 @@ public class EdgeDetectionServiceTests
             { 0, 0, 0 },
             { 0, 0, 0 },
             { 0, 0, 0 },
-            { 0, 0, 0 },
+            { 0, 0, 0 }
         });
 
         var result = edgeDetectionService.CannyOperatorEdgeDetection(imageData);
@@ -64,25 +66,63 @@ public class EdgeDetectionServiceTests
     }
 
     [TestMethod]
+    public void CannyOperatorTest()
+    {
+        var imageData = new ImageData(new byte[,]
+        {
+            { 200, 200, 200, 200, 200, 200, 200, 200, 200, 200 },
+            { 200, 200, 200, 200, 200, 200, 200, 200, 200, 200 },
+            { 200, 200, 111, 111, 111, 111, 111, 111, 200, 200 },
+            { 200, 200, 111, 200, 200, 200, 200, 111, 200, 200 },
+            { 200, 200, 111, 200, 200, 200, 200, 111, 200, 200 },
+            { 200, 200, 111, 200, 200, 200, 200, 111, 200, 200 },
+            { 200, 200, 111, 200, 200, 200, 200, 111, 200, 200 },
+            { 200, 200, 111, 111, 111, 111, 111, 111, 200, 200 },
+            { 200, 200, 200, 200, 200, 200, 200, 200, 200, 200 },
+            { 200, 200, 200, 200, 200, 200, 200, 200, 200, 200 }
+        });
+
+        var result = edgeDetectionService.CannyOperatorEdgeDetection(imageData);
+
+        Assert.AreEqual(10, result.Width);
+        Assert.AreEqual(10, result.Height);
+
+        result.Write("a.png");
+    }
+
+    [TestMethod]
     public void SobelOperatorTest()
     {
         var imageData = new ImageData(new byte[,]
         {
-            { 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, },
-            { 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, },
-            { 200, 200, 111, 111, 111, 111, 111, 111, 200, 200, },
-            { 200, 200, 111, 200, 200, 200, 200, 111, 200, 200, },
-            { 200, 200, 111, 200, 200, 200, 200, 111, 200, 200, },
-            { 200, 200, 111, 200, 200, 200, 200, 111, 200, 200, },
-            { 200, 200, 111, 200, 200, 200, 200, 111, 200, 200, },
-            { 200, 200, 111, 111, 111, 111, 111, 111, 200, 200, },
-            { 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, },
-            { 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, },
+            { 200, 200, 200, 200, 200, 200, 200, 200, 200, 200 },
+            { 200, 200, 200, 200, 200, 200, 200, 200, 200, 200 },
+            { 200, 200, 111, 111, 111, 111, 111, 111, 200, 200 },
+            { 200, 200, 111, 200, 200, 200, 200, 111, 200, 200 },
+            { 200, 200, 111, 200, 200, 200, 200, 111, 200, 200 },
+            { 200, 200, 111, 200, 200, 200, 200, 111, 200, 200 },
+            { 200, 200, 111, 200, 200, 200, 200, 111, 200, 200 },
+            { 200, 200, 111, 111, 111, 111, 111, 111, 200, 200 },
+            { 200, 200, 200, 200, 200, 200, 200, 200, 200, 200 },
+            { 200, 200, 200, 200, 200, 200, 200, 200, 200, 200 }
         });
 
         var result = edgeDetectionService.SobelEdgeDetection(imageData);
 
-        File.WriteAllBytes("a.png", imageData.Filebytes);
-        File.WriteAllBytes("b.png", result.Filebytes);
+        var expected = new ImageData(new byte[,]
+        {
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 89, 89, 0, 0, 0, 0, 89, 89, 0 },
+            { 0, 255, 178, 89, 0, 0, 89, 178, 255, 0 },
+            { 0, 255, 89, 255, 0, 0, 255, 89, 255, 0 },
+            { 0, 255, 0, 255, 0, 0, 255, 0, 255, 0 },
+            { 0, 255, 0, 255, 0, 0, 255, 0, 255, 0 },
+            { 0, 255, 89, 255, 0, 0, 255, 89, 255, 0 },
+            { 0, 255, 178, 89, 0, 0, 89, 178, 255, 0 },
+            { 0, 89, 89, 0, 0, 0, 0, 89, 89, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+        });
+
+        Assert.IsTrue(expected.IsEqual(result));
     }
 }

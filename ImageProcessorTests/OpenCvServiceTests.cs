@@ -48,7 +48,7 @@ public class OpenCvServiceTests
 
         var imageArray = openCvService.ToMatrix(imageData);
         imageArray = openCvService?.MedianBlur(imageArray, 3);
-        var result = openCvService.ToImageData3b(imageArray);
+        var result = openCvService.ToImageData(imageArray);
 
         for (var x = 0; x < 3; x++)
         {
@@ -73,7 +73,7 @@ public class OpenCvServiceTests
 
         var imageArray = openCvService.ToMatrix(imageData);
         var result2 = openCvService?.MedianBlur(imageArray, 3);
-        var result = openCvService.ToImageData3b(result2);
+        var result = openCvService.ToImageData(result2);
 
         for (var x = 0; x < 3; x++)
         {
@@ -112,7 +112,7 @@ public class OpenCvServiceTests
         var inputArray = openCvService.ToMatrix(imageData);
         inputArray = tempQualifier.AddBorder(inputArray, BorderTypes.Reflect101, 0, scalar);
         var outputArray = tempQualifier.Filter(inputArray, kernel2, BorderTypes.Reflect101);
-        var result = tempQualifier.ToImageData3b(outputArray);
+        var result = tempQualifier.ToImageData(outputArray);
 
         Assert.AreEqual(0, result.GetPixelRgb(0, 0).R);
         Assert.AreEqual(255, result.GetPixelRgb(1, 0).R);
@@ -151,7 +151,7 @@ public class OpenCvServiceTests
         inputArray = openCvService.AddBorder(inputArray, BorderTypes.Reflect101, 0, scalar);
         var outputArray = openCvService.Filter(inputArray, kernel2, BorderTypes.Reflect101);
 
-        var ret = openCvService.ToImageData3b(outputArray);
+        var ret = openCvService.ToImageData(outputArray);
 
 
         var result = ret;
@@ -192,7 +192,7 @@ public class OpenCvServiceTests
         var scalar = new Scalar(0, 0, 0);
         inputArray = openCvService.AddBorder(inputArray, BorderTypes.Constant, 1, scalar);
         var outputArray = openCvService.Filter(inputArray, kernel2, BorderTypes.Constant);
-        var result = openCvService.ToImageData3b(outputArray);
+        var result = openCvService.ToImageData(outputArray);
 
         Assert.AreEqual(5, result.Width);
         Assert.AreEqual(5, result.Height);
@@ -255,7 +255,7 @@ public class OpenCvServiceTests
         var outputArray = openCvService.Filter(openCvService.AddBorder(inputArray, BorderTypes.Constant, 1, scalar), kernel2, BorderTypes.Constant);
 
 
-        var result = openCvService.ToImageData3b(outputArray);
+        var result = openCvService.ToImageData(outputArray);
 
         Assert.AreEqual(5, result.Width);
         Assert.AreEqual(5, result.Height);
@@ -316,7 +316,7 @@ public class OpenCvServiceTests
 
         var outputArray = openCvService.Filter(inputArray, kernel2, BorderTypes.Constant);
         outputArray = openCvService.AddBorder(outputArray, BorderTypes.Constant, 1, scalar);
-        var result = openCvService.ToImageData3b(outputArray);
+        var result = openCvService.ToImageData(outputArray);
 
         Assert.AreEqual(5, result.Width);
         Assert.AreEqual(5, result.Height);
@@ -377,7 +377,7 @@ public class OpenCvServiceTests
 
         var mat = openCvService.ToMatrix(inputImage);
         var resultMat = openCvService.MedianBlur(mat, 3);
-        var outputImage = openCvService.ToImageData3b(resultMat);
+        var outputImage = openCvService.ToImageData(resultMat);
 
         for (var x = 0; x < outputImage.Width; x++)
         {
