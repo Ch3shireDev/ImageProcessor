@@ -96,7 +96,7 @@ public class OpenCvService
         return new Mat(kernel.GetLength(0), kernel.GetLength(1), MatType.CV_64F, kernel);
     }
 
-    public IImageData ToImageData(Mat outputMat)
+    public IImageData ToImageDataFromUC3(Mat outputMat)
     {
         var width = outputMat.Cols;
         var height = outputMat.Rows;
@@ -110,6 +110,25 @@ public class OpenCvService
                 var pixel = outputMat.Get<Vec3b>(y, x);
 
                 result.SetPixel(x, y, Color.FromArgb(pixel.Item0, pixel.Item1, pixel.Item2));
+            }
+        }
+
+        return result;
+    }
+
+    public IImageData ToImageDataFromUC1(Mat outputMat)
+    {
+        var width = outputMat.Cols;
+        var height = outputMat.Rows;
+
+        var result = new ImageData(width, height);
+
+        for (var x = 0; x < width; x++)
+        {
+            for (var y = 0; y < height; y++)
+            {
+                var value = outputMat.Get<byte>(y, x);
+                result.SetPixel(x, y, Color.FromArgb(value, value, value));
             }
         }
 

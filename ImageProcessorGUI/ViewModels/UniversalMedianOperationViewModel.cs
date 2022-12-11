@@ -84,7 +84,7 @@ public class UniversalMedianOperationViewModel : ReactiveObject
             if (BorderBeforeTransform) inputArray = AddBorder(inputArray);
             var outputArray = _filterService.MedianBlur(inputArray, GetMedianBoxSize());
             if (BorderAfterTransform) outputArray = AddBorder(outputArray);
-            var result = _filterService.ToImageData(outputArray);
+            var result = _filterService.ToImageDataFromUC3(outputArray);
             ImageData.Update(result);
         }
         catch (Exception e)

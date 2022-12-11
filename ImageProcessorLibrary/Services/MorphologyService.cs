@@ -8,28 +8,28 @@ public class MorphologyService: OpenCvService
     {
         var mat = ToMatrix(imageData);
         mat = Erosion(mat);
-        return ToImageData(mat);
+        return ToImageDataFromUC3(mat);
     }
 
     public IImageData Dilation(IImageData imageData)
     {
         var mat = ToMatrix(imageData);
         mat = Dilation(mat);
-        return ToImageData(mat);
+        return ToImageDataFromUC3(mat);
     }
 
     public IImageData Opening(IImageData imageData)
     {
         var mat = ToMatrix(imageData);
         mat = Opening(mat);
-        return ToImageData(mat);
+        return ToImageDataFromUC3(mat);
     }
 
     public IImageData Closing(IImageData imageData)
     {
         var mat = ToMatrix(imageData);
         mat = Closing(mat);
-        return ToImageData(mat);
+        return ToImageDataFromUC3(mat);
     }
     public Mat Erosion(Mat mat)
     {

@@ -114,21 +114,21 @@ Zastosować powyższych metod uzupełniania brzegowych pikselach obrazu, dając 
 
 ## 9. Algorytmy morfologii
 
-- [ ] Opracować algorytm i uruchomić funkcjonalność wykonywania podstawowych operacji morfologii matematycznej: 
-    - [ ] erozji, 
-    - [ ] dylatacji, 
-    - [ ] otwarcia,
-    - [ ] zamknięcia 
+- [x] Opracować algorytm i uruchomić funkcjonalność wykonywania podstawowych operacji morfologii matematycznej: 
+    - [x] erozji, 
+    - [x] dylatacji, 
+    - [x] otwarcia,
+    - [x] zamknięcia 
     wykorzystując podstawowy element strukturalny dysk 3x3.
     
 ## 10. Składowe wektora cech obiektu binarnego
 
-- [ ] Opracować algorytm i uruchomić funkcjonalność realizującą wyznaczanie następujących składowych wektora cech obiektu binarnego:
-    - [ ] Momenty
-    - [ ] Pole powierzchni i obwód
-    - [ ] Współczynniki kształtu: aspectRatio, extent, solidity, equivalentDiameter
+- [x] Opracować algorytm i uruchomić funkcjonalność realizującą wyznaczanie następujących składowych wektora cech obiektu binarnego:
+    - [x] Momenty
+    - [x] Pole powierzchni i obwód
+    - [x] Współczynniki kształtu: aspectRatio, extent, solidity, equivalentDiameter
 
-- [ ] Przygotować zapis wyników w postaci pliku tekstowego do wczytania do oprogramowania Excel.
+- [x] Przygotować zapis wyników w postaci pliku tekstowego do wczytania do oprogramowania Excel.
 
 Program przetestować na podstawowych figurach znakach graficznych (gwiazdka, wykrzyknik, dwukropek, przecinek, średnik, itp.).
 

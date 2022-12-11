@@ -79,13 +79,25 @@ public class EdgeDetectionServiceTests
             { 200, 200, 111, 200, 200, 200, 200, 111, 200, 200 },
             { 200, 200, 111, 111, 111, 111, 111, 111, 200, 200 },
             { 200, 200, 200, 200, 200, 200, 200, 200, 200, 200 },
+            { 200, 200, 200, 200, 200, 200, 200, 200, 200, 200 },
+            { 200, 200, 200, 200, 200, 200, 200, 200, 200, 200 },
             { 200, 200, 200, 200, 200, 200, 200, 200, 200, 200 }
         });
 
         var result = edgeDetectionService.CannyOperatorEdgeDetection(imageData);
 
         Assert.AreEqual(10, result.Width);
-        Assert.AreEqual(10, result.Height);
+        Assert.AreEqual(12, result.Height);
+
+        for (var y = 0; y < result.Height; y++)
+        {
+            for (var x = 0; x < result.Width; x++)
+            {
+                Console.Write($"{result.GetPixelRgb(x, y).R}, ");
+            }
+
+            Console.WriteLine();
+        }
 
         result.Write("a.png");
     }

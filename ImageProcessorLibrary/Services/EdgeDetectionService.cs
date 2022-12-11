@@ -10,7 +10,7 @@ public class EdgeDetectionService : OpenCvService
         var result = SobelEdgeDetection(mat, edgeType);
         var mat2 = new Mat(result.Rows, result.Cols, MatType.CV_16SC3);
         Cv2.ConvertScaleAbs(result, mat2);
-        return ToImageData(mat2);
+        return ToImageDataFromUC3(mat2);
     }
 
 
@@ -65,7 +65,7 @@ public class EdgeDetectionService : OpenCvService
     {
         var mat = ToMatrix(imageData);
         var result = CannyOperatorEdgeDetection(mat);
-        return ToImageData(result);
+        return ToImageDataFromUC1(result);
     }
 
     public Mat CannyOperatorEdgeDetection(Mat mat, double threshold1=100, double threshold2=200)
