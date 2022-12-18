@@ -1,0 +1,23 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" Width="400" Height="200"
+        x:Class="ImageProcessorGUI.Views.SobelEdgeDetectionView"
+        Title="SobelEdgeDetectionView">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+        <Label Grid.Row="0">Detekcja krawędzi metodą Sobela</Label>
+		<StackPanel Grid.Row="1" Orientation="Horizontal">
+			<Label>Typ krawędzi</Label>
+			<ComboBox Items="{Binding EdgeTypes}" SelectedItem="{Binding SelectedEdgeType}"/>
+		</StackPanel>
+		<TextBlock Grid.Row="2" Text="{Binding ErrorMessage}" Foreground="DarkRed"/>
+		<Button Grid.Row="3" Command="{Binding RefreshCommand}">Odśwież</Button>
+	</Grid>
+</Window>

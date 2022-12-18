@@ -14,9 +14,12 @@ namespace ImageProcessorGUI.Models;
 
 public class MainModel
 {
+    private readonly FilterService _filterService = new();
     private readonly IImageServiceProvider _imageServiceProvider;
 
-    private readonly FilterService _filterService = new();
+    private readonly EdgeDetectionService edgeDetectionService = new();
+
+    private readonly MorphologyService morphologyService = new();
 
     public MainModel(IImageData imageData, IImageServiceProvider imageServiceProvider)
     {
@@ -583,8 +586,17 @@ public class MainModel
     /// </summary>
     public void SobelEdgeDetection()
     {
-    }
+        var imageData = new ImageData(ImageData);
+        var viewModel = new SobelEdgeDetectionViewModel(imageData);
+        var view = new SobelEdgeDetectionView
+        {
+            DataContext = viewModel
+        };
 
+        viewModel.Refresh();
+        _imageServiceProvider.WindowService.ShowImageWindow(imageData);
+        view.Show();
+    }
 
     /// <summary>
     ///     - [ ] Implementacja detekcji krawędzi operatorami opartymi na maskach Sobela i Prewitta oraz operatorem Cannyego.
@@ -658,8 +670,6 @@ public class MainModel
         var result = morphologyService.Erosion(imageData);
         _imageServiceProvider.WindowService.ShowImageWindow(result);
     }
-
-    private MorphologyService morphologyService = new MorphologyService();
 
     public void MorphologyDilation()
     {

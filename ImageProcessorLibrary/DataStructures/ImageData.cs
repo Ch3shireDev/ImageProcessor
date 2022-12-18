@@ -141,6 +141,30 @@ public class ImageData : IImageData
         return (byte)value;
     }
 
+    public Color this[int x, int y]
+    {
+        get => GetPixelRgb(y,x);
+        set => SetPixel(y,x, value);
+    }
+
+    public byte this[int x, int y, int channel]
+    {
+        get => channel switch
+        {
+            0 => GetPixelRgb(y,x).R,
+            1 => GetPixelRgb(y,x).G,
+            2 => GetPixelRgb(y,x).B,
+            _ => throw new ArgumentOutOfRangeException(nameof(channel))
+        };
+        set => SetPixel(y,x, channel switch
+        {
+            0 => Color.FromArgb(value, GetPixelRgb(y,x).G, GetPixelRgb(y,x).B),
+            1 => Color.FromArgb(GetPixelRgb(y, x).R, value, GetPixelRgb(y, x).B),
+            2 => Color.FromArgb(GetPixelRgb(y, x).R, GetPixelRgb(y, x).G, value),
+            _ => throw new ArgumentOutOfRangeException(nameof(channel))
+        });
+    }
+
     private Color[,] ToPixels(byte[,] pixels)
     {
         var colorPixels = new Color[pixels.GetLength(0), pixels.GetLength(1)];

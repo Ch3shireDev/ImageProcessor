@@ -96,18 +96,17 @@
                             <MenuItem Header="SE" Command="{Binding EdgeSobelSouthEastCommand}" />
                         </MenuItem>
                         <MenuItem Header="Operacja medianowa" Command="{Binding CalculateMedianCommand}" />
-                        <MenuItem Header="Detekcja krawędzi">
-                            <MenuItem Header="Metoda Sobela" Command="{Binding SobelEdgeDetectionCommand}" />
-                            <MenuItem Header="Metoda Prewitta" Command="{Binding PrewittEdgeDetectionCommand}" />
-                            <MenuItem Header="Operator Canny'ego" Command="{Binding CannyOperatorEdgeDetectionCommand}" />
-                        </MenuItem>
                         <MenuItem Header="Segmentacja obrazu">
-                            <MenuItem Header="Metoda Otsu" Command="{Binding OtsuSegmentationCommand}" />
-                            <MenuItem Header="Progowanie adaptacyjne"
+							<MenuItem Header="Metoda Otsu" Command="{Binding OtsuSegmentationCommand}" />
+							<MenuItem Header="Progowanie adaptacyjne"
                                       Command="{Binding AdaptiveThresholdSegmentationCommand}" />
-                        </MenuItem>
-               
+						</MenuItem>
                     </MenuItem>
+					<MenuItem Header="_Detekcja krawędzi">
+						<MenuItem Header="Metoda Sobela" Command="{Binding SobelEdgeDetectionCommand}" />
+						<MenuItem Header="Metoda Prewitta" Command="{Binding PrewittEdgeDetectionCommand}" />
+						<MenuItem Header="Operator Canny'ego" Command="{Binding CannyOperatorEdgeDetectionCommand}" />
+					</MenuItem>
 					<MenuItem Header="_Morfologia">
 						<MenuItem Header="Erozja" Command="{Binding MorphologyErosionCommand}" />
 						<MenuItem Header="Dylatacja" Command="{Binding MorphologyDilationCommand}" />
@@ -118,7 +117,7 @@
                         <MenuItem Header="Oblicz wektor cech" Command="{Binding CalculateFeatureVectorCommand}" />
                     </MenuItem>
                     <MenuItem Header="Likwidacja zakłóceń">
-                        <MenuItem Header="Likwidacja zakłóceń periodycznych przez manipulację widmem aplitudowym"
+                        <MenuItem Header="Likwidacja zakłóceń periodycznych"
                                   Command="{Binding RemovePeriodicNoiseCommand}" />
                     </MenuItem>
                 </ContextMenu>

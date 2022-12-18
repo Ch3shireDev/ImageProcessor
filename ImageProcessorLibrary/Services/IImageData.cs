@@ -20,4 +20,7 @@ public interface IImageData
     void Write(string filepath);
     bool IsEqual(IImageData image);
     byte GetGrayValue(int x, int y);
+
+    Color this[int x, int y] { get; set; }
+    byte this[int x, int y, int channel] { get; set; }
 }
