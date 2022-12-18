@@ -262,4 +262,25 @@ public class ImageData : IImageData
     {
         return new ImageData(imagePath, File.ReadAllBytes(imagePath));
     }
+    public static IImageData Combine(params IImageData[] imageDataList)
+    {
+        var height = imageDataList[0].Height;
+        var width = imageDataList[0].Width;
+
+        var tab = new Color[height, width];
+        
+        for (var i = 0; i < height; i++)
+        {
+            for (var j = 0; j < width; j++)
+            {
+                var R = imageDataList.Max(x => x[i, j].R);
+                var G = imageDataList.Max(x => x[i, j].G);
+                var B = imageDataList.Max(x => x[i, j].B);
+                tab[i, j] = Color.FromArgb(R, G, B);
+            }
+        }
+
+        return new ImageData(tab);
+    }
+
 }

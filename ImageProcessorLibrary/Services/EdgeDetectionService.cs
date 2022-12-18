@@ -14,7 +14,7 @@ public class EdgeDetectionService : OpenCvService
             var i2 = SobelEdgeDetection(imageData, SobelEdgeType.SOUTH);
             var i3 = SobelEdgeDetection(imageData, SobelEdgeType.SOUTH_EAST);
 
-            return Combine(i1, i2, i3);
+            return ImageData.Combine(i1, i2, i3);
         }
 
         var mat = ToMatrix(imageData);
@@ -22,27 +22,6 @@ public class EdgeDetectionService : OpenCvService
         var mat2 = new Mat(result.Rows, result.Cols, MatType.CV_16SC3);
         Cv2.ConvertScaleAbs(result, mat2);
         return ToImageDataFromUC3(mat2);
-    }
-
-    private IImageData Combine(params IImageData[] imageDataList)
-    {
-        var height = imageDataList[0].Height;
-        var width = imageDataList[0].Width;
-
-        var tab = new Color[height, width];
-        
-        for (var i = 0; i < height; i++)
-        {
-            for (var j = 0; j < width; j++)
-            {
-                var R = imageDataList.Max(x => x[i, j].R);
-                var G = imageDataList.Max(x => x[i, j].G);
-                var B = imageDataList.Max(x => x[i, j].B);
-                tab[i, j] = Color.FromArgb(R, G, B);
-            }
-        }
-
-        return new ImageData(tab);
     }
 
 
