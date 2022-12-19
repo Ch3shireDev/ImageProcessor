@@ -49,6 +49,44 @@ public class EdgeDetectionServiceTests
     }
 
     [TestMethod]
+    public void PrewittYOperatorTest()
+    {
+        var imageData = new ImageData(new byte[,]
+        {
+            { 255, 255, 255, 255 },
+            { 255, 255, 255, 255 },
+            { 255, 255, 255, 255 },
+            { 100, 100, 100, 100 },
+            { 100, 100, 100, 100 },
+            { 100, 100, 100, 100 }
+        });
+
+        var result = edgeDetectionService.PrewittEdgeDetection(imageData, prewittType: PrewittType.PREWITT_Y);
+
+        Assert.AreEqual(4, result.Width);
+        Assert.AreEqual(6, result.Height);
+
+        Assert.AreEqual(0, result.GetGrayValue(0, 0));
+        Assert.AreEqual(0, result.GetGrayValue(0, 1));
+        Assert.AreEqual(255, result.GetGrayValue(0, 2));
+        Assert.AreEqual(255, result.GetGrayValue(0, 3));
+        Assert.AreEqual(0, result.GetGrayValue(0, 4));
+        Assert.AreEqual(0, result.GetGrayValue(0, 5));
+    }
+
+    [TestMethod]
+    public void PrewittXTest()
+    {
+        Assert.Fail();
+    }
+    [TestMethod]
+    public void PrewittXYTest()
+    {
+        Assert.Fail();
+    }
+    
+
+    [TestMethod]
     public void CannyOperatorSimpleTest()
     {
         var imageData = new ImageData(new byte[,]

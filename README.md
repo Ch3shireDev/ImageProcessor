@@ -103,7 +103,10 @@ Zastosować powyższych metod uzupełniania brzegowych pikselach obrazu, dając 
 
 ## 8. Detekcja krawędzi
 
-- [ ] Implementacja detekcji krawędzi operatorami opartymi na maskach Sobela i Prewitta oraz operatorem Cannyego.
+- [ ] Implementacja detekcji krawędzi operatorami opartymi na maskach:
+    - [x] Sobela,
+    - [ ] Prewitta,
+    - [ ] operatorem Cannyego.
 
 - [ ] Opracować algorytm i uruchomić funkcjonalność realizującą segmentację obrazów następującymi metodami:
     - [ ] Dostosowanie obsługi do wykonywania prostego interaktywnego progowania z jednym i dwoma progami (zad 2 lab 2) tak, aby prezentować wyniki w chwili zmiany progu związanego z przesunięciem wskaźnika lub wpisania nowej wartości.
