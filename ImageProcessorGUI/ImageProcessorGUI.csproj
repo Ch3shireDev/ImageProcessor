@@ -40,5 +40,8 @@
     <Compile Update="Views\BinaryOperationsWindow.axaml.cs">
       <DependentUpon>BinaryOperationsWindow.axaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\EdgeDetectionView.axaml.cs">
+      <DependentUpon>EdgeDetectionView.axaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

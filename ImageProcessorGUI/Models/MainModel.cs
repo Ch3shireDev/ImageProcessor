@@ -588,7 +588,7 @@ public class MainModel
     {
         var imageData = new ImageData(ImageData);
         var viewModel = new SobelEdgeDetectionViewModel(imageData);
-        var view = new SobelEdgeDetectionView
+        var view = new EdgeDetectionView
         {
             DataContext = viewModel
         };
@@ -610,6 +610,16 @@ public class MainModel
     /// </summary>
     public void PrewittEdgeDetection()
     {
+        var imageData = new ImageData(ImageData);
+        var viewModel = new PrewittEdgeDetectionViewModel(imageData);
+        var view = new EdgeDetectionView
+        {
+            DataContext = viewModel
+        };
+
+        viewModel.Refresh();
+        _imageServiceProvider.WindowService.ShowImageWindow(imageData);
+        view.Show();
     }
 
 

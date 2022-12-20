@@ -23,4 +23,5 @@ public interface IImageData
 
     Color this[int x, int y] { get; set; }
     byte this[int x, int y, int channel] { get; set; }
+    void Save(string imageJpg);
 }

@@ -77,12 +77,76 @@ public class EdgeDetectionServiceTests
     [TestMethod]
     public void PrewittXTest()
     {
-        Assert.Fail();
+        var imageData = new ImageData(new byte[,]
+        {
+            { 255, 255, 100, 100 },
+            { 255, 255, 100, 100 },
+            { 255, 255, 100, 100 },
+            { 255, 255, 100, 100 },
+            { 255, 255, 100, 100 },
+            { 255, 255, 100, 100 }
+        });
+
+        var result = edgeDetectionService.PrewittEdgeDetection(imageData, prewittType: PrewittType.PREWITT_X);
+
+        Assert.AreEqual(4, result.Width);
+        Assert.AreEqual(6, result.Height);
+
+        Assert.AreEqual(0, result.GetGrayValue(0, 0));
+        Assert.AreEqual(255, result.GetGrayValue(1, 0));
+        Assert.AreEqual(255, result.GetGrayValue(2, 0));
+        Assert.AreEqual(0, result.GetGrayValue(3, 0));
     }
     [TestMethod]
     public void PrewittXYTest()
     {
-        Assert.Fail();
+        var imageData = new ImageData(new byte[,]
+        {
+            { 100, 100, 100, 100 },
+            { 100, 255, 255, 100 },
+            { 100, 255, 255, 100 },
+            { 100, 255, 255, 100 },
+            { 100, 255, 255, 100 },
+            { 100, 100, 100, 100 }
+        });
+        
+        var result = edgeDetectionService.PrewittEdgeDetection(imageData, prewittType: PrewittType.PREWITT_XY);
+
+        Assert.AreEqual(4, result.Width);
+        Assert.AreEqual(6, result.Height);
+        
+        result.Save("image.jpg");
+        Assert.AreEqual(0, result.GetGrayValue(0, 0));
+        Assert.AreEqual(0, result.GetGrayValue(1, 0));
+        Assert.AreEqual(255, result.GetGrayValue(2, 0));
+        Assert.AreEqual(0, result.GetGrayValue(3, 0));
+        
+        Assert.AreEqual(0, result.GetGrayValue(0, 1));
+        Assert.AreEqual(0, result.GetGrayValue(1, 1));
+        Assert.AreEqual(255, result.GetGrayValue(2, 1));
+        Assert.AreEqual(0, result.GetGrayValue(3, 1));
+        
+        Assert.AreEqual(0, result.GetGrayValue(0, 2));
+        Assert.AreEqual(0, result.GetGrayValue(1, 2));
+        Assert.AreEqual(255, result.GetGrayValue(2, 2));
+        Assert.AreEqual(0, result.GetGrayValue(3, 2));
+
+        Assert.AreEqual(0, result.GetGrayValue(0, 3));
+        Assert.AreEqual(0, result.GetGrayValue(1, 3));
+        Assert.AreEqual(255, result.GetGrayValue(2, 3));
+        Assert.AreEqual(0, result.GetGrayValue(3, 3));
+
+        Assert.AreEqual(255, result.GetGrayValue(0, 4));
+        Assert.AreEqual(255, result.GetGrayValue(1, 4));
+        Assert.AreEqual(255, result.GetGrayValue(2, 4));
+        Assert.AreEqual(255, result.GetGrayValue(3, 4));
+
+        Assert.AreEqual(0, result.GetGrayValue(0, 5));
+        Assert.AreEqual(0, result.GetGrayValue(1, 5));
+        Assert.AreEqual(255, result.GetGrayValue(2, 5));
+        Assert.AreEqual(0, result.GetGrayValue(3, 5));
+
+
     }
     
 

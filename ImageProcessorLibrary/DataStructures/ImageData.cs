@@ -283,4 +283,8 @@ public class ImageData : IImageData
         return new ImageData(tab);
     }
 
+    public void Save(string filePath)
+    {
+        File.WriteAllBytes(filePath, Filebytes);
+    }
 }

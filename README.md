@@ -105,7 +105,7 @@ Zastosować powyższych metod uzupełniania brzegowych pikselach obrazu, dając 
 
 - [ ] Implementacja detekcji krawędzi operatorami opartymi na maskach:
     - [x] Sobela,
-    - [ ] Prewitta,
+    - [x] Prewitta,
     - [ ] operatorem Cannyego.
 
 - [ ] Opracować algorytm i uruchomić funkcjonalność realizującą segmentację obrazów następującymi metodami:

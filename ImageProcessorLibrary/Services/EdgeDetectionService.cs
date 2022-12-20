@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-using ImageProcessorLibrary.DataStructures;
+﻿using ImageProcessorLibrary.DataStructures;
 using OpenCvSharp;
 
 namespace ImageProcessorLibrary.Services;
@@ -10,6 +9,7 @@ public enum PrewittType
     PREWITT_Y,
     PREWITT_XY
 }
+
 public class EdgeDetectionService : OpenCvService
 {
     public IImageData SobelEdgeDetection(IImageData imageData, SobelEdgeType edgeType = SobelEdgeType.EAST)
@@ -29,7 +29,7 @@ public class EdgeDetectionService : OpenCvService
         Cv2.ConvertScaleAbs(result, mat2);
         return ToImageDataFromUC3(mat2);
     }
-    
+
     public Mat SobelEdgeDetection(Mat matrix, SobelEdgeType edgeType = SobelEdgeType.EAST)
     {
         var x = SobelGetX(edgeType);
@@ -39,23 +39,43 @@ public class EdgeDetectionService : OpenCvService
         Cv2.Sobel(matrix, mat2, MatType.CV_16S, x, y);
         return mat2;
     }
-    
+
     public IImageData PrewittEdgeDetection(IImageData imageData, PrewittType prewittType = PrewittType.PREWITT_XY)
     {
         var mat = ToMatrix(imageData);
+        Mat kernel;
 
-
-        var kernelNums = new[,]
+        if (prewittType == PrewittType.PREWITT_Y)
         {
-            { 1, 1, 1 }, 
-            { 0, 0, 0 }, 
-            { -1, -1, -1 }
-        };
-        var kernel = new Mat(3, 3, MatType.CV_32S, kernelNums);
+            var kernelNums = new[,]
+            {
+                { 1, 1, 1 },
+                { 0, 0, 0 },
+                { -1, -1, -1 }
+            };
 
-        Cv2.Filter2D(mat, mat,MatType.CV_8UC3, kernel);
+            kernel = new Mat(3, 3, MatType.CV_32S, kernelNums);
+        }
+        else if (prewittType == PrewittType.PREWITT_X)
+        {
+            var kernelNums = new[,]
+            {
+                { 1, 0, -1 },
+                { 1, 0, -1 },
+                { 1, 0, -1 }
+            };
 
-        
+            kernel = new Mat(3, 3, MatType.CV_32S, kernelNums);
+        }
+        else
+        {
+            var image1 = PrewittEdgeDetection(imageData, PrewittType.PREWITT_X);
+            var image2 = PrewittEdgeDetection(imageData, PrewittType.PREWITT_Y);
+            return ImageData.Combine(image1, image2);
+        }
+
+        Cv2.Filter2D(mat, mat, MatType.CV_8UC3, kernel);
+
         var mat2 = new Mat(mat.Rows, mat.Cols, MatType.CV_8UC3);
         Cv2.ConvertScaleAbs(mat, mat2);
 

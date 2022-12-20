@@ -2,9 +2,9 @@ using Avalonia.Controls;
 
 namespace ImageProcessorGUI.Views
 {
-    public partial class SobelEdgeDetectionView : Window
+    public partial class EdgeDetectionView : Window
     {
-        public SobelEdgeDetectionView()
+        public EdgeDetectionView()
         {
             InitializeComponent();
         }
