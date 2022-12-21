@@ -64,7 +64,7 @@ public class OptionsOneValueViewModel<T1> : ReactiveObject
 
     public virtual ICommand RefreshCommand => ReactiveCommand.Create(Refresh);
 
-    public void Refresh()
+    public virtual void Refresh()
     {
         if (_transform == null) return;
         var newImageData = _transform(OriginalImageData, Value1);

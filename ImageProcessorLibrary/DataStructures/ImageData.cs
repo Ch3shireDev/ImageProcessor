@@ -131,7 +131,7 @@ public class ImageData : IImageData
 
         return true;
     }
-    
+
     public byte GetGrayValue(int x, int y)
     {
         var pixel = GetPixelRgb(x, y);
@@ -143,26 +143,46 @@ public class ImageData : IImageData
 
     public Color this[int x, int y]
     {
-        get => GetPixelRgb(y,x);
-        set => SetPixel(y,x, value);
+        get => GetPixelRgb(y, x);
+        set => SetPixel(y, x, value);
     }
 
     public byte this[int x, int y, int channel]
     {
         get => channel switch
         {
-            0 => GetPixelRgb(y,x).R,
-            1 => GetPixelRgb(y,x).G,
-            2 => GetPixelRgb(y,x).B,
+            0 => GetPixelRgb(y, x).R,
+            1 => GetPixelRgb(y, x).G,
+            2 => GetPixelRgb(y, x).B,
             _ => throw new ArgumentOutOfRangeException(nameof(channel))
         };
-        set => SetPixel(y,x, channel switch
+        set => SetPixel(y, x, channel switch
         {
-            0 => Color.FromArgb(value, GetPixelRgb(y,x).G, GetPixelRgb(y,x).B),
+            0 => Color.FromArgb(value, GetPixelRgb(y, x).G, GetPixelRgb(y, x).B),
             1 => Color.FromArgb(GetPixelRgb(y, x).R, value, GetPixelRgb(y, x).B),
             2 => Color.FromArgb(GetPixelRgb(y, x).R, GetPixelRgb(y, x).G, value),
             _ => throw new ArgumentOutOfRangeException(nameof(channel))
         });
+    }
+
+    public void Save(string filePath)
+    {
+        File.WriteAllBytes(filePath, Filebytes);
+    }
+
+    public byte[,] GetGrayArray()
+    {
+        var array = new byte[Height, Width];
+
+        for (var x = 0; x < Width; x++)
+        {
+            for (var y = 0; y < Height; y++)
+            {
+                array[y, x] = GetGrayValue(x, y);
+            }
+        }
+
+        return array;
     }
 
     private Color[,] ToPixels(byte[,] pixels)
@@ -262,13 +282,14 @@ public class ImageData : IImageData
     {
         return new ImageData(imagePath, File.ReadAllBytes(imagePath));
     }
+
     public static IImageData Combine(params IImageData[] imageDataList)
     {
         var height = imageDataList[0].Height;
         var width = imageDataList[0].Width;
 
         var tab = new Color[height, width];
-        
+
         for (var i = 0; i < height; i++)
         {
             for (var j = 0; j < width; j++)
@@ -281,10 +302,5 @@ public class ImageData : IImageData
         }
 
         return new ImageData(tab);
-    }
-
-    public void Save(string filePath)
-    {
-        File.WriteAllBytes(filePath, Filebytes);
     }
 }

@@ -11,6 +11,7 @@ public interface IImageData
     string Filename { get; }
     string Extension { get; }
     Color[,] Pixels { get; }
+    Bitmap Bitmap { get; }
     bool GetPixelBinary(int x, int y);
     event EventHandler<EventArgs>? ImageChanged;
     void Update(IImageData result);
@@ -24,4 +25,5 @@ public interface IImageData
     Color this[int x, int y] { get; set; }
     byte this[int x, int y, int channel] { get; set; }
     void Save(string imageJpg);
+    byte[,] GetGrayArray();
 }

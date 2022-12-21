@@ -635,6 +635,33 @@ public class MainModel
     /// </summary>
     public void CannyOperatorEdgeDetection()
     {
+        var imageData = new ImageData(ImageData);
+        var viewModel = new OptionsTwoValuesViewModel<int, int>(imageData, (image, low, high) =>
+        {
+            var edgeService = new EdgeDetectionService();
+            return edgeService.CannyOperatorEdgeDetection(image, low, high);
+        })
+        {
+            Value1 = 100,
+            Value1Label = "Próg 1", 
+            Value1Min = 0,
+            Value1Max = 255,
+            Header = "Operacja progowania operatorem Canny'ego",
+            Value2 = 200,
+            Value2Min = 0,
+            Value2Max = 255,
+            Value2Label = "Próg 2"
+        };
+
+        viewModel.Refresh(); 
+
+        var view = new OptionsTwoValuesWindow
+        {
+            DataContext = viewModel
+        };
+
+        _imageServiceProvider.WindowService.ShowImageWindow(imageData);
+        view.Show();
     }
 
 

@@ -6,7 +6,7 @@ namespace ImageProcessorLibrary.Services;
 
 public class StretchingService
 {
-    public ImageData LinearStretching(ImageData imageData, int Lmin, int Lmax)
+    public ImageData LinearStretching(IImageData imageData, int Lmin, int Lmax)
     {
         var bitmap = imageData.Bitmap;
 

@@ -61,7 +61,7 @@ public class EdgeDetectionServiceTests
             { 100, 100, 100, 100 }
         });
 
-        var result = edgeDetectionService.PrewittEdgeDetection(imageData, prewittType: PrewittType.PREWITT_Y);
+        var result = edgeDetectionService.PrewittEdgeDetection(imageData, PrewittType.PREWITT_Y);
 
         Assert.AreEqual(4, result.Width);
         Assert.AreEqual(6, result.Height);
@@ -87,7 +87,7 @@ public class EdgeDetectionServiceTests
             { 255, 255, 100, 100 }
         });
 
-        var result = edgeDetectionService.PrewittEdgeDetection(imageData, prewittType: PrewittType.PREWITT_X);
+        var result = edgeDetectionService.PrewittEdgeDetection(imageData, PrewittType.PREWITT_X);
 
         Assert.AreEqual(4, result.Width);
         Assert.AreEqual(6, result.Height);
@@ -97,6 +97,7 @@ public class EdgeDetectionServiceTests
         Assert.AreEqual(255, result.GetGrayValue(2, 0));
         Assert.AreEqual(0, result.GetGrayValue(3, 0));
     }
+
     [TestMethod]
     public void PrewittXYTest()
     {
@@ -109,23 +110,23 @@ public class EdgeDetectionServiceTests
             { 100, 255, 255, 100 },
             { 100, 100, 100, 100 }
         });
-        
-        var result = edgeDetectionService.PrewittEdgeDetection(imageData, prewittType: PrewittType.PREWITT_XY);
+
+        var result = edgeDetectionService.PrewittEdgeDetection(imageData, PrewittType.PREWITT_XY);
 
         Assert.AreEqual(4, result.Width);
         Assert.AreEqual(6, result.Height);
-        
+
         result.Save("image.jpg");
         Assert.AreEqual(0, result.GetGrayValue(0, 0));
         Assert.AreEqual(0, result.GetGrayValue(1, 0));
         Assert.AreEqual(255, result.GetGrayValue(2, 0));
         Assert.AreEqual(0, result.GetGrayValue(3, 0));
-        
+
         Assert.AreEqual(0, result.GetGrayValue(0, 1));
         Assert.AreEqual(0, result.GetGrayValue(1, 1));
         Assert.AreEqual(255, result.GetGrayValue(2, 1));
         Assert.AreEqual(0, result.GetGrayValue(3, 1));
-        
+
         Assert.AreEqual(0, result.GetGrayValue(0, 2));
         Assert.AreEqual(0, result.GetGrayValue(1, 2));
         Assert.AreEqual(255, result.GetGrayValue(2, 2));
@@ -145,10 +146,8 @@ public class EdgeDetectionServiceTests
         Assert.AreEqual(0, result.GetGrayValue(1, 5));
         Assert.AreEqual(255, result.GetGrayValue(2, 5));
         Assert.AreEqual(0, result.GetGrayValue(3, 5));
-
-
     }
-    
+
 
     [TestMethod]
     public void CannyOperatorSimpleTest()
@@ -190,18 +189,28 @@ public class EdgeDetectionServiceTests
 
         Assert.AreEqual(10, result.Width);
         Assert.AreEqual(12, result.Height);
-
-        for (var y = 0; y < result.Height; y++)
+        
+        var expected = new byte[,]
         {
-            for (var x = 0; x < result.Width; x++)
-            {
-                Console.Write($"{result.GetPixelRgb(x, y).R}, ");
-            }
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 255, 255, 255, 255, 255, 255, 0, 0 },
+            { 0, 255, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 255, 0, 255, 255, 255, 255, 0, 255, 0 },
+            { 0, 255, 0, 255, 0, 0, 255, 0, 255, 0 },
+            { 0, 255, 0, 255, 0, 0, 255, 0, 255, 0 },
+            { 0, 255, 0, 255, 255, 255, 255, 0, 255, 0 },
+            { 0, 255, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 255, 255, 255, 255, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+        };
 
-            Console.WriteLine();
-        }
+        CollectionAssert.AreEqual(expected, result.GetGrayArray());
 
-        result.Write("a.png");
+        var image2 = new ImageData(result.GetGrayArray());
+
+        CollectionAssert.AreEqual(expected, image2.GetGrayArray());
     }
 
     [TestMethod]

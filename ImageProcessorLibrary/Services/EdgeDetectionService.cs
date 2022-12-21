@@ -114,10 +114,10 @@ public class EdgeDetectionService : OpenCvService
         };
     }
 
-    public IImageData CannyOperatorEdgeDetection(IImageData imageData)
+    public IImageData CannyOperatorEdgeDetection(IImageData imageData, int threshold1=100, int threshold2=200)
     {
         var mat = ToMatrix(imageData);
-        var result = CannyOperatorEdgeDetection(mat);
+        var result = CannyOperatorEdgeDetection(mat, threshold1, threshold2);
         var mat2 = new Mat(result.Rows, result.Cols, MatType.CV_16SC3);
         Cv2.ConvertScaleAbs(result, mat2);
         return ToImageDataFromUC1(mat2);

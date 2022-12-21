@@ -21,8 +21,8 @@
 				<ColumnDefinition />
 				<ColumnDefinition Width="80" />
 			</Grid.ColumnDefinitions>
-			<Slider Grid.Column="0" Value="{Binding Value1, Mode=TwoWay}" Minimum="0" Maximum="500" />
-			<TextBox Grid.Column="1" Text="{Binding Value1, Mode=TwoWay}" />
+			<Slider Grid.Column="0" Value="{Binding Value1, Mode=TwoWay}" Minimum="{Binding Value1Min}" Maximum="{Binding Value1Max}" />
+			<TextBox Grid.Column="1" Text="{Binding Value1, Mode=TwoWay}"  />
 		</Grid>
 		<Label Grid.Row="3" Content="{Binding Value2Label}" />
 		<Grid Grid.Row="4">
@@ -30,7 +30,7 @@
 				<ColumnDefinition />
 				<ColumnDefinition Width="80" />
 			</Grid.ColumnDefinitions>
-			<Slider Grid.Column="0" Value="{Binding Value2, Mode=TwoWay}" Minimum="0" Maximum="500" />
+			<Slider Grid.Column="0" Value="{Binding Value2, Mode=TwoWay}" Minimum="{Binding Value1Min}" Maximum="{Binding Value1Max}" />
 			<TextBox Grid.Column="1" Text="{Binding Value2, Mode=TwoWay}" />
 		</Grid>
 		<Button Grid.Row="5" Command="{Binding RefreshCommand}">Refresh</Button>

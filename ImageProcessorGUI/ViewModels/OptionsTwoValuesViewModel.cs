@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Windows.Input;
 using ImageProcessorLibrary.DataStructures;
+using ImageProcessorLibrary.Services;
 using ReactiveUI;
 
 namespace ImageProcessorGUI.ViewModels;
 
 public class OptionsTwoValuesViewModel<T1, T2> : OptionsOneValueViewModel<T1>
 {
-    private readonly Func<ImageData, T1, T2, ImageData> _transform;
+    private readonly Func<IImageData, T1, T2, IImageData> _transform;
     private T2? value2;
 
-    public OptionsTwoValuesViewModel(ImageData imageData, Func<ImageData, T1, T2, ImageData> transform):base(imageData)
+    public OptionsTwoValuesViewModel(ImageData imageData, Func<IImageData, T1, T2, IImageData> transform):base(imageData)
     {
         _transform = transform;
     }
@@ -31,7 +32,7 @@ public class OptionsTwoValuesViewModel<T1, T2> : OptionsOneValueViewModel<T1>
 
     public override ICommand RefreshCommand => ReactiveCommand.Create(Refresh);
 
-    private void Refresh()
+    public override void Refresh()
     {
         var newImageData = _transform(OriginalImageData, Value1, Value2);
         ImageData.Update(newImageData);
