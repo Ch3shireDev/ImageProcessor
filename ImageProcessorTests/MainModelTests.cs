@@ -379,19 +379,19 @@ public class MainModelTests
         Assert.AreEqual(true, _windowService.IsAddImagesWindowCalled);
     }
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void ImagesDifferenceTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void AddNumberToImageTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void SubtractNumberFromImageTest()
     //{
     //    Assert.Fail();
@@ -407,193 +407,193 @@ public class MainModelTests
         Assert.AreEqual(true, _windowService.IsBinaryOperationsWindowCalled);
     }
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void GetBinaryMaskTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void Get8BitMaskTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void GaussianBlurTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void EdgeSobelEastTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void EdgeSobelNorthEastTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void EdgeSobelNorthTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void EdgeSobelNorthWestTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void EdgeSobelWestTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void EdgeSobelSouthWestTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void EdgeSobelSouthTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void EdgeSobelSouthEastTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void FillBorderConstantTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void FillResultBorderConstantTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void FillBorderReflectTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void FillBorderWrapTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void CalculateMedian3x3Test()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void CalculateMedian5x5Test()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void CalculateMedian7x7Test()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void CalculateMedian9x9Test()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void SobelEdgeDetectionTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void PrewittEdgeDetectionTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void CannyOperatorEdgeDetectionTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void OtsuSegmentationTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void AdaptativeThresholdSegmentationTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void MorphologyErosionTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void MorphologyDilationTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void MorphologyOpeningTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void MorphologyClosingTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void CalculateFeatureVectorTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void ModifyAmplitudeSpectrumTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void MedianBlurTest()
     //{
     //    Assert.Fail();
     //}
 
-    //[TestMethod]
+    //[OtsuSegmentationBasicTest]
     //public void SharpeningTest()
     //{
     //    Assert.Fail();

@@ -1,4 +1,5 @@
 using System.IO;
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
@@ -52,9 +53,11 @@ public class App : Application
 
                 windowService.ImageServiceProvider = serviceProvider;
 
-                var path = args.Args[0];
-                var imageData = new ImageData(path, File.ReadAllBytes(path));
-                var mainModel = new MainModel(imageData, serviceProvider);
+                
+
+                var path = GetPath(args);
+             
+                var mainModel = new MainModel(path, serviceProvider);
                 var mainViewModel = new MainWindowViewModel(mainModel);
 
                 desktop.MainWindow = new MainWindow
@@ -64,5 +67,16 @@ public class App : Application
             };
 
         base.OnFrameworkInitializationCompleted();
+    }
+
+    private static ImageData GetPath(ControlledApplicationLifetimeStartupEventArgs args)
+    {
+        if (args.Args.Length == 0)
+        {
+            return new ImageData(new byte[,]{{0}});
+        }
+        var path = args.Args[0];
+           var imageData = new ImageData(path, File.ReadAllBytes(path));
+        return imageData;
     }
 }

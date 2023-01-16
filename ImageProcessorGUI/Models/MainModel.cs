@@ -677,7 +677,12 @@ public class MainModel
     /// </summary>
     public void OtsuSegmentation()
     {
+        var imageData = new ImageData(ImageData);
+        var result = segmentationService.OtsuSegmentation(imageData);
+        _imageServiceProvider.WindowService.ShowImageWindow(result);
     }
+
+    private readonly SegmentationService segmentationService = new SegmentationService();
 
     /// <summary>
     ///     - [ ] Implementacja detekcji krawędzi operatorami opartymi na maskach Sobela i Prewitta oraz operatorem Cannyego.
@@ -691,6 +696,9 @@ public class MainModel
     /// </summary>
     public void AdaptativeThresholdSegmentation()
     {
+        var imageData = new ImageData(ImageData);
+        var result = segmentationService.AdaptiveThresholding(imageData);
+        _imageServiceProvider.WindowService.ShowImageWindow(result);
     }
 
     /// <summary>
@@ -769,5 +777,10 @@ public class MainModel
     public void ToBinaryImage()
     {
         BinaryThreshold();
+    }
+
+    public void ResetScale()
+    {
+        Scale = 1;
     }
 }

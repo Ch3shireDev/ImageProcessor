@@ -26,6 +26,7 @@ public class OptionsTwoValuesViewModel<T1, T2> : OptionsOneValueViewModel<T1>
         set
         {
             value2 = value;
+            if (AutoRefresh) Refresh();
             this.RaisePropertyChanged();
         }
     }

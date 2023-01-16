@@ -303,4 +303,9 @@ public class ImageData : IImageData
 
         return new ImageData(tab);
     }
+
+    public void SetGrayValue(int x, int y, double pixel)
+    {
+        SetPixel(x, y, Color.FromArgb((int)pixel, (int)pixel, (int)pixel));
+    }
 }

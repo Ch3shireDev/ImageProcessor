@@ -24,6 +24,13 @@ public class MainWindowViewModel : ReactiveObject
     public ICommand ShowGHistogramCommand => ReactiveCommand.Create(() => MainModel?.ShowGHistogram());
     public ICommand ShowBHistogramCommand => ReactiveCommand.Create(() => MainModel?.ShowBHistogram());
 
+    public ICommand ShowNormalScaleCommand => ReactiveCommand.Create(() =>
+    {
+        MainModel?.ResetScale();
+        this.RaisePropertyChanged(nameof(ImageWidth));
+        this.RaisePropertyChanged(nameof(ImageHeight));
+    });
+
     public ICommand ShowScaledUp200PercentCommand => ReactiveCommand.Create(() =>
     {
         MainModel?.ShowScaledUp200Percent();

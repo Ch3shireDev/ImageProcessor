@@ -107,13 +107,11 @@ Zastosować powyższych metod uzupełniania brzegowych pikselach obrazu, dając 
     - [x] Sobela,
     - [x] Prewitta,
     - [x] operatorem Cannyego.
-
-- [ ] Opracować algorytm i uruchomić funkcjonalność realizującą segmentację obrazów następującymi metodami:
-    - [ ] Dostosowanie obsługi do wykonywania prostego interaktywnego progowania z jednym i dwoma progami (zad 2 lab 2) tak, aby prezentować wyniki w chwili zmiany progu związanego z przesunięciem wskaźnika lub wpisania nowej wartości.
-
-- [ ] Ponadto jako część interfejsu operacji występuje wykonanie pozostałych dwóch poniżej wymienionych wersji progowania:
-    - [ ] Progowanie metodą Otsu,
-    - [ ] Progowanie adaptacyjne (adaptive threshold).
+    
+- [x] Opracować algorytm i uruchomić funkcjonalność realizującą segmentację obrazów następującymi metodami:
+    – [x] Dostosowanie obsługi do wykonywania prostego interaktywnego progowania z jednym i dwoma progami (zad 2 lab 2) tak, aby prezentować wyniki w chwili zmiany progu związanego z przesunięciem wskaźnika lub wpisania nowej wartości. Ponadto jako część „interface” operacji występuje wykonanie pozostałych dwóch poniżej wymienionych wersji progowania.
+    – [x] Progowanie metodą Otsu,
+    – [x] Progowanie adaptacyjne (adaptive threshold)
 
 ## 9. Algorytmy morfologii
 

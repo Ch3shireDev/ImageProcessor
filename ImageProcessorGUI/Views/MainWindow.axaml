@@ -46,6 +46,7 @@
                             <MenuItem Header="Histogram B" Command="{Binding ShowBHistogramCommand}" />
                         </MenuItem>
                         <MenuItem Header="Skaluj">
+							<MenuItem Header="Resetuj skalę" Command="{Binding ShowNormalScaleCommand}"/>
                             <MenuItem Header="Skaluj 200%" Command="{Binding ShowScaledUp200PercentCommand}" />
                             <MenuItem Header="Skaluj 150%" Command="{Binding ShowScaledUp150PercentCommand}" />
                             <MenuItem Header="Skaluj 50%" Command="{Binding ShowScaledDown50PercentCommand}" />
@@ -66,9 +67,9 @@
                     <MenuItem Header="_Operacje punktowe">
                         <MenuItem Header="Negacja" Command="{Binding NegateImageCommand}" />
                         <MenuItem Header="Progowanie binarne" Command="{Binding BinaryThresholdCommand}" />
-                        <MenuItem Header="Progowanie z zachowaniem poziomów szarości z jednym suwakiem"
+                        <MenuItem Header="Progowanie z jednym suwakiem"
                                   Command="{Binding GreyscaleThresholdOneSliderCommand}" />
-                        <MenuItem Header="Progowanie z zachowaniem poziomów szarości z dwoma suwakami"
+                        <MenuItem Header="Progowanie z dwoma suwakami"
                                   Command="{Binding GreyscaleThresholdTwoSlidersCommand}" />
                         <MenuItem Header="Dodaj obrazy / Uzyskaj różnicę obrazów" Command="{Binding AddImageCommand}" />
                         <MenuItem Header="Operacje matematyczne" Command="{Binding MathOperationCommand}" />
@@ -113,10 +114,19 @@
 						<MenuItem Header="Otwarcie" Command="{Binding MorphologyOpeningCommand}" />
 						<MenuItem Header="Zamknięcie" Command="{Binding MorphologyClosingCommand}" />
 					</MenuItem>
-                    <MenuItem Header="Analiza">
+					<MenuItem Header="_Segmentacja">
+						<MenuItem Header="Progowanie binarne" Command="{Binding BinaryThresholdCommand}" />
+						<MenuItem Header="Progowanie z jednym suwakiem"
+                                  Command="{Binding GreyscaleThresholdOneSliderCommand}" />
+						<MenuItem Header="Progowanie z dwoma suwakami"
+                                  Command="{Binding GreyscaleThresholdTwoSlidersCommand}" />
+						<MenuItem Header="Progrowanie metodą Otsu" Command="{Binding OtsuSegmentationCommand}"/>
+						<MenuItem Header="Progowanie adaptacyjne" Command="{Binding AdaptiveThresholdSegmentationCommand}"/>
+					</MenuItem>
+                    <MenuItem Header="_Analiza">
                         <MenuItem Header="Oblicz wektor cech" Command="{Binding CalculateFeatureVectorCommand}" />
                     </MenuItem>
-                    <MenuItem Header="Likwidacja zakłóceń">
+                    <MenuItem Header="_Likwidacja zakłóceń">
                         <MenuItem Header="Likwidacja zakłóceń periodycznych"
                                   Command="{Binding RemovePeriodicNoiseCommand}" />
                     </MenuItem>

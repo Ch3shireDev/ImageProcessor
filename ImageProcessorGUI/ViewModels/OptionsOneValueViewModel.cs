@@ -23,6 +23,7 @@ public class OptionsOneValueViewModel<T1> : ReactiveObject
         OriginalImageData = new ImageData(imageData);
     }
 
+    public bool AutoRefresh{ get; set; }
     public string? Value1Label { get; set; }
     public ImageData ImageData { get; set; }
     public ImageData OriginalImageData { get; set; }
@@ -56,6 +57,7 @@ public class OptionsOneValueViewModel<T1> : ReactiveObject
         set
         {
             this.value1 = value;
+            if (AutoRefresh) Refresh();
             this.RaisePropertyChanged();
         }
     }

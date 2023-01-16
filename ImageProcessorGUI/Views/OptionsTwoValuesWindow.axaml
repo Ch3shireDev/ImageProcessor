@@ -2,11 +2,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" Width="400" Height="250"
+        mc:Ignorable="d" Width="400" Height="300"
         x:Class="ImageProcessorGUI.Views.OptionsTwoValuesWindow"
         Title="{Binding Header}">
 	<Grid Margin="10">
 		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
 			<RowDefinition Height="Auto" />
 			<RowDefinition Height="Auto" />
 			<RowDefinition Height="Auto" />
@@ -33,6 +34,8 @@
 			<Slider Grid.Column="0" Value="{Binding Value2, Mode=TwoWay}" Minimum="{Binding Value1Min}" Maximum="{Binding Value1Max}" />
 			<TextBox Grid.Column="1" Text="{Binding Value2, Mode=TwoWay}" />
 		</Grid>
-		<Button Grid.Row="5" Command="{Binding RefreshCommand}">Refresh</Button>
+
+		<CheckBox Grid.Row="5" IsChecked="{Binding AutoRefresh}">Aktualizuj automatycznie</CheckBox>
+		<Button Grid.Row="6" Command="{Binding RefreshCommand}">Zatwierdź</Button>
 	</Grid>
 </Window>
