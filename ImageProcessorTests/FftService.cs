@@ -1,4 +1,8 @@
-﻿namespace ImageProcessorTests;
+﻿using System.Drawing;
+using ImageProcessorLibrary.DataStructures;
+using ImageProcessorLibrary.Services;
+
+namespace ImageProcessorTests;
 
 public class FftService
 {
@@ -10,7 +14,7 @@ public class FftService
         return FFT2D(Fourier, nx, ny, -1);
     }
 
-    public Complex[,] FFT(Complex[,] Fourier)
+    public Complex[,] ForwardFFT(Complex[,] Fourier)
     {
         var nx = Fourier.GetLength(0);
         var ny = Fourier.GetLength(1);
@@ -18,6 +22,97 @@ public class FftService
         return FFT2D(Fourier, nx, ny, 1);
     }
 
+    //private T[,] GetSlice<T>(T[,,] array, int index)
+    //{
+    //    var result = new T[array.GetLength(1), array.GetLength(2)];
+    //    for (var x = 0; x < array.GetLength(1); x++)
+    //    {
+    //        for (var y = 0; y < array.GetLength(2); y++)
+    //        {
+    //            result[x, y] = array[index, x, y];
+    //        }
+    //    }
+
+    //    return result;
+    //}
+
+    //private T[,,] Combine<T>(params T[][,] array)
+    //{
+    //    var n0 = array.GetLength(0);
+    //    var n1 = array[0].GetLength(0);
+    //    var n2 = array[0].GetLength(1);
+
+    //    var result = new T[n0, n1, n2];
+
+    //    for (var x = 0; x < n0; x++)
+    //    {
+    //        for (var y = 0; y < n1; y++)
+    //        {
+    //            for (var z = 0; z < n2; z++)
+    //            {
+    //                result[x, y, z] = array[x][y, z];
+    //            }
+    //        }
+    //    }
+    //}
+
+    public Complex[][,] InverseFFT(Complex[][,] Fourier)
+    {
+        var red = InverseFFT(Fourier[0]);
+        var green = InverseFFT(Fourier[1]);
+        var blue = InverseFFT(Fourier[2]);
+
+        return new[] { red, green, blue };
+    }
+
+    public Complex[][,] ForwardFFT(Complex[][,] Fourier)
+    {
+        var red = ForwardFFT(Fourier[0]);
+        var green = ForwardFFT(Fourier[1]);
+        var blue = ForwardFFT(Fourier[2]);
+
+        return new[] { red, green, blue };
+    }
+
+
+    public ImageData ToImageData(Complex[,] input)
+    {
+        var array = new byte[input.GetLength(0), input.GetLength(1)];
+
+        for (var y = 0; y < array.GetLength(0); y++)
+        {
+            for (var x = 0; x < array.GetLength(1); x++)
+            {
+                var value = input[y, x].Magnitude();
+                if (value < 0) value = 0;
+                if (value > 255) value = 255;
+                array[y, x] = (byte)value;
+            }
+        }
+
+        var image2 = new ImageData(array);
+        return image2;
+    }
+
+
+    public ImageData ToImageData(Complex[][,] input)
+    {
+        var red = input[0];
+        var green = input[1];
+        var blue = input[2];
+
+        var colors = new Color[red.GetLength(0), red.GetLength(1)];
+
+        for (var y = 0; y < red.GetLength(0); y++)
+        {
+            for (var x = 0; x < red.GetLength(1); x++)
+            {
+                colors[y, x] = Color.FromArgb((byte)red[y, x].Real, (byte)green[y, x].Real, (byte)blue[y, x].Real);
+            }
+        }
+
+        return new ImageData(colors);
+    }
 
 
     public Complex[,] ToComplexData(byte[,] GreyImage)
@@ -36,6 +131,46 @@ public class FftService
 
         return Fourier;
     }
+
+    public Complex[][,] ToComplexData(IImageData GreyImage)
+    {
+        var width = GreyImage.Width;
+        var height = GreyImage.Height;
+        var threeFourier = new Complex[3][,];
+
+        for (var k = 0; k < 3; k++)
+        {
+            threeFourier[k] = ToComplexData(GetChannel(k, GreyImage.Pixels));
+        }
+
+        return threeFourier;
+    }
+
+    private static byte GetChannel(int k, Color color)
+    {
+        var value = k switch
+        {
+            0 => color.R,
+            1 => color.G,
+            _ => color.B
+        };
+        return value;
+    }
+
+    private static byte[,] GetChannel(int k, Color[,] colors)
+    {
+        var result = new byte[colors.GetLength(0), colors.GetLength(1)];
+        for (var i = 0; i < colors.GetLength(0); i++)
+        {
+            for (var j = 0; j < colors.GetLength(1); j++)
+            {
+                result[i, j] = GetChannel(k, colors[i, j]);
+            }
+        }
+
+        return result;
+    }
+
 
     /*-------------------------------------------------------------------------
         Perform a 2D FFT inplace given a complex 2D array
