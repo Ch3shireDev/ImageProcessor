@@ -22,40 +22,6 @@ public class FftService
         return FFT2D(Fourier, nx, ny, 1);
     }
 
-    //private T[,] GetSlice<T>(T[,,] array, int index)
-    //{
-    //    var result = new T[array.GetLength(1), array.GetLength(2)];
-    //    for (var x = 0; x < array.GetLength(1); x++)
-    //    {
-    //        for (var y = 0; y < array.GetLength(2); y++)
-    //        {
-    //            result[x, y] = array[index, x, y];
-    //        }
-    //    }
-
-    //    return result;
-    //}
-
-    //private T[,,] Combine<T>(params T[][,] array)
-    //{
-    //    var n0 = array.GetLength(0);
-    //    var n1 = array[0].GetLength(0);
-    //    var n2 = array[0].GetLength(1);
-
-    //    var result = new T[n0, n1, n2];
-
-    //    for (var x = 0; x < n0; x++)
-    //    {
-    //        for (var y = 0; y < n1; y++)
-    //        {
-    //            for (var z = 0; z < n2; z++)
-    //            {
-    //                result[x, y, z] = array[x][y, z];
-    //            }
-    //        }
-    //    }
-    //}
-
     public Complex[][,] InverseFFT(Complex[][,] Fourier)
     {
         var red = InverseFFT(Fourier[0]);
@@ -84,7 +50,6 @@ public class FftService
             for (var x = 0; x < array.GetLength(1); x++)
             {
                 var value = input[y, x].Magnitude();
-                if (value < 0) value = 0;
                 if (value > 255) value = 255;
                 array[y, x] = (byte)value;
             }
@@ -107,7 +72,7 @@ public class FftService
         {
             for (var x = 0; x < red.GetLength(1); x++)
             {
-                colors[y, x] = Color.FromArgb((byte)red[y, x].Real, (byte)green[y, x].Real, (byte)blue[y, x].Real);
+                colors[y, x] = Color.FromArgb((byte)red[y, x].Magnitude(), (byte)green[y, x].Magnitude(), (byte)blue[y, x].Magnitude());
             }
         }
 
@@ -121,12 +86,13 @@ public class FftService
         var height = GreyImage.GetLength(1);
         var Fourier = new Complex [width, height];
 
-        //Copy Image Data to the Complex Array
-        for (var i = 0; i <= width - 1; i++)
-        for (var j = 0; j <= height - 1; j++)
+        for (var i = 0; i < width; i++)
         {
-            Fourier[i, j].Real = GreyImage[i, j];
-            Fourier[i, j].Imag = 0;
+            for (var j = 0; j < height; j++)
+            {
+                Fourier[i, j].Real = GreyImage[i, j];
+                Fourier[i, j].Imag = 0;
+            }
         }
 
         return Fourier;
@@ -134,8 +100,6 @@ public class FftService
 
     public Complex[][,] ToComplexData(IImageData GreyImage)
     {
-        var width = GreyImage.Width;
-        var height = GreyImage.Height;
         var threeFourier = new Complex[3][,];
 
         for (var k = 0; k < 3; k++)
@@ -179,10 +143,66 @@ public class FftService
         Return false if there are memory problems or
         the dimensions are not powers of 2
     */
+
+    public Complex[,] ChangeSize(Complex[,] input, int nx, int ny)
+    {
+        var output = new Complex[nx, ny];
+
+        for (var i = 0; i < nx; i++)
+        {
+            for (var j = 0; j < ny; j++)
+            {
+                if (i >= input.GetLength(0) || j >= input.GetLength(1)) output[i, j] = new Complex(0, 0);
+                else output[i, j] = input[i, j];
+            }
+        }
+
+        return output;
+    }
+
+    public Complex[][,] ChangeSize(Complex[][,] input, int nx, int ny)
+    {
+        var red = ChangeSize(input[0], nx, ny);
+        var green = ChangeSize(input[1], nx, ny);
+        var blue = ChangeSize(input[2], nx, ny);
+
+        return new[] { red, green, blue };
+    }
+
+    public Complex[,] ChangeSizeToClosestPowerOfTwo(Complex[,] input)
+    {
+        var nx = input.GetLength(0);
+        var ny = input.GetLength(1);
+
+        var newNx = (int)Math.Pow(2, Math.Ceiling(Math.Log(nx, 2)));
+        var newNy = (int)Math.Pow(2, Math.Ceiling(Math.Log(ny, 2)));
+
+        return ChangeSize(input, newNx, newNy);
+    }
+
+    public Complex[][,] ChangeSizeToClosestPowerOfTwo(Complex[][,] input)
+    {
+        var red = ChangeSizeToClosestPowerOfTwo(input[0]);
+        var green = ChangeSizeToClosestPowerOfTwo(input[1]);
+        var blue = ChangeSizeToClosestPowerOfTwo(input[2]);
+
+        return new[] { red, green, blue };
+    }
+
+    public int FindPowerOf2(int n)
+    {
+        var x = (int)Math.Log2(n);
+        int y = (int)Math.Pow(2, x);
+        if (y == n) return n;
+        return (int)Math.Pow(2, x + 1);
+    }
+
+
     public Complex[,] FFT2D(Complex[,] c, int nx, int ny, int dir)
     {
         int i, j;
         int m; //Power of 2 for current number of points
+
         var output = c;
         // Transform the Rows 
         var real = new double[nx];
@@ -202,8 +222,6 @@ public class FftService
 
             for (i = 0; i < nx; i++)
             {
-                //  c[i,j].Real = Real[i];
-                //  c[i,j].Imag = Imag[i];
                 output[i, j].Real = real[i];
                 output[i, j].Imag = imag[i];
             }
@@ -224,7 +242,11 @@ public class FftService
             }
 
             // Calling 1D FFT Function for Columns
+
+
             m = (int)Math.Log(ny, 2); //Finding power of 2 for current number of points e.g. for nx=512 m=9
+
+
             FFT1D(dir, m, ref real, ref imag);
 
             for (j = 0; j < ny; j++)
@@ -264,33 +286,31 @@ public class FftService
         */
     public void FFT1D(int dir, int m, ref double[] x, ref double[] y)
     {
-        long nn, i, i1, j, k, i2, l, l1, l2;
-        double c1, c2, tx, ty, t1, t2, u1, u2, z;
         /* Calculate the number of points */
-        nn = 1;
+        long nn = 1;
 
-        for (i = 0; i < m; i++)
+        for (var i = 0; i < m; i++)
         {
             nn *= 2;
         }
 
         /* Do the bit reversal */
-        i2 = nn >> 1;
-        j = 0;
+        long i2 = nn >> 1;
+        long j = 0;
 
-        for (i = 0; i < nn - 1; i++)
+        for (var i = 0; i < nn - 1; i++)
         {
             if (i < j)
             {
-                tx = x[i];
-                ty = y[i];
+                double tx = x[i];
+                double ty = y[i];
                 x[i] = x[j];
                 y[i] = y[j];
                 x[j] = tx;
                 y[j] = ty;
             }
 
-            k = i2;
+            long k = i2;
 
             while (k <= j)
             {
@@ -302,31 +322,31 @@ public class FftService
         }
 
         /* Compute the FFT */
-        c1 = -1.0;
-        c2 = 0.0;
-        l2 = 1;
+        double c1 = -1.0;
+        double c2 = 0.0;
+        long l2 = 1;
 
-        for (l = 0; l < m; l++)
+        for (var l = 0; l < m; l++)
         {
-            l1 = l2;
+            long l1 = l2;
             l2 <<= 1;
-            u1 = 1.0;
-            u2 = 0.0;
+            double u1 = 1.0;
+            double u2 = 0.0;
 
             for (j = 0; j < l1; j++)
             {
-                for (i = j; i < nn; i += l2)
+                for (var i = j; i < nn; i += l2)
                 {
-                    i1 = i + l1;
-                    t1 = u1 * x[i1] - u2 * y[i1];
-                    t2 = u1 * y[i1] + u2 * x[i1];
+                    long i1 = i + l1;
+                    double t1 = u1 * x[i1] - u2 * y[i1];
+                    double t2 = u1 * y[i1] + u2 * x[i1];
                     x[i1] = x[i] - t1;
                     y[i1] = y[i] - t2;
                     x[i] += t1;
                     y[i] += t2;
                 }
 
-                z = u1 * c1 - u2 * c2;
+                double z = u1 * c1 - u2 * c2;
                 u2 = u1 * c2 + u2 * c1;
                 u1 = z;
             }
@@ -344,7 +364,7 @@ public class FftService
         /* Scaling for forward transform */
         if (dir == 1)
         {
-            for (i = 0; i < nn; i++)
+            for (var i = 0; i < nn; i++)
             {
                 x[i] /= nn;
                 y[i] /= nn;
@@ -353,5 +373,112 @@ public class FftService
 
 
         //  return(true) ;
+    }
+
+    public Complex[,] FFTShift(Complex[,] Output)
+    {
+        var nx = Output.GetLength(0);
+        var ny = Output.GetLength(1);
+
+        int i, j;
+        var FFTShifted = new Complex[nx, ny];
+
+        for (i = 0; i <= nx / 2 - 1; i++)
+        for (j = 0; j <= ny / 2 - 1; j++)
+        {
+            FFTShifted[i + nx / 2, j + ny / 2] = Output[i, j];
+            FFTShifted[i, j] = Output[i + nx / 2, j + ny / 2];
+            FFTShifted[i + nx / 2, j] = Output[i, j + ny / 2];
+            FFTShifted[i, j + nx / 2] = Output[i + nx / 2, j];
+        }
+
+        return FFTShifted;
+    }
+
+    public Complex[][,] FFTShift(Complex[][,] Output)
+    {
+        var red = FFTShift(Output[0]);
+        var green = FFTShift(Output[1]);
+        var blue = FFTShift(Output[2]);
+
+        return new[] { red, green, blue };
+    }
+
+    public Complex[,] Normalize(Complex[,] input)
+    {
+        double max = 0;
+
+        for (var x = 0; x < input.GetLength(0); x++)
+        {
+            for (var y = 0; y < input.GetLength(1); y++)
+            {
+                var magnitude = input[x, y].Magnitude();
+                if (magnitude > max) max = magnitude;
+            }
+        }
+
+        var param = 255 / Math.Sqrt(2) / max;
+
+        for (var x = 0; x < input.GetLength(0); x++)
+        {
+            for (var y = 0; y < input.GetLength(1); y++)
+            {
+                input[x, y] = new Complex(input[x, y].Real * param, input[x, y].Imag * param);
+            }
+        }
+
+        return input;
+    }
+
+    public Complex[][,] Normalize(Complex[][,] input)
+    {
+        double max = 0;
+
+        for (var z = 0; z < 3; z++)
+        {
+            for (var x = 0; x < input[z].GetLength(0); x++)
+            {
+                for (var y = 0; y < input[z].GetLength(1); y++)
+                {
+                    var magnitude0 = input[z][x, y].Magnitude();
+                    if (magnitude0 > max) max = magnitude0;
+                }
+            }
+        }
+
+        var param = 255 / Math.Sqrt(2) / max;
+
+        for (var z = 0; z < 3; z++)
+        {
+            for (var x = 0; x < input[0].GetLength(0); x++)
+            {
+                for (var y = 0; y < input[0].GetLength(1); y++)
+                {
+                    input[z][x, y] = new Complex(input[z][x, y].Real * param, input[z][x, y].Imag * param);
+                }
+            }
+        }
+
+        return input;
+    }
+
+    public Complex[,] RemoveFFTShift(Complex[,] FFTShifted)
+    {
+        var nx = FFTShifted.GetLength(0);
+        var ny = FFTShifted.GetLength(1);
+
+        int i, j;
+        var FFTNormal = new Complex[nx, ny];
+
+        for (i = 0; i <= nx / 2 - 1; i++)
+        for (j = 0; j <= ny / 2 - 1; j++)
+        {
+            FFTNormal[i + nx / 2, j + ny / 2] = FFTShifted[i, j];
+            FFTNormal[i, j] = FFTShifted[i + nx / 2, j + ny / 2];
+            FFTNormal[i + nx / 2, j] = FFTShifted[i, j + ny / 2];
+            FFTNormal[i, j + nx / 2] = FFTShifted[i + nx / 2, j];
+        }
+
+        return FFTNormal;
     }
 }

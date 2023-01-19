@@ -1,7 +1,5 @@
 ﻿using System.Drawing;
-using FFTW.NET;
 using ImageProcessorLibrary.DataStructures;
-using ImageProcessorLibrary.Services;
 
 namespace ImageProcessorTests;
 
@@ -29,10 +27,10 @@ public class FourierTests
         var inputImageGray = inputImage.GetGrayArray();
 
         var complex = fftService.ToComplexData(inputImageGray);
-        
+
         var fourier = fftService.ForwardFFT(complex);
         var result = fftService.InverseFFT(fourier);
-        
+
         var resultImage = fftService.ToImageData(result);
         var resultImageGray = resultImage.GetGrayArray();
 
@@ -47,6 +45,7 @@ public class FourierTests
         Assert.AreEqual(4, resultImage.Width);
         Assert.AreEqual(3, resultImage.Height);
     }
+
     [TestMethod]
     public void GrayscaleColorImageFourierTransformTest()
     {
@@ -60,10 +59,10 @@ public class FourierTests
         var inputImageGray = inputImage.GetGrayArray();
 
         var complex = fftService.ToComplexData(inputImage);
-        
+
         var fourier = fftService.ForwardFFT(complex);
         var result = fftService.InverseFFT(fourier);
-        
+
         var resultImage = fftService.ToImageData(result);
         var resultImageGray = resultImage.GetGrayArray();
 
@@ -93,8 +92,9 @@ public class FourierTests
         var fourier = fftService.ForwardFFT(complex);
         var result = fftService.InverseFFT(fourier);
 
-        
-        var resultImage = fftService.ToImageData(result); for (var x = 0; x < inputImage.Width; x++)
+
+        var resultImage = fftService.ToImageData(result);
+        for (var x = 0; x < inputImage.Width; x++)
         {
             for (var y = 0; y < inputImage.Height; y++)
             {
@@ -106,5 +106,79 @@ public class FourierTests
         Assert.AreEqual(3, resultImage.Height);
     }
 
+    [TestMethod]
+    public void Test()
+    {
+        var image = new ImageData("lion.jpg", File.ReadAllBytes("../../../Resources/lion.jpg"));
 
+
+            var complex = fftService.ToComplexData(image);
+            complex = fftService.ChangeSizeToClosestPowerOfTwo(complex);
+
+            var fourier = fftService.ForwardFFT(complex);
+
+            //for (var i = 0; i < fourier[0].GetLength(0); i++)
+            //{
+            //    for (var j = 0; j < fourier[0].GetLength(1); j++)
+            //    {
+            //        if (i < n ) continue;
+            //        fourier[0][i, j] = new Complex(0, 0);
+            //        fourier[1][i, j] = new Complex(0, 0);
+            //        fourier[2][i, j] = new Complex(0, 0);
+            //    }
+            //}
+
+            fourier = fftService.FFTShift(fourier);
+            fourier = fftService.Normalize(fourier);
+
+            fftService.ToImageData(fourier).Save("fourier.jpg");
+
+            var resultComplex = fftService.InverseFFT(fourier);
+
+            resultComplex = fftService.ChangeSize(resultComplex, image.Height, image.Width);
+
+            var resultImage = fftService.ToImageData(resultComplex);
+
+            resultImage.Save($"result.jpg");
+        
+
+    }
+
+    [TestMethod]
+    public void ChangeSizeTest()
+    {
+        var tab = new[,]
+        {
+            { new Complex(1, 2), new Complex(1, 2), new Complex(1, 2), },
+            { new Complex(1, 2), new Complex(1, 2), new Complex(1, 2), }
+        };
+
+        var t1 = fftService.ChangeSize(tab, 4, 3);
+        var t2 = fftService.ChangeSize(tab, 2, 3);
+
+        Assert.AreEqual(4, t1.GetLength(0));
+        Assert.AreEqual(3, t1.GetLength(1));
+
+        Assert.AreEqual(0, t1[3, 2].Real);
+        Assert.AreEqual(0, t1[3, 2].Imag);
+
+        for (var x = 0; x < 2; x++)
+        {
+            for (var y = 0; y < 3; y++)
+            {
+                Assert.AreEqual(tab[x, y], t2[x, y]);
+            }
+        }
+    }
+
+    [TestMethod]
+    public void FindClosestPowerOf2()
+    {
+        Assert.AreEqual(8, fftService.FindPowerOf2(5));
+        Assert.AreEqual(8, fftService.FindPowerOf2(8));
+        Assert.AreEqual(16, fftService.FindPowerOf2(9));
+        Assert.AreEqual(32, fftService.FindPowerOf2(17));
+        Assert.AreEqual(32, fftService.FindPowerOf2(31));
+        Assert.AreEqual(32, fftService.FindPowerOf2(32));
+    }
 }
