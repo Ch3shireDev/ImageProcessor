@@ -5,19 +5,21 @@ public struct Complex
     public double Real { get; set; }
     public double Imag { get; set; }
 
-    public Complex(double x, double y)
+    public Complex(double x, double y=0)
     {
         Real = x;
         Imag = y;
     }
 
-    public float Magnitude()
+    public double Magnitude => GetMagnitude();
+
+    public double GetMagnitude()
     {
-        return (float)Math.Sqrt(Real * Real + Imag * Imag);
+        return Math.Sqrt(Real * Real + Imag * Imag);
     }
 
-    public float Phase()
+    public double Phase()
     {
-        return (float)Math.Atan(Imag / Real);
+        return Math.Atan(Imag / Real);
     }
 }

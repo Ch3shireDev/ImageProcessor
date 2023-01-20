@@ -15,6 +15,84 @@ public class FourierTests
     }
 
     [TestMethod]
+    public void SimpleFourierTransform()
+    {
+        var inputImage = new ImageData(new byte[,]
+        {
+            { 0, 254, 0, 254 },
+            { 0, 254, 0, 254 },
+            { 0, 254, 0, 254 },
+            { 0, 254, 0, 254 },
+        });
+
+        var complex = fftService.ToComplexData(inputImage);
+        var fourier = fftService.ForwardFFT(complex);
+
+        Assert.AreEqual(127, fourier[0][0, 0].Magnitude);
+        Assert.AreEqual(127, fourier[0][0, 2].Magnitude);
+        Assert.AreEqual(127, fourier[1][0, 0].Magnitude);
+        Assert.AreEqual(127, fourier[1][0, 2].Magnitude);
+        Assert.AreEqual(127, fourier[2][0, 0].Magnitude);
+        Assert.AreEqual(127, fourier[2][0, 2].Magnitude);
+    }
+
+    [TestMethod]
+    public void SimpleShiftTest()
+    {
+        var inputImage = new ImageData(new byte[,]
+        {
+            { 0, 254, 0, 254 },
+            { 0, 254, 0, 254 },
+            { 0, 254, 0, 254 },
+            { 0, 254, 0, 254 },
+        });
+
+        var complex = fftService.ToComplexData(inputImage);
+        var fourier = fftService.ForwardFFT(complex);
+        var shift = fftService.FFTShift(fourier);
+
+        Assert.AreEqual(127, shift[0][2, 0].Magnitude);
+        Assert.AreEqual(127, shift[0][2, 2].Magnitude);
+        Assert.AreEqual(127, shift[1][2, 0].Magnitude);
+        Assert.AreEqual(127, shift[1][2, 2].Magnitude);
+        Assert.AreEqual(127, shift[2][2, 0].Magnitude);
+        Assert.AreEqual(127, shift[2][2, 2].Magnitude);
+
+        Assert.AreEqual(4, shift[0].GetLength(0));
+        Assert.AreEqual(4, shift[0].GetLength(1));
+    }
+
+    [TestMethod]
+    public void SimpleShiftTest2()
+    {
+        var inputImage = new ImageData(new byte[,]
+        {
+            { 0, 127, 254, 127, 0, 127, 254, 127 },
+            { 0, 127, 254, 127, 0, 127, 254, 127 },
+            { 0, 127, 254, 127, 0, 127, 254, 127 },
+            { 0, 127, 254, 127, 0, 127, 254, 127 },
+            { 0, 127, 254, 127, 0, 127, 254, 127 },
+            { 0, 127, 254, 127, 0, 127, 254, 127 },
+            { 0, 127, 254, 127, 0, 127, 254, 127 },
+            { 0, 127, 254, 127, 0, 127, 254, 127 },
+        });
+
+        inputImage.Save("a.png");
+
+        var complex = fftService.ToComplexData(inputImage);
+        var fourier = fftService.ForwardFFT(complex);
+        var shift = fftService.FFTShift(fourier);
+
+        var shift2= fftService.LogN(shift);
+        shift2 = fftService.Normalize(shift2); 
+
+        Assert.AreNotEqual(0, shift2[0][4, 2].Magnitude);
+        Assert.AreNotEqual(0, shift2[0][4, 4].Magnitude);
+        Assert.AreNotEqual(0, shift2[0][4, 6].Magnitude);
+    }
+
+
+    [TestMethod]
     public void GrayscaleImageFourierTransformTest()
     {
         var inputImage = new ImageData(new byte[,]
@@ -107,41 +185,92 @@ public class FourierTests
     }
 
     [TestMethod]
+    public void NormalizationTest()
+    {
+        var complex = new Complex[,]
+        {
+            { new Complex(0, 0), new Complex(1, 0), new Complex(2, 0) }
+        };
+
+        var result = fftService.Normalize(complex);
+
+        Assert.AreEqual(0, result[0, 0].Magnitude);
+        Assert.AreEqual(127.5, result[0, 1].Magnitude);
+        Assert.AreEqual(255, result[0, 2].Magnitude);
+    }
+    
+    [TestMethod]
+    public void NormalizationTest2()
+    {
+        var complex = new Complex[,]
+        {
+            { new Complex(0, 0), new Complex(1, 0), new Complex(2, 0) }
+        };
+
+        var result = fftService.Normalize(new[] { complex, complex, complex });
+
+        Assert.AreEqual(0, result[0][0, 0].Magnitude);
+        Assert.AreEqual(127.5, result[0][0, 1].Magnitude);
+        Assert.AreEqual(255, result[0][0, 2].Magnitude);
+    }
+
+    [TestMethod]
+    public void NormalizationInfinityTest()
+    {
+
+        var complex = new Complex[,]
+        {
+            { new Complex(0, 0), new Complex(1, 0), new Complex(2, 0), new Complex(double.PositiveInfinity,0) }
+        };
+
+        var result = fftService.Normalize(new[] { complex, complex, complex });
+
+        Assert.AreEqual(0, result[0][0, 0].Magnitude);
+        Assert.AreEqual(127.5, result[0][0, 1].Magnitude);
+        Assert.AreEqual(255, result[0][0, 2].Magnitude);
+        Assert.AreEqual(255, result[0][0, 3].Magnitude);
+    }
+
+    [TestMethod]
     public void Test()
     {
         var image = new ImageData("lion.jpg", File.ReadAllBytes("../../../Resources/lion.jpg"));
 
 
-            var complex = fftService.ToComplexData(image);
-            complex = fftService.ChangeSizeToClosestPowerOfTwo(complex);
+        var complex = fftService.ToComplexData(image);
+        complex = fftService.ChangeSizeToClosestPowerOfTwo(complex);
 
-            var fourier = fftService.ForwardFFT(complex);
+        var fourier = fftService.ForwardFFT(complex);
 
-            //for (var i = 0; i < fourier[0].GetLength(0); i++)
-            //{
-            //    for (var j = 0; j < fourier[0].GetLength(1); j++)
-            //    {
-            //        if (i < n ) continue;
-            //        fourier[0][i, j] = new Complex(0, 0);
-            //        fourier[1][i, j] = new Complex(0, 0);
-            //        fourier[2][i, j] = new Complex(0, 0);
-            //    }
-            //}
+        //for (var i = 0; i < fourier[0].GetLength(0); i++)
+        //{
+        //    for (var j = 0; j < fourier[0].GetLength(1); j++)
+        //    {
+        //        if (i < n ) continue;
+        //        fourier[0][i, j] = new Complex(0, 0);
+        //        fourier[1][i, j] = new Complex(0, 0);
+        //        fourier[2][i, j] = new Complex(0, 0);
+        //    }
+        //}
 
-            fourier = fftService.FFTShift(fourier);
-            fourier = fftService.Normalize(fourier);
+        var fourier1 = fourier;
+        //fourier2 = fftService.FFTShift(fourier2);
+        var fourier2 = fftService.LogN(fourier1);
+        var fourier3 = fftService.Normalize(fourier2);
+        var fourier4 = fftService.FFTShift(fourier3);
 
-            fftService.ToImageData(fourier).Save("fourier.jpg");
+        fftService.ToImageData(fourier2).Save("fourier1.jpg");
+        fftService.ToImageData(fourier2).Save("fourier2.jpg");
+        fftService.ToImageData(fourier3).Save("fourier3.jpg");
+        fftService.ToImageData(fourier4).Save("fourier4.jpg");
 
-            var resultComplex = fftService.InverseFFT(fourier);
+        var resultComplex = fftService.InverseFFT(fourier);
 
-            resultComplex = fftService.ChangeSize(resultComplex, image.Height, image.Width);
+        resultComplex = fftService.ChangeSize(resultComplex, image.Height, image.Width);
 
-            var resultImage = fftService.ToImageData(resultComplex);
+        var resultImage = fftService.ToImageData(resultComplex);
 
-            resultImage.Save($"result.jpg");
-        
-
+        resultImage.Save("result.jpg");
     }
 
     [TestMethod]
