@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Windows.Input;
+using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using ImageProcessorLibrary.Services;
 using ReactiveUI;
@@ -19,25 +20,25 @@ public class FourierTransformViewModel : ReactiveObject
         this.outputImageData = outputImageData;
     }
 
-    public Bitmap FourierAmplitudeBefore { get; private set; }
+    public IImage FourierAmplitudeBefore { get; private set; }
 
     public IImageData FourierAmplitudeBeforeImageData
     {
         set
         {
             FourierAmplitudeBefore = new Bitmap(new MemoryStream(value.Filebytes));
-            this.RaisePropertyChanged();
+            this.RaisePropertyChanged(nameof(FourierAmplitudeBefore));
         }
     }
 
-    public Bitmap FourierAmplitudeAfter { get; private set; }
+    public IImage FourierAmplitudeAfter { get; private set; }
 
     public IImageData FourierAmplitudeAfterImageData
     {
         set
         {
             FourierAmplitudeAfter = new Bitmap(new MemoryStream(value.Filebytes));
-            this.RaisePropertyChanged();
+            this.RaisePropertyChanged(nameof(FourierAmplitudeAfter));
         }
     }
 
@@ -45,11 +46,12 @@ public class FourierTransformViewModel : ReactiveObject
 
     public void Refresh()
     {
-        var complex = fftService.ToComplexData(inputImageData);
+        var complex = new ComplexData(inputImageData);
         var fourier = fftService.ForwardFFT(complex);
         var fourier2 = fftService.FFTShift(fourier);
-        var fourier3 = fftService.LogN(fourier2);
-        var fourierImageData = fftService.ToImageData(fourier3);
+        //var fourier3 = fftService.LogN(fourier2);
+        var fourier4 = fftService.Normalize(fourier2);
+        var fourierImageData = fftService.ToImageData(fourier4);
         FourierAmplitudeBeforeImageData = fourierImageData;
         FourierAmplitudeAfterImageData = fourierImageData;
     }

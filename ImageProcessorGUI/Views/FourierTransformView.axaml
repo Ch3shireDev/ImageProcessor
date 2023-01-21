@@ -3,24 +3,24 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:ImageProcessorGUI.ViewModels"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" Width="600" Height="400"
         x:Class="ImageProcessorGUI.Views.FourierTransformView"
         Title="FourierTransformView">
-	<DockPanel>
+	<StackPanel Orientation="Vertical">
 		<Label>Manipulacja widmem w celu usuwania zakłóceń periodycznych</Label>
-		<DockPanel>
-			<DockPanel>
-			<Label>Widmo amplitudowe przed obróbką</Label>
-			<Image Source="{Binding FourierAmplitudeBefore}"/>
-			</DockPanel>
-			<DockPanel>
-			<Label>Widmo amplitudowe po obróbce</Label>
-			<Image Source="{Binding FourierAmplitudeAfter}"/>
-			</DockPanel>
-		</DockPanel>
-		<DockPanel></DockPanel>
-		<DockPanel>
+		<StackPanel Orientation="Horizontal">
+			<StackPanel Orientation="Vertical">
+				<Label>Widmo amplitudowe przed obróbką</Label>
+				<Image Source="{Binding FourierAmplitudeBefore}" Width="200" Height="200"/>
+			</StackPanel>
+			<StackPanel Orientation="Vertical">
+				<Label>Widmo amplitudowe po obróbce</Label>
+				<Image Source="{Binding FourierAmplitudeAfter}" Width="200" Height="200"/>
+			</StackPanel>
+		</StackPanel>
+		<StackPanel></StackPanel>
+		<StackPanel>
 			<Button Command="{Binding RefreshCommand}">Wyświetl</Button>
-		</DockPanel>
-	</DockPanel>
+		</StackPanel>
+	</StackPanel>
 </Window>
