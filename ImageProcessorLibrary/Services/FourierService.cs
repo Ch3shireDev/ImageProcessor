@@ -6,61 +6,51 @@ public class FourierService : IFourierService
 {
     public Complex[,] FFT2D(Complex[,] c, int nx, int ny, int dir)
     {
-        var real = new double[nx];
-        var imag = new double[nx];
-
         var data = new Complex[nx];
 
         for (var j = 0; j < ny; j++)
         {
             for (var i = 0; i < nx; i++)
             {
-                real[i] = c[i, j].Real;
-                imag[i] = c[i, j].Imaginary;
+                data[i] = c[i, j];
             }
 
             var m = (int)Math.Log(nx, 2);
-           var  res= FFT1D(dir, m, real, imag);
-           real = res.Item1;
-           imag = res.Item2;
+            
+            var res = FFT1D(dir, m, data);
+
             for (var i = 0; i < nx; i++)
             {
-                c[i, j] = new Complex(real[i], imag[i]);
+                c[i, j] = res[i];
             }
         }
-
-        var real2 = new double[ny];
-        var imag2 = new double[ny];
+        
+        var data2 = new Complex[ny];
 
         for (var i = 0; i < nx; i++)
         {
             for (var j = 0; j < ny; j++)
             {
-                real2[j] = c[i, j].Real;
-                imag2[j] = c[i, j].Imaginary;
+                data2[j] = c[i, j];
             }
 
             var m = (int)Math.Log(ny, 2);
 
 
-           var res= FFT1D(dir, m, real2, imag2);
-           real2 = res.Item1;
-           imag2 = res.Item2;
+            var res = FFT1D(dir, m, data2);
+
             for (var j = 0; j < ny; j++)
             {
-                c[i, j] = new Complex(real2[j], imag2[j]);
+                c[i, j] = res[j];
             }
         }
 
         return c;
     }
-
-
     
 
-    private Tuple<double[], double[]> FFT1D(int dir, int m, double[] x, double[] y)
+    private static Complex[] FFT1D(int dir, int m, Complex[] z)
     {
-        
         long nn = 1;
 
         for (var i = 0; i < m; i++)
@@ -76,12 +66,7 @@ public class FourierService : IFourierService
         {
             if (i < j)
             {
-                var tx = x[i];
-                var ty = y[i];
-                x[i] = x[j];
-                y[i] = y[j];
-                x[j] = tx;
-                y[j] = ty;
+                (z[i], z[j]) = (z[j], z[i]);
             }
 
             var k = i2;
@@ -111,17 +96,15 @@ public class FourierService : IFourierService
                 for (var i = j; i < nn; i += l2)
                 {
                     var i1 = i + l1;
-                    var t1 = u1 * x[i1] - u2 * y[i1];
-                    var t2 = u1 * y[i1] + u2 * x[i1];
-                    x[i1] = x[i] - t1;
-                    y[i1] = y[i] - t2;
-                    x[i] += t1;
-                    y[i] += t2;
+                    var t1 = u1 * z[i1].Real - u2 * z[i1].Imaginary;
+                    var t2 = u1 * z[i1].Imaginary + u2 * z[i1].Real;
+                    z[i1] = z[i] - new Complex(t1, t2);
+                    z[i] += new Complex(t1, t2);
                 }
 
-                var z = u1 * c1 - u2 * c2;
+                var z2 = u1 * c1 - u2 * c2;
                 u2 = u1 * c2 + u2 * c1;
-                u1 = z;
+                u1 = z2;
             }
 
             c2 = Math.Sqrt((1.0 - c1) / 2.0);
@@ -138,11 +121,10 @@ public class FourierService : IFourierService
         {
             for (var i = 0; i < nn; i++)
             {
-                x[i] /= nn;
-                y[i] /= nn;
+                z[i] /= nn;
             }
         }
 
-        return new Tuple<double[], double[]>(x, y);
+        return z;
     }
 }
