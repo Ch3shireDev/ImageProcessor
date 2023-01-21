@@ -264,9 +264,9 @@ public class FourierTests
 
 
         var complex = fftService.ToComplexData(image);
-        complex = fftService.ChangeSizeToClosestPowerOfTwo(complex);
+        var complex2 = fftService.ChangeSizeToClosestPowerOfTwo(complex);
 
-        var fourier = fftService.ForwardFFT(complex);
+        var fourier = fftService.ForwardFFT(complex2);
 
         int n = 50;
 

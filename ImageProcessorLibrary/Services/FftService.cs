@@ -14,6 +14,10 @@ public class FftService
         return FFT2D(Fourier, nx, ny, -1);
     }
 
+    public Complex[][,] ForwardFFT(ComplexData complexData)
+    {
+        return ForwardFFT(complexData.Data);
+    }
     public Complex[,] ForwardFFT(Complex[,] Fourier)
     {
         var nx = Fourier.GetLength(0);
@@ -126,7 +130,7 @@ public class FftService
         return Fourier;
     }
 
-    public Complex[][,] ToComplexData(IImageData GreyImage)
+    public ComplexData ToComplexData(IImageData GreyImage)
     {
         var threeFourier = new Complex[3][,];
 
@@ -135,7 +139,10 @@ public class FftService
             threeFourier[k] = ToComplexData(GetChannel(k, GreyImage.Pixels));
         }
 
-        return threeFourier;
+        return new ComplexData
+        {
+            Data = threeFourier
+        };
     }
 
     private static byte GetChannel(int k, Color color)
@@ -195,6 +202,11 @@ public class FftService
         var blue = ChangeSize(input[2], nx, ny);
 
         return new[] { red, green, blue };
+    }
+
+    public Complex[][,] ChangeSizeToClosestPowerOfTwo(ComplexData complexData)
+    {
+        return ChangeSizeToClosestPowerOfTwo(complexData.Data);
     }
 
     public Complex[,] ChangeSizeToClosestPowerOfTwo(Complex[,] input)
