@@ -111,6 +111,8 @@ public class FourierTests
         var fourier = fftService.ForwardFFT(complex);
         var result = fftService.InverseFFT(fourier);
 
+        //result = fftService.Resize(fourier, inputImage.Height, inputImage.Width);
+
         var resultImage = fftService.ToImageData(result);
         var resultImageGray = resultImage.GetGrayArray();
 
@@ -143,8 +145,6 @@ public class FourierTests
         var fourier = fftService.ForwardFFT(complex);
         var result = fftService.InverseFFT(fourier);
 
-        result = fftService.ChangeSize(result, inputImage.Height, inputImage.Width);
-
         var resultImage = fftService.ToImageData(result);
         var resultImageGray = resultImage.GetGrayArray();
 
@@ -175,7 +175,6 @@ public class FourierTests
         var complex = fftService.ToComplexData(inputImage);
         var fourier = fftService.ForwardFFT(complex);
         var result = fftService.InverseFFT(fourier);
-        result = fftService.ChangeSize(result, inputImage.Height, inputImage.Width);
 
 
         var resultImage = fftService.ToImageData(result);
@@ -295,9 +294,7 @@ public class FourierTests
         fftService.ToImageData(fourier4).Save("fourier4.jpg");
 
         var resultComplex = fftService.InverseFFT(fourier);
-
-        resultComplex = fftService.ChangeSize(resultComplex, image.Height, image.Width);
-
+        
         var resultImage = fftService.ToImageData(resultComplex);
 
         image.Save("lion-input.jpg");
@@ -313,8 +310,8 @@ public class FourierTests
             { new Complex(1, 2), new Complex(1, 2), new Complex(1, 2), }
         };
 
-        var t1 = fftService.ChangeSize(tab, 4, 3);
-        var t2 = fftService.ChangeSize(tab, 2, 3);
+        var t1 = fftService.Resize(tab, 4, 3);
+        var t2 = fftService.Resize(tab, 2, 3);
 
         Assert.AreEqual(4, t1.GetLength(0));
         Assert.AreEqual(3, t1.GetLength(1));

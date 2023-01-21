@@ -17,13 +17,13 @@ public class ComplexData
 
     public ComplexData(byte[,] GreyImage)
     {
-        var width = GreyImage.GetLength(0);
-        var height = GreyImage.GetLength(1);
-        var Fourier = new Complex [width, height];
+        var width = GreyImage.GetLength(1);
+        var height = GreyImage.GetLength(0);
+        var Fourier = new Complex [height, width];
 
-        for (var i = 0; i < width; i++)
+        for (var i = 0; i < height; i++)
         {
-            for (var j = 0; j < height; j++)
+            for (var j = 0; j < width; j++)
             {
                 Fourier[i, j] = GreyImage[i, j];
             }

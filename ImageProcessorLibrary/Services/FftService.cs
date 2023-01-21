@@ -6,11 +6,11 @@ namespace ImageProcessorLibrary.Services;
 
 public class FftService
 {
-    public Complex[,] ToComplexData(byte[,] GreyImage)
+    public ComplexData ToComplexData(byte[,] GreyImage)
     {
-        var complexData = new ComplexData(GreyImage);
-        return complexData[0];
+        return new ComplexData(GreyImage);
     }
+
     public Complex[,] InverseFFT(Complex[,] Fourier)
     {
         var nx = Fourier.GetLength(0);
@@ -50,9 +50,13 @@ public class FftService
     {
         var inverse = InverseFFT(complexData.Data);
 
+        inverse = Resize(inverse, complexData.Height, complexData.Width);
+
         return new ComplexData(complexData)
         {
-            Data = inverse
+            Data = inverse,
+            Height = complexData.Height,
+            Width = complexData.Width
         };
     }
 
@@ -147,14 +151,13 @@ public class FftService
     }
 
 
-
     public ComplexData ToComplexData(IImageData GreyImage)
     {
         var threeFourier = new Complex[3][,];
 
         for (var k = 0; k < 3; k++)
         {
-            threeFourier[k] = ToComplexData(GetChannel(k, GreyImage.Pixels));
+            threeFourier[k] = ToComplexData(GetChannel(k, GreyImage.Pixels)).Data[k];
         }
 
         return new ComplexData
@@ -195,18 +198,18 @@ public class FftService
     /*-------------------------------------------------------------------------
         Perform a 2D FFT inplace given a complex 2D array
         The direction dir, 1 for forward, -1 for reverse
-        The size of the array (nx,ny)
+        The size of the array (height,width)
         Return false if there are memory problems or
         the dimensions are not powers of 2
     */
 
-    public Complex[,] ChangeSize(Complex[,] input, int nx, int ny)
+    public Complex[,] Resize(Complex[,] input, int height, int width)
     {
-        var output = new Complex[nx, ny];
+        var output = new Complex[height, width];
 
-        for (var i = 0; i < nx; i++)
+        for (var i = 0; i < height; i++)
         {
-            for (var j = 0; j < ny; j++)
+            for (var j = 0; j < width; j++)
             {
                 if (i >= input.GetLength(0) || j >= input.GetLength(1))
                 {
@@ -222,9 +225,9 @@ public class FftService
         return output;
     }
 
-    public ComplexData ChangeSize(ComplexData input, int height, int width)
+    public ComplexData Resize(ComplexData input, int height, int width)
     {
-        var outputData = ChangeSize(input.Data, height, width);
+        var outputData = Resize(input.Data, height, width);
         return new ComplexData
         {
             Data = outputData,
@@ -233,11 +236,11 @@ public class FftService
         };
     }
 
-    private Complex[][,] ChangeSize(Complex[][,] input, int nx, int ny)
+    private Complex[][,] Resize(Complex[][,] input, int height, int width)
     {
-        var red = ChangeSize(input[0], nx, ny);
-        var green = ChangeSize(input[1], nx, ny);
-        var blue = ChangeSize(input[2], nx, ny);
+        var red = Resize(input[0], height, width);
+        var green = Resize(input[1], height, width);
+        var blue = Resize(input[2], height, width);
 
         return new[] { red, green, blue };
     }
@@ -251,7 +254,7 @@ public class FftService
         var newNx = (int)Math.Pow(2, Math.Ceiling(Math.Log(nx, 2)));
         var newNy = (int)Math.Pow(2, Math.Ceiling(Math.Log(ny, 2)));
 
-        return ChangeSize(input, newNx, newNy);
+        return Resize(input, newNx, newNy);
     }
 
     public Complex[][,] ChangeSizeToClosestPowerOfTwo(Complex[][,] input)
@@ -291,7 +294,7 @@ public class FftService
             }
 
             // Calling 1D FFT Function for Rows
-            m = (int)Math.Log(nx, 2); //Finding power of 2 for current number of points e.g. for nx=512 m=9
+            m = (int)Math.Log(nx, 2); //Finding power of 2 for current number of points e.g. for height=512 m=9
             FFT1D(dir, m, ref real, ref imag);
 
             for (i = 0; i < nx; i++)
@@ -315,7 +318,7 @@ public class FftService
             // Calling 1D FFT Function for Columns
 
 
-            m = (int)Math.Log(ny, 2); //Finding power of 2 for current number of points e.g. for nx=512 m=9
+            m = (int)Math.Log(ny, 2); //Finding power of 2 for current number of points e.g. for height=512 m=9
 
 
             FFT1D(dir, m, ref real, ref imag);
