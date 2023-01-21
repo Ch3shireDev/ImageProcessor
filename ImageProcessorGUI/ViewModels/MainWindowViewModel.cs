@@ -115,7 +115,7 @@ public class MainWindowViewModel : ReactiveObject
     public ICommand MorphologyOpeningCommand => ReactiveCommand.Create(() => MainModel?.MorphologyOpening());
     public ICommand MorphologyClosingCommand => ReactiveCommand.Create(() => MainModel?.MorphologyClosing());
     public ICommand CalculateFeatureVectorCommand => ReactiveCommand.Create(() => MainModel?.CalculateFeatureVector());
-    public ICommand RemovePeriodicNoiseCommand => ReactiveCommand.Create(() => MainModel?.RemovePeriodicNoice());
+    public ICommand RemovePeriodicNoiseCommand => ReactiveCommand.Create(() => MainModel?.RemovePeriodicNoise());
     public double ImageWidth => MainModel?.ImageWidth ?? 0;
     public double ImageHeight => MainModel?.ImageHeight ?? 0;
     public IImage? Image => MainModel?.AvaloniaImage;

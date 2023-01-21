@@ -44,4 +44,7 @@
       <DependentUpon>EdgeDetectionView.axaml</DependentUpon>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\FourierTransformView.axaml" />
+  </ItemGroup>
 </Project>

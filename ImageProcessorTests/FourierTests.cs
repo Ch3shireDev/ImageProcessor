@@ -141,8 +141,12 @@ public class FourierTests
         var fourier = fftService.ForwardFFT(complex);
         var result = fftService.InverseFFT(fourier);
 
+        result = fftService.ChangeSize(result, inputImage.Height, inputImage.Width);
+
         var resultImage = fftService.ToImageData(result);
         var resultImageGray = resultImage.GetGrayArray();
+
+        
 
         for (var x = 0; x < inputImage.Width; x++)
         {
@@ -169,6 +173,7 @@ public class FourierTests
         var complex = fftService.ToComplexData(inputImage);
         var fourier = fftService.ForwardFFT(complex);
         var result = fftService.InverseFFT(fourier);
+        result = fftService.ChangeSize(result, inputImage.Height, inputImage.Width);
 
 
         var resultImage = fftService.ToImageData(result);
@@ -232,6 +237,25 @@ public class FourierTests
     }
 
     [TestMethod]
+    public void AutomaticSizeChange()
+    {
+        var image = new ImageData(
+            new byte[,]
+            {
+                {100,100,100, },
+                {100,100,100, },
+                {100,100,100, }
+            }
+        );
+
+        var complex = fftService.ToComplexData(image);
+        var fourier = fftService.ForwardFFT(complex);
+
+        Assert.AreEqual(4, fourier[0].GetLength(0));
+        Assert.AreEqual(4, fourier[0].GetLength(1));
+    }
+    
+    [TestMethod]
     public void Test()
     {
         var image = new ImageData("lion.jpg", File.ReadAllBytes("../../../Resources/lion.jpg"));
@@ -242,19 +266,23 @@ public class FourierTests
 
         var fourier = fftService.ForwardFFT(complex);
 
-        //for (var i = 0; i < fourier[0].GetLength(0); i++)
-        //{
-        //    for (var j = 0; j < fourier[0].GetLength(1); j++)
-        //    {
-        //        if (i < n ) continue;
-        //        fourier[0][i, j] = new Complex(0, 0);
-        //        fourier[1][i, j] = new Complex(0, 0);
-        //        fourier[2][i, j] = new Complex(0, 0);
-        //    }
-        //}
+        int n = 50;
+
+        var I = fourier[0].GetLength(0);
+        var J = fourier[0].GetLength(1);
+
+        for (var i = 0; i < I; i++)
+        {
+            for (var j = 0; j <J; j++)
+            {
+                if ((i < n || i > I - n) || (j < n || j < J - n)) continue;
+                fourier[0][i, j] = new Complex(0, 0);
+                fourier[1][i, j] = new Complex(0, 0);
+                fourier[2][i, j] = new Complex(0, 0);
+            }
+        }
 
         var fourier1 = fourier;
-        //fourier2 = fftService.FFTShift(fourier2);
         var fourier2 = fftService.LogN(fourier1);
         var fourier3 = fftService.Normalize(fourier2);
         var fourier4 = fftService.FFTShift(fourier3);
@@ -270,7 +298,8 @@ public class FourierTests
 
         var resultImage = fftService.ToImageData(resultComplex);
 
-        resultImage.Save("result.jpg");
+        image.Save("lion-input.jpg");
+        resultImage.Save("lion-result.jpg");
     }
 
     [TestMethod]

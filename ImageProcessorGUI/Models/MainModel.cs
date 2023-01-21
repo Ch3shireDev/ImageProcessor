@@ -768,10 +768,18 @@ public class MainModel
     }
 
     /// <summary>
-    ///     Implementacja narzędzia do manipulacji widmem amplitudowym obrazu w celu likwidacji zakłóceń periodycznych
+    ///     Implementacja narzędzia do manipulacji widmem amplitudowym obrazu w celu likwidacji zakłóceń periodycznych.
     /// </summary>
-    public void RemovePeriodicNoice()
+    public void RemovePeriodicNoise()
     {
+        var outputImageData = new ImageData(ImageData);
+        var viewModel = new FourierTransformViewModel(ImageData, outputImageData);
+        var window = new FourierTransformView
+        {
+            DataContext = viewModel
+        };
+        viewModel.Refresh();
+        window.Show();
     }
 
     public void ToBinaryImage()
