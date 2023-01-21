@@ -126,9 +126,9 @@
                     <MenuItem Header="_Analiza">
                         <MenuItem Header="Oblicz wektor cech" Command="{Binding CalculateFeatureVectorCommand}" />
                     </MenuItem>
-                    <MenuItem Header="_Likwidacja zakłóceń">
-                        <MenuItem Header="Likwidacja zakłóceń periodycznych"
-                                  Command="{Binding RemovePeriodicNoiseCommand}" />
+                    <MenuItem Header="_Transformacja Fouriera">
+                        <MenuItem Header="Dodanie zakłóceń" Command="{Binding AddPeriodicNoiseCommand}" />
+                        <MenuItem Header="Usunięcie zakłóceń" Command="{Binding RemovePeriodicNoiseCommand}" />
                     </MenuItem>
                 </ContextMenu>
             </Panel.ContextMenu>

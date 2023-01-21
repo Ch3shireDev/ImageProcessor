@@ -760,14 +760,6 @@ public class MainModel
     }
 
     /// <summary>
-    ///     wyostrzania liniowego oparte na 3 maskach laplasjanowych (podanych w wykładzie) przestawionych użytkownikowi maski
-    ///     do wyboru,
-    /// </summary>
-    public void Sharpening()
-    {
-    }
-
-    /// <summary>
     ///     Implementacja narzędzia do manipulacji widmem amplitudowym obrazu w celu likwidacji zakłóceń periodycznych.
     /// </summary>
     public void RemovePeriodicNoise()
@@ -780,8 +772,23 @@ public class MainModel
         };
         viewModel.Refresh();
         window.Show();
-    }
 
+        _imageServiceProvider.WindowService.ShowImageWindow(outputImageData);
+    }
+    
+    public void AddPeriodicNoise()
+    {
+        var outputImageData = new ImageData(ImageData);
+        var viewModel = new PeriodicNoiseViewModel(ImageData, outputImageData);
+        var window = new PeriodicNoiseView
+        {
+            DataContext = viewModel
+        };
+        viewModel.Refresh();
+        window.Show();
+
+        _imageServiceProvider.WindowService.ShowImageWindow(outputImageData);
+    }
     public void ToBinaryImage()
     {
         BinaryThreshold();
@@ -791,4 +798,5 @@ public class MainModel
     {
         Scale = 1;
     }
+
 }

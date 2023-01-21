@@ -95,23 +95,18 @@ public class FftService
 
     public ComplexData LogN(ComplexData complexData)
     {
-        var data = LogN(complexData.Data);
+        var red = LogN(complexData.Data[0]);
+        var green = LogN(complexData.Data[1]);
+        var blue = LogN(complexData.Data[2]);
+        var data = new[] { red, green, blue };
+        
         return new ComplexData(complexData)
         {
             Data = data
         };
     }
 
-    private Complex[][,] LogN(Complex[][,] fourier)
-    {
-        var red = LogN(fourier[0]);
-        var green = LogN(fourier[1]);
-        var blue = LogN(fourier[2]);
-
-        return new[] { red, green, blue };
-    }
-
-    private Complex[,] LogN(Complex[,] fourier)
+    public static Complex[,] LogN(Complex[,] fourier)
     {
         var result = new Complex[fourier.GetLength(0), fourier.GetLength(1)];
 
@@ -120,12 +115,6 @@ public class FftService
             for (var y = 0; y < fourier.GetLength(1); y++)
             {
                 var value = Math.Log(fourier[x, y].Magnitude);
-
-                //if (Math.Abs(value) > 99999) value = 0;
-                if (value < 0)
-                {
-                }
-
                 result[x, y] = new Complex(value, 0);
             }
         }
@@ -137,26 +126,7 @@ public class FftService
     {
         return ToImageData(complexData.Data);
     }
-
-    public ImageData ToImageData(Complex[,] input)
-    {
-        var array = new byte[input.GetLength(0), input.GetLength(1)];
-
-        for (var y = 0; y < array.GetLength(0); y++)
-        {
-            for (var x = 0; x < array.GetLength(1); x++)
-            {
-                var value = input[y, x].Magnitude;
-                if (value > 255) value = 255;
-                array[y, x] = (byte)value;
-            }
-        }
-
-        var image2 = new ImageData(array);
-        return image2;
-    }
-
-
+    
     public ImageData ToImageData(Complex[][,] input)
     {
         var red = input[0];
@@ -332,10 +302,7 @@ public class FftService
                 {
                     var magnitude0 = input[z][x, y].Real;
 
-                    if (magnitude0 == double.NaN || magnitude0 == double.PositiveInfinity || magnitude0 == double.NegativeInfinity)
-                    {
-                        continue;
-                    }
+                    if (IsNotFiniteNumber(magnitude0)) continue;
 
                     if (magnitude0 > max) max = magnitude0;
                     if (magnitude0 < min) min = magnitude0;
@@ -359,10 +326,11 @@ public class FftService
                     if (value > 9999) value = max;
                     if (value < -9999) value = 0;
 
-                    if (value == double.NaN || value == double.PositiveInfinity || value == double.NegativeInfinity)
+                    if (IsNotFiniteNumber(value))
                     {
                         value = 0;
                     }
+
                     outputz[x, y] = new Complex(value * param, 0);
                 }
             }
@@ -371,5 +339,27 @@ public class FftService
         }
 
         return output;
+    }
+
+    private static bool IsNotFiniteNumber(double value)
+    {
+        return double.IsNaN(value) || double.IsPositiveInfinity(value) || double.IsNegativeInfinity(value);
+    }
+
+    public ComplexData AddPeriodicNoise(ComplexData complexData, double value1, double value2, double value3)
+    {
+        for (var x = 0; x < complexData.Height; x++)
+        {
+            for (var y = 0; y < complexData.Width; y++)
+            {
+
+                var value = Math.Cos(value1 * x + value2 * y + value3);
+                complexData.Data[0][x, y] *= value;
+                complexData.Data[1][x, y] *= value;
+                complexData.Data[2][x, y] *= value;
+            }
+        }
+
+        return complexData;
     }
 }

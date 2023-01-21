@@ -2,6 +2,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
+    <PublishSingleFile>true</PublishSingleFile>
     <Nullable>enable</Nullable>
     <!--Avalonia doesen't support TrimMode=link currently,but we are working on that https://github.com/AvaloniaUI/Avalonia/issues/6892 -->
     <TrimMode>copyused</TrimMode>
@@ -13,9 +14,9 @@
     <None Remove="Resources\lion.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AvaloniaResource Include="Resources\lion.jpg">
+    <Resource Include="Resources\lion.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AvaloniaResource>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <!--This helps with theme dll-s trimming.

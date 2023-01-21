@@ -49,10 +49,14 @@ public class FourierTransformViewModel : ReactiveObject
         var complex = new ComplexData(inputImageData);
         var fourier = fftService.ForwardFFT(complex);
         var fourier2 = fftService.FFTShift(fourier);
-        //var fourier3 = fftService.LogN(fourier2);
-        var fourier4 = fftService.Normalize(fourier2);
+        var fourier3 = fftService.LogN(fourier2);
+        var fourier4 = fftService.Normalize(fourier3);
         var fourierImageData = fftService.ToImageData(fourier4);
         FourierAmplitudeBeforeImageData = fourierImageData;
         FourierAmplitudeAfterImageData = fourierImageData;
+
+        var complex2 = fftService.InverseFFT(fourier);
+        var image = fftService.ToImageData(complex2);
+        outputImageData.Update(image);
     }
 }
