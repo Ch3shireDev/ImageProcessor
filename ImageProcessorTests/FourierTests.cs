@@ -1,5 +1,7 @@
 ﻿using System.Drawing;
+using System.Numerics;
 using ImageProcessorLibrary.DataStructures;
+using ImageProcessorLibrary.Services;
 
 namespace ImageProcessorTests;
 
@@ -318,7 +320,7 @@ public class FourierTests
         Assert.AreEqual(3, t1.GetLength(1));
 
         Assert.AreEqual(0, t1[3, 2].Real);
-        Assert.AreEqual(0, t1[3, 2].Imag);
+        Assert.AreEqual(0, t1[3, 2].Imaginary);
 
         for (var x = 0; x < 2; x++)
         {

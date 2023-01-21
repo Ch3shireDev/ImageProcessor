@@ -33,6 +33,8 @@ public class FftService
 
     public Complex[][,] ForwardFFT(Complex[][,] Fourier)
     {
+        Fourier = ChangeSizeToClosestPowerOfTwo(Fourier);
+
         var red = ForwardFFT(Fourier[0]);
         var green = ForwardFFT(Fourier[1]);
         var blue = ForwardFFT(Fourier[2]);
