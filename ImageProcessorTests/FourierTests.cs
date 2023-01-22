@@ -34,7 +34,7 @@ public class FourierTests
 
         var f2 = fftService.FFTShift(fourier);
         f2 = fftService.Normalize(f2);
-        var f3 = fftService.ToImageData(f2);
+        var f3 = f2.ToImageData();
         f3.Write("a-2.jpg");
 
 
@@ -121,7 +121,7 @@ public class FourierTests
 
         //result = fftService.Resize(fourier, inputImage.Height, inputImage.Width);
 
-        var resultImage = fftService.ToImageData(result);
+        var resultImage = result.ToImageData();
         var resultImageGray = resultImage.GetGrayArray();
 
         for (var x = 0; x < inputImage.Width; x++)
@@ -153,7 +153,7 @@ public class FourierTests
         var fourier = fftService.ForwardFFT(complex);
         var result = fftService.InverseFFT(fourier);
 
-        var resultImage = fftService.ToImageData(result);
+        var resultImage = result.ToImageData();
         var resultImageGray = resultImage.GetGrayArray();
 
 
@@ -184,7 +184,7 @@ public class FourierTests
         var result = fftService.InverseFFT(fourier);
 
 
-        var resultImage = fftService.ToImageData(result);
+        var resultImage = result.ToImageData();
 
         for (var x = 0; x < inputImage.Width; x++)
         {
@@ -264,75 +264,6 @@ public class FourierTests
     }
 
     [TestMethod]
-    public void Test()
-    {
-        var image = new ImageData("lion.jpg", File.ReadAllBytes("../../../Resources/lion.jpg"));
-
-
-        var complex = new ComplexData(image);
-        //var complex2 = fftService.ChangeSizeToClosestPowerOfTwo(complex);
-
-        var fourier = fftService.ForwardFFT(complex);
-
-        //int n = 50;
-
-        //var I = fourier[0].GetLength(0);
-        //var J = fourier[0].GetLength(1);
-
-        //for (var i = 0; i < I; i++)
-        //{
-        //    for (var j = 0; j <J; j++)
-        //    {
-        //        if ((i < n || i > I - n) || (j < n || j < J - n)) continue;
-        //        fourier[0][i, j] = new Complex(0, 0);
-        //        fourier[1][i, j] = new Complex(0, 0);
-        //        fourier[2][i, j] = new Complex(0, 0);
-        //    }
-        //}
-
-        //var data = new List<double>();
-
-        var fourier1 = fourier;
-
-        //for (var i = 0; i < fourier.Data[0].GetLength(0); i++)
-        //{
-        //    for (var j = 0; j < fourier.Data[0].GetLength(1); j++)
-        //    {
-        //        var r = fourier.Data[0][i, j];
-        //        var g = fourier.Data[1][i, j];
-        //        var b = fourier.Data[2][i, j];
-        //        data.Add(r.Real);
-        //        data.Add(r.Imaginary);
-        //        data.Add(g.Real);
-        //        data.Add(g.Imaginary);
-        //        data.Add(b.Real);
-        //        data.Add(b.Imaginary);
-        //    }
-        //}
-
-        //File.WriteAllText("a.txt", string.Join(", ", data));
-
-        fourier1 = fftService.FFTShift(fourier1);
-
-        var fourier2 = fftService.LogN(fourier1);
-
-        var min = fftService.GetMinReal(fourier2);
-
-        var fourier3 = fftService.Normalize(fourier2);
-
-        fftService.ToImageData(fourier1).Save("fourier1.jpg");
-        fftService.ToImageData(fourier2).Save("fourier2.jpg");
-        fftService.ToImageData(fourier3).Save("fourier3.jpg");
-
-        var resultComplex = fftService.InverseFFT(fourier);
-
-        var resultImage = fftService.ToImageData(resultComplex);
-
-        image.Save("lion-input.jpg");
-        resultImage.Save("lion-result.jpg");
-    }
-
-    [TestMethod]
     public void ChangeSizeTest()
     {
         var tab = new[,]
@@ -368,5 +299,463 @@ public class FourierTests
         Assert.AreEqual(32, fftService.FindPowerOf2(17));
         Assert.AreEqual(32, fftService.FindPowerOf2(31));
         Assert.AreEqual(32, fftService.FindPowerOf2(32));
+    }
+
+    [TestMethod]
+    public void AddZeroPeriodicNoiseTest()
+    {
+        var input = new ImageData(new byte[,]
+        {
+            { 100, 100, 100, 100, 100 },
+            { 100, 100, 100, 100, 100 },
+            { 100, 100, 100, 100, 100 },
+            { 100, 100, 100, 100, 100 },
+            { 100, 100, 100, 100, 100 }
+        });
+
+        var givenOutput = fftService.AddPeriodicNoise(input, 0, 0, 0);
+
+        Assert.AreEqual(input.Width, givenOutput.Width);
+        Assert.AreEqual(input.Height, givenOutput.Height);
+
+        for (var y = 0; y < input.Height; y++)
+        {
+            for (var x = 0; x < input.Width; x++)
+            {
+                Assert.AreEqual(input[y, x], givenOutput[y, x], $"Error for x:{x}, y:{y}");
+            }
+        }
+    }
+
+    [TestMethod]
+    public void AddPeriodicNoiseX()
+    {
+        var input = new ImageData(new byte[,]
+        {
+            { 100, 100, 100, 100, 100 },
+            { 100, 100, 100, 100, 100 },
+            { 100, 100, 100, 100, 100 },
+            { 100, 100, 100, 100, 100 },
+            { 100, 100, 100, 100, 100 }
+        });
+
+        var givenOutput = fftService.AddPeriodicNoise(input, 1);
+
+        var expectedOutput = new ImageData(new byte[,]
+        {
+            { 100, 101, 100, 99, 100 },
+            { 100, 101, 100, 99, 100 },
+            { 100, 101, 100, 99, 100 },
+            { 100, 101, 100, 99, 100 },
+            { 100, 101, 100, 99, 100 }
+        });
+
+        Assert.AreEqual(5, givenOutput.Width);
+        Assert.AreEqual(5, givenOutput.Height);
+
+        for (var y = 0; y < input.Height; y++)
+        {
+            for (var x = 0; x < input.Width; x++)
+            {
+                Assert.AreEqual(expectedOutput[y, x], givenOutput[y, x], $"Error for x:{x}, y:{y}");
+            }
+        }
+    }
+
+    [TestMethod]
+    public void AddPeriodicNoiseY()
+    {
+        var input = new ImageData(new byte[,]
+        {
+            { 100, 100, 100, 100, 100 },
+            { 100, 100, 100, 100, 100 },
+            { 100, 100, 100, 100, 100 },
+            { 100, 100, 100, 100, 100 },
+            { 100, 100, 100, 100, 100 }
+        });
+
+        var givenOutput = fftService.AddPeriodicNoise(input, 0, 1, 2);
+
+        var expectedOutput = new ImageData(new byte[,]
+        {
+            { 100, 100, 100, 100, 100 },
+            { 102, 102, 102, 102, 102 },
+            { 100, 100, 100, 100, 100 },
+            { 98, 98, 98, 98, 98 },
+            { 100, 100, 100, 100, 100 }
+        });
+
+        Assert.AreEqual(5, givenOutput.Width);
+        Assert.AreEqual(5, givenOutput.Height);
+
+        for (var y = 0; y < input.Height; y++)
+        {
+            for (var x = 0; x < input.Width; x++)
+            {
+                Assert.AreEqual(expectedOutput[y, x], givenOutput[y, x], $"Error for x:{x}, y:{y}");
+            }
+        }
+    }
+
+    [TestMethod]
+    public void AddPeriodicNoiseXY()
+    {
+        var input = new ImageData(new byte[,]
+        {
+            { 100, 100, 100, 100, 100 },
+            { 100, 100, 100, 100, 100 },
+            { 100, 100, 100, 100, 100 },
+            { 100, 100, 100, 100, 100 },
+            { 100, 100, 100, 100, 100 }
+        });
+
+        var givenOutput = fftService.AddPeriodicNoise(input, 1, 1, 2);
+
+        var expectedOutput = new ImageData(new byte[,]
+        {
+            { 100, 102, 100, 98, 100 },
+            { 102, 100, 98, 100, 102 },
+            { 100, 98, 100, 102, 100 },
+            { 98, 100, 102, 100, 98 },
+            { 100, 102, 100, 98, 100 }
+        });
+
+        Assert.AreEqual(5, givenOutput.Width);
+        Assert.AreEqual(5, givenOutput.Height);
+
+        for (var y = 0; y < input.Height; y++)
+        {
+            for (var x = 0; x < input.Width; x++)
+            {
+                Assert.AreEqual(expectedOutput[y, x], givenOutput[y, x], $"Error for x:{x}, y:{y}");
+            }
+        }
+    }
+
+    [TestMethod]
+    public void DoubleFrequencyX()
+    {
+        var input = new ImageData(new byte[,]
+        {
+            { 100, 100, 100, 100, 100 }
+        });
+
+        var givenOutput = fftService.AddPeriodicNoise(input, 0.5, 0, 4);
+
+        var expectedOutput = new ImageData(new byte[,]
+        {
+            { 100, 102, 104, 102, 100 }
+        });
+
+        Assert.AreEqual(expectedOutput.Width, givenOutput.Width);
+        Assert.AreEqual(expectedOutput.Height, givenOutput.Height);
+
+        for (var y = 0; y < input.Height; y++)
+        {
+            for (var x = 0; x < input.Width; x++)
+            {
+                Assert.AreEqual(expectedOutput[y, x], givenOutput[y, x], $"Error for x:{x}, y:{y}");
+            }
+        }
+    }
+
+    [TestMethod]
+    public void PhaseXTest()
+    {
+        var input = new ImageData(new byte[,]
+        {
+            { 100, 100, 100, 100, 100 }
+        });
+
+        var givenOutput = fftService.AddPeriodicNoise(input, 0.5, 0, 4, 1);
+
+        var expectedOutput = new ImageData(new byte[,]
+        {
+            { 98, 100, 102, 104, 102 }
+        });
+
+        Assert.AreEqual(expectedOutput.Width, givenOutput.Width);
+        Assert.AreEqual(expectedOutput.Height, givenOutput.Height);
+
+        for (var y = 0; y < input.Height; y++)
+        {
+            for (var x = 0; x < input.Width; x++)
+            {
+                Assert.AreEqual(expectedOutput[y, x], givenOutput[y, x], $"Error for x:{x}, y:{y}");
+            }
+        }
+    }
+
+    [TestMethod]
+    public void PhaseXTest2()
+    {
+        var input = new ImageData(new byte[,]
+        {
+            { 100, 100, 100, 100, 100 }
+        });
+
+        var givenOutput = fftService.AddPeriodicNoise(input, 1, 0, 5, 1);
+
+        var expectedOutput = new ImageData(new byte[,]
+        {
+            { 95, 100, 105, 100, 95 }
+        });
+
+        Assert.AreEqual(expectedOutput.Width, givenOutput.Width);
+        Assert.AreEqual(expectedOutput.Height, givenOutput.Height);
+
+        for (var y = 0; y < input.Height; y++)
+        {
+            for (var x = 0; x < input.Width; x++)
+            {
+                Assert.AreEqual(expectedOutput[y, x], givenOutput[y, x], $"Error for x:{x}, y:{y}");
+            }
+        }
+    }
+
+    [TestMethod]
+    public void FrequencyYTest()
+    {
+        var input = new ImageData(new byte[,]
+        {
+            { 100 },
+            { 100 },
+            { 100 },
+            { 100 },
+            { 100 }
+        });
+
+        var givenOutput = fftService.AddPeriodicNoise(input, 0, 0.5, 4);
+
+        var expectedOutput = new ImageData(new byte[,]
+        {
+            { 100 },
+            { 102 },
+            { 104 },
+            { 102 },
+            { 100 }
+        });
+
+        Assert.AreEqual(expectedOutput.Width, givenOutput.Width);
+        Assert.AreEqual(expectedOutput.Height, givenOutput.Height);
+
+        for (var y = 0; y < input.Height; y++)
+        {
+            for (var x = 0; x < input.Width; x++)
+            {
+                Assert.AreEqual(expectedOutput[y, x], givenOutput[y, x], $"Error for x:{x}, y:{y}");
+            }
+        }
+    }
+
+    [TestMethod]
+    public void PhaseYTest()
+    {
+        var input = new ImageData(new byte[,]
+        {
+            { 100 },
+            { 100 },
+            { 100 },
+            { 100 },
+            { 100 }
+        });
+
+        var givenOutput = fftService.AddPeriodicNoise(input, 0, 0.5, 4, 1);
+
+        var expectedOutput = new ImageData(new byte[,]
+        {
+            { 98 },
+            { 100 },
+            { 102 },
+            { 104 },
+            { 102 }
+        });
+
+        Assert.AreEqual(expectedOutput.Width, givenOutput.Width);
+        Assert.AreEqual(expectedOutput.Height, givenOutput.Height);
+
+        for (var y = 0; y < input.Height; y++)
+        {
+            for (var x = 0; x < input.Width; x++)
+            {
+                Assert.AreEqual(expectedOutput[y, x], givenOutput[y, x], $"Error for x:{x}, y:{y}");
+            }
+        }
+    }
+
+    [TestMethod]
+    public void OverflowTest()
+    {
+        var input = new ImageData(new[,]
+        {
+            { Color.FromArgb(250, 120, 120), Color.FromArgb(250, 120, 120), Color.FromArgb(250, 120, 120) }
+        });
+
+        var givenOutput = fftService.AddPeriodicNoise(input, 1, 0, 100);
+
+        var expectedOutput = new ImageData(new[,]
+        {
+            { Color.FromArgb(250, 120, 120), Color.FromArgb(255, 220, 220), Color.FromArgb(250, 120, 120) }
+        });
+
+        Assert.AreEqual(expectedOutput.Width, givenOutput.Width);
+        Assert.AreEqual(expectedOutput.Height, givenOutput.Height);
+
+        for (var y = 0; y < input.Height; y++)
+        {
+            for (var x = 0; x < input.Width; x++)
+            {
+                Assert.AreEqual(expectedOutput[y, x], givenOutput[y, x], $"Error for x:{x}, y:{y}");
+            }
+        }
+    }
+
+    [TestMethod]
+    public void RemoveRectanglesDoubleTest()
+    {
+        var complexData = new ComplexData(new byte[,]
+        {
+            { 2, 0, 0, 0, 0, 0, 0, 2 },
+            { 0, 1, 1, 0, 0, 1, 1, 0 },
+            { 0, 1, 1, 0, 0, 1, 1, 0 },
+            { 0, 0, 0, 2, 2, 0, 0, 0 },
+            { 0, 0, 0, 2, 2, 0, 0, 0 },
+            { 0, 1, 1, 0, 0, 1, 1, 0 },
+            { 0, 1, 1, 0, 0, 1, 1, 0 },
+            { 2, 0, 0, 0, 0, 0, 0, 2 }
+        });
+
+        var givenOutput = fftService.RemoveRectangles(complexData, 1, 1, 3, 3, RemoveRecanglesModeEnum.DOUBLE);
+
+        var expectedResult = new ComplexData(new byte[,]
+        {
+            { 2, 0, 0, 0, 0, 0, 0, 2 },
+            { 0, 0, 0, 0, 0, 1, 1, 0 },
+            { 0, 0, 0, 0, 0, 1, 1, 0 },
+            { 0, 0, 0, 2, 2, 0, 0, 0 },
+            { 0, 0, 0, 2, 2, 0, 0, 0 },
+            { 0, 1, 1, 0, 0, 0, 0, 0 },
+            { 0, 1, 1, 0, 0, 0, 0, 0 },
+            { 2, 0, 0, 0, 0, 0, 0, 2 }
+        });
+
+        Assert.AreEqual(8, givenOutput.Width);
+        Assert.AreEqual(8, givenOutput.Height);
+
+        for (var y = 0; y < 8; y++)
+        {
+            for (var x = 0; x < 8; x++)
+            {
+                Assert.AreEqual(expectedResult[0][y, x], givenOutput[0][y, x], $"x:{x}, y:{y}");
+            }
+        }
+    }
+
+    [TestMethod]
+    public void RemoveRectanglesNoMirrorTest()
+    {
+        var complexData = new ComplexData(new byte[,]
+        {
+            { 6, 0, 0, 0, 0, 0, 0, 6 },
+            { 0, 1, 1, 0, 0, 0, 0, 0 },
+            { 0, 1, 1, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 7, 7, 0, 0, 0 },
+            { 0, 0, 0, 7, 7, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 1, 1, 0 },
+            { 0, 0, 0, 0, 0, 1, 1, 0 },
+            { 6, 0, 0, 0, 0, 0, 0, 6 }
+        });
+
+        var givenOutput = fftService.RemoveRectangles(complexData, 1, 1, 3, 3, RemoveRecanglesModeEnum.SINGLE);
+
+        var expectedResult = new ComplexData(new byte[,]
+        {
+            { 6, 0, 0, 0, 0, 0, 0, 6 },
+            { 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 7, 7, 0, 0, 0 },
+            { 0, 0, 0, 7, 7, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 1, 1, 0 },
+            { 0, 0, 0, 0, 0, 1, 1, 0 },
+            { 6, 0, 0, 0, 0, 0, 0, 6 }
+        });
+
+        Assert.AreEqual(8, givenOutput.Width);
+        Assert.AreEqual(8, givenOutput.Height);
+
+        for (var y = 0; y < 8; y++)
+        {
+            for (var x = 0; x < 8; x++)
+            {
+                Assert.AreEqual(expectedResult[0][y, x], givenOutput[0][y, x], $"x:{x}, y:{y}");
+            }
+        }
+    }
+
+    [TestMethod]
+    public void RemoveRectanglesQuadTest()
+    {
+        var complexData = new ComplexData(new byte[,]
+        {
+            { 8, 0, 0, 0, 0, 0, 0, 8 },
+            { 0, 1, 1, 0, 0, 1, 1, 0 },
+            { 0, 1, 1, 0, 0, 1, 1, 0 },
+            { 0, 0, 0, 9, 9, 0, 0, 0 },
+            { 0, 0, 0, 9, 9, 0, 0, 0 },
+            { 0, 1, 1, 0, 0, 1, 1, 0 },
+            { 0, 1, 1, 0, 0, 1, 1, 0 },
+            { 8, 0, 0, 0, 0, 0, 0, 8 }
+        });
+
+        var givenOutput = fftService.RemoveRectangles(complexData, 1, 1, 3, 3, RemoveRecanglesModeEnum.QUAD);
+
+        var expectedResult = new ComplexData(new byte[,]
+        {
+            { 8, 0, 0, 0, 0, 0, 0, 8 },
+            { 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 9, 9, 0, 0, 0 },
+            { 0, 0, 0, 9, 9, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 8, 0, 0, 0, 0, 0, 0, 8 }
+        });
+
+        Assert.AreEqual(8, givenOutput.Width);
+        Assert.AreEqual(8, givenOutput.Height);
+
+        for (var y = 0; y < 8; y++)
+        {
+            for (var x = 0; x < 8; x++)
+            {
+                Assert.AreEqual(expectedResult[0][y, x], givenOutput[0][y, x]);
+            }
+        }
+    }
+
+    [TestMethod]
+    public void DoubleFftShift()
+    {
+        var complexData = new ComplexData(new byte[,]
+        {
+            { 1, 2, 3, 4 },
+            { 5, 6, 7, 8 },
+            { 9, 10, 11, 12 },
+            { 13, 14, 15, 16 }
+        });
+
+        var result = fftService.FFTShift(complexData);
+        var result2 = fftService.FFTShift(result);
+
+        Assert.AreEqual(4, result.Width);
+        Assert.AreEqual(4, result.Height);
+
+        for (var y = 0; y < 4; y++)
+        {
+            for (var x = 0; x < 4; x++)
+            {
+                Assert.AreEqual(complexData[0][y, x], result2[0][y, x]);
+            }
+        }
     }
 }

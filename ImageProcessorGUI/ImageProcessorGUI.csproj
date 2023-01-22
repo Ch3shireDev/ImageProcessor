@@ -44,8 +44,11 @@
     <Compile Update="Views\EdgeDetectionView.axaml.cs">
       <DependentUpon>EdgeDetectionView.axaml</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Views\FourierTransformView.axaml" />
+    <Compile Update="Views\AddPeriodicNoiseView.axaml.cs">
+      <DependentUpon>AddPeriodicNoiseView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\RemovePeriodicNoiseView.axaml.cs">
+      <DependentUpon>RemovePeriodicNoiseView.axaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

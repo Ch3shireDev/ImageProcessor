@@ -12,7 +12,7 @@ namespace ImageProcessorGUI.ViewModels;
 
 public class FeatureVectorViewModel : ReactiveObject
 {
-    private string errorMesage;
+    private string? errorMessage;
 
     public IImageData ImageData;
 
@@ -36,12 +36,12 @@ public class FeatureVectorViewModel : ReactiveObject
     }
 
 
-    public string ErrorMessage
+    public string? ErrorMessage
     {
-        get => errorMesage;
+        get => errorMessage;
         set
         {
-            errorMesage = value;
+            errorMessage = value;
             this.RaisePropertyChanged();
         }
     }

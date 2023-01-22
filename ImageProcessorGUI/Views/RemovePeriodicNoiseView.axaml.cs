@@ -2,9 +2,9 @@ using Avalonia.Controls;
 
 namespace ImageProcessorGUI.Views
 {
-    public partial class FourierTransformView : Window
+    public partial class RemovePeriodicNoiseView : Window
     {
-        public FourierTransformView()
+        public RemovePeriodicNoiseView()
         {
             InitializeComponent();
         }

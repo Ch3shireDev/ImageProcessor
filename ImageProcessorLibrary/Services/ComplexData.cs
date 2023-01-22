@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Numerics;
+using ImageProcessorLibrary.DataStructures;
 
 namespace ImageProcessorLibrary.Services;
 
@@ -55,6 +56,37 @@ public class ComplexData
     public int Height { get; set; }
 
     public Complex[,] this[int i] => Data[i];
+
+    public ImageData ToImageData()
+    {
+        var red = Data[0];
+        var green = Data[1];
+        var blue = Data[2];
+
+        var colors = new Color[red.GetLength(0), red.GetLength(1)];
+
+        for (var y = 0; y < red.GetLength(0); y++)
+        {
+            for (var x = 0; x < red.GetLength(1); x++)
+            {
+                var redB = ComplexToColorByte(red[y, x]);
+                var greenB = ComplexToColorByte(green[y, x]);
+                var blueB = ComplexToColorByte(blue[y, x]);
+
+                colors[y, x] = Color.FromArgb(redB, greenB, blueB);
+            }
+        }
+
+        return new ImageData(colors);
+    }
+
+    static byte ComplexToColorByte(Complex value)
+    {
+        var magnitude = value.Magnitude;
+        if (magnitude > 255) return 255;
+        if (magnitude < 0) return 0;
+        return (byte)magnitude;
+    }
 
     private Complex[,] ToComplexData(byte[,] GreyImage)
     {

@@ -8,12 +8,18 @@ using ReactiveUI;
 
 namespace ImageProcessorGUI.ViewModels;
 
-public class PeriodicNoiseViewModel : ReactiveObject
+public class AddPeriodicNoiseViewModel : ReactiveObject
 {
+    private readonly FftService fftService = new();
     private readonly IImageData imageData;
     private readonly IImageData outputImage;
 
-    public PeriodicNoiseViewModel(IImageData imageData, IImageData outputImage)
+    private double frequencyX = 0.5;
+    private double frequencyY = 0.5;
+    private double phase = 0;
+    private double amplitude = 10;
+
+    public AddPeriodicNoiseViewModel(IImageData imageData, IImageData outputImage)
     {
         this.imageData = imageData;
         this.outputImage = outputImage;
@@ -21,48 +27,51 @@ public class PeriodicNoiseViewModel : ReactiveObject
 
     public ICommand RefreshCommand => ReactiveCommand.Create(Refresh);
 
-    public IImage FourierBeforeImage{ get; set; }
+    public IImage FourierBeforeImage { get; set; }
 
-    public IImage FourierAfterImage{ get; set; }
+    public IImage FourierAfterImage { get; set; }
 
-    private double _value1;
-
-    public double Value1
+    public double Amplitude
     {
-        get => _value1;
+        get => amplitude;
         set
         {
-            _value1 = value;
+            amplitude = value;
             this.RaisePropertyChanged();
         }
     }
 
-    private double _value2;
-
-    public double Value2
+    public double FrequencyX
     {
-        get => _value2;
+        get => frequencyX;
         set
         {
-            _value2 = value;
+            frequencyX = value;
             this.RaisePropertyChanged();
         }
     }
 
-    private double _value3;
-
-    public double Value3
+    public double FrequencyY
     {
-        get => _value3;
+        get => frequencyY;
         set
         {
-            _value3 = value;
+            frequencyY = value;
             this.RaisePropertyChanged();
         }
     }
 
+    public double Phase
+    {
+        get => phase;
+        set
+        {
+            phase = value;
+            this.RaisePropertyChanged();
+        }
+    }
 
-    IImageData FourierBeforeImageData
+    private IImageData FourierBeforeImageData
     {
         set
         {
@@ -71,7 +80,7 @@ public class PeriodicNoiseViewModel : ReactiveObject
         }
     }
 
-    IImageData FourierAfterImageData
+    private IImageData FourierAfterImageData
     {
         set
         {
@@ -80,21 +89,17 @@ public class PeriodicNoiseViewModel : ReactiveObject
         }
     }
 
-
-    private readonly FftService fftService = new FftService();
     public void Refresh()
     {
         var complex = new ComplexData(imageData);
-        
-        var fourier = fftService.ForwardFFT(complex);
-        
-        FourierBeforeImageData = GetFourierImageData(fourier);
 
-        var complex2 = fftService.AddPeriodicNoise(complex, Value1, Value2, Value3);
+        var fourier = fftService.ForwardFFT(complex);
+        FourierBeforeImageData = GetFourierImageData(fourier);
+        var complex2 = fftService.AddPeriodicNoise(complex, FrequencyX, FrequencyY, Amplitude, Phase);
         var fourier2 = fftService.ForwardFFT(complex2);
         FourierAfterImageData = GetFourierImageData(fourier2);
 
-        var result = fftService.ToImageData(complex2);
+        var result = complex2.ToImageData();
         outputImage.Update(result);
     }
 
@@ -103,7 +108,7 @@ public class PeriodicNoiseViewModel : ReactiveObject
         var fourier2 = fftService.FFTShift(fourier);
         var fourier3 = fftService.LogN(fourier2);
         var fourier4 = fftService.Normalize(fourier3);
-        var fourierImageData = fftService.ToImageData(fourier4);
+        var fourierImageData = fourier4.ToImageData();
         return fourierImageData;
     }
 }

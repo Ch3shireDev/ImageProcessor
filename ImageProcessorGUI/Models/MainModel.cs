@@ -765,8 +765,8 @@ public class MainModel
     public void RemovePeriodicNoise()
     {
         var outputImageData = new ImageData(ImageData);
-        var viewModel = new FourierTransformViewModel(ImageData, outputImageData);
-        var window = new FourierTransformView
+        var viewModel = new RemovePeriodicNoiseViewModel(ImageData, outputImageData);
+        var window = new RemovePeriodicNoiseView
         {
             DataContext = viewModel
         };
@@ -779,8 +779,8 @@ public class MainModel
     public void AddPeriodicNoise()
     {
         var outputImageData = new ImageData(ImageData);
-        var viewModel = new PeriodicNoiseViewModel(ImageData, outputImageData);
-        var window = new PeriodicNoiseView
+        var viewModel = new AddPeriodicNoiseViewModel(ImageData, outputImageData);
+        var window = new AddPeriodicNoiseView
         {
             DataContext = viewModel
         };

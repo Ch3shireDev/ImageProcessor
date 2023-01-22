@@ -2,9 +2,9 @@ using Avalonia.Controls;
 
 namespace ImageProcessorGUI.Views
 {
-    public partial class PeriodicNoiseView : Window
+    public partial class AddPeriodicNoiseView : Window
     {
-        public PeriodicNoiseView()
+        public AddPeriodicNoiseView()
         {
             InitializeComponent();
         }

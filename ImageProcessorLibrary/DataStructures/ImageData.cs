@@ -46,9 +46,10 @@ public class ImageData : IImageData
         Pixels = ToPixels(imageData.Pixels);
     }
 
-    public Bitmap Bitmap => GetBitmap();
     public double HorizontalDPI => Bitmap.HorizontalResolution;
     public double VerticalDPI => Bitmap.VerticalResolution;
+
+    public Bitmap Bitmap => GetBitmap();
 
     public Color[,] Pixels { get; set; }
 

@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-using System.Numerics;
-using ImageProcessorLibrary.DataStructures;
+﻿using System.Numerics;
 
 namespace ImageProcessorLibrary.Services;
 
@@ -8,49 +6,30 @@ public class FftService
 {
     private readonly IFourierService fourierService = new FourierService();
 
-    public Complex[,] InverseFFT(Complex[,] Fourier)
-    {
-        var nx = Fourier.GetLength(0);
-        var ny = Fourier.GetLength(1);
-
-        return fourierService.FFT2D(Fourier, nx, ny, -1);
-    }
-
     public ComplexData ForwardFFT(ComplexData complexData)
     {
-        var forward = ForwardFFT(complexData.Data);
+        var fourier = complexData.Data;
+        fourier = ChangeSizeToClosestPowerOfTwo(fourier);
+
+        var red = fourierService.FFT2D(fourier[0],  1);
+        var green = fourierService.FFT2D(fourier[1],  1);
+        var blue = fourierService.FFT2D(fourier[2],  1);
 
         return new ComplexData(complexData)
         {
-            Data = forward
+            Data = new[] { red, green, blue }
         };
-    }
-
-    public Complex[,] ForwardFFT(Complex[,] Fourier)
-    {
-        var nx = Fourier.GetLength(0);
-        var ny = Fourier.GetLength(1);
-
-        return fourierService.FFT2D(Fourier, nx, ny, 1);
-    }
-
-    private Complex[][,] InverseFFT(Complex[][,] Fourier)
-    {
-        var red = InverseFFT(Fourier[0]);
-        var green = InverseFFT(Fourier[1]);
-        var blue = InverseFFT(Fourier[2]);
-
-        return new[] { red, green, blue };
     }
 
     public ComplexData InverseFFT(ComplexData complexData)
     {
-        var inverse = InverseFFT(complexData.Data);
-
+        var red = fourierService.FFT2D(complexData.Data[0], -1);
+        var green = fourierService.FFT2D(complexData.Data[1], -1);
+        var blue = fourierService.FFT2D(complexData.Data[2], -1);
 
         var complexData2 = new ComplexData(complexData)
         {
-            Data = inverse,
+            Data = new[] { red, green, blue },
             Height = complexData.Height,
             Width = complexData.Width
         };
@@ -60,46 +39,13 @@ public class FftService
         return result;
     }
 
-    public Complex[][,] ForwardFFT(Complex[][,] Fourier)
-    {
-        Fourier = ChangeSizeToClosestPowerOfTwo(Fourier);
-
-        var red = ForwardFFT(Fourier[0]);
-        var green = ForwardFFT(Fourier[1]);
-        var blue = ForwardFFT(Fourier[2]);
-
-        return new[] { red, green, blue };
-    }
-
-
-    public double GetMinReal(ComplexData complexData)
-    {
-        var min = double.MaxValue;
-
-        foreach (var complex in complexData.Data)
-            for (var x = 0; x < complex.GetLength(0); x++)
-            {
-                for (var y = 0; y < complex.GetLength(1); y++)
-                {
-                    var value = complex[x, y].Real;
-
-                    if (value < min)
-                    {
-                        min = value;
-                    }
-                }
-            }
-
-        return min;
-    }
-
     public ComplexData LogN(ComplexData complexData)
     {
         var red = LogN(complexData.Data[0]);
         var green = LogN(complexData.Data[1]);
         var blue = LogN(complexData.Data[2]);
         var data = new[] { red, green, blue };
-        
+
         return new ComplexData(complexData)
         {
             Data = data
@@ -120,30 +66,6 @@ public class FftService
         }
 
         return result;
-    }
-
-    public ImageData ToImageData(ComplexData complexData)
-    {
-        return ToImageData(complexData.Data);
-    }
-    
-    public ImageData ToImageData(Complex[][,] input)
-    {
-        var red = input[0];
-        var green = input[1];
-        var blue = input[2];
-
-        var colors = new Color[red.GetLength(0), red.GetLength(1)];
-
-        for (var y = 0; y < red.GetLength(0); y++)
-        {
-            for (var x = 0; x < red.GetLength(1); x++)
-            {
-                colors[y, x] = Color.FromArgb((byte)red[y, x].Magnitude, (byte)green[y, x].Magnitude, (byte)blue[y, x].Magnitude);
-            }
-        }
-
-        return new ImageData(colors);
     }
 
     public Complex[,] Resize(Complex[,] input, int height, int width)
@@ -182,8 +104,19 @@ public class FftService
         };
     }
 
-
     private Complex[,] ChangeSizeToClosestPowerOfTwo(Complex[,] input)
+    {
+        var newWidth = FindWidthForPowerOfTwo(input);
+        return Resize(input, newWidth, newWidth);
+    }
+
+    public int FindWidthForPowerOfTwo(IImageData imageData)
+    {
+        var complexData = new ComplexData(imageData);
+        return FindWidthForPowerOfTwo(complexData.Data[0]);
+    }
+
+    public int FindWidthForPowerOfTwo(Complex[,] input)
     {
         var nx = input.GetLength(0);
         var ny = input.GetLength(1);
@@ -191,7 +124,8 @@ public class FftService
         var newNx = (int)Math.Pow(2, Math.Ceiling(Math.Log(nx, 2)));
         var newNy = (int)Math.Pow(2, Math.Ceiling(Math.Log(ny, 2)));
 
-        return Resize(input, newNx, newNy);
+        var newWidth = Math.Max(newNx, newNy);
+        return newWidth;
     }
 
     public Complex[][,] ChangeSizeToClosestPowerOfTwo(Complex[][,] input)
@@ -346,20 +280,79 @@ public class FftService
         return double.IsNaN(value) || double.IsPositiveInfinity(value) || double.IsNegativeInfinity(value);
     }
 
-    public ComplexData AddPeriodicNoise(ComplexData complexData, double value1, double value2, double value3)
+    public ComplexData AddPeriodicNoise(ComplexData complexData, double frequencyX, double frequencyY, double amplitude, double phase)
     {
-        for (var x = 0; x < complexData.Height; x++)
+        for (var y = 0; y < complexData.Height; y++)
         {
-            for (var y = 0; y < complexData.Width; y++)
+            for (var x = 0; x < complexData.Width; x++)
             {
-
-                var value = Math.Cos(value1 * x + value2 * y + value3);
-                complexData.Data[0][x, y] *= value;
-                complexData.Data[1][x, y] *= value;
-                complexData.Data[2][x, y] *= value;
+                var value = amplitude * Math.Sin(frequencyX * x * Math.PI / 2 + frequencyY * y * Math.PI / 2 - phase * Math.PI * frequencyX / 2 - phase * Math.PI * frequencyY / 2);
+                value = (int)value;
+                complexData.Data[0][y, x] += value;
+                complexData.Data[1][y, x] += value;
+                complexData.Data[2][y, x] += value;
             }
         }
 
         return complexData;
+    }
+
+    public IImageData AddPeriodicNoise(IImageData imageData, double frequencyX = 0, double frequencyY = 0, double amplitude = 1, double phase = 0)
+    {
+        var complexData = new ComplexData(imageData);
+        complexData = AddPeriodicNoise(complexData, frequencyX, frequencyY, amplitude, phase);
+        return complexData.ToImageData();
+    }
+
+    public ComplexData RemoveRectangles(ComplexData complexData, int x1, int y1, int x2, int y2, RemoveRecanglesModeEnum mode)
+    {
+        var height = complexData.Data[0].GetLength(0);
+        var width = complexData.Data[0].GetLength(1);
+
+        for (var x = x1; x < x2; x++)
+        {
+            for (var y = y1; y < y2; y++)
+            {
+                switch (mode)
+                {
+                    case RemoveRecanglesModeEnum.NONE:
+                        break;
+                    case RemoveRecanglesModeEnum.SINGLE:
+                        complexData = RemovePixelIfIsInRange(complexData, x, y, width, height);
+                        break;
+                    case RemoveRecanglesModeEnum.DOUBLE:
+                        complexData = RemovePixelIfIsInRange(complexData, x, y, width, height);
+                        complexData = RemovePixelIfIsInRange(complexData, width - x - 1, height - y - 1, width, height);
+                        break;
+                    case RemoveRecanglesModeEnum.QUAD:
+                        complexData = RemovePixelIfIsInRange(complexData, x, y, width, height);
+                        complexData = RemovePixelIfIsInRange(complexData, width - x - 1, height - y - 1, width, height);
+                        complexData = RemovePixelIfIsInRange(complexData, x, height - y - 1, width, height);
+                        complexData = RemovePixelIfIsInRange(complexData, width - x - 1, y, width, height);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        return complexData;
+    }
+
+    private ComplexData RemovePixelIfIsInRange(ComplexData complexData, int x, int y, int width, int height)
+    {
+        if (IsInRange(x, y, width, height))
+        {
+            complexData.Data[0][y, x] = 0;
+            complexData.Data[1][y, x] = 0;
+            complexData.Data[2][y, x] = 0;
+        }
+
+        return complexData;
+    }
+
+    private bool IsInRange(int x, int y, int width, int height)
+    {
+        return x >= 0 && x < width && y >= 0 && y < height;
     }
 }
