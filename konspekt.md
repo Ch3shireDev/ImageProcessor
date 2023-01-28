@@ -31,7 +31,7 @@ natomiast transformacja Fouriera:
 
 ![](images/cosx_fourier.png)
 
-
+Jeśli $f(x)$ ma na przykład postać funkcji piły
 
 https://www.spiedigitallibrary.org/conference-proceedings-of-spie/4667/0000/Frequency-domain-medianlike-filter-for-periodic-and-quasi-periodic-noise/10.1117/12.467980.short
 

@@ -6,7 +6,7 @@ using ImageProcessorLibrary.Services;
 namespace ImageProcessorTests;
 
 [TestClass]
-public class FourierTests
+public class FftTests
 {
     private FftService fftService;
 
