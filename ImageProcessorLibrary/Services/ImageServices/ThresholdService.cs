@@ -46,14 +46,16 @@ public class ThresholdService
         var bitmap = imageData.Bitmap;
 
         for (var x = 0; x < bitmap.Width; x++)
-        for (var y = 0; y < bitmap.Height; y++)
         {
-            var pixel = bitmap.GetPixel(x, y);
-            var hsl = ColorTools.RGBToHSL(pixel);
-            var intensity = hsl.L;
-            hsl.L = intensity > thresholdValue / 255.0f ? intensity : 0;
-            var newPixel = ColorTools.HSLToRGB(hsl);
-            bitmap.SetPixel(x, y, newPixel);
+            for (var y = 0; y < bitmap.Height; y++)
+            {
+                var pixel = bitmap.GetPixel(x, y);
+                var hsl = ColorTools.RGBToHSL(pixel);
+                var intensity = hsl.L;
+                hsl.L = intensity > thresholdValue / 255.0f ? intensity : 0;
+                var newPixel = ColorTools.HSLToRGB(hsl);
+                bitmap.SetPixel(x, y, newPixel);
+            }
         }
 
         var stream = new MemoryStream();

@@ -3,16 +3,25 @@ using FFTW.NET;
 
 namespace ImageProcessorLibrary.Services.FourierServices;
 
+/// <summary>
+///     Serwis dostarczający transformację Fouriera.
+/// </summary>
 public class FourierService : IFourierService
 {
-    public Complex[] FFT1D(Complex[] x, int dir = 1)
+    /// <summary>
+    ///     Transformacja Fouriera w jednym wymiarze.
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="dir"></param>
+    /// <returns></returns>
+    public Complex[] FFT1D(Complex[] x, FourierDirection dir = FourierDirection.Forward)
     {
         var y = new Complex[x.Length];
 
         using var pinIn = new PinnedArray<Complex>(x);
         using var pinOut = new PinnedArray<Complex>(y);
 
-        if (dir == 1)
+        if (dir == FourierDirection.Forward)
         {
             DFT.FFT(pinIn, pinOut);
             y = Normalize(y);
@@ -25,15 +34,20 @@ public class FourierService : IFourierService
         return y;
     }
 
-
-    public Complex[,] FFT2D(Complex[,] c, int dir = 1)
+    /// <summary>
+    ///     Transformacja Fouriera w dwóch wymiarach.
+    /// </summary>
+    /// <param name="c"></param>
+    /// <param name="dir"></param>
+    /// <returns></returns>
+    public Complex[,] FFT2D(Complex[,] c, FourierDirection dir = FourierDirection.Forward)
     {
         var y = new Complex[c.GetLength(0), c.GetLength(1)];
 
         using var pinIn = new PinnedArray<Complex>(c);
         using var pinOut = new PinnedArray<Complex>(y);
 
-        if (dir == 1)
+        if (dir == FourierDirection.Forward)
         {
             DFT.FFT(pinIn, pinOut);
             y = Normalize(y);
@@ -46,6 +60,11 @@ public class FourierService : IFourierService
         return y;
     }
 
+    /// <summary>
+    ///     Normalizacja wyniku transformacji Fouriera w jednym wymiarze.
+    /// </summary>
+    /// <param name="y"></param>
+    /// <returns></returns>
     private static Complex[] Normalize(Complex[] y)
     {
         for (var i = 0; i < y.Length; i++)
@@ -56,6 +75,11 @@ public class FourierService : IFourierService
         return y;
     }
 
+    /// <summary>
+    ///     Normalizacja wyniku transformacji Fouriera w dwóch wymiarach.
+    /// </summary>
+    /// <param name="y"></param>
+    /// <returns></returns>
     private static Complex[,] Normalize(Complex[,] y)
     {
         for (var i = 0; i < y.GetLength(0); i++)

@@ -4,10 +4,11 @@ using ImageProcessorLibrary.Helpers;
 
 namespace ImageProcessorLibrary.DataStructures;
 
+/// <summary>
+///     Klasa przechowująca dane obrazu.
+/// </summary>
 public class ImageData
 {
-    private byte[]? filebytes;
-
     public ImageData(bool[,] binaryPixels)
     {
         Pixels = ToPixels(binaryPixels);
@@ -32,7 +33,6 @@ public class ImageData
     {
         Filepath = filepath;
         Filename = Path.GetFileName(filepath);
-        Filebytes = filebytes;
         Extension = Path.GetExtension(Filepath);
         Pixels = ToPixels(new Bitmap(new MemoryStream(filebytes)));
     }
@@ -41,7 +41,6 @@ public class ImageData
     {
         Filepath = imageData.Filename;
         Filename = Path.GetFileName(Filepath);
-        Filebytes = imageData.Filebytes.Clone() as byte[];
         Extension = imageData.Extension;
         Pixels = ToPixels(imageData.Pixels);
     }
@@ -58,11 +57,8 @@ public class ImageData
 
     public string Filepath { get; set; }
 
-    public byte[]? Filebytes
-    {
-        get => GetFilebytes();
-        set => filebytes = value;
-    }
+    public byte[]? Filebytes => GetFilebytes();
+
 
     public string Extension { get; set; }
 
@@ -105,10 +101,9 @@ public class ImageData
     public void Update(ImageData result)
     {
         Filepath = result.Filepath;
-        Filebytes = result.Filebytes;
         Extension = result.Extension;
 
-        Pixels = ToPixels(new Bitmap(new MemoryStream(result.Filebytes)));
+        Pixels = ToPixels(result.Pixels);
 
         ImageChanged?.Invoke(null, EventArgs.Empty);
     }
@@ -132,7 +127,7 @@ public class ImageData
     {
         Filepath = filepath;
         Filename = Path.GetFileName(filepath);
-        File.WriteAllBytes(filepath, Filebytes);
+        Bitmap.Save(filepath);
     }
 
     public bool IsEqual(ImageData imageData)
@@ -166,11 +161,6 @@ public class ImageData
         return (byte)value;
     }
 
-    public void Save(string filePath)
-    {
-        File.WriteAllBytes(filePath, Filebytes);
-    }
-
     public byte[,] GetGrayArray()
     {
         var array = new byte[Height, Width];
@@ -186,7 +176,7 @@ public class ImageData
         return array;
     }
 
-    private Color[,] ToPixels(byte[,] pixels)
+    private static Color[,] ToPixels(byte[,] pixels)
     {
         var colorPixels = new Color[pixels.GetLength(0), pixels.GetLength(1)];
 

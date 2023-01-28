@@ -3,12 +3,18 @@ using ImageProcessorLibrary.DataStructures;
 
 namespace ImageProcessorLibrary.Helpers;
 
+/// <summary>
+///     Narzędzia do operacji na kolorach.
+/// </summary>
 public static class ColorTools
 {
+    /// <summary>
+    ///     Konwersja z modelu RGB do HSL.
+    /// </summary>
+    /// <param name="rgb"></param>
+    /// <returns></returns>
     public static HSL RGBToHSL(Color rgb)
     {
-        var hsl = new HSL();
-
         var r = rgb.R / 255.0f;
         var g = rgb.G / 255.0f;
         var b = rgb.B / 255.0f;
@@ -16,6 +22,8 @@ public static class ColorTools
         var min = Math.Min(Math.Min(r, g), b);
         var max = Math.Max(Math.Max(r, g), b);
         var delta = max - min;
+
+        var hsl = new HSL();
 
         hsl.L = (max + min) / 2;
 
@@ -59,32 +67,41 @@ public static class ColorTools
         return hsl;
     }
 
+    /// <summary>
+    ///     Konwersja z modelu HSL do RGB.
+    /// </summary>
+    /// <param name="hsl"></param>
+    /// <returns></returns>
     public static Color HSLToRGB(HSL hsl)
     {
-        byte r = 0;
-        byte g = 0;
-        byte b = 0;
-
         if (hsl.S == 0)
         {
-            r = g = b = (byte)(hsl.L * 255);
+            var r = (byte)(hsl.L * 255);
+            var g = (byte)(hsl.L * 255);
+            var b = (byte)(hsl.L * 255);
+            return Color.FromArgb(r, g, b);
         }
         else
         {
-            double v1, v2;
             var hue = (double)hsl.H / 360;
 
-            v2 = hsl.L < 0.5 ? hsl.L * (1 + hsl.S) : hsl.L + hsl.S - hsl.L * hsl.S;
-            v1 = 2 * hsl.L - v2;
+            var v2 = hsl.L < 0.5 ? hsl.L * (1 + hsl.S) : hsl.L + hsl.S - hsl.L * hsl.S;
+            var v1 = 2 * hsl.L - v2;
 
-            r = (byte)(255 * HueToRGB(v1, v2, hue + 1.0f / 3));
-            g = (byte)(255 * HueToRGB(v1, v2, hue));
-            b = (byte)(255 * HueToRGB(v1, v2, hue - 1.0f / 3));
+            var r = (byte)(255 * HueToRGB(v1, v2, hue + 1.0f / 3));
+            var g = (byte)(255 * HueToRGB(v1, v2, hue));
+            var b = (byte)(255 * HueToRGB(v1, v2, hue - 1.0f / 3));
+            return Color.FromArgb(r, g, b);
         }
-
-        return Color.FromArgb(r, g, b);
     }
 
+    /// <summary>
+    ///     Konwersja wartości barwy na wartość RGB.
+    /// </summary>
+    /// <param name="v1"></param>
+    /// <param name="v2"></param>
+    /// <param name="vH"></param>
+    /// <returns></returns>
     private static double HueToRGB(double v1, double v2, double vH)
     {
         if (vH < 0)

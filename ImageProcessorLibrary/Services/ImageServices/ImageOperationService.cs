@@ -6,8 +6,20 @@ using ImageProcessorLibrary.Services.Enums;
 
 namespace ImageProcessorLibrary.Services.ImageServices;
 
+/// <summary>
+///     Klasa wykonująca operacje na obrazach.
+/// </summary>
 public class ImageOperationService
 {
+    /// <summary>
+    ///     Dodaje obrazy.
+    /// </summary>
+    /// <param name="image1"></param>
+    /// <param name="image2"></param>
+    /// <param name="operation"></param>
+    /// <param name="withSaturation"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentOutOfRangeException"></exception>
     public ImageData AddImages(ImageData image1, ImageData image2, ImageCombinationsEnum operation, bool withSaturation = false)
     {
         var bitmap1 = image1.Bitmap;
@@ -53,26 +65,28 @@ public class ImageOperationService
 
 
         for (var x = 0; x < width; x++)
-        for (var y = 0; y < height; y++)
         {
-            var pixel1 = bitmap1.GetPixel(x, y);
-
-            var hsl = ColorTools.RGBToHSL(pixel1);
-            var light = values[x, y];
-
-            if (withSaturation)
+            for (var y = 0; y < height; y++)
             {
-                if (light > 1) light = 1;
-            }
-            else
-            {
-                if (maxL > 0 && maxL > 1) light /= maxL;
-            }
+                var pixel1 = bitmap1.GetPixel(x, y);
 
-            hsl.L = light;
+                var hsl = ColorTools.RGBToHSL(pixel1);
+                var light = values[x, y];
 
-            var pixel = ColorTools.HSLToRGB(hsl);
-            bitmap.SetPixel(x, y, pixel);
+                if (withSaturation)
+                {
+                    if (light > 1) light = 1;
+                }
+                else
+                {
+                    if (maxL > 0 && maxL > 1) light /= maxL;
+                }
+
+                hsl.L = light;
+
+                var pixel = ColorTools.HSLToRGB(hsl);
+                bitmap.SetPixel(x, y, pixel);
+            }
         }
 
         var stream = new MemoryStream();

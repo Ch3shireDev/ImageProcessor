@@ -1,5 +1,8 @@
 ﻿namespace ImageProcessorLibrary.Services.Enums;
 
+/// <summary>
+///     Typ operacji binarnej.
+/// </summary>
 public enum BinaryOperationType
 {
     BINARY_AND,

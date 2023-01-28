@@ -7,6 +7,9 @@ using ImageProcessorLibrary.Services.DialogServices;
 
 namespace ImageProcessorGUI.Services;
 
+/// <summary>
+///     Serwis okna zapisu obrazu.
+/// </summary>
 public class SaveImageDialogService : ISaveImageDialogService
 {
     private Window? MainWindow =>

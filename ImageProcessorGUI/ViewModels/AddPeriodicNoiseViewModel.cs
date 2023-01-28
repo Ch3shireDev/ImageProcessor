@@ -8,6 +8,9 @@ using ReactiveUI;
 
 namespace ImageProcessorGUI.ViewModels;
 
+/// <summary>
+/// Model widoku dodawania szumu periodycznego.
+/// </summary>
 public class AddPeriodicNoiseViewModel : ReactiveObject
 {
     private readonly FftService fftService = new();

@@ -10,6 +10,9 @@ using ReactiveUI;
 
 namespace ImageProcessorGUI.ViewModels;
 
+/// <summary>
+/// Model widoku operacji binarnych.
+/// </summary>
 public class BinaryOperationViewModel : ReactiveObject
 {
     private readonly IImageServiceProvider _serviceProvider;

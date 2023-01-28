@@ -12,6 +12,9 @@ using ReactiveUI;
 
 namespace ImageProcessorGUI.ViewModels;
 
+/// <summary>
+///     Model widoku pobierania wektora cech.
+/// </summary>
 public class FeatureVectorViewModel : ReactiveObject
 {
     private string errorMessage = "";

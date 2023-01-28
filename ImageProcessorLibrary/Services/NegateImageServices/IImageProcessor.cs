@@ -2,7 +2,9 @@
 
 namespace ImageProcessorLibrary.Services.NegateImageServices;
 
-public interface INegateImageService
+public interface IImageProcessor
 {
     ImageData NegateImage(ImageData imageData);
+    ImageData SwapHorizontal(ImageData imageData);
+    ImageData ToGrayscale(ImageData imageData);
 }

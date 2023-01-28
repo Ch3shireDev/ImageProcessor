@@ -7,6 +7,9 @@ using ReactiveUI;
 
 namespace ImageProcessorGUI.ViewModels;
 
+/// <summary>
+///    ViewModel dla okna operacji matematycznych.
+/// </summary>
 public class MathOperationViewModel : ReactiveObject
 {
     private double value;

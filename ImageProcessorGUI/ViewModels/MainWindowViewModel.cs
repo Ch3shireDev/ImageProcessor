@@ -1,10 +1,13 @@
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using Avalonia.Media;
 using ImageProcessorGUI.Models;
 using ReactiveUI;
 
 namespace ImageProcessorGUI.ViewModels;
 
+/// <summary>
+///    Widok modelu głównego okna aplikacji.
+/// </summary>
 public class MainWindowViewModel : ReactiveObject
 {
     public MainWindowViewModel(MainModel mainModel)

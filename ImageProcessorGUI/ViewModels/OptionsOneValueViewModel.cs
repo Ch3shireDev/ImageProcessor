@@ -5,6 +5,10 @@ using ReactiveUI;
 
 namespace ImageProcessorGUI.ViewModels;
 
+/// <summary>
+///    Klasa bazowa dla modeli widoków z jedną opcją.
+/// </summary>
+/// <typeparam name="T1"></typeparam>
 public class OptionsOneValueViewModel<T1> : ReactiveObject
 {
     private readonly Func<ImageData, T1, ImageData>? _transform;

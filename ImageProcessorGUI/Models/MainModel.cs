@@ -14,13 +14,14 @@ using ImageProcessorLibrary.Services.StretchingServices;
 
 namespace ImageProcessorGUI.Models;
 
+/// <summary>
+///    Model głównego okna aplikacji.
+/// </summary>
 public class MainModel
 {
     private readonly FilterService _filterService = new();
     private readonly IImageServiceProvider _imageServiceProvider;
-
-    private readonly EdgeDetectionService edgeDetectionService = new();
-
+    
     private readonly MorphologyService morphologyService = new();
 
     private readonly SegmentationService segmentationService = new();
@@ -96,13 +97,13 @@ public class MainModel
 
     public void CreateGrayscale()
     {
-        var imageData = new NegateImageService().ToGrayscale(ImageData);
+        var imageData =  _imageServiceProvider.ImageProcessor.ToGrayscale(ImageData);
         ImageData.Update(imageData);
     }
 
     public void SwapHorizontal()
     {
-        var imageData = new NegateImageService().SwapHorizontal(ImageData);
+        var imageData =  _imageServiceProvider.ImageProcessor.SwapHorizontal(ImageData);
         ImageData.Update(imageData);
     }
 
@@ -202,7 +203,7 @@ public class MainModel
     /// </summary>
     public void NegateImage()
     {
-        var imageData = _imageServiceProvider.NegateImageService.NegateImage(ImageData);
+        var imageData = _imageServiceProvider.ImageProcessor.NegateImage(ImageData);
         _imageServiceProvider.WindowService.ShowImageWindow(imageData);
     }
 

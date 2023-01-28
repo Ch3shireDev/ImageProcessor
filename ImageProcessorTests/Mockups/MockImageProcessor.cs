@@ -3,7 +3,7 @@ using ImageProcessorLibrary.Services.NegateImageServices;
 
 namespace ImageProcessorTests.Mockups;
 
-public class MockNegateImageService : INegateImageService
+public class MockImageProcessor : IImageProcessor
 {
     public bool IsNegated { get; set; }
 
@@ -16,6 +16,19 @@ public class MockNegateImageService : INegateImageService
     public ImageData NegateImage(ImageData imageData)
     {
         IsNegated = true;
+        return imageData;
+    }
+
+    public ImageData SwapHorizontal(ImageData imageData)
+    {
+        IsHorizontalSwap = true;
+        return imageData;
+    }
+
+    public bool IsHorizontalSwap { get; set; }
+
+    public ImageData ToGrayscale(ImageData imageData)
+    {
         return imageData;
     }
 

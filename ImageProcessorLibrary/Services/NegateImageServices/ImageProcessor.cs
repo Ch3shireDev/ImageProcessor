@@ -5,7 +5,7 @@ using ImageProcessorLibrary.Helpers;
 
 namespace ImageProcessorLibrary.Services.NegateImageServices;
 
-public class NegateImageService : INegateImageService
+public class ImageProcessor : IImageProcessor
 {
     public ImageData NegateImage(ImageData imageData)
     {

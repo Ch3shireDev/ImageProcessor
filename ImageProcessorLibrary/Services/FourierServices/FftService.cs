@@ -1,13 +1,20 @@
 ﻿using System.Numerics;
 using ImageProcessorLibrary.DataStructures;
-using ImageProcessorLibrary.Services.Enums;
 
 namespace ImageProcessorLibrary.Services.FourierServices;
 
+/// <summary>
+///     Klasa do przeprowadzania transformacji Fouriera wraz z funkcjami pomocniczymi.
+/// </summary>
 public class FftService
 {
     private readonly IFourierService fourierService = new FourierService();
 
+    /// <summary>
+    ///     Funkcja do przeprowadzania transformacji Fouriera.
+    /// </summary>
+    /// <param name="complexData"></param>
+    /// <returns></returns>
     public ComplexData ForwardFFT(ComplexData complexData)
     {
         var fourier = complexData.Data;
@@ -23,11 +30,16 @@ public class FftService
         };
     }
 
+    /// <summary>
+    ///     Funkcja do przeprowadzania odwrotnej transformacji Fouriera.
+    /// </summary>
+    /// <param name="complexData"></param>
+    /// <returns></returns>
     public ComplexData InverseFFT(ComplexData complexData)
     {
-        var red = fourierService.FFT2D(complexData.Data[0], -1);
-        var green = fourierService.FFT2D(complexData.Data[1], -1);
-        var blue = fourierService.FFT2D(complexData.Data[2], -1);
+        var red = fourierService.FFT2D(complexData.Data[0], FourierDirection.Backward);
+        var green = fourierService.FFT2D(complexData.Data[1], FourierDirection.Backward);
+        var blue = fourierService.FFT2D(complexData.Data[2], FourierDirection.Backward);
 
         var complexData2 = new ComplexData(complexData)
         {
@@ -41,6 +53,11 @@ public class FftService
         return result;
     }
 
+    /// <summary>
+    ///     Funkcja do pobrania logarytmu naturalnego z danych w dziedzinie częstotliwości.
+    /// </summary>
+    /// <param name="complexData"></param>
+    /// <returns></returns>
     public ComplexData LogN(ComplexData complexData)
     {
         var red = LogN(complexData.Data[0]);
@@ -54,6 +71,11 @@ public class FftService
         };
     }
 
+    /// <summary>
+    ///     Funkcja do pobrania logarytmu naturalnego z danych w dziedzinie częstotliwości.
+    /// </summary>
+    /// <param name="fourier"></param>
+    /// <returns></returns>
     public static Complex[,] LogN(Complex[,] fourier)
     {
         var result = new Complex[fourier.GetLength(0), fourier.GetLength(1)];
@@ -70,6 +92,13 @@ public class FftService
         return result;
     }
 
+    /// <summary>
+    ///     Funkcja do zmiany rozmiaru obrazu na zadaną wysokość i szerokość.
+    /// </summary>
+    /// <param name="input"></param>
+    /// <param name="height"></param>
+    /// <param name="width"></param>
+    /// <returns></returns>
     public Complex[,] Resize(Complex[,] input, int height, int width)
     {
         var output = new Complex[height, width];
@@ -92,6 +121,13 @@ public class FftService
         return output;
     }
 
+    /// <summary>
+    ///     Funkcja do zmiany rozmiaru obrazu na zadaną wysokość i szerokość.
+    /// </summary>
+    /// <param name="input"></param>
+    /// <param name="height"></param>
+    /// <param name="width"></param>
+    /// <returns></returns>
     public ComplexData Resize(ComplexData input, int height, int width)
     {
         var red = Resize(input.Data[0], height, width);
@@ -106,18 +142,33 @@ public class FftService
         };
     }
 
+    /// <summary>
+    ///     Funkcja do zmiany rozmiaru obrazu na najbliższą potęgę dwójki.
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
     private Complex[,] ChangeSizeToClosestPowerOfTwo(Complex[,] input)
     {
         var newWidth = FindWidthForPowerOfTwo(input);
         return Resize(input, newWidth, newWidth);
     }
 
+    /// <summary>
+    ///     Funkcja do zmiany rozmiaru obrazu na najbliższą potęgę dwójki.
+    /// </summary>
+    /// <param name="imageData"></param>
+    /// <returns></returns>
     public int FindWidthForPowerOfTwo(ImageData imageData)
     {
         var complexData = new ComplexData(imageData);
         return FindWidthForPowerOfTwo(complexData.Data[0]);
     }
 
+    /// <summary>
+    ///     Funkcja do zmiany rozmiaru obrazu na najbliższą potęgę dwójki.
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
     public int FindWidthForPowerOfTwo(Complex[,] input)
     {
         var nx = input.GetLength(0);
@@ -130,6 +181,11 @@ public class FftService
         return newWidth;
     }
 
+    /// <summary>
+    ///     Funkcja do zmiany rozmiaru obrazu na najbliższą potęgę dwójki.
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
     public Complex[][,] ChangeSizeToClosestPowerOfTwo(Complex[][,] input)
     {
         var red = ChangeSizeToClosestPowerOfTwo(input[0]);
@@ -139,6 +195,11 @@ public class FftService
         return new[] { red, green, blue };
     }
 
+    /// <summary>
+    ///     Funkcja do zmiany rozmiaru obrazu na najbliższą potęgę dwójki.
+    /// </summary>
+    /// <param name="n"></param>
+    /// <returns></returns>
     public int FindPowerOf2(int n)
     {
         var x = (int)Math.Log2(n);
@@ -147,7 +208,11 @@ public class FftService
         return (int)Math.Pow(2, x + 1);
     }
 
-
+    /// <summary>
+    ///     Funkcja do przesunięcia obrazu w dziedzinie częstotliwości tak, by zero znajdywało się na środku.
+    /// </summary>
+    /// <param name="complexData"></param>
+    /// <returns></returns>
     public ComplexData FFTShift(ComplexData complexData)
     {
         var data = FFTShift(complexData.Data);
@@ -157,26 +222,37 @@ public class FftService
         };
     }
 
-    public Complex[,] FFTShift(Complex[,] Output)
+    /// <summary>
+    ///     Funkcja do przesunięcia obrazu w dziedzinie częstotliwości tak, by zero znajdywało się na środku.
+    /// </summary>
+    /// <param name="complexData"></param>
+    /// <returns></returns>
+    public Complex[,] FFTShift(Complex[,] complexData)
     {
-        var nx = Output.GetLength(0);
-        var ny = Output.GetLength(1);
+        var nx = complexData.GetLength(0);
+        var ny = complexData.GetLength(1);
 
-        int i, j;
         var FFTShifted = new Complex[nx, ny];
 
-        for (i = 0; i <= nx / 2 - 1; i++)
-        for (j = 0; j <= ny / 2 - 1; j++)
+        for (var i = 0; i < nx / 2; i++)
         {
-            FFTShifted[i + nx / 2, j + ny / 2] = Output[i, j];
-            FFTShifted[i, j] = Output[i + nx / 2, j + ny / 2];
-            FFTShifted[i + nx / 2, j] = Output[i, j + ny / 2];
-            FFTShifted[i, j + nx / 2] = Output[i + nx / 2, j];
+            for (var j = 0; j < ny / 2; j++)
+            {
+                FFTShifted[i + nx / 2, j + ny / 2] = complexData[i, j];
+                FFTShifted[i, j] = complexData[i + nx / 2, j + ny / 2];
+                FFTShifted[i + nx / 2, j] = complexData[i, j + ny / 2];
+                FFTShifted[i, j + nx / 2] = complexData[i + nx / 2, j];
+            }
         }
 
         return FFTShifted;
     }
 
+    /// <summary>
+    ///     Funkcja do przesunięcia obrazu w dziedzinie częstotliwości tak, by zero znajdywało się na środku.
+    /// </summary>
+    /// <param name="Output"></param>
+    /// <returns></returns>
     public Complex[][,] FFTShift(Complex[][,] Output)
     {
         var red = FFTShift(Output[0]);
@@ -186,6 +262,11 @@ public class FftService
         return new[] { red, green, blue };
     }
 
+    /// <summary>
+    ///     Funkcja do normalizacji obrazu.
+    /// </summary>
+    /// <param name="complexData"></param>
+    /// <returns></returns>
     public ComplexData Normalize(ComplexData complexData)
     {
         var data = Normalize(complexData.Data);
@@ -195,6 +276,11 @@ public class FftService
         };
     }
 
+    /// <summary>
+    ///     Funkcja do normalizacji obrazu.
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
     public Complex[,] Normalize(Complex[,] input)
     {
         double max = 0;
@@ -225,6 +311,11 @@ public class FftService
         return input;
     }
 
+    /// <summary>
+    ///     Funkcja do normalizacji obrazu.
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
     public Complex[][,] Normalize(Complex[][,] input)
     {
         double max = 0;
@@ -277,18 +368,37 @@ public class FftService
         return output;
     }
 
+    /// <summary>
+    ///     Funkcja do normalizacji obrazu.
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns></returns>
     private static bool IsNotFiniteNumber(double value)
     {
         return double.IsNaN(value) || double.IsPositiveInfinity(value) || double.IsNegativeInfinity(value);
     }
 
+    /// <summary>
+    ///     Funkcja do dodania szumu do obrazu.
+    /// </summary>
+    /// <param name="complexData"></param>
+    /// <param name="frequencyX"></param>
+    /// <param name="frequencyY"></param>
+    /// <param name="amplitude"></param>
+    /// <param name="phase"></param>
+    /// <returns></returns>
     public ComplexData AddPeriodicNoise(ComplexData complexData, double frequencyX, double frequencyY, double amplitude, double phase)
     {
         for (var y = 0; y < complexData.Height; y++)
         {
             for (var x = 0; x < complexData.Width; x++)
             {
-                var value = amplitude * Math.Sin(frequencyX * x * Math.PI / 2 + frequencyY * y * Math.PI / 2 - phase * Math.PI * frequencyX / 2 - phase * Math.PI * frequencyY / 2);
+                var argumentX = frequencyX * x * Math.PI / 2;
+                var argumentY = frequencyY * y * Math.PI / 2;
+                var phaseX = phase * Math.PI * frequencyX / 2;
+                var phaseY = phase * Math.PI * frequencyY / 2;
+
+                var value = amplitude * Math.Sin(argumentX + argumentY - phaseX - phaseY);
                 value = (int)value;
                 complexData.Data[0][y, x] += value;
                 complexData.Data[1][y, x] += value;
@@ -299,6 +409,15 @@ public class FftService
         return complexData;
     }
 
+    /// <summary>
+    ///     Funkcja do dodania szumu periodycznego.
+    /// </summary>
+    /// <param name="imageData"></param>
+    /// <param name="frequencyX"></param>
+    /// <param name="frequencyY"></param>
+    /// <param name="amplitude"></param>
+    /// <param name="phase"></param>
+    /// <returns></returns>
     public ImageData AddPeriodicNoise(ImageData imageData, double frequencyX = 0, double frequencyY = 0, double amplitude = 1, double phase = 0)
     {
         var complexData = new ComplexData(imageData);
@@ -306,14 +425,24 @@ public class FftService
         return complexData.ToImageData();
     }
 
-    public ComplexData RemoveRectangles(ComplexData complexData, int x1, int y1, int x2, int y2, RemoveRecanglesModeEnum mode)
+    /// <summary>
+    ///     Funkcja do usuniecia prostokątów z obrazu.
+    /// </summary>
+    /// <param name="complexData"></param>
+    /// <param name="rectangleStartX"></param>
+    /// <param name="rectangleStartY"></param>
+    /// <param name="rectangleEndX"></param>
+    /// <param name="rectangleEndY"></param>
+    /// <param name="mode"></param>
+    /// <returns></returns>
+    public ComplexData RemoveRectangles(ComplexData complexData, int rectangleStartX, int rectangleStartY, int rectangleEndX, int rectangleEndY, RemoveRecanglesModeEnum mode)
     {
         var height = complexData.Data[0].GetLength(0);
         var width = complexData.Data[0].GetLength(1);
 
-        for (var x = x1; x < x2; x++)
+        for (var x = rectangleStartX; x < rectangleEndX; x++)
         {
-            for (var y = y1; y < y2; y++)
+            for (var y = rectangleStartY; y < rectangleEndY; y++)
             {
                 switch (mode)
                 {
@@ -339,6 +468,15 @@ public class FftService
         return complexData;
     }
 
+    /// <summary>
+    ///     Funkcja pomocnicza do kasowania pikseli.
+    /// </summary>
+    /// <param name="complexData"></param>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
+    /// <param name="width"></param>
+    /// <param name="height"></param>
+    /// <returns></returns>
     private ComplexData RemovePixelIfIsInRange(ComplexData complexData, int x, int y, int width, int height)
     {
         if (IsInRange(x, y, width, height))
@@ -351,7 +489,15 @@ public class FftService
         return complexData;
     }
 
-    private bool IsInRange(int x, int y, int width, int height)
+    /// <summary>
+    ///     Funkcja pomocnicza do sprawdzania czy dane koordynaty znajdują się w ustalonym przedziale.
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
+    /// <param name="width"></param>
+    /// <param name="height"></param>
+    /// <returns></returns>
+    private static bool IsInRange(int x, int y, int width, int height)
     {
         return x >= 0 && x < width && y >= 0 && y < height;
     }

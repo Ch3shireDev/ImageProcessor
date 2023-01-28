@@ -14,7 +14,6 @@ using ImageProcessorLibrary.Services.HistogramServices;
 using ImageProcessorLibrary.Services.NegateImageServices;
 using ImageProcessorLibrary.Services.OpenImageServices;
 using ImageProcessorLibrary.Services.SaveImageServices;
-using ImageProcessorLibrary.Services.StretchingServices;
 
 namespace ImageProcessorGUI;
 
@@ -41,8 +40,8 @@ public class App : Application
                 var saveImageService = new SaveImageService(saveImageDialogService, fileSystemService);
                 var duplicateImageService = new DuplicateImageService(windowService);
                 var histogramService = new HistogramService();
-                var stretchingOptionsService = new StretchingOptionsService();
-                var negateImageService = new NegateImageService();
+                //var stretchingOptionsService = new StretchingOptionsService();
+                var negateImageService = new ImageProcessor();
 
                 var serviceProvider = new ImageServiceProvider
                 {
@@ -52,12 +51,12 @@ public class App : Application
                     SelectImagesDialogService = dialogService,
                     WindowService = windowService,
                     HistogramService = histogramService,
-                    StretchingOptionsService = stretchingOptionsService,
-                    NegateImageService = negateImageService,
+                    //StretchingOptionsService = stretchingOptionsService,
+                    ImageProcessor = negateImageService,
                     SelectImagesService = dialogService
                 };
 
-                windowService.ImageServiceProvider = serviceProvider;
+                windowService.imageServiceProvider = serviceProvider;
 
 
                 var path = GetPath(args);

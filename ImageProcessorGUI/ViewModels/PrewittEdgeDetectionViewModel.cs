@@ -8,6 +8,9 @@ using ReactiveUI;
 
 namespace ImageProcessorGUI.ViewModels;
 
+/// <summary>
+/// Model widoku do detekcji krawędzi metodą Prewitta.
+/// </summary>
 public class PrewittEdgeDetectionViewModel : ReactiveObject
 {
     private readonly ImageData ImageData;

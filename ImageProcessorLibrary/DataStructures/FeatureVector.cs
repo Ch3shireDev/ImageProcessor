@@ -1,5 +1,8 @@
 ﻿namespace ImageProcessorLibrary.DataStructures;
 
+/// <summary>
+///     Klasa reprezentująca wektor cech.
+/// </summary>
 public class FeatureVector
 {
     public double M00 { get; set; }

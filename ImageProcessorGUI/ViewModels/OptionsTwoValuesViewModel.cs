@@ -5,6 +5,11 @@ using ReactiveUI;
 
 namespace ImageProcessorGUI.ViewModels;
 
+/// <summary>
+/// Klasa do obsługi opcji z dwoma wartościami.
+/// </summary>
+/// <typeparam name="T1"></typeparam>
+/// <typeparam name="T2"></typeparam>
 public class OptionsTwoValuesViewModel<T1, T2> : OptionsOneValueViewModel<T1>
 {
     private readonly Func<ImageData, T1, T2, ImageData> _transform;

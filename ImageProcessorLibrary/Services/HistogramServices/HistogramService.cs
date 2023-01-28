@@ -5,10 +5,18 @@ using ScottPlot;
 
 namespace ImageProcessorLibrary.Services.HistogramServices;
 
+/// <summary>
+///     Interfejs do obsługi histogramów.
+/// </summary>
 public class HistogramService : IHistogramService
 {
     private readonly ILutService _lutService = new LutService();
 
+    /// <summary>
+    ///     Zwraca histogram RGB.
+    /// </summary>
+    /// <param name="imageData"></param>
+    /// <returns></returns>
     public ImageData GetRgbHistogram(ImageData imageData)
     {
         var plot = new Plot(600, 400);
@@ -26,6 +34,11 @@ public class HistogramService : IHistogramService
         return image;
     }
 
+    /// <summary>
+    ///     Zwraca histogram wartości jasności.
+    /// </summary>
+    /// <param name="imageData"></param>
+    /// <returns></returns>
     public ImageData GetValueHistogram(ImageData imageData)
     {
         var plot = new Plot(600, 400);
@@ -37,6 +50,11 @@ public class HistogramService : IHistogramService
         return image;
     }
 
+    /// <summary>
+    ///     Zwraca histogram wartości czerwieni.
+    /// </summary>
+    /// <param name="imageData"></param>
+    /// <returns></returns>
     public ImageData GetRedHistogram(ImageData imageData)
     {
         var plot = new Plot(600, 400);
@@ -48,6 +66,11 @@ public class HistogramService : IHistogramService
         return image;
     }
 
+    /// <summary>
+    ///     Zwraca histogram wartości zieleni.
+    /// </summary>
+    /// <param name="imageData"></param>
+    /// <returns></returns>
     public ImageData GetGreenHistogram(ImageData imageData)
     {
         var plot = new Plot(600, 400);
@@ -61,6 +84,11 @@ public class HistogramService : IHistogramService
         return image;
     }
 
+    /// <summary>
+    ///     Zwraca histogram wartości niebieskiego.
+    /// </summary>
+    /// <param name="imageData"></param>
+    /// <returns></returns>
     public ImageData GetBlueHistogram(ImageData imageData)
     {
         var plot = new Plot(600, 400);
@@ -71,16 +99,21 @@ public class HistogramService : IHistogramService
         return image;
     }
 
-    private void GetHistogram(ImageData imageData, Plot plot, Func<ImageData, int[]> func, Color color,
+    /// <summary>
+    ///     Zwraca histogram wartości jasności.
+    /// </summary>
+    /// <param name="imageData"></param>
+    /// <param name="plot"></param>
+    /// <param name="func"></param>
+    /// <param name="color"></param>
+    /// <param name="title"></param>
+    private static void GetHistogram(ImageData imageData, Plot plot, Func<ImageData, int[]> func, Color color,
         string title = "")
     {
         var dataX = Enumerable.Range(0, 256).Select(x => (double)x).ToArray();
         var dataY = func(imageData).Select(x => (double)x).ToArray();
-
-        // display the histogram counts as a bar plot
         var bar = plot.AddBar(dataY, dataX, color);
         bar.BarWidth = 1;
-        // customize the plot style
         plot.Title(title);
         plot.YAxis.Label("Count");
         plot.XAxis.Label("Pixel intensity");

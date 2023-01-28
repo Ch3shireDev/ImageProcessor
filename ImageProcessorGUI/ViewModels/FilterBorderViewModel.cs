@@ -9,6 +9,9 @@ using ReactiveUI;
 
 namespace ImageProcessorGUI.ViewModels;
 
+/// <summary>
+/// Model widoku filtra z możliwością wyboru typu brzegu.
+/// </summary>
 public class FilterBorderViewModel : ReactiveObject
 {
     private readonly FilterService _filterService = new();

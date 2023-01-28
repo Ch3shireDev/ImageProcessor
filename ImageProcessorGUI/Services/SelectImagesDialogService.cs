@@ -10,6 +10,10 @@ using ImageProcessorLibrary.Services.DialogServices;
 
 namespace ImageProcessorGUI.Services;
 
+
+/// <summary>
+/// Serwis do obsługi okna dialogowego wyboru obrazu.
+/// </summary>
 public class SelectImagesDialogService : ISelectImagesDialogService
 {
     private Window? MainWindow =>

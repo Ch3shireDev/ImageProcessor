@@ -65,11 +65,11 @@ Kod przetwarzania obrazów umieszczony jest w bibliotece ImageProcessorLibrary, 
 - [x] Umiejętność prezentowania prezentacji
 - [x] Umiejętność organizacji prezentacji
 - [x] Struktura oprogramowania
-- [ ] Poziom komentowania kodu
-- [ ] Opis zmiennych, parametrów globalnych i lokalnych
-- [ ] Interface graficzny - funkcjonalność
-- [ ] interface graficzny - walory graficzne
-- [ ] ocena zgodności rezultatów z założeniami
+- [x] Poziom komentowania kodu
+- [x] Opis zmiennych, parametrów globalnych i lokalnych
+- [x] Interface graficzny - funkcjonalność
+- [x] interface graficzny - walory graficzne
+- [x] ocena zgodności rezultatów z założeniami
 - [ ] organizacja dokumentacji
 - [ ] kompletność dokumentacji
 - [ ] szata graficzna

@@ -117,7 +117,7 @@ public class EdgeDetectionServiceTests
         Assert.AreEqual(4, result.Width);
         Assert.AreEqual(6, result.Height);
 
-        result.Save("image.jpg");
+        result.Write("image.jpg");
         Assert.AreEqual(0, result.GetGrayValue(0, 0));
         Assert.AreEqual(0, result.GetGrayValue(1, 0));
         Assert.AreEqual(255, result.GetGrayValue(2, 0));

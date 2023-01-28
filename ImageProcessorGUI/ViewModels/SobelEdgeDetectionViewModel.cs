@@ -8,6 +8,9 @@ using ReactiveUI;
 
 namespace ImageProcessorGUI.ViewModels;
 
+/// <summary>
+///     Model widoku dla detekcji krawędzi metodą Sobela.
+/// </summary>
 public class SobelEdgeDetectionViewModel : ReactiveObject
 {
     private readonly ImageData ImageData;

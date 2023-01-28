@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using System.Windows.Input;
 using ImageProcessorLibrary.DataStructures;
+using ImageProcessorLibrary.Services.Enums;
 using ImageProcessorLibrary.Services.OpenCvServices;
 using OpenCvSharp;
 using ReactiveUI;
 
 namespace ImageProcessorGUI.ViewModels;
 
+/// <summary>
+/// Model widoku do uniwersalnej operacji medianowej.
+/// </summary>
 public class UniversalMedianOperationViewModel : ReactiveObject
 {
     private readonly FilterService _filterService = new();

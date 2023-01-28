@@ -1,7 +1,14 @@
 ﻿namespace ImageProcessorLibrary.DataStructures;
 
-public struct HSL
+/// <summary>
+///     Struktura reprezentująca kolor w przestrzeni HSL.
+/// </summary>
+public class HSL
 {
+    public HSL()
+    {
+    }
+
     public HSL(int h, double s, double l)
     {
         H = h;

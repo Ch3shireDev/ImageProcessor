@@ -3,6 +3,9 @@ using System.Numerics;
 
 namespace ImageProcessorLibrary.DataStructures;
 
+/// <summary>
+///     Klasa przechowująca dane w postaci tablicy liczb zespolonych.
+/// </summary>
 public class ComplexData
 {
     public ComplexData()

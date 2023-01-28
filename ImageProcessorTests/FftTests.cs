@@ -1,7 +1,6 @@
 ﻿using System.Drawing;
 using System.Numerics;
 using ImageProcessorLibrary.DataStructures;
-using ImageProcessorLibrary.Services.Enums;
 using ImageProcessorLibrary.Services.FourierServices;
 
 namespace ImageProcessorTests;
@@ -88,7 +87,7 @@ public class FftTests
             { 0, 127, 254, 127, 0, 127, 254, 127 }
         });
 
-        inputImage.Save("a.png");
+        inputImage.Write("a.png");
 
         var complex = new ComplexData(inputImage);
         var fourier = fftService.ForwardFFT(complex);

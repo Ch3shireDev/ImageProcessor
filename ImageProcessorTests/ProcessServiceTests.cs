@@ -16,7 +16,7 @@ public class ProcessServiceTests
             { false, false, true }
         });
 
-        var processService = new NegateImageService();
+        var processService = new ImageProcessor();
         var result = processService.SwapHorizontal(imageData);
 
         Assert.AreEqual(3, result.Width);

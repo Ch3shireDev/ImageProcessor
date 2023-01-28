@@ -4,12 +4,14 @@ using System.Windows.Input;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using ImageProcessorLibrary.DataStructures;
-using ImageProcessorLibrary.Services.Enums;
 using ImageProcessorLibrary.Services.FourierServices;
 using ReactiveUI;
 
 namespace ImageProcessorGUI.ViewModels;
 
+/// <summary>
+/// Model widoku do usuwania szumów okresowych.
+/// </summary>
 public class RemovePeriodicNoiseViewModel : ReactiveObject
 {
     private readonly FftService fftService = new();

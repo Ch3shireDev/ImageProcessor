@@ -10,6 +10,9 @@ using ReactiveUI;
 
 namespace ImageProcessorGUI.ViewModels;
 
+/// <summary>
+/// Model widoku dodawania obrazów.
+/// </summary>
 public class AddImagesViewModel : ReactiveObject
 {
     private readonly IImageServiceProvider _imageServiceProvider;

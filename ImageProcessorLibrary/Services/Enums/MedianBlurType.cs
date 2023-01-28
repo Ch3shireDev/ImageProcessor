@@ -1,4 +1,4 @@
-﻿namespace ImageProcessorGUI.ViewModels;
+﻿namespace ImageProcessorLibrary.Services.Enums;
 
 public enum MedianBlurType
 {
