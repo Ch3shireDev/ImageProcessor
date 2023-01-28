@@ -1,6 +1,6 @@
 ﻿using ImageProcessorLibrary.DataStructures;
 
-namespace ImageProcessorLibrary.Services.ImageServices;
+namespace ImageProcessorLibrary.Services.SaveImageServices;
 
 public interface ISaveImageService
 {

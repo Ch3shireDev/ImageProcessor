@@ -13,11 +13,11 @@ public class MainModelTests
 {
     private MockDuplicateImageService _duplicateImageService;
     private MockHistogramService _histogramService;
+    private MockNegateImageService _negateImageService;
     private MockOpenImageService _openImageService;
     private MockSaveImageService _saveImageService;
     private MockWindowService _windowService;
     private MainModel model;
-    private MockProcessService processService;
 
     private ImageServiceProvider serviceProvider;
     private MockStretchingOptionsWindowService stretchingOptionsWindowService;
@@ -34,7 +34,7 @@ public class MainModelTests
         _windowService = new MockWindowService();
         _histogramService = new MockHistogramService();
         stretchingOptionsWindowService = new MockStretchingOptionsWindowService();
-        processService = new MockProcessService();
+        _negateImageService = new MockNegateImageService();
 
         serviceProvider = new ImageServiceProvider
         {
@@ -44,7 +44,7 @@ public class MainModelTests
             WindowService = _windowService,
             HistogramService = _histogramService,
             StretchingOptionsService = stretchingOptionsWindowService,
-            ProcessService = processService
+            NegateImageService = _negateImageService
         };
 
         model = new MainModel(imageData, serviceProvider);
@@ -336,10 +336,10 @@ public class MainModelTests
     public void NegateImageTest()
     {
         Assert.AreEqual(false, _windowService.IsShowImageWindowCalled);
-        Assert.AreEqual(false, processService.IsNegated);
+        Assert.AreEqual(false, _negateImageService.IsNegated);
         model.NegateImage();
         Assert.AreEqual(true, _windowService.IsShowImageWindowCalled);
-        Assert.AreEqual(true, processService.IsNegated);
+        Assert.AreEqual(true, _negateImageService.IsNegated);
     }
 
     [TestMethod]

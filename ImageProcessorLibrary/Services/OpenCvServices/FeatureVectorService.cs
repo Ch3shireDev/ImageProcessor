@@ -1,10 +1,18 @@
 ﻿using ImageProcessorLibrary.DataStructures;
 using OpenCvSharp;
 
-namespace ImageProcessorLibrary.Services;
+namespace ImageProcessorLibrary.Services.OpenCvServices;
 
+/// <summary>
+///     Serwis do wyznaczania wektorów cech.
+/// </summary>
 public class FeatureVectorService : OpenCvService
 {
+    /// <summary>
+    ///     Wylicza momenty przestrzenne dla macierzy.
+    /// </summary>
+    /// <param name="mat"></param>
+    /// <returns></returns>
     public List<double> GetSpatialMoments(Mat mat)
     {
         var moments = Cv2.Moments(mat);
@@ -22,24 +30,43 @@ public class FeatureVectorService : OpenCvService
         return spatialMoments;
     }
 
+    /// <summary>
+    ///     Wylicza powierzchnię konturową.
+    /// </summary>
+    /// <param name="imageData"></param>
+    /// <returns></returns>
     public double GetCountourArea(ImageData imageData)
     {
         var mat = ToMatrix(imageData);
         return GetCountourArea(mat);
     }
 
+    /// <summary>
+    ///     Wylicza powierzchnię konturową.
+    /// </summary>
+    /// <param name="mat"></param>
+    /// <returns></returns>
     public double GetCountourArea(Mat mat)
     {
         return Cv2.ContourArea(mat);
     }
 
-
+    /// <summary>
+    ///     Wylicza momenty centralne dla macierzy.
+    /// </summary>
+    /// <param name="imageData"></param>
+    /// <returns></returns>
     public List<double> GetSpatialMoments(ImageData imageData)
     {
         var mat = ToMatrix(imageData);
         return GetSpatialMoments(mat);
     }
 
+    /// <summary>
+    ///     Wylicza momenty centralne dla macierzy.
+    /// </summary>
+    /// <param name="imageData"></param>
+    /// <returns></returns>
     public List<double> GetCentralMoments(ImageData imageData)
     {
         var mat = ToMatrix(imageData);
@@ -47,6 +74,11 @@ public class FeatureVectorService : OpenCvService
         return centralMoments;
     }
 
+    /// <summary>
+    ///     Wylicza znormalizowane momenty centralne dla macierzy.
+    /// </summary>
+    /// <param name="imageData"></param>
+    /// <returns></returns>
     public List<double> GetNormalizedCentralMoments(ImageData imageData)
     {
         var mat = ToMatrix(imageData);
@@ -54,6 +86,11 @@ public class FeatureVectorService : OpenCvService
         return normalizedCentralMoments;
     }
 
+    /// <summary>
+    ///     Wylicza wektor cech dla obrazu.
+    /// </summary>
+    /// <param name="imageData"></param>
+    /// <returns></returns>
     public IEnumerable<FeatureVector> GetFeatureVectors(ImageData imageData)
     {
         var mat = ToGrayMatrix(imageData);
@@ -91,12 +128,22 @@ public class FeatureVectorService : OpenCvService
         }
     }
 
+    /// <summary>
+    ///     Wylicza średnicę równoważną.
+    /// </summary>
+    /// <param name="contour"></param>
+    /// <returns></returns>
     private double GetEquivalentDiameter(Mat<Point> contour)
     {
         var S = Cv2.ContourArea(contour);
         return Math.Sqrt(4 * S / Math.PI);
     }
 
+    /// <summary>
+    ///     Wylicza masywność.
+    /// </summary>
+    /// <param name="contour"></param>
+    /// <returns></returns>
     private double GetSolidity(Mat<Point> contour)
     {
         var area = GetContourArea(contour);

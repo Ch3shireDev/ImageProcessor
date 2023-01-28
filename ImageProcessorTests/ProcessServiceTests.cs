@@ -1,5 +1,5 @@
-﻿using ImageProcessorGUI.Services;
-using ImageProcessorLibrary.DataStructures;
+﻿using ImageProcessorLibrary.DataStructures;
+using ImageProcessorLibrary.Services.NegateImageServices;
 
 namespace ImageProcessorTests;
 
@@ -16,7 +16,7 @@ public class ProcessServiceTests
             { false, false, true }
         });
 
-        var processService = new ProcessService();
+        var processService = new NegateImageService();
         var result = processService.SwapHorizontal(imageData);
 
         Assert.AreEqual(3, result.Width);

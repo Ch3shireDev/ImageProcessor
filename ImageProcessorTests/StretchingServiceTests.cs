@@ -1,5 +1,5 @@
-﻿using ImageProcessorGUI.Services;
-using ImageProcessorLibrary.DataStructures;
+﻿using ImageProcessorLibrary.DataStructures;
+using ImageProcessorLibrary.Services.StretchingServices;
 
 namespace ImageProcessorTests;
 

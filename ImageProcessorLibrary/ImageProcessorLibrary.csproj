@@ -1,16 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="CsvHelper" Version="30.0.1" />
-    <PackageReference Include="FFTW.NET" Version="1.0.1" />
-    <PackageReference Include="OpenCvSharp4.Windows" Version="4.6.0.20220608" />
-    <PackageReference Include="ScottPlot.Avalonia" Version="4.1.59" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="CsvHelper" Version="30.0.1" />
+		<PackageReference Include="FFTW.NET" Version="1.0.1" />
+		<PackageReference Include="OpenCvSharp4.Windows" Version="4.6.0.20220608" />
+		<PackageReference Include="ScottPlot.Avalonia" Version="4.1.59" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="C:\Users\cheshire\.nuget\packages\fftw.net\1.0.1\build\netstandard1.3\libfftw3-3-x64.dll" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="C:\Users\cheshire\.nuget\packages\fftw.net\1.0.1\build\netstandard1.3\libfftw3-3-x86.dll" />
+	</ItemGroup>
 
 </Project>

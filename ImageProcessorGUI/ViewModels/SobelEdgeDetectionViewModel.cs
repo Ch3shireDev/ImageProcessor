@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Windows.Input;
 using ImageProcessorLibrary.DataStructures;
-using ImageProcessorLibrary.Services;
 using ImageProcessorLibrary.Services.Enums;
+using ImageProcessorLibrary.Services.OpenCvServices;
 using ReactiveUI;
 
 namespace ImageProcessorGUI.ViewModels;

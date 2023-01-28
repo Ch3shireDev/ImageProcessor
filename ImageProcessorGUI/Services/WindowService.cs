@@ -3,7 +3,7 @@ using ImageProcessorGUI.ViewModels;
 using ImageProcessorGUI.Views;
 using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.ServiceProviders;
-using ImageProcessorLibrary.Services;
+using ImageProcessorLibrary.Services.DialogServices;
 
 namespace ImageProcessorGUI.Services;
 

@@ -1,6 +1,6 @@
 ﻿using ImageProcessorLibrary.Services.DialogServices;
 
-namespace ImageProcessorLibrary.Services.ImageServices;
+namespace ImageProcessorLibrary.Services.OpenImageServices;
 
 public class OpenImageService : IOpenImageService
 {

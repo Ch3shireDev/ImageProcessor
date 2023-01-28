@@ -3,10 +3,21 @@ using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.Helpers;
 using ImageProcessorLibrary.Services.Enums;
 
-namespace ImageProcessorLibrary.Services;
+namespace ImageProcessorLibrary.Services.ImageServices;
 
+/// <summary>
+///     Serwis do przeprowadzania operacji matematycznych.
+/// </summary>
 public class MathService
 {
+    /// <summary>
+    ///     Operacja matematyczna.
+    /// </summary>
+    /// <param name="imageData"></param>
+    /// <param name="value"></param>
+    /// <param name="operation"></param>
+    /// <param name="withSaturation"></param>
+    /// <returns></returns>
     public ImageData Operation(ImageData imageData, double value, MathOperation operation, bool withSaturation)
     {
         var bitmap = imageData.Bitmap;
@@ -58,7 +69,7 @@ public class MathService
             }
             else
             {
-                if (max > 255) light = light / (max * 1.0);
+                if (max > 255) light /= max * 1.0;
 
                 if (light > 1.0) light = 1.0;
                 if (light < 0) light = 0;

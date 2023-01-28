@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Input;
 using ImageProcessorLibrary.DataStructures;
-using ImageProcessorLibrary.Services;
+using ImageProcessorLibrary.Services.OpenCvServices;
 using OpenCvSharp;
 using ReactiveUI;
 

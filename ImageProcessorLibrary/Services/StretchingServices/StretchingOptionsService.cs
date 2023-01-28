@@ -1,8 +1,6 @@
 ﻿using ImageProcessorLibrary.DataStructures;
-using ImageProcessorLibrary.Services;
-using ImageProcessorLibrary.Services.StretchingServices;
 
-namespace ImageProcessorGUI.Services;
+namespace ImageProcessorLibrary.Services.StretchingServices;
 
 public class StretchingOptionsService : IStretchingOptionsService
 {

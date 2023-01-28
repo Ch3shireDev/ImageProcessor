@@ -64,7 +64,7 @@ Kod przetwarzania obrazów umieszczony jest w bibliotece ImageProcessorLibrary, 
 - [x] Merytoryczna kompetncja - przez podanie podstawy rozwiązania, zastosowanej metody implementacji funkcjonalności
 - [x] Umiejętność prezentowania prezentacji
 - [x] Umiejętność organizacji prezentacji
-- [ ] Struktura oprogramowania
+- [x] Struktura oprogramowania
 - [ ] Poziom komentowania kodu
 - [ ] Opis zmiennych, parametrów globalnych i lokalnych
 - [ ] Interface graficzny - funkcjonalność

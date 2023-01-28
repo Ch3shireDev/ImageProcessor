@@ -30,12 +30,12 @@ public class LutService : ILutService
         var histogram = new int[256];
 
         for (var i = 0; i < bitmap.Width; i++)
-            for (var j = 0; j < bitmap.Height; j++)
-            {
-                var pixel = bitmap.GetPixel(i, j);
-                var gray = func(pixel);
-                histogram[gray]++;
-            }
+        for (var j = 0; j < bitmap.Height; j++)
+        {
+            var pixel = bitmap.GetPixel(i, j);
+            var gray = func(pixel);
+            histogram[gray]++;
+        }
 
         return histogram;
     }

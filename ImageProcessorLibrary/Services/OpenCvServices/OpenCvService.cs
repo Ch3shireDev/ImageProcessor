@@ -2,10 +2,18 @@
 using ImageProcessorLibrary.DataStructures;
 using OpenCvSharp;
 
-namespace ImageProcessorLibrary.Services;
+namespace ImageProcessorLibrary.Services.OpenCvServices;
 
+/// <summary>
+///     Serwis do przeprowadzania operacji na obrazach.
+/// </summary>
 public class OpenCvService
 {
+    /// <summary>
+    ///     Normalizacja jadra.
+    /// </summary>
+    /// <param name="kernel"></param>
+    /// <returns></returns>
     public double[,] Normalize(double[,] kernel)
     {
         var kernelArray = new Mat(kernel.GetLength(0), kernel.GetLength(1), MatType.CV_64F, kernel);
@@ -14,6 +22,11 @@ public class OpenCvService
         return result;
     }
 
+    /// <summary>
+    ///     Konwersja obrazu na macierz.
+    /// </summary>
+    /// <param name="imageData"></param>
+    /// <returns></returns>
     public Mat ToMatrix(ImageData imageData)
     {
         var mat = new Mat(imageData.Height, imageData.Width, MatType.CV_8UC3);
@@ -30,6 +43,11 @@ public class OpenCvService
         return mat;
     }
 
+    /// <summary>
+    ///     Konwersja obrazu na macierz w skali szarości.
+    /// </summary>
+    /// <param name="imageData"></param>
+    /// <returns></returns>
     public Mat ToGrayMatrix(ImageData imageData)
     {
         var mat = new Mat(imageData.Height, imageData.Width, MatType.CV_8UC1);
@@ -48,11 +66,21 @@ public class OpenCvService
         return mat;
     }
 
+    /// <summary>
+    ///     Konwersja macierzy.
+    /// </summary>
+    /// <param name="kernel"></param>
+    /// <returns></returns>
     public Mat GetKernel(double[,] kernel)
     {
         return new Mat(kernel.GetLength(0), kernel.GetLength(1), MatType.CV_64F, kernel);
     }
 
+    /// <summary>
+    ///     Konwersja macierzy na obraz dla kolorów.
+    /// </summary>
+    /// <param name="outputMat"></param>
+    /// <returns></returns>
     public ImageData ToImageDataFromUC3(Mat outputMat)
     {
         var width = outputMat.Cols;
@@ -73,6 +101,11 @@ public class OpenCvService
         return result;
     }
 
+    /// <summary>
+    ///     Konwersja macierzy na obraz dla szarości.
+    /// </summary>
+    /// <param name="outputMat"></param>
+    /// <returns></returns>
     public ImageData ToImageDataFromUC1(Mat outputMat)
     {
         var width = outputMat.Cols;

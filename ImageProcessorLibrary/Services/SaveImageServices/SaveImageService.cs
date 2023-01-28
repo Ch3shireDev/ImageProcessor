@@ -1,7 +1,8 @@
 ﻿using ImageProcessorLibrary.DataStructures;
-using ImageProcessorLibrary.Services.ImageServices;
+using ImageProcessorLibrary.Services.DialogServices;
+using ImageProcessorLibrary.Services.FileSystemServices;
 
-namespace ImageProcessorLibrary.Services.DialogServices;
+namespace ImageProcessorLibrary.Services.SaveImageServices;
 
 public class SaveImageService : ISaveImageService
 {

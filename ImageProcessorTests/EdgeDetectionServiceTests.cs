@@ -1,6 +1,6 @@
 ﻿using ImageProcessorLibrary.DataStructures;
-using ImageProcessorLibrary.Services;
 using ImageProcessorLibrary.Services.Enums;
+using ImageProcessorLibrary.Services.OpenCvServices;
 
 namespace ImageProcessorTests;
 

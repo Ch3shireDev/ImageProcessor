@@ -166,13 +166,13 @@ public class FftService
         var FFTShifted = new Complex[nx, ny];
 
         for (i = 0; i <= nx / 2 - 1; i++)
-            for (j = 0; j <= ny / 2 - 1; j++)
-            {
-                FFTShifted[i + nx / 2, j + ny / 2] = Output[i, j];
-                FFTShifted[i, j] = Output[i + nx / 2, j + ny / 2];
-                FFTShifted[i + nx / 2, j] = Output[i, j + ny / 2];
-                FFTShifted[i, j + nx / 2] = Output[i + nx / 2, j];
-            }
+        for (j = 0; j <= ny / 2 - 1; j++)
+        {
+            FFTShifted[i + nx / 2, j + ny / 2] = Output[i, j];
+            FFTShifted[i, j] = Output[i + nx / 2, j + ny / 2];
+            FFTShifted[i + nx / 2, j] = Output[i, j + ny / 2];
+            FFTShifted[i, j + nx / 2] = Output[i + nx / 2, j];
+        }
 
         return FFTShifted;
     }

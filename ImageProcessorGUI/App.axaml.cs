@@ -8,10 +8,13 @@ using ImageProcessorGUI.ViewModels;
 using ImageProcessorGUI.Views;
 using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.ServiceProviders;
-using ImageProcessorLibrary.Services;
-using ImageProcessorLibrary.Services.DialogServices;
+using ImageProcessorLibrary.Services.DuplicateImageServices;
+using ImageProcessorLibrary.Services.FileSystemServices;
 using ImageProcessorLibrary.Services.HistogramServices;
-using ImageProcessorLibrary.Services.ImageServices;
+using ImageProcessorLibrary.Services.NegateImageServices;
+using ImageProcessorLibrary.Services.OpenImageServices;
+using ImageProcessorLibrary.Services.SaveImageServices;
+using ImageProcessorLibrary.Services.StretchingServices;
 
 namespace ImageProcessorGUI;
 
@@ -39,7 +42,7 @@ public class App : Application
                 var duplicateImageService = new DuplicateImageService(windowService);
                 var histogramService = new HistogramService();
                 var stretchingOptionsService = new StretchingOptionsService();
-                var processService = new ProcessService();
+                var negateImageService = new NegateImageService();
 
                 var serviceProvider = new ImageServiceProvider
                 {
@@ -50,7 +53,7 @@ public class App : Application
                     WindowService = windowService,
                     HistogramService = histogramService,
                     StretchingOptionsService = stretchingOptionsService,
-                    ProcessService = processService,
+                    NegateImageService = negateImageService,
                     SelectImagesService = dialogService
                 };
 

@@ -1,25 +1,53 @@
 ﻿using System.Drawing;
 using ImageProcessorLibrary.DataStructures;
 
-namespace ImageProcessorLibrary.Services;
+namespace ImageProcessorLibrary.Services.ImageServices;
 
+/// <summary>
+///     Serwis operacji binarnych.
+/// </summary>
 public class BinaryOperationService
 {
+    /// <summary>
+    ///     Operacja AND.
+    /// </summary>
+    /// <param name="image1"></param>
+    /// <param name="image2"></param>
+    /// <returns></returns>
     public ImageData BinaryAnd(ImageData image1, ImageData image2)
     {
         return TwoArgumentOperation(image1, image2, (a, b) => (byte)(a & b));
     }
 
+    /// <summary>
+    ///     Operacja OR.
+    /// </summary>
+    /// <param name="image1"></param>
+    /// <param name="image2"></param>
+    /// <returns></returns>
     public ImageData BinaryOr(ImageData image1, ImageData image2)
     {
         return TwoArgumentOperation(image1, image2, (a, b) => (byte)(a | b));
     }
 
+    /// <summary>
+    ///     Operacja XOR.
+    /// </summary>
+    /// <param name="image1"></param>
+    /// <param name="image2"></param>
+    /// <returns></returns>
     public ImageData BinaryXor(ImageData image1, ImageData image2)
     {
         return TwoArgumentOperation(image1, image2, (a, b) => (byte)(a ^ b));
     }
 
+    /// <summary>
+    ///     Ogólna operacja dwuargumentowa.
+    /// </summary>
+    /// <param name="image1"></param>
+    /// <param name="image2"></param>
+    /// <param name="operation"></param>
+    /// <returns></returns>
     private static ImageData TwoArgumentOperation(ImageData image1, ImageData image2, Func<byte, byte, byte> operation)
     {
         var width1 = image1.Width;
@@ -50,7 +78,11 @@ public class BinaryOperationService
         return bitmap;
     }
 
-
+    /// <summary>
+    ///     Operacja NOT.
+    /// </summary>
+    /// <param name="image1"></param>
+    /// <returns></returns>
     public ImageData BinaryNot(ImageData image1)
     {
         var width = image1.Width;
@@ -67,15 +99,20 @@ public class BinaryOperationService
         return new ImageData(result);
     }
 
-    public ImageData ToBinaryMask(ImageData image1)
+    /// <summary>
+    ///     Maska binarna.
+    /// </summary>
+    /// <param name="image"></param>
+    /// <returns></returns>
+    public ImageData ToBinaryMask(ImageData image)
     {
-        var imageData = new ImageData(image1.Width, image1.Height);
+        var imageData = new ImageData(image.Width, image.Height);
 
-        for (var x = 0; x < image1.Width; x++)
+        for (var x = 0; x < image.Width; x++)
         {
-            for (var y = 0; y < image1.Height; y++)
+            for (var y = 0; y < image.Height; y++)
             {
-                var hsl = image1.GetPixelHsl(x, y);
+                var hsl = image.GetPixelHsl(x, y);
                 var hsl2 = new HSL(0, 0, hsl.L > 0.5 ? 1 : 0);
                 imageData.SetPixel(x, y, hsl2);
             }
@@ -84,6 +121,11 @@ public class BinaryOperationService
         return imageData;
     }
 
+    /// <summary>
+    ///     Maska 8 bitowa.
+    /// </summary>
+    /// <param name="image1"></param>
+    /// <returns></returns>
     public ImageData To8BitMask(ImageData image1)
     {
         var imageData = new ImageData(image1.Width, image1.Height);

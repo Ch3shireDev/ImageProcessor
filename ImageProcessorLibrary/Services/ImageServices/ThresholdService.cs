@@ -2,10 +2,19 @@
 using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.Helpers;
 
-namespace ImageProcessorLibrary.Services;
+namespace ImageProcessorLibrary.Services.ImageServices;
 
+/// <summary>
+///     Serwis do przeprowadzania operacji progowania.
+/// </summary>
 public class ThresholdService
 {
+    /// <summary>
+    ///     Progowanie binarne.
+    /// </summary>
+    /// <param name="imageData"></param>
+    /// <param name="thresholdValue"></param>
+    /// <returns></returns>
     public ImageData BinaryThreshold(ImageData imageData, int thresholdValue)
     {
         var bitmap = imageData.Bitmap;
@@ -26,6 +35,12 @@ public class ThresholdService
         return new ImageData(imageData.Filepath, stream.ToArray());
     }
 
+    /// <summary>
+    ///     Progowanie binarne z jednym suwakiem.
+    /// </summary>
+    /// <param name="imageData"></param>
+    /// <param name="thresholdValue"></param>
+    /// <returns></returns>
     public ImageData GreyscaleThresholdOneSlider(ImageData imageData, int thresholdValue)
     {
         var bitmap = imageData.Bitmap;
@@ -46,6 +61,13 @@ public class ThresholdService
         return new ImageData(imageData.Filepath, stream.ToArray());
     }
 
+    /// <summary>
+    ///     Progowanie binarne z dwoma suwakami.
+    /// </summary>
+    /// <param name="imageData"></param>
+    /// <param name="thresholdValue1"></param>
+    /// <param name="thresholdValue2"></param>
+    /// <returns></returns>
     public ImageData GreyscaleThresholdTwoSliders(ImageData imageData, int thresholdValue1, int thresholdValue2)
     {
         var bitmap = imageData.Bitmap;

@@ -15,27 +15,27 @@ public class StretchingService
         double max = 0;
 
         for (var x = 0; x < bitmap.Width; x++)
-            for (var y = 0; y < bitmap.Height; y++)
-            {
-                var rgb = bitmap.GetPixel(x, y);
-                var hsl = ColorTools.RGBToHSL(rgb);
-                var intensity = hsl.L;
-                if (intensity > max) max = intensity;
-                if (intensity < min) min = intensity;
-            }
+        for (var y = 0; y < bitmap.Height; y++)
+        {
+            var rgb = bitmap.GetPixel(x, y);
+            var hsl = ColorTools.RGBToHSL(rgb);
+            var intensity = hsl.L;
+            if (intensity > max) max = intensity;
+            if (intensity < min) min = intensity;
+        }
 
         for (var x = 0; x < bitmap.Width; x++)
-            for (var y = 0; y < bitmap.Height; y++)
-            {
-                var pixel = bitmap.GetPixel(x, y);
-                var hsl = ColorTools.RGBToHSL(pixel);
+        for (var y = 0; y < bitmap.Height; y++)
+        {
+            var pixel = bitmap.GetPixel(x, y);
+            var hsl = ColorTools.RGBToHSL(pixel);
 
-                var oldIntensity = hsl.L;
-                var newIntensity = GetNewIntensity(oldIntensity, min, max, Lmin / 255.0f, Lmax / 255.0f);
-                hsl.L = newIntensity;
-                var newPixel = ColorTools.HSLToRGB(hsl);
-                bitmap.SetPixel(x, y, newPixel);
-            }
+            var oldIntensity = hsl.L;
+            var newIntensity = GetNewIntensity(oldIntensity, min, max, Lmin / 255.0f, Lmax / 255.0f);
+            hsl.L = newIntensity;
+            var newPixel = ColorTools.HSLToRGB(hsl);
+            bitmap.SetPixel(x, y, newPixel);
+        }
 
         var stream = new MemoryStream();
         bitmap.Save(stream, ImageFormat.Png);
@@ -60,15 +60,15 @@ public class StretchingService
         var bitmap = imageData.Bitmap;
 
         for (var x = 0; x < bitmap.Width; x++)
-            for (var y = 0; y < bitmap.Height; y++)
-            {
-                var rgb = bitmap.GetPixel(x, y);
-                var hsl = ColorTools.RGBToHSL(rgb);
-                var newLight = Math.Pow(hsl.L, 1 / gammaValue);
-                hsl.L = newLight;
-                var newRgb = ColorTools.HSLToRGB(hsl);
-                bitmap.SetPixel(x, y, newRgb);
-            }
+        for (var y = 0; y < bitmap.Height; y++)
+        {
+            var rgb = bitmap.GetPixel(x, y);
+            var hsl = ColorTools.RGBToHSL(rgb);
+            var newLight = Math.Pow(hsl.L, 1 / gammaValue);
+            hsl.L = newLight;
+            var newRgb = ColorTools.HSLToRGB(hsl);
+            bitmap.SetPixel(x, y, newRgb);
+        }
 
         var stream = new MemoryStream();
         bitmap.Save(stream, ImageFormat.Png);
@@ -84,13 +84,13 @@ public class StretchingService
         var blue = new int[256];
 
         for (var x = 0; x < bitmap.Width; x++)
-            for (var y = 0; y < bitmap.Height; y++)
-            {
-                var pixel = bitmap.GetPixel(x, y);
-                red[pixel.R]++;
-                green[pixel.G]++;
-                blue[pixel.B]++;
-            }
+        for (var y = 0; y < bitmap.Height; y++)
+        {
+            var pixel = bitmap.GetPixel(x, y);
+            red[pixel.R]++;
+            green[pixel.G]++;
+            blue[pixel.B]++;
+        }
 
         var allPointsCount = bitmap.Width * bitmap.Height;
 
@@ -99,12 +99,12 @@ public class StretchingService
         var lutBlue = CalculateLUTForHistogramEqualization(blue, allPointsCount);
 
         for (var x = 0; x < bitmap.Width; x++)
-            for (var y = 0; y < bitmap.Height; y++)
-            {
-                var pixel = bitmap.GetPixel(x, y);
-                var newPixel = Color.FromArgb(lutRed[pixel.R], lutGreen[pixel.G], lutBlue[pixel.B]);
-                bitmap.SetPixel(x, y, newPixel);
-            }
+        for (var y = 0; y < bitmap.Height; y++)
+        {
+            var pixel = bitmap.GetPixel(x, y);
+            var newPixel = Color.FromArgb(lutRed[pixel.R], lutGreen[pixel.G], lutBlue[pixel.B]);
+            bitmap.SetPixel(x, y, newPixel);
+        }
 
         var stream = new MemoryStream();
         bitmap.Save(stream, ImageFormat.Png);

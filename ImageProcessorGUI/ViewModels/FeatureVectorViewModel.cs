@@ -6,7 +6,8 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using ImageProcessorLibrary.DataStructures;
-using ImageProcessorLibrary.Services;
+using ImageProcessorLibrary.Services.ImageServices;
+using ImageProcessorLibrary.Services.OpenCvServices;
 using ReactiveUI;
 
 namespace ImageProcessorGUI.ViewModels;

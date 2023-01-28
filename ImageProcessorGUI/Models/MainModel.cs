@@ -3,12 +3,13 @@ using System.IO;
 using System.Threading.Tasks;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
-using ImageProcessorGUI.Services;
 using ImageProcessorGUI.ViewModels;
 using ImageProcessorGUI.Views;
 using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.ServiceProviders;
-using ImageProcessorLibrary.Services;
+using ImageProcessorLibrary.Services.ImageServices;
+using ImageProcessorLibrary.Services.NegateImageServices;
+using ImageProcessorLibrary.Services.OpenCvServices;
 using ImageProcessorLibrary.Services.StretchingServices;
 
 namespace ImageProcessorGUI.Models;
@@ -95,13 +96,13 @@ public class MainModel
 
     public void CreateGrayscale()
     {
-        var imageData = new ProcessService().ToGrayscale(ImageData);
+        var imageData = new NegateImageService().ToGrayscale(ImageData);
         ImageData.Update(imageData);
     }
 
     public void SwapHorizontal()
     {
-        var imageData = new ProcessService().SwapHorizontal(ImageData);
+        var imageData = new NegateImageService().SwapHorizontal(ImageData);
         ImageData.Update(imageData);
     }
 
@@ -201,7 +202,7 @@ public class MainModel
     /// </summary>
     public void NegateImage()
     {
-        var imageData = _imageServiceProvider.ProcessService.NegateImage(ImageData);
+        var imageData = _imageServiceProvider.NegateImageService.NegateImage(ImageData);
         _imageServiceProvider.WindowService.ShowImageWindow(imageData);
     }
 

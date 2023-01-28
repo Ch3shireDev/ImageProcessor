@@ -23,57 +23,57 @@ public class ImageOperationService
         double maxL = 0;
 
         for (var x = 0; x < width; x++)
-            for (var y = 0; y < height; y++)
+        for (var y = 0; y < height; y++)
+        {
+            var pixel1 = bitmap1.GetPixel(x, y);
+            var pixel2 = bitmap2.GetPixel(x, y);
+
+            var hsl1 = ColorTools.RGBToHSL(pixel1);
+            var hsl2 = ColorTools.RGBToHSL(pixel2);
+
+            double L;
+
+            switch (operation)
             {
-                var pixel1 = bitmap1.GetPixel(x, y);
-                var pixel2 = bitmap2.GetPixel(x, y);
-
-                var hsl1 = ColorTools.RGBToHSL(pixel1);
-                var hsl2 = ColorTools.RGBToHSL(pixel2);
-
-                double L;
-
-                switch (operation)
-                {
-                    case ImageCombinationsEnum.ADD_IMAGES:
-                        L = hsl1.L + hsl2.L;
-                        if (maxL < L) maxL = L;
-                        break;
-                    case ImageCombinationsEnum.SUBTRACT_IMAGES:
-                        L = Math.Abs(hsl1.L - hsl2.L);
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException(nameof(operation), operation, null);
-                }
-
-                if (L < 0) L = 0;
-
-                values[x, y] = L;
+                case ImageCombinationsEnum.ADD_IMAGES:
+                    L = hsl1.L + hsl2.L;
+                    if (maxL < L) maxL = L;
+                    break;
+                case ImageCombinationsEnum.SUBTRACT_IMAGES:
+                    L = Math.Abs(hsl1.L - hsl2.L);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(operation), operation, null);
             }
+
+            if (L < 0) L = 0;
+
+            values[x, y] = L;
+        }
 
 
         for (var x = 0; x < width; x++)
-            for (var y = 0; y < height; y++)
+        for (var y = 0; y < height; y++)
+        {
+            var pixel1 = bitmap1.GetPixel(x, y);
+
+            var hsl = ColorTools.RGBToHSL(pixel1);
+            var light = values[x, y];
+
+            if (withSaturation)
             {
-                var pixel1 = bitmap1.GetPixel(x, y);
-
-                var hsl = ColorTools.RGBToHSL(pixel1);
-                var light = values[x, y];
-
-                if (withSaturation)
-                {
-                    if (light > 1) light = 1;
-                }
-                else
-                {
-                    if (maxL > 0 && maxL > 1) light /= maxL;
-                }
-
-                hsl.L = light;
-
-                var pixel = ColorTools.HSLToRGB(hsl);
-                bitmap.SetPixel(x, y, pixel);
+                if (light > 1) light = 1;
             }
+            else
+            {
+                if (maxL > 0 && maxL > 1) light /= maxL;
+            }
+
+            hsl.L = light;
+
+            var pixel = ColorTools.HSLToRGB(hsl);
+            bitmap.SetPixel(x, y, pixel);
+        }
 
         var stream = new MemoryStream();
         bitmap.Save(stream, ImageFormat.Png);

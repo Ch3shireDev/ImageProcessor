@@ -1,13 +1,11 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
-using System.IO;
 using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.Helpers;
-using ImageProcessorLibrary.Services;
 
-namespace ImageProcessorGUI.Services;
+namespace ImageProcessorLibrary.Services.NegateImageServices;
 
-public class ProcessService : IProcessService
+public class NegateImageService : INegateImageService
 {
     public ImageData NegateImage(ImageData imageData)
     {

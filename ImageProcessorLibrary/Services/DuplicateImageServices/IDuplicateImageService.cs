@@ -1,6 +1,6 @@
 ﻿using ImageProcessorLibrary.DataStructures;
 
-namespace ImageProcessorLibrary.Services.ImageServices;
+namespace ImageProcessorLibrary.Services.DuplicateImageServices;
 
 public interface IDuplicateImageService
 {
