@@ -1,0 +1,14 @@
+# on: [push]
+# jobs:
+#   publish-docs:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
+#       - uses: nikeee/docfx-action@v1.0.0
+#         with:
+#           args: docfx.json --hostname https://ch3shiredev.github.io/ImageProcessor
+#       - uses: maxheld83/ghpages@master
+#         name: Publish Documentation on GitHub Pages
+#         env:
+#           BUILD_DIR: docs/_site
+#           GH_PAT: ${{ secrets.GH_PAT }}

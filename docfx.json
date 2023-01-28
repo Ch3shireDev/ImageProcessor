@@ -4,9 +4,10 @@
       "src": [
         {
           "files": [
-            "**.csproj"
+            "ImageProcessorGUI/**.csproj",
+            "ImageProcessorLibrary/**.csproj"
           ],
-          "src": "**"
+          "src": "."
         }
       ],
       "dest": "api",
