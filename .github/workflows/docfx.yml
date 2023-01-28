@@ -8,7 +8,7 @@ jobs:
         with:
           dotnet-version: 6.x
       - run: dotnet install -g docfx
-      - run: docfx docs/docfx.json
+      - run: dotnet docfx docs/docfx.json
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
