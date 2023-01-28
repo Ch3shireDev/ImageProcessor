@@ -6,7 +6,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using ImageProcessorLibrary.DataStructures;
-using ImageProcessorLibrary.Services;
+using ImageProcessorLibrary.Services.DialogServices;
 
 namespace ImageProcessorGUI.Services;
 

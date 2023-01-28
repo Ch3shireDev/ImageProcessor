@@ -32,7 +32,7 @@ public class BinaryOperationService
         var height = Math.Min(height1, height2);
 
         var bitmap = new ImageData(image1);
-        
+
         for (var y = 0; y < height; y++)
         {
             for (var x = 0; x < width; x++)

@@ -1,5 +1,6 @@
 ﻿using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.Services;
+using ImageProcessorLibrary.Services.Enums;
 
 namespace ImageProcessorTests;
 

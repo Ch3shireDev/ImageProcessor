@@ -3,7 +3,7 @@ using ImageProcessorGUI.Models;
 using ImageProcessorGUI.ViewModels;
 using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.ServiceProviders;
-using ImageProcessorLibrary.Services;
+using ImageProcessorLibrary.Services.Enums;
 using ImageProcessorTests.Mockups;
 
 namespace ImageProcessorTests;

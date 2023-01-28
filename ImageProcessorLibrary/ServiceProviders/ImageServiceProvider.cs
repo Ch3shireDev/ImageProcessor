@@ -1,4 +1,8 @@
 ﻿using ImageProcessorLibrary.Services;
+using ImageProcessorLibrary.Services.DialogServices;
+using ImageProcessorLibrary.Services.HistogramServices;
+using ImageProcessorLibrary.Services.ImageServices;
+using ImageProcessorLibrary.Services.StretchingServices;
 
 namespace ImageProcessorLibrary.ServiceProviders;
 
@@ -8,7 +12,6 @@ public class ImageServiceProvider : IImageServiceProvider
     public IOpenImageService? OpenImageService { get; set; }
     public ISaveImageService? SaveImageService { get; set; }
     public IDuplicateImageService? DuplicateImageService { get; set; }
-    public IBlurService? BlurService { get; set; }
     public IWindowService? WindowService { get; set; }
     public IStretchingOptionsService? StretchingOptionsService { get; set; }
     public IHistogramService? HistogramService { get; set; }

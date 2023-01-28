@@ -1,5 +1,5 @@
 ﻿using ImageProcessorLibrary.DataStructures;
-using ImageProcessorLibrary.Services;
+using ImageProcessorLibrary.Services.ImageServices;
 using ImageProcessorTests.Mockups;
 
 namespace ImageProcessorTests;

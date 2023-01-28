@@ -9,6 +9,7 @@ using ImageProcessorGUI.Views;
 using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.ServiceProviders;
 using ImageProcessorLibrary.Services;
+using ImageProcessorLibrary.Services.StretchingServices;
 
 namespace ImageProcessorGUI.Models;
 

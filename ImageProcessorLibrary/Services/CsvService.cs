@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using CsvHelper;
+using ImageProcessorLibrary.DataStructures;
 
 namespace ImageProcessorLibrary.Services;
 

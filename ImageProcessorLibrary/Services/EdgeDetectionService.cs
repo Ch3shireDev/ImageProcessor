@@ -1,4 +1,5 @@
 ﻿using ImageProcessorLibrary.DataStructures;
+using ImageProcessorLibrary.Services.Enums;
 using OpenCvSharp;
 
 namespace ImageProcessorLibrary.Services;

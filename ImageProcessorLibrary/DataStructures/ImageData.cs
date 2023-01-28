@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
-using ImageProcessorLibrary.Services;
+using ImageProcessorLibrary.Helpers;
 
 namespace ImageProcessorLibrary.DataStructures;
 

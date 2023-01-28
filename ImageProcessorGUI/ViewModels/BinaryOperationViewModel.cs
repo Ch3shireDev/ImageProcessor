@@ -5,6 +5,7 @@ using System.Windows.Input;
 using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.ServiceProviders;
 using ImageProcessorLibrary.Services;
+using ImageProcessorLibrary.Services.Enums;
 using ReactiveUI;
 
 namespace ImageProcessorGUI.ViewModels;

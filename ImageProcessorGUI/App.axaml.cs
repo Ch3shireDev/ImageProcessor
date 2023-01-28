@@ -9,6 +9,9 @@ using ImageProcessorGUI.Views;
 using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.ServiceProviders;
 using ImageProcessorLibrary.Services;
+using ImageProcessorLibrary.Services.DialogServices;
+using ImageProcessorLibrary.Services.HistogramServices;
+using ImageProcessorLibrary.Services.ImageServices;
 
 namespace ImageProcessorGUI;
 

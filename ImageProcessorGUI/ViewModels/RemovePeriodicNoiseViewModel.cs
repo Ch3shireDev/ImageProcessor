@@ -4,7 +4,8 @@ using System.Windows.Input;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using ImageProcessorLibrary.DataStructures;
-using ImageProcessorLibrary.Services;
+using ImageProcessorLibrary.Services.Enums;
+using ImageProcessorLibrary.Services.FourierServices;
 using ReactiveUI;
 
 namespace ImageProcessorGUI.ViewModels;

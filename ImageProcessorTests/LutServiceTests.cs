@@ -1,4 +1,4 @@
-﻿using ImageProcessorLibrary.Services;
+﻿using ImageProcessorLibrary.Services.LutServices;
 
 namespace ImageProcessorTests;
 

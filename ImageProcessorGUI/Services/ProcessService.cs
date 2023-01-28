@@ -2,6 +2,7 @@
 using System.Drawing.Imaging;
 using System.IO;
 using ImageProcessorLibrary.DataStructures;
+using ImageProcessorLibrary.Helpers;
 using ImageProcessorLibrary.Services;
 
 namespace ImageProcessorGUI.Services;

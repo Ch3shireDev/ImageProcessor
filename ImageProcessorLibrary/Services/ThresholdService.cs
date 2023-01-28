@@ -1,5 +1,6 @@
 ﻿using System.Drawing.Imaging;
 using ImageProcessorLibrary.DataStructures;
+using ImageProcessorLibrary.Helpers;
 
 namespace ImageProcessorLibrary.Services;
 
@@ -56,8 +57,14 @@ public class ThresholdService
             var hsl = ColorTools.RGBToHSL(pixel);
             var intensity = hsl.L;
 
-            if (intensity > thresholdValue1 / 255.0f && intensity < thresholdValue2 / 255.0f) hsl.L = intensity;
-            else hsl.L = 0;
+            if (intensity > thresholdValue1 / 255.0f && intensity < thresholdValue2 / 255.0f)
+            {
+                hsl.L = intensity;
+            }
+            else
+            {
+                hsl.L = 0;
+            }
 
             var newPixel = ColorTools.HSLToRGB(hsl);
             bitmap.SetPixel(x, y, newPixel);

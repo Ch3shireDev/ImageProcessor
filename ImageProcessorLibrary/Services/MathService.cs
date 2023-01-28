@@ -1,5 +1,7 @@
 ﻿using System.Drawing.Imaging;
 using ImageProcessorLibrary.DataStructures;
+using ImageProcessorLibrary.Helpers;
+using ImageProcessorLibrary.Services.Enums;
 
 namespace ImageProcessorLibrary.Services;
 

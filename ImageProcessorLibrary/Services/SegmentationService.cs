@@ -5,13 +5,13 @@ namespace ImageProcessorLibrary.Services;
 
 public class SegmentationService
 {
-    private readonly OpenCvService cvService = new OpenCvService();
+    private readonly OpenCvService cvService = new();
 
     public ImageData OtsuSegmentation(ImageData image)
     {
         var mat = cvService.ToGrayMatrix(image);
 
-        Cv2.Threshold(mat, mat, 0,255,  ThresholdTypes.Otsu);
+        Cv2.Threshold(mat, mat, 0, 255, ThresholdTypes.Otsu);
 
 
         return cvService.ToImageDataFromUC3(mat);

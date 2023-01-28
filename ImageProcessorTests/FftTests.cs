@@ -1,7 +1,8 @@
 ﻿using System.Drawing;
 using System.Numerics;
 using ImageProcessorLibrary.DataStructures;
-using ImageProcessorLibrary.Services;
+using ImageProcessorLibrary.Services.Enums;
+using ImageProcessorLibrary.Services.FourierServices;
 
 namespace ImageProcessorTests;
 
