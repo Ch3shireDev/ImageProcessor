@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>ImageProcessor </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="ImageProcessor ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta property="docfx:navrel" content="toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="imageprocessor">ImageProcessor</h1>
+
+<p>Projekt na zaliczenie przedmiotu Algorytmy Przetwarzania Obrazów.</p>
+<hr>
+<img src="images/lion-1.png" width="400">
+<h2 id="wprowadzenie">Wprowadzenie</h2>
+<p>Aplikacja pozwala na wykonywanie szeregu operacji umożliwiających manipulowanie obrazami. Program została napisana w języku C# z użyciem frameworku Avalonia z wykorzystaniem biblioteki OpenCvSharp. Projekt został wykonany w ramach zajęć Algorytmy przetwarzania obrazów pod kierunkiem dr Anny Korzyńskiej.</p>
+<h2 id="wymagania">Wymagania</h2>
+<p>Do poprawnego działania aplikacji wymagane jest środowisko uruchomieniowe .NET 6.0 w systemie Windows. Program był tworzony i testowany w środowisku Windows 10 i ta minimalna wersja systemu jest zalecana przy uruchamianiu aplikacji.</p>
+<h2 id="uruchomienie-programu">Uruchomienie Programu</h2>
+<p>Program jest uruchamiany poprzez wywołanie pliku wykonywalnego ImageProcessor.exe. Po włączeniu aplikacji należy wybrać plik z obrazem metodą Plik -&gt; Otwórz. Funkcje programu uzyskuje się przez kliknięcie prawym klawiszem myszy na obraz i wybranie odpowiedniej zakładki.</p>
+<h2 id="instalacja-i-uruchomienie-kodu-źródłowego">Instalacja i uruchomienie kodu źródłowego</h2>
+<p>Projekt był tworzony i kompilowany z użyciem środowiska Visual Studio 2022. Do kompilacji wymagane są następujące pakiety:</p>
+<ul>
+<li>Avalonia</li>
+<li>Avalonia.Desktop</li>
+<li>Avalonia.Diagnostics</li>
+<li>Avalonia.ReactiveUI</li>
+<li>ScottPlot.Avalonia</li>
+<li>XamlNameReferenceGenerator</li>
+<li>CswvHelper</li>
+<li>OpenCvSharp4.Windows</li>
+<li>FFTW.NET</li>
+</ul>
+<h2 id="funkcje-programu">Funkcje programu</h2>
+<ol>
+<li>Środowisko do pracy z obrazami</li>
+<li>Wczytywanie obrazu</li>
+<li>Zapisywanie obrazu</li>
+<li>Duplikacja obrazu</li>
+<li>Jednoczesne wyświetlanie wiele obrazów</li>
+<li>Algorytm tworzenia histogramu wczytanych obrazów monochromatycznych i kolorowych.</li>
+<li>Pokazywanie obrazów w różnych powiększeniach</li>
+<li>Algorytm rozciągania liniowego</li>
+<li>Algorytm rozciągania nieliniowego</li>
+<li>Algorytm wyrównywania przez equalizację histogramu</li>
+<li>Operacje jednoargumentowe: negacja</li>
+<li>Operacje jednoargumentowe: negacja,</li>
+<li>Operacje jednoargumentowe: progowanie binarne z zamianą liczby poziomów szarości z jednym lub dwoma progami wskazywanymi suwakiem i wpisanymi jako parametr,</li>
+<li>Operacje jednoargumentowe: progowanie bez zamiany liczby poziomów szarości z dwoma progami wskazanymi przez wskazywanym suwakiem i wpisanym jako parametr.</li>
+<li>Operacje punktowe wieloargumentowe: dodawanie obrazów z wysyceniem</li>
+<li>Operacje punktowe wieloargumentowe: dodawanie obrazów bez wysycenia</li>
+<li>Operacje punktowe wieloargumentowe: odejmowanie obrazów z wysyceniem</li>
+<li>Operacje punktowe wieloargumentowe: odejmowanie obrazów bez wysycenia</li>
+<li>Operacje punktowe wieloargumentowe: mnożenie przez liczbę całkowitą</li>
+<li>Liczenie różnicy bezwzględnej obrazów</li>
+<li>Algorytm wygładzania liniowego oparty na typowych maskach wygładzania.</li>
+<li>Wyostrzanie liniowe oparte na maskach laplasjanowych</li>
+<li>Kierunkowa detekcji krawędzi w oparciu o maski 8 kierunkowych masek Sobela</li>
+<li>Opracowanie algorytmu uniwersalnej operacji medianowej opartej o otoczenie 3x3, 5x5, 7x7, 9x9</li>
+<li>Implementacja detekcji krawędzi operatorami opartymi na maskach Sobela i Prewitta oraz operatorem Cannyego</li>
+<li>Algorytm segmentacji obrazów poprzez progowanie z jednym lub dwoma programi</li>
+<li>Algorytm segmentacji obrazów z wykorzystaniem progowania metodą Otsu</li>
+<li>Algorytm segmentacji obrazów z wykorzystaniem progowania adaptacyjnego</li>
+<li>Morfologia matematyczna: erozja</li>
+<li>Morfologia matematyczna: dylacja</li>
+<li>Morfologia matematyczna: otwarcie</li>
+<li>Morfologia matematyczna: zamknięcie</li>
+<li>Wyznaczanie cech obiektu binarnego</li>
+<li>Dodanie zakłóceń periodycznych do obrazu</li>
+<li>Usunięcie zakłóceń periodycznych z obrazu</li>
+</ol>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

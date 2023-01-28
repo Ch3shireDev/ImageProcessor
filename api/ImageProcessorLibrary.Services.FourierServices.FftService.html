@@ -1,0 +1,1131 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class FftService
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class FftService
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService">
+  
+  
+  <h1 id="ImageProcessorLibrary_Services_FourierServices_FftService" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService" class="text-break">Class FftService
+  </h1>
+  <div class="markdown level0 summary"><p>Klasa do przeprowadzania transformacji Fouriera wraz z funkcjami pomocniczymi.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">FftService</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ImageProcessorLibrary.Services.FourierServices.html">ImageProcessorLibrary.Services.FourierServices</a></h6>
+  <h6><strong>Assembly</strong>: ImageProcessorLibrary.dll</h6>
+  <h5 id="ImageProcessorLibrary_Services_FourierServices_FftService_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class FftService : object</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorLibrary_Services_FourierServices_FftService_AddPeriodicNoise_ImageProcessorLibrary_DataStructures_ComplexData_System_Double_System_Double_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20ImageProcessorLibrary.Services.FourierServices.FftService.AddPeriodicNoise(ImageProcessorLibrary.DataStructures.ComplexData%2CSystem.Double%2CSystem.Double%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorLibrary/Services/FourierServices/FftService.cs/#L385">View Source</a>
+  </span>
+  <a id="ImageProcessorLibrary_Services_FourierServices_FftService_AddPeriodicNoise_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.AddPeriodicNoise*"></a>
+  <h4 id="ImageProcessorLibrary_Services_FourierServices_FftService_AddPeriodicNoise_ImageProcessorLibrary_DataStructures_ComplexData_System_Double_System_Double_System_Double_System_Double_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.AddPeriodicNoise(ImageProcessorLibrary.DataStructures.ComplexData,System.Double,System.Double,System.Double,System.Double)">AddPeriodicNoise(ComplexData, Double, Double, Double, Double)</h4>
+  <div class="markdown level1 summary"><p>Funkcja do dodania szumu do obrazu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ComplexData AddPeriodicNoise(ComplexData complexData, double frequencyX, double frequencyY, double amplitude, double phase)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ImageProcessorLibrary.DataStructures.ComplexData.html">ComplexData</a></td>
+        <td><span class="parametername">complexData</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">frequencyX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">frequencyY</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">amplitude</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">phase</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ImageProcessorLibrary.DataStructures.ComplexData.html">ComplexData</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorLibrary_Services_FourierServices_FftService_AddPeriodicNoise_ImageProcessorLibrary_DataStructures_ImageData_System_Double_System_Double_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20ImageProcessorLibrary.Services.FourierServices.FftService.AddPeriodicNoise(ImageProcessorLibrary.DataStructures.ImageData%2CSystem.Double%2CSystem.Double%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorLibrary/Services/FourierServices/FftService.cs/#L416">View Source</a>
+  </span>
+  <a id="ImageProcessorLibrary_Services_FourierServices_FftService_AddPeriodicNoise_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.AddPeriodicNoise*"></a>
+  <h4 id="ImageProcessorLibrary_Services_FourierServices_FftService_AddPeriodicNoise_ImageProcessorLibrary_DataStructures_ImageData_System_Double_System_Double_System_Double_System_Double_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.AddPeriodicNoise(ImageProcessorLibrary.DataStructures.ImageData,System.Double,System.Double,System.Double,System.Double)">AddPeriodicNoise(ImageData, Double, Double, Double, Double)</h4>
+  <div class="markdown level1 summary"><p>Funkcja do dodania szumu periodycznego.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ImageData AddPeriodicNoise(ImageData imageData, double frequencyX = null, double frequencyY = null, double amplitude = null, double phase = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ImageProcessorLibrary.DataStructures.ImageData.html">ImageData</a></td>
+        <td><span class="parametername">imageData</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">frequencyX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">frequencyY</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">amplitude</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">phase</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ImageProcessorLibrary.DataStructures.ImageData.html">ImageData</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorLibrary_Services_FourierServices_FftService_ChangeSizeToClosestPowerOfTwo_Complex_0__0_____.md&amp;value=---%0Auid%3A%20ImageProcessorLibrary.Services.FourierServices.FftService.ChangeSizeToClosestPowerOfTwo(Complex%5B0%3A%2C0%3A%5D%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorLibrary/Services/FourierServices/FftService.cs/#L184">View Source</a>
+  </span>
+  <a id="ImageProcessorLibrary_Services_FourierServices_FftService_ChangeSizeToClosestPowerOfTwo_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.ChangeSizeToClosestPowerOfTwo*"></a>
+  <h4 id="ImageProcessorLibrary_Services_FourierServices_FftService_ChangeSizeToClosestPowerOfTwo_Complex_0__0_____" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.ChangeSizeToClosestPowerOfTwo(Complex[0:,0:][])">ChangeSizeToClosestPowerOfTwo(Complex[,][])</h4>
+  <div class="markdown level1 summary"><p>Funkcja do zmiany rozmiaru obrazu na najbliższą potęgę dwójki.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Complex[, ][] ChangeSizeToClosestPowerOfTwo(Complex[, ][] input)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Complex</span>[,][]</td>
+        <td><span class="parametername">input</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Complex</span>[,][]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorLibrary_Services_FourierServices_FftService_FFTShift_Complex_0__0___.md&amp;value=---%0Auid%3A%20ImageProcessorLibrary.Services.FourierServices.FftService.FFTShift(Complex%5B0%3A%2C0%3A%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorLibrary/Services/FourierServices/FftService.cs/#L225">View Source</a>
+  </span>
+  <a id="ImageProcessorLibrary_Services_FourierServices_FftService_FFTShift_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.FFTShift*"></a>
+  <h4 id="ImageProcessorLibrary_Services_FourierServices_FftService_FFTShift_Complex_0__0___" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.FFTShift(Complex[0:,0:])">FFTShift(Complex[,])</h4>
+  <div class="markdown level1 summary"><p>Funkcja do przesunięcia obrazu w dziedzinie częstotliwości tak, by zero znajdywało się na środku.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Complex[, ] FFTShift(Complex[, ] complexData)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Complex</span>[,]</td>
+        <td><span class="parametername">complexData</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Complex</span>[,]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorLibrary_Services_FourierServices_FftService_FFTShift_Complex_0__0_____.md&amp;value=---%0Auid%3A%20ImageProcessorLibrary.Services.FourierServices.FftService.FFTShift(Complex%5B0%3A%2C0%3A%5D%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorLibrary/Services/FourierServices/FftService.cs/#L251">View Source</a>
+  </span>
+  <a id="ImageProcessorLibrary_Services_FourierServices_FftService_FFTShift_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.FFTShift*"></a>
+  <h4 id="ImageProcessorLibrary_Services_FourierServices_FftService_FFTShift_Complex_0__0_____" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.FFTShift(Complex[0:,0:][])">FFTShift(Complex[,][])</h4>
+  <div class="markdown level1 summary"><p>Funkcja do przesunięcia obrazu w dziedzinie częstotliwości tak, by zero znajdywało się na środku.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Complex[, ][] FFTShift(Complex[, ][] Output)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Complex</span>[,][]</td>
+        <td><span class="parametername">Output</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Complex</span>[,][]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorLibrary_Services_FourierServices_FftService_FFTShift_ImageProcessorLibrary_DataStructures_ComplexData_.md&amp;value=---%0Auid%3A%20ImageProcessorLibrary.Services.FourierServices.FftService.FFTShift(ImageProcessorLibrary.DataStructures.ComplexData)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorLibrary/Services/FourierServices/FftService.cs/#L211">View Source</a>
+  </span>
+  <a id="ImageProcessorLibrary_Services_FourierServices_FftService_FFTShift_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.FFTShift*"></a>
+  <h4 id="ImageProcessorLibrary_Services_FourierServices_FftService_FFTShift_ImageProcessorLibrary_DataStructures_ComplexData_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.FFTShift(ImageProcessorLibrary.DataStructures.ComplexData)">FFTShift(ComplexData)</h4>
+  <div class="markdown level1 summary"><p>Funkcja do przesunięcia obrazu w dziedzinie częstotliwości tak, by zero znajdywało się na środku.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ComplexData FFTShift(ComplexData complexData)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ImageProcessorLibrary.DataStructures.ComplexData.html">ComplexData</a></td>
+        <td><span class="parametername">complexData</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ImageProcessorLibrary.DataStructures.ComplexData.html">ComplexData</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorLibrary_Services_FourierServices_FftService_FindPowerOf2_System_Int32_.md&amp;value=---%0Auid%3A%20ImageProcessorLibrary.Services.FourierServices.FftService.FindPowerOf2(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorLibrary/Services/FourierServices/FftService.cs/#L198">View Source</a>
+  </span>
+  <a id="ImageProcessorLibrary_Services_FourierServices_FftService_FindPowerOf2_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.FindPowerOf2*"></a>
+  <h4 id="ImageProcessorLibrary_Services_FourierServices_FftService_FindPowerOf2_System_Int32_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.FindPowerOf2(System.Int32)">FindPowerOf2(Int32)</h4>
+  <div class="markdown level1 summary"><p>Funkcja do zmiany rozmiaru obrazu na najbliższą potęgę dwójki.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int FindPowerOf2(int n)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">n</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorLibrary_Services_FourierServices_FftService_FindWidthForPowerOfTwo_Complex_0__0___.md&amp;value=---%0Auid%3A%20ImageProcessorLibrary.Services.FourierServices.FftService.FindWidthForPowerOfTwo(Complex%5B0%3A%2C0%3A%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorLibrary/Services/FourierServices/FftService.cs/#L167">View Source</a>
+  </span>
+  <a id="ImageProcessorLibrary_Services_FourierServices_FftService_FindWidthForPowerOfTwo_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.FindWidthForPowerOfTwo*"></a>
+  <h4 id="ImageProcessorLibrary_Services_FourierServices_FftService_FindWidthForPowerOfTwo_Complex_0__0___" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.FindWidthForPowerOfTwo(Complex[0:,0:])">FindWidthForPowerOfTwo(Complex[,])</h4>
+  <div class="markdown level1 summary"><p>Funkcja do zmiany rozmiaru obrazu na najbliższą potęgę dwójki.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int FindWidthForPowerOfTwo(Complex[, ] input)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Complex</span>[,]</td>
+        <td><span class="parametername">input</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorLibrary_Services_FourierServices_FftService_FindWidthForPowerOfTwo_ImageProcessorLibrary_DataStructures_ImageData_.md&amp;value=---%0Auid%3A%20ImageProcessorLibrary.Services.FourierServices.FftService.FindWidthForPowerOfTwo(ImageProcessorLibrary.DataStructures.ImageData)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorLibrary/Services/FourierServices/FftService.cs/#L156">View Source</a>
+  </span>
+  <a id="ImageProcessorLibrary_Services_FourierServices_FftService_FindWidthForPowerOfTwo_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.FindWidthForPowerOfTwo*"></a>
+  <h4 id="ImageProcessorLibrary_Services_FourierServices_FftService_FindWidthForPowerOfTwo_ImageProcessorLibrary_DataStructures_ImageData_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.FindWidthForPowerOfTwo(ImageProcessorLibrary.DataStructures.ImageData)">FindWidthForPowerOfTwo(ImageData)</h4>
+  <div class="markdown level1 summary"><p>Funkcja do zmiany rozmiaru obrazu na najbliższą potęgę dwójki.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int FindWidthForPowerOfTwo(ImageData imageData)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ImageProcessorLibrary.DataStructures.ImageData.html">ImageData</a></td>
+        <td><span class="parametername">imageData</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorLibrary_Services_FourierServices_FftService_ForwardFFT_ImageProcessorLibrary_DataStructures_ComplexData_.md&amp;value=---%0Auid%3A%20ImageProcessorLibrary.Services.FourierServices.FftService.ForwardFFT(ImageProcessorLibrary.DataStructures.ComplexData)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorLibrary/Services/FourierServices/FftService.cs/#L18">View Source</a>
+  </span>
+  <a id="ImageProcessorLibrary_Services_FourierServices_FftService_ForwardFFT_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.ForwardFFT*"></a>
+  <h4 id="ImageProcessorLibrary_Services_FourierServices_FftService_ForwardFFT_ImageProcessorLibrary_DataStructures_ComplexData_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.ForwardFFT(ImageProcessorLibrary.DataStructures.ComplexData)">ForwardFFT(ComplexData)</h4>
+  <div class="markdown level1 summary"><p>Funkcja do przeprowadzania transformacji Fouriera.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ComplexData ForwardFFT(ComplexData complexData)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ImageProcessorLibrary.DataStructures.ComplexData.html">ComplexData</a></td>
+        <td><span class="parametername">complexData</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ImageProcessorLibrary.DataStructures.ComplexData.html">ComplexData</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorLibrary_Services_FourierServices_FftService_InverseFFT_ImageProcessorLibrary_DataStructures_ComplexData_.md&amp;value=---%0Auid%3A%20ImageProcessorLibrary.Services.FourierServices.FftService.InverseFFT(ImageProcessorLibrary.DataStructures.ComplexData)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorLibrary/Services/FourierServices/FftService.cs/#L38">View Source</a>
+  </span>
+  <a id="ImageProcessorLibrary_Services_FourierServices_FftService_InverseFFT_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.InverseFFT*"></a>
+  <h4 id="ImageProcessorLibrary_Services_FourierServices_FftService_InverseFFT_ImageProcessorLibrary_DataStructures_ComplexData_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.InverseFFT(ImageProcessorLibrary.DataStructures.ComplexData)">InverseFFT(ComplexData)</h4>
+  <div class="markdown level1 summary"><p>Funkcja do przeprowadzania odwrotnej transformacji Fouriera.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ComplexData InverseFFT(ComplexData complexData)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ImageProcessorLibrary.DataStructures.ComplexData.html">ComplexData</a></td>
+        <td><span class="parametername">complexData</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ImageProcessorLibrary.DataStructures.ComplexData.html">ComplexData</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorLibrary_Services_FourierServices_FftService_LogN_Complex_0__0___.md&amp;value=---%0Auid%3A%20ImageProcessorLibrary.Services.FourierServices.FftService.LogN(Complex%5B0%3A%2C0%3A%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorLibrary/Services/FourierServices/FftService.cs/#L79">View Source</a>
+  </span>
+  <a id="ImageProcessorLibrary_Services_FourierServices_FftService_LogN_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.LogN*"></a>
+  <h4 id="ImageProcessorLibrary_Services_FourierServices_FftService_LogN_Complex_0__0___" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.LogN(Complex[0:,0:])">LogN(Complex[,])</h4>
+  <div class="markdown level1 summary"><p>Funkcja do pobrania logarytmu naturalnego z danych w dziedzinie częstotliwości.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Complex[, ] LogN(Complex[, ] fourier)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Complex</span>[,]</td>
+        <td><span class="parametername">fourier</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Complex</span>[,]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorLibrary_Services_FourierServices_FftService_LogN_ImageProcessorLibrary_DataStructures_ComplexData_.md&amp;value=---%0Auid%3A%20ImageProcessorLibrary.Services.FourierServices.FftService.LogN(ImageProcessorLibrary.DataStructures.ComplexData)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorLibrary/Services/FourierServices/FftService.cs/#L61">View Source</a>
+  </span>
+  <a id="ImageProcessorLibrary_Services_FourierServices_FftService_LogN_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.LogN*"></a>
+  <h4 id="ImageProcessorLibrary_Services_FourierServices_FftService_LogN_ImageProcessorLibrary_DataStructures_ComplexData_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.LogN(ImageProcessorLibrary.DataStructures.ComplexData)">LogN(ComplexData)</h4>
+  <div class="markdown level1 summary"><p>Funkcja do pobrania logarytmu naturalnego z danych w dziedzinie częstotliwości.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ComplexData LogN(ComplexData complexData)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ImageProcessorLibrary.DataStructures.ComplexData.html">ComplexData</a></td>
+        <td><span class="parametername">complexData</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ImageProcessorLibrary.DataStructures.ComplexData.html">ComplexData</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorLibrary_Services_FourierServices_FftService_Normalize_Complex_0__0___.md&amp;value=---%0Auid%3A%20ImageProcessorLibrary.Services.FourierServices.FftService.Normalize(Complex%5B0%3A%2C0%3A%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorLibrary/Services/FourierServices/FftService.cs/#L279">View Source</a>
+  </span>
+  <a id="ImageProcessorLibrary_Services_FourierServices_FftService_Normalize_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.Normalize*"></a>
+  <h4 id="ImageProcessorLibrary_Services_FourierServices_FftService_Normalize_Complex_0__0___" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.Normalize(Complex[0:,0:])">Normalize(Complex[,])</h4>
+  <div class="markdown level1 summary"><p>Funkcja do normalizacji obrazu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Complex[, ] Normalize(Complex[, ] input)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Complex</span>[,]</td>
+        <td><span class="parametername">input</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Complex</span>[,]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorLibrary_Services_FourierServices_FftService_Normalize_Complex_0__0_____.md&amp;value=---%0Auid%3A%20ImageProcessorLibrary.Services.FourierServices.FftService.Normalize(Complex%5B0%3A%2C0%3A%5D%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorLibrary/Services/FourierServices/FftService.cs/#L314">View Source</a>
+  </span>
+  <a id="ImageProcessorLibrary_Services_FourierServices_FftService_Normalize_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.Normalize*"></a>
+  <h4 id="ImageProcessorLibrary_Services_FourierServices_FftService_Normalize_Complex_0__0_____" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.Normalize(Complex[0:,0:][])">Normalize(Complex[,][])</h4>
+  <div class="markdown level1 summary"><p>Funkcja do normalizacji obrazu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Complex[, ][] Normalize(Complex[, ][] input)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Complex</span>[,][]</td>
+        <td><span class="parametername">input</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Complex</span>[,][]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorLibrary_Services_FourierServices_FftService_Normalize_ImageProcessorLibrary_DataStructures_ComplexData_.md&amp;value=---%0Auid%3A%20ImageProcessorLibrary.Services.FourierServices.FftService.Normalize(ImageProcessorLibrary.DataStructures.ComplexData)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorLibrary/Services/FourierServices/FftService.cs/#L265">View Source</a>
+  </span>
+  <a id="ImageProcessorLibrary_Services_FourierServices_FftService_Normalize_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.Normalize*"></a>
+  <h4 id="ImageProcessorLibrary_Services_FourierServices_FftService_Normalize_ImageProcessorLibrary_DataStructures_ComplexData_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.Normalize(ImageProcessorLibrary.DataStructures.ComplexData)">Normalize(ComplexData)</h4>
+  <div class="markdown level1 summary"><p>Funkcja do normalizacji obrazu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ComplexData Normalize(ComplexData complexData)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ImageProcessorLibrary.DataStructures.ComplexData.html">ComplexData</a></td>
+        <td><span class="parametername">complexData</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ImageProcessorLibrary.DataStructures.ComplexData.html">ComplexData</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorLibrary_Services_FourierServices_FftService_RemoveRectangles_ImageProcessorLibrary_DataStructures_ComplexData_System_Int32_System_Int32_System_Int32_System_Int32_ImageProcessorLibrary_Services_FourierServices_RemoveRecanglesModeEnum_.md&amp;value=---%0Auid%3A%20ImageProcessorLibrary.Services.FourierServices.FftService.RemoveRectangles(ImageProcessorLibrary.DataStructures.ComplexData%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CImageProcessorLibrary.Services.FourierServices.RemoveRecanglesModeEnum)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorLibrary/Services/FourierServices/FftService.cs/#L433">View Source</a>
+  </span>
+  <a id="ImageProcessorLibrary_Services_FourierServices_FftService_RemoveRectangles_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.RemoveRectangles*"></a>
+  <h4 id="ImageProcessorLibrary_Services_FourierServices_FftService_RemoveRectangles_ImageProcessorLibrary_DataStructures_ComplexData_System_Int32_System_Int32_System_Int32_System_Int32_ImageProcessorLibrary_Services_FourierServices_RemoveRecanglesModeEnum_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.RemoveRectangles(ImageProcessorLibrary.DataStructures.ComplexData,System.Int32,System.Int32,System.Int32,System.Int32,ImageProcessorLibrary.Services.FourierServices.RemoveRecanglesModeEnum)">RemoveRectangles(ComplexData, Int32, Int32, Int32, Int32, RemoveRecanglesModeEnum)</h4>
+  <div class="markdown level1 summary"><p>Funkcja do usuniecia prostokątów z obrazu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ComplexData RemoveRectangles(ComplexData complexData, int rectangleStartX, int rectangleStartY, int rectangleEndX, int rectangleEndY, RemoveRecanglesModeEnum mode)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ImageProcessorLibrary.DataStructures.ComplexData.html">ComplexData</a></td>
+        <td><span class="parametername">complexData</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">rectangleStartX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">rectangleStartY</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">rectangleEndX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">rectangleEndY</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="ImageProcessorLibrary.Services.FourierServices.RemoveRecanglesModeEnum.html">RemoveRecanglesModeEnum</a></td>
+        <td><span class="parametername">mode</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ImageProcessorLibrary.DataStructures.ComplexData.html">ComplexData</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorLibrary_Services_FourierServices_FftService_Resize_Complex_0__0___System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20ImageProcessorLibrary.Services.FourierServices.FftService.Resize(Complex%5B0%3A%2C0%3A%5D%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorLibrary/Services/FourierServices/FftService.cs/#L102">View Source</a>
+  </span>
+  <a id="ImageProcessorLibrary_Services_FourierServices_FftService_Resize_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.Resize*"></a>
+  <h4 id="ImageProcessorLibrary_Services_FourierServices_FftService_Resize_Complex_0__0___System_Int32_System_Int32_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.Resize(Complex[0:,0:],System.Int32,System.Int32)">Resize(Complex[,], Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Funkcja do zmiany rozmiaru obrazu na zadaną wysokość i szerokość.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Complex[, ] Resize(Complex[, ] input, int height, int width)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Complex</span>[,]</td>
+        <td><span class="parametername">input</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Complex</span>[,]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorLibrary_Services_FourierServices_FftService_Resize_ImageProcessorLibrary_DataStructures_ComplexData_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20ImageProcessorLibrary.Services.FourierServices.FftService.Resize(ImageProcessorLibrary.DataStructures.ComplexData%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorLibrary/Services/FourierServices/FftService.cs/#L131">View Source</a>
+  </span>
+  <a id="ImageProcessorLibrary_Services_FourierServices_FftService_Resize_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.Resize*"></a>
+  <h4 id="ImageProcessorLibrary_Services_FourierServices_FftService_Resize_ImageProcessorLibrary_DataStructures_ComplexData_System_Int32_System_Int32_" data-uid="ImageProcessorLibrary.Services.FourierServices.FftService.Resize(ImageProcessorLibrary.DataStructures.ComplexData,System.Int32,System.Int32)">Resize(ComplexData, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Funkcja do zmiany rozmiaru obrazu na zadaną wysokość i szerokość.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ComplexData Resize(ComplexData input, int height, int width)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ImageProcessorLibrary.DataStructures.ComplexData.html">ComplexData</a></td>
+        <td><span class="parametername">input</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ImageProcessorLibrary.DataStructures.ComplexData.html">ComplexData</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorLibrary_Services_FourierServices_FftService.md&amp;value=---%0Auid%3A%20ImageProcessorLibrary.Services.FourierServices.FftService%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorLibrary/Services/FourierServices/FftService.cs/#L9" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
