@@ -5,9 +5,9 @@ namespace ImageProcessorTests;
 [TestClass]
 public class LutServiceTests
 {
-    private static byte[] data;
+    private static byte[]? data;
 
-    private static LutService lutService;
+    private static LutService? lutService;
 
     [ClassInitialize]
     public static void ClassInitialize(TestContext context)
@@ -80,7 +80,7 @@ public class LutServiceTests
     [TestMethod]
     public void GetGrayHistogramTest()
     {
-        var histogram = lutService.GetIntensityHistogram(data);
+        var histogram = lutService?.GetIntensityHistogram(data);
 
         Assert.AreEqual(3, histogram[0]);
         Assert.AreEqual(2, histogram[127]);
@@ -94,7 +94,7 @@ public class LutServiceTests
     [TestMethod]
     public void GetRedHistogramTest()
     {
-        var histogram = lutService.GetRedHistogram(data);
+        var histogram = lutService?.GetRedHistogram(data);
 
         Assert.AreEqual(3, histogram[0]);
         Assert.AreEqual(2, histogram[127]);
@@ -108,7 +108,7 @@ public class LutServiceTests
     [TestMethod]
     public void GetGreenHistogramTest()
     {
-        var histogram = lutService.GetGreenHistogram(data);
+        var histogram = lutService?.GetGreenHistogram(data);
 
         Assert.AreEqual(3, histogram[0]);
         Assert.AreEqual(2, histogram[127]);
@@ -122,7 +122,7 @@ public class LutServiceTests
     [TestMethod]
     public void GetBlueHistogramTest()
     {
-        var histogram = lutService.GetBlueHistogram(data);
+        var histogram = lutService?.GetBlueHistogram(data);
 
         Assert.AreEqual(3, histogram[0]);
         Assert.AreEqual(2, histogram[127]);

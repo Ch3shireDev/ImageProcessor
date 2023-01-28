@@ -1,12 +1,11 @@
 using Avalonia.Controls;
 
-namespace ImageProcessorGUI.Views
+namespace ImageProcessorGUI.Views;
+
+public partial class UniversalMedianOperationWindow : Window
 {
-    public partial class UniversalMedianOperationWindow : Window
+    public UniversalMedianOperationWindow()
     {
-        public UniversalMedianOperationWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

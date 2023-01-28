@@ -1,12 +1,11 @@
 using Avalonia.Controls;
 
-namespace ImageProcessorGUI.Views
+namespace ImageProcessorGUI.Views;
+
+public partial class BinaryOperationsWindow : Window
 {
-    public partial class BinaryOperationsWindow : Window
+    public BinaryOperationsWindow()
     {
-        public BinaryOperationsWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

@@ -35,6 +35,6 @@ public class OpenImageServiceTests
         Assert.IsNull(windowService.ImageData);
         await _openImageService.OpenImage();
         Assert.IsTrue(windowService.IsShowImageWindowCalled);
-        Assert.IsTrue( windowService.ImageData.Filebytes.Length > 0);
+        Assert.IsTrue(windowService.ImageData.Filebytes.Length > 0);
     }
 }

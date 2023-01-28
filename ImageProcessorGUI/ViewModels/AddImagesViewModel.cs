@@ -9,8 +9,6 @@ using ReactiveUI;
 
 namespace ImageProcessorGUI.ViewModels;
 
-
-
 public class AddImagesViewModel : ReactiveObject
 {
     private readonly IImageServiceProvider _imageServiceProvider;
@@ -26,10 +24,10 @@ public class AddImagesViewModel : ReactiveObject
         _onApply = onApply;
     }
 
-    public List<ImageCombinationsEnum> Operations { get; set; } = new List<ImageCombinationsEnum>
+    public List<ImageCombinationsEnum> Operations { get; set; } = new()
     {
         ImageCombinationsEnum.ADD_IMAGES,
-        ImageCombinationsEnum.SUBTRACT_IMAGES,
+        ImageCombinationsEnum.SUBTRACT_IMAGES
     };
 
 

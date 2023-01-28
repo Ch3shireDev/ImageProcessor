@@ -8,6 +8,8 @@ namespace ImageProcessorGUI.ViewModels;
 
 public class MathOperationViewModel : ReactiveObject
 {
+    private double value;
+
     public MathOperationViewModel(ImageData imageData)
     {
         ImageData = imageData;
@@ -40,8 +42,6 @@ public class MathOperationViewModel : ReactiveObject
             this.RaisePropertyChanged();
         }
     }
-
-    private double value;
 
     public void Apply()
     {

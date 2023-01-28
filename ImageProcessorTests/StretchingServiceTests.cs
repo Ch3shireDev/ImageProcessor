@@ -1,6 +1,5 @@
 ﻿using ImageProcessorGUI.Services;
 using ImageProcessorLibrary.DataStructures;
-using ImageProcessorTests.Mockups;
 
 namespace ImageProcessorTests;
 
@@ -8,6 +7,7 @@ namespace ImageProcessorTests;
 public class StretchingServiceTests
 {
     private StretchingOptionsService _stretchingOptionsService;
+
     [TestInitialize]
     public void TestInitialize()
     {

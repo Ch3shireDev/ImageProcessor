@@ -6,28 +6,28 @@
         mc:Ignorable="d" Width="300" Height="200"
         x:Class="ImageProcessorGUI.Views.AddImagesWindow"
         Title="AddImagesWindow">
-	<Design.DataContext>
-		<viewModels:AddImagesViewModel />
-	</Design.DataContext>
-	<Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto" />
-			<RowDefinition Height="Auto" />
-			<RowDefinition Height="*" />
-			<RowDefinition Height="Auto" />
-		</Grid.RowDefinitions>
-		<StackPanel Grid.Row="0" Orientation="Horizontal">
-			<Button Content="Select image" Command="{Binding SelectImageCommand}"/>
-			<Label Content="{Binding Filepath}"></Label>
-		</StackPanel>
-		<StackPanel Grid.Row="1">
-			<ComboBox Items="{Binding Operations}" SelectedItem="{Binding SelectedOperation}"/>
-		</StackPanel>
-		<StackPanel Grid.Row="2">
-			<CheckBox Content="Dodaj z wysyceniem" IsChecked="{Binding AddWithSaturation}"/>
-		</StackPanel>
-		<StackPanel Grid.Row="3" Orientation="Horizontal">
-			<Button Content="Pokaż" Command="{Binding ApplyCommand}" />
-		</StackPanel>
-	</Grid>
+    <Design.DataContext>
+        <viewModels:AddImagesViewModel />
+    </Design.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button Content="Select image" Command="{Binding SelectImageCommand}" />
+            <Label Content="{Binding Filepath}" />
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <ComboBox Items="{Binding Operations}" SelectedItem="{Binding SelectedOperation}" />
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <CheckBox Content="Dodaj z wysyceniem" IsChecked="{Binding AddWithSaturation}" />
+        </StackPanel>
+        <StackPanel Grid.Row="3" Orientation="Horizontal">
+            <Button Content="Pokaż" Command="{Binding ApplyCommand}" />
+        </StackPanel>
+    </Grid>
 </Window>

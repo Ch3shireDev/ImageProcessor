@@ -1,12 +1,11 @@
 using Avalonia.Controls;
 
-namespace ImageProcessorGUI.Views
+namespace ImageProcessorGUI.Views;
+
+public partial class FeatureVectorWindow : Window
 {
-    public partial class FeatureVectorWindow : Window
+    public FeatureVectorWindow()
     {
-        public FeatureVectorWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

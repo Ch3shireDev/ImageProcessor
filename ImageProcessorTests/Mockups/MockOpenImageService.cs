@@ -11,6 +11,7 @@ public class MockOpenImageService : IOpenImageService
 
     public async Task OpenImage()
     {
+        await Task.Delay(1);
         IsOpen = true;
     }
 

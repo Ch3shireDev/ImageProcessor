@@ -8,7 +8,7 @@ public class HistogramService : IHistogramService
 {
     private readonly ILutService _lutService = new LutService();
     
-    public IImageData GetRgbHistogram(IImageData imageData)
+    public ImageData GetRgbHistogram(ImageData imageData)
     {
         var plot = new Plot(600, 400);
         GetHistogram(imageData, plot, x => _lutService.GetIntensityHistogram(x.Filebytes), Color.Gray);
@@ -25,7 +25,7 @@ public class HistogramService : IHistogramService
         return image;
     }
 
-    public IImageData GetValueHistogram(IImageData imageData)
+    public ImageData GetValueHistogram(ImageData imageData)
     {
         var plot = new Plot(600, 400);
         GetHistogram(imageData, plot, x => _lutService.GetIntensityHistogram(x.Filebytes), Color.Gray, "Intensity");
@@ -36,7 +36,7 @@ public class HistogramService : IHistogramService
         return image;
     }
 
-    public IImageData GetRedHistogram(IImageData imageData)
+    public ImageData GetRedHistogram(ImageData imageData)
     {
         var plot = new Plot(600, 400);
         GetHistogram(imageData, plot, x => _lutService.GetRedHistogram(x.Filebytes), Color.Red, "Red");
@@ -47,7 +47,7 @@ public class HistogramService : IHistogramService
         return image;
     }
 
-    public IImageData GetGreenHistogram(IImageData imageData)
+    public ImageData GetGreenHistogram(ImageData imageData)
     {
         var plot = new Plot(600, 400);
         GetHistogram(imageData, plot, x => _lutService.GetGreenHistogram(x.Filebytes),
@@ -60,7 +60,7 @@ public class HistogramService : IHistogramService
         return image;
     }
 
-    public IImageData GetBlueHistogram(IImageData imageData)
+    public ImageData GetBlueHistogram(ImageData imageData)
     {
         var plot = new Plot(600, 400);
         GetHistogram(imageData, plot, x => _lutService.GetBlueHistogram(x.Filebytes), Color.Blue, "Blue");
@@ -70,7 +70,7 @@ public class HistogramService : IHistogramService
         return image;
     }
 
-    private void GetHistogram(IImageData imageData, Plot plot, Func<IImageData, int[]> func, Color color,
+    private void GetHistogram(ImageData imageData, Plot plot, Func<ImageData, int[]> func, Color color,
         string title = "")
     {
         var dataX = Enumerable.Range(0, 256).Select(x => (double)x).ToArray();

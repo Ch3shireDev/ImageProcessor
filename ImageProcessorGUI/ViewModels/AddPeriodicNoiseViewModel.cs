@@ -11,15 +11,15 @@ namespace ImageProcessorGUI.ViewModels;
 public class AddPeriodicNoiseViewModel : ReactiveObject
 {
     private readonly FftService fftService = new();
-    private readonly IImageData imageData;
-    private readonly IImageData outputImage;
+    private readonly ImageData imageData;
+    private readonly ImageData outputImage;
+    private double amplitude = 10;
 
     private double frequencyX = 0.5;
     private double frequencyY = 0.5;
-    private double phase = 0;
-    private double amplitude = 10;
+    private double phase;
 
-    public AddPeriodicNoiseViewModel(IImageData imageData, IImageData outputImage)
+    public AddPeriodicNoiseViewModel(ImageData imageData, ImageData outputImage)
     {
         this.imageData = imageData;
         this.outputImage = outputImage;
@@ -71,7 +71,7 @@ public class AddPeriodicNoiseViewModel : ReactiveObject
         }
     }
 
-    private IImageData FourierBeforeImageData
+    private ImageData FourierBeforeImageData
     {
         set
         {
@@ -80,7 +80,7 @@ public class AddPeriodicNoiseViewModel : ReactiveObject
         }
     }
 
-    private IImageData FourierAfterImageData
+    private ImageData FourierAfterImageData
     {
         set
         {

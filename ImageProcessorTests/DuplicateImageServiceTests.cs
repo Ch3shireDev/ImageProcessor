@@ -7,14 +7,14 @@ namespace ImageProcessorTests;
 [TestClass]
 public class DuplicateImageServiceTests
 {
-    private DuplicateImageService _duplicateImageService;
-    private MockWindowService WindowService;
+    private DuplicateImageService? _duplicateImageService;
+    private MockWindowService? _windowService;
 
     [TestInitialize]
     public void TestInitialize()
     {
-        WindowService = new MockWindowService();
-        _duplicateImageService = new DuplicateImageService(WindowService);
+        _windowService = new MockWindowService();
+        _duplicateImageService = new DuplicateImageService(_windowService);
     }
 
     [TestMethod]
@@ -22,9 +22,9 @@ public class DuplicateImageServiceTests
     {
         var bytes = File.ReadAllBytes("Resources/lion.jpg");
         var imageData = new ImageData("Resources/lion.jpg", bytes);
-        _duplicateImageService.DuplicateImage(imageData);
-        Assert.IsTrue(WindowService.IsShowImageWindowCalled);
-        //Assert.AreEqual(65146, WindowService.ImageData.Filebytes.Length);
-        Assert.AreNotEqual(WindowService.ImageData, imageData);
+        _duplicateImageService?.DuplicateImage(imageData);
+        Assert.IsTrue(_windowService?.IsShowImageWindowCalled);
+        //Assert.AreEqual(65146, _windowService.ImageData.Filebytes.Length);
+        Assert.AreNotEqual(_windowService?.ImageData, imageData);
     }
 }

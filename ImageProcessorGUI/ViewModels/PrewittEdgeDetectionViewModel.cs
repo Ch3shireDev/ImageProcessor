@@ -7,7 +7,7 @@ using ReactiveUI;
 
 namespace ImageProcessorGUI.ViewModels;
 
-public class SobelEdgeDetectionViewModel : ReactiveObject
+public class PrewittEdgeDetectionViewModel : ReactiveObject
 {
     private readonly ImageData ImageData;
     private readonly ImageData OriginalImageData;
@@ -15,23 +15,22 @@ public class SobelEdgeDetectionViewModel : ReactiveObject
 
     private string errorMessage = "";
 
-    public SobelEdgeDetectionViewModel(ImageData imageData)
+    public PrewittEdgeDetectionViewModel(ImageData imageData)
     {
         ImageData = imageData;
         OriginalImageData = new ImageData(imageData);
     }
 
-    public string Label { get; set; } = "Detekcja krawędzi metodą Sobela";
+    public string Label { get; set; } = "Detekcja krawędzi metodą Prewitta";
 
-    public List<SobelEdgeType> EdgeTypes { get; set; } = new()
+    public List<PrewittType> EdgeTypes { get; set; } = new()
     {
-        SobelEdgeType.ALL,
-        SobelEdgeType.EAST,
-        SobelEdgeType.SOUTH,
-        SobelEdgeType.SOUTH_EAST
+        PrewittType.PREWITT_XY,
+        PrewittType.PREWITT_X,
+        PrewittType.PREWITT_Y
     };
 
-    public SobelEdgeType SelectedEdgeType { get; set; }
+    public PrewittType SelectedEdgeType { get; set; }
 
     public ICommand RefreshCommand => ReactiveCommand.Create(Refresh);
 
@@ -49,7 +48,7 @@ public class SobelEdgeDetectionViewModel : ReactiveObject
     {
         try
         {
-            var result = service.SobelEdgeDetection(OriginalImageData, SelectedEdgeType);
+            var result = service.PrewittEdgeDetection(OriginalImageData, SelectedEdgeType);
             ImageData.Update(result);
             ErrorMessage = "";
         }

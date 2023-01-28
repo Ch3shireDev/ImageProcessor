@@ -7,7 +7,7 @@ namespace ImageProcessorTests;
 [TestClass]
 public class BinaryOperationServiceTests
 {
-    private BinaryOperationService service;
+    private BinaryOperationService? service;
 
     [TestInitialize]
     public void TestInitialize()
@@ -21,12 +21,12 @@ public class BinaryOperationServiceTests
         var image1 = new ImageData(3, 5);
         var image2 = new ImageData(5, 3);
 
-        var result = service.BinaryAnd(image1, image2);
+        var result = service?.BinaryAnd(image1, image2);
 
-        Assert.AreEqual(3, result.Width);
-        Assert.AreEqual(5, result.Height);
+        Assert.AreEqual(3, result?.Width);
+        Assert.AreEqual(5, result?.Height);
     }
-    
+
     [TestMethod]
     public void ColorsAndTest()
     {
@@ -57,12 +57,12 @@ public class BinaryOperationServiceTests
         });
 
 
-        var image = service.BinaryAnd(image1, image2);
+        var image = service?.BinaryAnd(image1, image2);
 
         Assert.AreEqual(Color.DarkRed.ToArgb(), image.GetPixelRgb(0, 0).ToArgb());
         Assert.AreEqual(Color.Green.ToArgb(), image.GetPixelRgb(1, 0).ToArgb());
         Assert.AreEqual(Color.Red.ToArgb(), image.GetPixelRgb(2, 0).ToArgb());
-        
+
         Assert.AreEqual(Color.Black.ToArgb(), image.GetPixelRgb(0, 1).ToArgb());
         Assert.AreEqual(Color.Black.ToArgb(), image.GetPixelRgb(1, 1).ToArgb());
         Assert.AreEqual(Color.Black.ToArgb(), image.GetPixelRgb(2, 1).ToArgb());
@@ -85,12 +85,12 @@ public class BinaryOperationServiceTests
 
         Assert.AreEqual(0b10001000, c);
 
-        var result = service.BinaryAnd(image1, image2);
+        var result = service?.BinaryAnd(image1, image2);
 
-        Assert.AreEqual(1, result.Width);
-        Assert.AreEqual(1, result.Height);
+        Assert.AreEqual(1, result?.Width);
+        Assert.AreEqual(1, result?.Height);
 
-        Assert.AreEqual(0b10001000, result.GetPixelRgb(0, 0).R);
+        Assert.AreEqual((byte)0b10001000, result?.GetPixelRgb(0, 0).R);
     }
 
     [TestMethod]
@@ -106,13 +106,13 @@ public class BinaryOperationServiceTests
 
         Assert.AreEqual(0b01100110, c);
 
-        var result = service.BinaryXor(image1, image2);
+        var result = service?.BinaryXor(image1, image2);
 
-        Assert.AreEqual(1, result.Width);
-        Assert.AreEqual(1, result.Height);
+        Assert.AreEqual(1, result?.Width);
+        Assert.AreEqual(1, result?.Height);
 
-        Assert.AreEqual(0b01100110, result.GetPixelRgb(0, 0).R);
-        Assert.AreEqual(255, result.GetPixelRgb(0, 0).A);
+        Assert.AreEqual((byte)0b01100110, result?.GetPixelRgb(0, 0).R);
+        Assert.AreEqual((byte)255, result?.GetPixelRgb(0, 0).A);
     }
 
     [TestMethod]
@@ -132,22 +132,22 @@ public class BinaryOperationServiceTests
             { Color.White, Color.Black, Color.White }
         });
 
-        var result = service.BinaryAnd(image1, image2);
+        var result = service?.BinaryAnd(image1, image2);
 
-        Assert.AreEqual(3, result.Width);
-        Assert.AreEqual(3, result.Height);
+        Assert.AreEqual(3, result?.Width);
+        Assert.AreEqual(3, result?.Height);
 
-        Assert.AreEqual(Color.Fuchsia.ToArgb(), result.GetPixelRgb(0, 0).ToArgb());
-        Assert.AreEqual(Color.Gainsboro.ToArgb(), result.GetPixelRgb(1, 0).ToArgb());
-        Assert.AreEqual(Color.GhostWhite.ToArgb(), result.GetPixelRgb(2, 0).ToArgb());
+        Assert.AreEqual(Color.Fuchsia.ToArgb(), result?.GetPixelRgb(0, 0).ToArgb());
+        Assert.AreEqual(Color.Gainsboro.ToArgb(), result?.GetPixelRgb(1, 0).ToArgb());
+        Assert.AreEqual(Color.GhostWhite.ToArgb(), result?.GetPixelRgb(2, 0).ToArgb());
 
-        Assert.AreEqual(Color.Black.ToArgb(), result.GetPixelRgb(0, 1).ToArgb());
-        Assert.AreEqual(Color.Black.ToArgb(), result.GetPixelRgb(1, 1).ToArgb());
-        Assert.AreEqual(Color.Black.ToArgb(), result.GetPixelRgb(2, 1).ToArgb());
+        Assert.AreEqual(Color.Black.ToArgb(), result?.GetPixelRgb(0, 1).ToArgb());
+        Assert.AreEqual(Color.Black.ToArgb(), result?.GetPixelRgb(1, 1).ToArgb());
+        Assert.AreEqual(Color.Black.ToArgb(), result?.GetPixelRgb(2, 1).ToArgb());
 
-        Assert.AreEqual(Color.DarkViolet.ToArgb(), result.GetPixelRgb(0, 2).ToArgb());
-        Assert.AreEqual(Color.Black.ToArgb(), result.GetPixelRgb(1, 2).ToArgb());
-        Assert.AreEqual(Color.Lime.ToArgb(), result.GetPixelRgb(2, 2).ToArgb());
+        Assert.AreEqual(Color.DarkViolet.ToArgb(), result?.GetPixelRgb(0, 2).ToArgb());
+        Assert.AreEqual(Color.Black.ToArgb(), result?.GetPixelRgb(1, 2).ToArgb());
+        Assert.AreEqual(Color.Lime.ToArgb(), result?.GetPixelRgb(2, 2).ToArgb());
     }
 
     [TestMethod]
@@ -156,12 +156,12 @@ public class BinaryOperationServiceTests
         var image1 = new ImageData(new[,] { { true } });
         var image2 = new ImageData(new[,] { { true } });
 
-        var result = service.BinaryAnd(image1, image2);
+        var result = service?.BinaryAnd(image1, image2);
 
-        Assert.AreEqual(1, result.Width);
-        Assert.AreEqual(1, result.Height);
+        Assert.AreEqual(1, result?.Width);
+        Assert.AreEqual(1, result?.Height);
 
-        Assert.AreEqual(true, result.GetPixelBinary(0, 0));
+        Assert.AreEqual(true, result?.GetPixelBinary(0, 0));
     }
 
     [TestMethod]
@@ -170,12 +170,12 @@ public class BinaryOperationServiceTests
         var image1 = new ImageData(new[,] { { true } });
         var image2 = new ImageData(new[,] { { false } });
 
-        var result = service.BinaryAnd(image1, image2);
+        var result = service?.BinaryAnd(image1, image2);
 
-        Assert.AreEqual(1, result.Width);
-        Assert.AreEqual(1, result.Height);
+        Assert.AreEqual(1, result?.Width);
+        Assert.AreEqual(1, result?.Height);
 
-        Assert.AreEqual(false, result.GetPixelBinary(0, 0));
+        Assert.AreEqual(false, result?.GetPixelBinary(0, 0));
     }
 
     [TestMethod]
@@ -184,12 +184,12 @@ public class BinaryOperationServiceTests
         var image1 = new ImageData(new[,] { { false } });
         var image2 = new ImageData(new[,] { { true } });
 
-        var result = service.BinaryAnd(image1, image2);
+        var result = service?.BinaryAnd(image1, image2);
 
-        Assert.AreEqual(1, result.Width);
-        Assert.AreEqual(1, result.Height);
+        Assert.AreEqual(1, result?.Width);
+        Assert.AreEqual(1, result?.Height);
 
-        Assert.AreEqual(false, result.GetPixelBinary(0, 0));
+        Assert.AreEqual(false, result?.GetPixelBinary(0, 0));
     }
 
     [TestMethod]
@@ -198,12 +198,12 @@ public class BinaryOperationServiceTests
         var image1 = new ImageData(new[,] { { false } });
         var image2 = new ImageData(new[,] { { false } });
 
-        var result = service.BinaryAnd(image1, image2);
+        var result = service?.BinaryAnd(image1, image2);
 
-        Assert.AreEqual(1, result.Width);
-        Assert.AreEqual(1, result.Height);
+        Assert.AreEqual(1, result?.Width);
+        Assert.AreEqual(1, result?.Height);
 
-        Assert.AreEqual(false, result.GetPixelBinary(0, 0));
+        Assert.AreEqual(false, result?.GetPixelBinary(0, 0));
     }
 
     [TestMethod]
@@ -217,34 +217,34 @@ public class BinaryOperationServiceTests
         var image1 = new ImageData(new[,] { { true, true }, { true, true }, { true, true } });
         var image2 = new ImageData(new[,] { { true, true }, { true, true }, { true, true } });
 
-        var result = service.BinaryAnd(image1, image2);
+        var result = service?.BinaryAnd(image1, image2);
 
-        Assert.AreEqual(2, result.Width);
-        Assert.AreEqual(3, result.Height);
+        Assert.AreEqual(2, result?.Width);
+        Assert.AreEqual(3, result?.Height);
     }
 
     [TestMethod]
     public void BinaryOrTest()
     {
-        Assert.AreEqual(true, service.BinaryOr(new ImageData(new[,] { { true } }), new ImageData(new[,] { { true } })).GetPixelBinary(0, 0));
-        Assert.AreEqual(true, service.BinaryOr(new ImageData(new[,] { { true } }), new ImageData(new[,] { { false } })).GetPixelBinary(0, 0));
-        Assert.AreEqual(true, service.BinaryOr(new ImageData(new[,] { { false } }), new ImageData(new[,] { { true } })).GetPixelBinary(0, 0));
-        Assert.AreEqual(false, service.BinaryOr(new ImageData(new[,] { { false } }), new ImageData(new[,] { { false } })).GetPixelBinary(0, 0));
+        Assert.AreEqual(true, service?.BinaryOr(new ImageData(new[,] { { true } }), new ImageData(new[,] { { true } })).GetPixelBinary(0, 0));
+        Assert.AreEqual(true, service?.BinaryOr(new ImageData(new[,] { { true } }), new ImageData(new[,] { { false } })).GetPixelBinary(0, 0));
+        Assert.AreEqual(true, service?.BinaryOr(new ImageData(new[,] { { false } }), new ImageData(new[,] { { true } })).GetPixelBinary(0, 0));
+        Assert.AreEqual(false, service?.BinaryOr(new ImageData(new[,] { { false } }), new ImageData(new[,] { { false } })).GetPixelBinary(0, 0));
     }
 
     [TestMethod]
     public void BinaryXorTest()
     {
-        Assert.AreEqual(false, service.BinaryXor(new ImageData(new[,] { { true } }), new ImageData(new[,] { { true } })).GetPixelBinary(0, 0));
-        Assert.AreEqual(true, service.BinaryXor(new ImageData(new[,] { { true } }), new ImageData(new[,] { { false } })).GetPixelBinary(0, 0));
-        Assert.AreEqual(true, service.BinaryXor(new ImageData(new[,] { { false } }), new ImageData(new[,] { { true } })).GetPixelBinary(0, 0));
-        Assert.AreEqual(false, service.BinaryXor(new ImageData(new[,] { { false } }), new ImageData(new[,] { { false } })).GetPixelBinary(0, 0));
+        Assert.AreEqual(false, service?.BinaryXor(new ImageData(new[,] { { true } }), new ImageData(new[,] { { true } })).GetPixelBinary(0, 0));
+        Assert.AreEqual(true, service?.BinaryXor(new ImageData(new[,] { { true } }), new ImageData(new[,] { { false } })).GetPixelBinary(0, 0));
+        Assert.AreEqual(true, service?.BinaryXor(new ImageData(new[,] { { false } }), new ImageData(new[,] { { true } })).GetPixelBinary(0, 0));
+        Assert.AreEqual(false, service?.BinaryXor(new ImageData(new[,] { { false } }), new ImageData(new[,] { { false } })).GetPixelBinary(0, 0));
     }
 
     [TestMethod]
     public void BinaryNotTest()
     {
-        Assert.AreEqual(false, service.BinaryNot(new ImageData(new[,] { { true } })).GetPixelBinary(0, 0));
-        Assert.AreEqual(true, service.BinaryNot(new ImageData(new[,] { { false } })).GetPixelBinary(0, 0));
+        Assert.AreEqual(false, service?.BinaryNot(new ImageData(new[,] { { true } })).GetPixelBinary(0, 0));
+        Assert.AreEqual(true, service?.BinaryNot(new ImageData(new[,] { { false } })).GetPixelBinary(0, 0));
     }
 }

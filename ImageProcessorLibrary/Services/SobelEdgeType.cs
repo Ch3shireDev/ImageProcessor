@@ -10,5 +10,5 @@ public enum SobelEdgeType
     WEST,
     SOUTH_WEST,
     SOUTH,
-    SOUTH_EAST,
+    SOUTH_EAST
 }

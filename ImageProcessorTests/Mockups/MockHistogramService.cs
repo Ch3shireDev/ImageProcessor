@@ -11,31 +11,31 @@ public class MockHistogramService : IHistogramService
     public bool IsShowGHistogramCalled { get; set; }
     public bool IsShowBHistogramCalled { get; set; }
 
-    public IImageData GetValueHistogram(IImageData imageData)
+    public ImageData GetValueHistogram(ImageData imageData)
     {
         IsShowValueHistogramCalled = true;
         return imageData;
     }
 
-    public IImageData GetRgbHistogram(IImageData imageData)
+    public ImageData GetRgbHistogram(ImageData imageData)
     {
         IsShowRgbHistogramCalled = true;
         return imageData;
     }
 
-    public IImageData GetRedHistogram(IImageData imageData)
+    public ImageData GetRedHistogram(ImageData imageData)
     {
         IsShowRHistogramCalled = true;
         return imageData;
     }
 
-    public IImageData GetGreenHistogram(IImageData imageData)
+    public ImageData GetGreenHistogram(ImageData imageData)
     {
         IsShowGHistogramCalled = true;
         return imageData;
     }
 
-    public IImageData GetBlueHistogram(IImageData imageData)
+    public ImageData GetBlueHistogram(ImageData imageData)
     {
         IsShowBHistogramCalled = true;
         return imageData;

@@ -1,12 +1,11 @@
 using Avalonia.Controls;
 
-namespace ImageProcessorGUI.Views
+namespace ImageProcessorGUI.Views;
+
+public partial class OptionsTwoValuesWindow : Window
 {
-    public partial class OptionsTwoValuesWindow : Window
+    public OptionsTwoValuesWindow()
     {
-        public OptionsTwoValuesWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

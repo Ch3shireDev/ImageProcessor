@@ -8,7 +8,7 @@ namespace ImageProcessorGUI.Services;
 
 public class ProcessService : IProcessService
 {
-    public IImageData NegateImage(IImageData imageData)
+    public ImageData NegateImage(ImageData imageData)
     {
         var bitmap = new Bitmap(imageData.Width, imageData.Height);
 
@@ -29,7 +29,7 @@ public class ProcessService : IProcessService
         return new ImageData(imageData.Filename, stream.ToArray());
     }
 
-    public IImageData ToGrayscale(IImageData imageData)
+    public ImageData ToGrayscale(ImageData imageData)
     {
         var bitmap = new Bitmap(imageData.Width, imageData.Height);
 
@@ -48,9 +48,10 @@ public class ProcessService : IProcessService
         return new ImageData(imageData.Filename, stream.ToArray());
     }
 
-    public IImageData SwapHorizontal(IImageData imageData)
+    public ImageData SwapHorizontal(ImageData imageData)
     {
         var bitmap = new Bitmap(imageData.Width, imageData.Height);
+
         for (var x = 0; x < imageData.Width / 2 + 1; x++)
         for (var y = 0; y < imageData.Height; y++)
         {

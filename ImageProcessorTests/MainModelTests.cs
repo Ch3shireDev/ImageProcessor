@@ -3,6 +3,7 @@ using ImageProcessorGUI.Models;
 using ImageProcessorGUI.ViewModels;
 using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.ServiceProviders;
+using ImageProcessorLibrary.Services;
 using ImageProcessorTests.Mockups;
 
 namespace ImageProcessorTests;
@@ -17,6 +18,8 @@ public class MainModelTests
     private MockWindowService _windowService;
     private MainModel model;
     private MockProcessService processService;
+
+    private ImageServiceProvider serviceProvider;
     private MockStretchingOptionsWindowService stretchingOptionsWindowService;
 
     [TestInitialize]
@@ -47,8 +50,6 @@ public class MainModelTests
         model = new MainModel(imageData, serviceProvider);
     }
 
-    private ImageServiceProvider serviceProvider;
-    
     [TestMethod]
     public void BinaryOperationsViewModelTest()
     {
@@ -59,17 +60,17 @@ public class MainModelTests
             { Color.Black, Color.Purple, Color.Green }
         });
 
-        Assert.AreEqual(Color.DarkRed.ToArgb(), imageData.GetPixelRgb(0,0).ToArgb());
-        Assert.AreEqual(Color.White.ToArgb(), imageData.GetPixelRgb(1,0).ToArgb());
-        Assert.AreEqual(Color.Red.ToArgb(), imageData.GetPixelRgb(2,0).ToArgb());
+        Assert.AreEqual(Color.DarkRed.ToArgb(), imageData.GetPixelRgb(0, 0).ToArgb());
+        Assert.AreEqual(Color.White.ToArgb(), imageData.GetPixelRgb(1, 0).ToArgb());
+        Assert.AreEqual(Color.Red.ToArgb(), imageData.GetPixelRgb(2, 0).ToArgb());
 
-        Assert.AreEqual(Color.Blue.ToArgb(), imageData.GetPixelRgb(0,1).ToArgb());
-        Assert.AreEqual(Color.White.ToArgb(), imageData.GetPixelRgb(1,1).ToArgb());
-        Assert.AreEqual(Color.Black.ToArgb(), imageData.GetPixelRgb(2,1).ToArgb());
+        Assert.AreEqual(Color.Blue.ToArgb(), imageData.GetPixelRgb(0, 1).ToArgb());
+        Assert.AreEqual(Color.White.ToArgb(), imageData.GetPixelRgb(1, 1).ToArgb());
+        Assert.AreEqual(Color.Black.ToArgb(), imageData.GetPixelRgb(2, 1).ToArgb());
 
-        Assert.AreEqual(Color.Black.ToArgb(), imageData.GetPixelRgb(0,2).ToArgb());
-        Assert.AreEqual(Color.Purple.ToArgb(), imageData.GetPixelRgb(1,2).ToArgb());
-        Assert.AreEqual(Color.Green.ToArgb(), imageData.GetPixelRgb(2,2).ToArgb());
+        Assert.AreEqual(Color.Black.ToArgb(), imageData.GetPixelRgb(0, 2).ToArgb());
+        Assert.AreEqual(Color.Purple.ToArgb(), imageData.GetPixelRgb(1, 2).ToArgb());
+        Assert.AreEqual(Color.Green.ToArgb(), imageData.GetPixelRgb(2, 2).ToArgb());
 
         var mainModel = new MainModel(imageData, serviceProvider);
 
@@ -77,7 +78,7 @@ public class MainModelTests
         var viewModel = _windowService.BinaryOperationViewModel as BinaryOperationViewModel;
         Assert.IsNotNull(viewModel);
 
-        viewModel.SelectedOperation = ImageProcessorLibrary.Services.BinaryOperationType.BINARY_AND;
+        viewModel.SelectedOperation = BinaryOperationType.BINARY_AND;
         viewModel.SelectedImage = new ImageData(new[,]
         {
             { true, true, true },
@@ -87,7 +88,9 @@ public class MainModelTests
 
         viewModel.ShowCommand.Execute(null);
 
-        var image = _windowService.ImageData as ImageData;
+        var image = _windowService.ImageData;
+
+        Assert.IsNotNull(image);
 
         Assert.AreEqual(Color.DarkRed.ToArgb(), image.GetPixelRgb(0, 0).ToArgb());
         Assert.AreEqual(Color.White.ToArgb(), image.GetPixelRgb(1, 0).ToArgb());
@@ -96,7 +99,7 @@ public class MainModelTests
         Assert.AreEqual(Color.Black.ToArgb(), image.GetPixelRgb(0, 1).ToArgb());
         Assert.AreEqual(Color.Black.ToArgb(), image.GetPixelRgb(1, 1).ToArgb());
         Assert.AreEqual(Color.Black.ToArgb(), image.GetPixelRgb(2, 1).ToArgb());
-        
+
         Assert.AreEqual(Color.Black.ToArgb(), image.GetPixelRgb(0, 2).ToArgb());
         Assert.AreEqual(Color.Purple.ToArgb(), image.GetPixelRgb(1, 2).ToArgb());
         Assert.AreEqual(Color.Green.ToArgb(), image.GetPixelRgb(2, 2).ToArgb());
@@ -107,10 +110,10 @@ public class MainModelTests
     ///     wyboru pliku, po czym powinno pojawić się nowe okno z wybranym obrazem.
     /// </summary>
     [TestMethod]
-    public void OpenImageTest()
+    public async Task OpenImageTest()
     {
         Assert.IsFalse(_openImageService.IsOpen);
-        model.OpenImage();
+        await model.OpenImage();
         Assert.IsTrue(_openImageService.IsOpen);
     }
 

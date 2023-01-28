@@ -1,4 +1,3 @@
-
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -46,7 +45,7 @@
                             <MenuItem Header="Histogram B" Command="{Binding ShowBHistogramCommand}" />
                         </MenuItem>
                         <MenuItem Header="Skaluj">
-							<MenuItem Header="Resetuj skalę" Command="{Binding ShowNormalScaleCommand}"/>
+                            <MenuItem Header="Resetuj skalę" Command="{Binding ShowNormalScaleCommand}" />
                             <MenuItem Header="Skaluj 200%" Command="{Binding ShowScaledUp200PercentCommand}" />
                             <MenuItem Header="Skaluj 150%" Command="{Binding ShowScaledUp150PercentCommand}" />
                             <MenuItem Header="Skaluj 50%" Command="{Binding ShowScaledDown50PercentCommand}" />
@@ -98,31 +97,32 @@
                         </MenuItem>
                         <MenuItem Header="Operacja medianowa" Command="{Binding CalculateMedianCommand}" />
                         <MenuItem Header="Segmentacja obrazu">
-							<MenuItem Header="Metoda Otsu" Command="{Binding OtsuSegmentationCommand}" />
-							<MenuItem Header="Progowanie adaptacyjne"
+                            <MenuItem Header="Metoda Otsu" Command="{Binding OtsuSegmentationCommand}" />
+                            <MenuItem Header="Progowanie adaptacyjne"
                                       Command="{Binding AdaptiveThresholdSegmentationCommand}" />
-						</MenuItem>
+                        </MenuItem>
                     </MenuItem>
-					<MenuItem Header="_Detekcja krawędzi">
-						<MenuItem Header="Metoda Sobela" Command="{Binding SobelEdgeDetectionCommand}" />
-						<MenuItem Header="Metoda Prewitta" Command="{Binding PrewittEdgeDetectionCommand}" />
-						<MenuItem Header="Operator Canny'ego" Command="{Binding CannyOperatorEdgeDetectionCommand}" />
-					</MenuItem>
-					<MenuItem Header="_Morfologia">
-						<MenuItem Header="Erozja" Command="{Binding MorphologyErosionCommand}" />
-						<MenuItem Header="Dylatacja" Command="{Binding MorphologyDilationCommand}" />
-						<MenuItem Header="Otwarcie" Command="{Binding MorphologyOpeningCommand}" />
-						<MenuItem Header="Zamknięcie" Command="{Binding MorphologyClosingCommand}" />
-					</MenuItem>
-					<MenuItem Header="_Segmentacja">
-						<MenuItem Header="Progowanie binarne" Command="{Binding BinaryThresholdCommand}" />
-						<MenuItem Header="Progowanie z jednym suwakiem"
+                    <MenuItem Header="_Detekcja krawędzi">
+                        <MenuItem Header="Metoda Sobela" Command="{Binding SobelEdgeDetectionCommand}" />
+                        <MenuItem Header="Metoda Prewitta" Command="{Binding PrewittEdgeDetectionCommand}" />
+                        <MenuItem Header="Operator Canny'ego" Command="{Binding CannyOperatorEdgeDetectionCommand}" />
+                    </MenuItem>
+                    <MenuItem Header="_Morfologia">
+                        <MenuItem Header="Erozja" Command="{Binding MorphologyErosionCommand}" />
+                        <MenuItem Header="Dylatacja" Command="{Binding MorphologyDilationCommand}" />
+                        <MenuItem Header="Otwarcie" Command="{Binding MorphologyOpeningCommand}" />
+                        <MenuItem Header="Zamknięcie" Command="{Binding MorphologyClosingCommand}" />
+                    </MenuItem>
+                    <MenuItem Header="_Segmentacja">
+                        <MenuItem Header="Progowanie binarne" Command="{Binding BinaryThresholdCommand}" />
+                        <MenuItem Header="Progowanie z jednym suwakiem"
                                   Command="{Binding GreyscaleThresholdOneSliderCommand}" />
-						<MenuItem Header="Progowanie z dwoma suwakami"
+                        <MenuItem Header="Progowanie z dwoma suwakami"
                                   Command="{Binding GreyscaleThresholdTwoSlidersCommand}" />
-						<MenuItem Header="Progrowanie metodą Otsu" Command="{Binding OtsuSegmentationCommand}"/>
-						<MenuItem Header="Progowanie adaptacyjne" Command="{Binding AdaptiveThresholdSegmentationCommand}"/>
-					</MenuItem>
+                        <MenuItem Header="Progrowanie metodą Otsu" Command="{Binding OtsuSegmentationCommand}" />
+                        <MenuItem Header="Progowanie adaptacyjne"
+                                  Command="{Binding AdaptiveThresholdSegmentationCommand}" />
+                    </MenuItem>
                     <MenuItem Header="_Analiza">
                         <MenuItem Header="Oblicz wektor cech" Command="{Binding CalculateFeatureVectorCommand}" />
                     </MenuItem>

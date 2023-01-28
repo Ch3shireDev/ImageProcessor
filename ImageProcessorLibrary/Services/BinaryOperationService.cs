@@ -5,22 +5,22 @@ namespace ImageProcessorLibrary.Services;
 
 public class BinaryOperationService
 {
-    public IImageData BinaryAnd(IImageData image1, IImageData image2)
+    public ImageData BinaryAnd(ImageData image1, ImageData image2)
     {
         return TwoArgumentOperation(image1, image2, (a, b) => (byte)(a & b));
     }
 
-    public IImageData BinaryOr(IImageData image1, IImageData image2)
+    public ImageData BinaryOr(ImageData image1, ImageData image2)
     {
         return TwoArgumentOperation(image1, image2, (a, b) => (byte)(a | b));
     }
 
-    public IImageData BinaryXor(IImageData image1, IImageData image2)
+    public ImageData BinaryXor(ImageData image1, ImageData image2)
     {
         return TwoArgumentOperation(image1, image2, (a, b) => (byte)(a ^ b));
     }
 
-    private static IImageData TwoArgumentOperation(IImageData image1, IImageData image2, Func<byte, byte, byte> operation)
+    private static ImageData TwoArgumentOperation(ImageData image1, ImageData image2, Func<byte, byte, byte> operation)
     {
         var width1 = image1.Width;
         var height1 = image1.Height;
@@ -51,7 +51,7 @@ public class BinaryOperationService
     }
 
 
-    public IImageData BinaryNot(IImageData image1)
+    public ImageData BinaryNot(ImageData image1)
     {
         var width = image1.Width;
         var height = image1.Height;
@@ -67,7 +67,7 @@ public class BinaryOperationService
         return new ImageData(result);
     }
 
-    public IImageData ToBinaryMask(IImageData image1)
+    public ImageData ToBinaryMask(ImageData image1)
     {
         var imageData = new ImageData(image1.Width, image1.Height);
 
@@ -84,7 +84,7 @@ public class BinaryOperationService
         return imageData;
     }
 
-    public IImageData To8BitMask(IImageData image1)
+    public ImageData To8BitMask(ImageData image1)
     {
         var imageData = new ImageData(image1.Width, image1.Height);
 

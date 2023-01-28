@@ -45,7 +45,7 @@ public class ThresholdService
         return new ImageData(imageData.Filepath, stream.ToArray());
     }
 
-    public IImageData GreyscaleThresholdTwoSliders(IImageData imageData, int thresholdValue1, int thresholdValue2)
+    public ImageData GreyscaleThresholdTwoSliders(ImageData imageData, int thresholdValue1, int thresholdValue2)
     {
         var bitmap = imageData.Bitmap;
 

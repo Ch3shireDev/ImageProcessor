@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Input;
+using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.Services;
 using OpenCvSharp;
 using ReactiveUI;
@@ -9,14 +10,13 @@ namespace ImageProcessorGUI.ViewModels;
 
 public class FilterBorderViewModel : ReactiveObject
 {
-    private readonly IWindowService _windowService;
-    private readonly IImageData ImageData;
-
     private readonly FilterService _filterService = new();
+    private readonly IWindowService _windowService;
+    private readonly ImageData ImageData;
 
     private string errorMessage;
 
-    public FilterBorderViewModel(IImageData imageData, IWindowService windowService, double[,] kernel, string title = "Filtr")
+    public FilterBorderViewModel(ImageData imageData, IWindowService windowService, double[,] kernel, string title = "Filtr")
     {
         Kernel = kernel;
         Title = title;

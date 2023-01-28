@@ -4,7 +4,7 @@ using ImageProcessorLibrary.Services;
 
 namespace ImageProcessorLibrary.DataStructures;
 
-public class ImageData : IImageData
+public class ImageData
 {
     private byte[]? filebytes;
 
@@ -28,7 +28,7 @@ public class ImageData : IImageData
         Pixels = new Color[height, width];
     }
 
-    public ImageData(string filepath, byte[] filebytes)
+    public ImageData(string filepath, byte[]? filebytes)
     {
         Filepath = filepath;
         Filename = Path.GetFileName(filepath);
@@ -37,7 +37,7 @@ public class ImageData : IImageData
         Pixels = ToPixels(new Bitmap(new MemoryStream(filebytes)));
     }
 
-    public ImageData(IImageData imageData)
+    public ImageData(ImageData imageData)
     {
         Filepath = imageData.Filename;
         Filename = Path.GetFileName(Filepath);
@@ -58,7 +58,7 @@ public class ImageData : IImageData
 
     public string Filepath { get; set; }
 
-    public byte[] Filebytes
+    public byte[]? Filebytes
     {
         get => GetFilebytes();
         set => filebytes = value;
@@ -66,19 +66,43 @@ public class ImageData : IImageData
 
     public string Extension { get; set; }
 
+    public int Width => Pixels.GetLength(1);
+
+    public int Height => Pixels.GetLength(0);
+
+    public Color this[int x, int y]
+    {
+        get => GetPixelRgb(y, x);
+        set => SetPixel(y, x, value);
+    }
+
+    public byte this[int x, int y, int channel]
+    {
+        get => channel switch
+        {
+            0 => GetPixelRgb(y, x).R,
+            1 => GetPixelRgb(y, x).G,
+            2 => GetPixelRgb(y, x).B,
+            _ => throw new ArgumentOutOfRangeException(nameof(channel))
+        };
+        set => SetPixel(y, x, channel switch
+        {
+            0 => Color.FromArgb(value, GetPixelRgb(y, x).G, GetPixelRgb(y, x).B),
+            1 => Color.FromArgb(GetPixelRgb(y, x).R, value, GetPixelRgb(y, x).B),
+            2 => Color.FromArgb(GetPixelRgb(y, x).R, GetPixelRgb(y, x).G, value),
+            _ => throw new ArgumentOutOfRangeException(nameof(channel))
+        });
+    }
+
     public bool GetPixelBinary(int x, int y)
     {
         var pixel = Pixels[y, x];
         return !(pixel.R == 0 && pixel.G == 0 && pixel.B == 0);
     }
 
-    public int Width => Pixels.GetLength(1);
-
-    public int Height => Pixels.GetLength(0);
-
     public event EventHandler<EventArgs>? ImageChanged;
 
-    public void Update(IImageData result)
+    public void Update(ImageData result)
     {
         Filepath = result.Filepath;
         Filebytes = result.Filebytes;
@@ -111,7 +135,7 @@ public class ImageData : IImageData
         File.WriteAllBytes(filepath, Filebytes);
     }
 
-    public bool IsEqual(IImageData imageData)
+    public bool IsEqual(ImageData imageData)
     {
         if (Width != imageData.Width || Height != imageData.Height)
         {
@@ -140,30 +164,6 @@ public class ImageData : IImageData
         if (value > 255) value = 255;
         if (value < 0) value = 0;
         return (byte)value;
-    }
-
-    public Color this[int x, int y]
-    {
-        get => GetPixelRgb(y, x);
-        set => SetPixel(y, x, value);
-    }
-
-    public byte this[int x, int y, int channel]
-    {
-        get => channel switch
-        {
-            0 => GetPixelRgb(y, x).R,
-            1 => GetPixelRgb(y, x).G,
-            2 => GetPixelRgb(y, x).B,
-            _ => throw new ArgumentOutOfRangeException(nameof(channel))
-        };
-        set => SetPixel(y, x, channel switch
-        {
-            0 => Color.FromArgb(value, GetPixelRgb(y, x).G, GetPixelRgb(y, x).B),
-            1 => Color.FromArgb(GetPixelRgb(y, x).R, value, GetPixelRgb(y, x).B),
-            2 => Color.FromArgb(GetPixelRgb(y, x).R, GetPixelRgb(y, x).G, value),
-            _ => throw new ArgumentOutOfRangeException(nameof(channel))
-        });
     }
 
     public void Save(string filePath)
@@ -262,7 +262,7 @@ public class ImageData : IImageData
         return pixels;
     }
 
-    private byte[] GetFilebytes()
+    private byte[]? GetFilebytes()
     {
         var bitmap = new Bitmap(Width, Height);
 
@@ -279,12 +279,12 @@ public class ImageData : IImageData
         return stream.ToArray();
     }
 
-    public static IImageData Read(string imagePath)
+    public static ImageData Read(string imagePath)
     {
         return new ImageData(imagePath, File.ReadAllBytes(imagePath));
     }
 
-    public static IImageData Combine(params IImageData[] imageDataList)
+    public static ImageData Combine(params ImageData[] imageDataList)
     {
         var height = imageDataList[0].Height;
         var width = imageDataList[0].Width;

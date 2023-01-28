@@ -5,62 +5,62 @@
         mc:Ignorable="d" Width="450" Height="600"
         x:Class="ImageProcessorGUI.Views.AddPeriodicNoiseView"
         Title="AddPeriodicNoiseView">
-	<StackPanel Orientation="Vertical">
-		<Label>Dodawanie zakłóceń periodycznych</Label>
-		<Grid>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="Auto"/>
-				<ColumnDefinition Width="*"/>
-				<ColumnDefinition Width="100"/>
-			</Grid.ColumnDefinitions>
-			<Label Grid.Column="0" VerticalContentAlignment="Center" Margin="10">Value 1</Label>
-			<Slider Grid.Column="1" Margin="10" Value="{Binding Amplitude}" Minimum="0" Maximum="255"/>
-			<TextBox Grid.Column="2" Width="100" Height="40" Margin="10" Text="{Binding Amplitude}"/>
-		</Grid>
-		<Grid>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="Auto"/>
-				<ColumnDefinition Width="*"/>
-				<ColumnDefinition Width="100"/>
-			</Grid.ColumnDefinitions>
-			<Label Grid.Column="0" VerticalContentAlignment="Center" Margin="10">Frequency X</Label>
-			<Slider Grid.Column="1" Margin="10" Value="{Binding FrequencyX}"  Minimum="-1" Maximum="1"/>
-			<TextBox Grid.Column="2" Width="100" Height="40" Margin="10" Text="{Binding FrequencyX}"/>
-		</Grid>
-		<Grid>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="Auto"/>
-				<ColumnDefinition Width="*"/>
-				<ColumnDefinition Width="100"/>
-			</Grid.ColumnDefinitions>
-			<Label Grid.Column="0" VerticalContentAlignment="Center" Margin="10">Frequency Y</Label>
-			<Slider Grid.Column="1" Margin="10" Value="{Binding FrequencyY}"  Minimum="-1" Maximum="1"/>
-			<TextBox Grid.Column="2" Width="100" Height="40" Margin="10" Text="{Binding FrequencyY}"/>
-		</Grid>
-		<Grid>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="Auto"/>
-				<ColumnDefinition Width="*"/>
-				<ColumnDefinition Width="100"/>
-			</Grid.ColumnDefinitions>
-			<Label Grid.Column="0" VerticalContentAlignment="Center" Margin="10">Phase</Label>
-			<Slider Grid.Column="1" Margin="10" Value="{Binding Phase}"  Minimum="-1" Maximum="1"/>
-			<TextBox Grid.Column="2" Width="100" Height="40" Margin="10" Text="{Binding Phase}"/>
-		</Grid>
-		<Grid>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="1*"/>
-				<ColumnDefinition Width="1*"/>
-			</Grid.ColumnDefinitions>
-			<StackPanel Grid.Column="0">
-				<Label>Widmo przed</Label>
-				<Image Source="{Binding FourierBeforeImage}" Height="200"/>
-			</StackPanel>
-			<StackPanel Grid.Column="1">
-				<Label>Widmo po</Label>
-				<Image Source="{Binding FourierAfterImage}" Height="200"/>
-			</StackPanel>
-		</Grid>
-		<Button Command="{Binding RefreshCommand}">Wyświetl</Button>
-	</StackPanel>
+    <StackPanel Orientation="Vertical">
+        <Label>Dodawanie zakłóceń periodycznych</Label>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" VerticalContentAlignment="Center" Margin="10">Value 1</Label>
+            <Slider Grid.Column="1" Margin="10" Value="{Binding Amplitude}" Minimum="0" Maximum="255" />
+            <TextBox Grid.Column="2" Width="100" Height="40" Margin="10" Text="{Binding Amplitude}" />
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" VerticalContentAlignment="Center" Margin="10">Frequency X</Label>
+            <Slider Grid.Column="1" Margin="10" Value="{Binding FrequencyX}" Minimum="-1" Maximum="1" />
+            <TextBox Grid.Column="2" Width="100" Height="40" Margin="10" Text="{Binding FrequencyX}" />
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" VerticalContentAlignment="Center" Margin="10">Frequency Y</Label>
+            <Slider Grid.Column="1" Margin="10" Value="{Binding FrequencyY}" Minimum="-1" Maximum="1" />
+            <TextBox Grid.Column="2" Width="100" Height="40" Margin="10" Text="{Binding FrequencyY}" />
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" VerticalContentAlignment="Center" Margin="10">Phase</Label>
+            <Slider Grid.Column="1" Margin="10" Value="{Binding Phase}" Minimum="-1" Maximum="1" />
+            <TextBox Grid.Column="2" Width="100" Height="40" Margin="10" Text="{Binding Phase}" />
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <Label>Widmo przed</Label>
+                <Image Source="{Binding FourierBeforeImage}" Height="200" />
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <Label>Widmo po</Label>
+                <Image Source="{Binding FourierAfterImage}" Height="200" />
+            </StackPanel>
+        </Grid>
+        <Button Command="{Binding RefreshCommand}">Wyświetl</Button>
+    </StackPanel>
 </Window>

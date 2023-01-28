@@ -1,6 +1,8 @@
-﻿namespace ImageProcessorLibrary.Services;
+﻿using ImageProcessorLibrary.DataStructures;
+
+namespace ImageProcessorLibrary.Services;
 
 public interface IProcessService
 {
-    IImageData NegateImage(IImageData imageData);
+    ImageData NegateImage(ImageData imageData);
 }

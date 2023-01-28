@@ -14,7 +14,7 @@ public class SaveImageDialogService : ISaveImageDialogService
             ? desktop.MainWindow
             : null;
 
-    public async Task<string?> GetSaveImageFileName(IImageData imageData)
+    public async Task<string?> GetSaveImageFileName(ImageData imageData)
     {
         var fileDialog = new SaveFileDialog
         {

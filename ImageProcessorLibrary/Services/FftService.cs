@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using ImageProcessorLibrary.DataStructures;
 
 namespace ImageProcessorLibrary.Services;
 
@@ -11,9 +12,9 @@ public class FftService
         var fourier = complexData.Data;
         fourier = ChangeSizeToClosestPowerOfTwo(fourier);
 
-        var red = fourierService.FFT2D(fourier[0],  1);
-        var green = fourierService.FFT2D(fourier[1],  1);
-        var blue = fourierService.FFT2D(fourier[2],  1);
+        var red = fourierService.FFT2D(fourier[0]);
+        var green = fourierService.FFT2D(fourier[1]);
+        var blue = fourierService.FFT2D(fourier[2]);
 
         return new ComplexData(complexData)
         {
@@ -110,7 +111,7 @@ public class FftService
         return Resize(input, newWidth, newWidth);
     }
 
-    public int FindWidthForPowerOfTwo(IImageData imageData)
+    public int FindWidthForPowerOfTwo(ImageData imageData)
     {
         var complexData = new ComplexData(imageData);
         return FindWidthForPowerOfTwo(complexData.Data[0]);
@@ -297,7 +298,7 @@ public class FftService
         return complexData;
     }
 
-    public IImageData AddPeriodicNoise(IImageData imageData, double frequencyX = 0, double frequencyY = 0, double amplitude = 1, double phase = 0)
+    public ImageData AddPeriodicNoise(ImageData imageData, double frequencyX = 0, double frequencyY = 0, double amplitude = 1, double phase = 0)
     {
         var complexData = new ComplexData(imageData);
         complexData = AddPeriodicNoise(complexData, frequencyX, frequencyY, amplitude, phase);
@@ -329,8 +330,6 @@ public class FftService
                         complexData = RemovePixelIfIsInRange(complexData, width - x - 1, height - y - 1, width, height);
                         complexData = RemovePixelIfIsInRange(complexData, x, height - y - 1, width, height);
                         complexData = RemovePixelIfIsInRange(complexData, width - x - 1, y, width, height);
-                        break;
-                    default:
                         break;
                 }
             }

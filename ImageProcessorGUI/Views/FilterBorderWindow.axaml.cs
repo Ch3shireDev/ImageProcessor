@@ -1,12 +1,11 @@
 using Avalonia.Controls;
 
-namespace ImageProcessorGUI.Views
+namespace ImageProcessorGUI.Views;
+
+public partial class FilterBorderWindow : Window
 {
-    public partial class FilterBorderWindow : Window
+    public FilterBorderWindow()
     {
-        public FilterBorderWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

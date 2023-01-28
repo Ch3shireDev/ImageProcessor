@@ -9,6 +9,9 @@ public class OptionsOneValueViewModel<T1> : ReactiveObject
 {
     private readonly Func<ImageData, T1, ImageData>? _transform;
     private T1? value1;
+    private T1 value1Max;
+
+    private T1 value1Min;
 
     public OptionsOneValueViewModel(ImageData imageData, Func<ImageData, T1, ImageData> transform)
     {
@@ -23,13 +26,10 @@ public class OptionsOneValueViewModel<T1> : ReactiveObject
         OriginalImageData = new ImageData(imageData);
     }
 
-    public bool AutoRefresh{ get; set; }
+    public bool AutoRefresh { get; set; }
     public string? Value1Label { get; set; }
     public ImageData ImageData { get; set; }
     public ImageData OriginalImageData { get; set; }
-
-    T1 value1Min;
-    T1 value1Max;
 
     public T1 Value1Min
     {
@@ -56,12 +56,12 @@ public class OptionsOneValueViewModel<T1> : ReactiveObject
         get => value1;
         set
         {
-            this.value1 = value;
+            value1 = value;
             if (AutoRefresh) Refresh();
             this.RaisePropertyChanged();
         }
     }
-    
+
     public string? Header { get; set; }
 
     public virtual ICommand RefreshCommand => ReactiveCommand.Create(Refresh);

@@ -4,27 +4,27 @@ namespace ImageProcessorLibrary.Services;
 
 public class LutService : ILutService
 {
-    public int[] GetIntensityHistogram(byte[] image)
+    public int[] GetIntensityHistogram(byte[]? image)
     {
         return GetHistogram(image, pixel => (pixel.R + pixel.G + pixel.B) / 3);
     }
 
-    public int[] GetRedHistogram(byte[] image)
+    public int[] GetRedHistogram(byte[]? image)
     {
         return GetHistogram(image, pixel => pixel.R);
     }
 
-    public int[] GetGreenHistogram(byte[] image)
+    public int[] GetGreenHistogram(byte[]? image)
     {
         return GetHistogram(image, pixel => pixel.G);
     }
 
-    public int[] GetBlueHistogram(byte[] image)
+    public int[] GetBlueHistogram(byte[]? image)
     {
         return GetHistogram(image, pixel => pixel.B);
     }
 
-    private int[] GetHistogram(byte[] image, Func<Color, int> func)
+    private int[] GetHistogram(byte[]? image, Func<Color, int> func)
     {
         var bitmap = new Bitmap(new MemoryStream(image));
         var histogram = new int[256];

@@ -37,7 +37,7 @@ public class ComplexData
     }
 
 
-    public ComplexData(IImageData GreyImage)
+    public ComplexData(ImageData GreyImage)
     {
         var threeFourier = new Complex[3][,];
 
@@ -80,7 +80,7 @@ public class ComplexData
         return new ImageData(colors);
     }
 
-    static byte ComplexToColorByte(Complex value)
+    private static byte ComplexToColorByte(Complex value)
     {
         var magnitude = value.Magnitude;
         if (magnitude > 255) return 255;

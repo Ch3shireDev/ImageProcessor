@@ -1,5 +1,4 @@
 using System.IO;
-using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
@@ -23,6 +22,7 @@ public class App : Application
     public override void OnFrameworkInitializationCompleted()
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        {
             desktop!.Startup += (sender, args) =>
             {
                 var dialogService = new SelectImagesDialogService();
@@ -45,18 +45,17 @@ public class App : Application
                     DuplicateImageService = duplicateImageService,
                     SelectImagesDialogService = dialogService,
                     WindowService = windowService,
-                    HistogramService = histogramService ,
+                    HistogramService = histogramService,
                     StretchingOptionsService = stretchingOptionsService,
                     ProcessService = processService,
-                    SelectImagesService = dialogService,
+                    SelectImagesService = dialogService
                 };
 
                 windowService.ImageServiceProvider = serviceProvider;
 
-                
 
                 var path = GetPath(args);
-             
+
                 var mainModel = new MainModel(path, serviceProvider);
                 var mainViewModel = new MainWindowViewModel(mainModel);
 
@@ -65,6 +64,7 @@ public class App : Application
                     DataContext = mainViewModel
                 };
             };
+        }
 
         base.OnFrameworkInitializationCompleted();
     }
@@ -73,10 +73,11 @@ public class App : Application
     {
         if (args.Args.Length == 0)
         {
-            return new ImageData(new byte[,]{{0}});
+            return new ImageData(new byte[,] { { 0 } });
         }
+
         var path = args.Args[0];
-           var imageData = new ImageData(path, File.ReadAllBytes(path));
+        var imageData = new ImageData(path, File.ReadAllBytes(path));
         return imageData;
     }
 }

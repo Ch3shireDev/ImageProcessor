@@ -20,7 +20,7 @@ public class SegmentationServiceTests
         var image = new ImageData(new byte[,]
         {
             { 0, 0, 0 },
-            { 0, 0, 0 },
+            { 0, 0, 0 }
         });
 
         var result = segmentationService.OtsuSegmentation(image);
@@ -28,7 +28,7 @@ public class SegmentationServiceTests
         Assert.AreEqual(3, result.Width);
         Assert.AreEqual(2, result.Height);
     }
-    
+
     [TestMethod]
     public void OtsuSegmentationTest()
     {
@@ -36,7 +36,7 @@ public class SegmentationServiceTests
         {
             { 255, 255, 100 },
             { 100, 100, 255 },
-            { 100, 100, 255 },
+            { 100, 100, 255 }
         });
 
         var result = segmentationService.OtsuSegmentation(image);
@@ -50,11 +50,10 @@ public class SegmentationServiceTests
     [TestMethod]
     public void AdaptiveThresholdingBasicTest()
     {
-        
         var image = new ImageData(new byte[,]
         {
             { 0, 0, 0 },
-            { 0, 0, 0 },
+            { 0, 0, 0 }
         });
 
         var result = segmentationService.OtsuSegmentation(image);
@@ -62,6 +61,7 @@ public class SegmentationServiceTests
         Assert.AreEqual(3, result.Width);
         Assert.AreEqual(2, result.Height);
     }
+
     [TestMethod]
     public void AdaptiveThresholdingTest()
     {
@@ -69,7 +69,7 @@ public class SegmentationServiceTests
         {
             { 255, 255, 100 },
             { 100, 100, 255 },
-            { 100, 100, 255 },
+            { 100, 100, 255 }
         });
 
         var result = segmentationService.AdaptiveThresholding(image);

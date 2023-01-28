@@ -12,13 +12,13 @@ namespace ImageProcessorGUI.ViewModels;
 public class RemovePeriodicNoiseViewModel : ReactiveObject
 {
     private readonly FftService fftService = new();
-    private readonly IImageData inputImageData;
-    private readonly IImageData outputImageData;
+    private readonly ImageData inputImageData;
+    private readonly ImageData outputImageData;
 
     private int x1, width, y1, height;
 
 
-    public RemovePeriodicNoiseViewModel(IImageData inputImageData, IImageData outputImageData)
+    public RemovePeriodicNoiseViewModel(ImageData inputImageData, ImageData outputImageData)
     {
         this.inputImageData = inputImageData;
         this.outputImageData = outputImageData;
@@ -85,22 +85,22 @@ public class RemovePeriodicNoiseViewModel : ReactiveObject
 
     public IImage FourierAmplitudeBefore { get; private set; }
 
-    public IImageData FourierAmplitudeBeforeImageData
+    public ImageData FourierAmplitudeBeforeImageData
     {
         set
         {
-            FourierAmplitudeBefore = new Bitmap(new MemoryStream(value.Filebytes));
+            if (value.Filebytes != null) FourierAmplitudeBefore = new Bitmap(new MemoryStream(value.Filebytes));
             this.RaisePropertyChanged(nameof(FourierAmplitudeBefore));
         }
     }
 
     public IImage FourierAmplitudeAfter { get; private set; }
 
-    public IImageData FourierAmplitudeAfterImageData
+    public ImageData FourierAmplitudeAfterImageData
     {
         set
         {
-            FourierAmplitudeAfter = new Bitmap(new MemoryStream(value.Filebytes));
+            if (value.Filebytes != null) FourierAmplitudeAfter = new Bitmap(new MemoryStream(value.Filebytes));
             this.RaisePropertyChanged(nameof(FourierAmplitudeAfter));
         }
     }

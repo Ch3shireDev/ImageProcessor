@@ -6,13 +6,13 @@ namespace ImageProcessorTests;
 [TestClass]
 public class FeatureVectorServiceTests
 {
+    private FeatureVectorService service;
+
     [TestInitialize]
     public void TestInitialize()
     {
         service = new FeatureVectorService();
     }
-
-    FeatureVectorService service;
 
     [TestMethod]
     public void Test()

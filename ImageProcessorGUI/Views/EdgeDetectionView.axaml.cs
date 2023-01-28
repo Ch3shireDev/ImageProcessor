@@ -1,12 +1,11 @@
 using Avalonia.Controls;
 
-namespace ImageProcessorGUI.Views
+namespace ImageProcessorGUI.Views;
+
+public partial class EdgeDetectionView : Window
 {
-    public partial class EdgeDetectionView : Window
+    public EdgeDetectionView()
     {
-        public EdgeDetectionView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

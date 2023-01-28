@@ -13,7 +13,7 @@ public class SaveImageService : ISaveImageService
         _fileSystemService = fileSystemService;
     }
 
-    public async Task SaveImageAsync(IImageData imageData)
+    public async Task SaveImageAsync(ImageData imageData)
     {
         var filename = await _saveImageDialogService.GetSaveImageFileName(imageData);
         if (filename != null) await _fileSystemService.WriteAllBytesAsync(filename, imageData.Filebytes);

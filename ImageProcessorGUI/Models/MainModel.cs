@@ -21,13 +21,15 @@ public class MainModel
 
     private readonly MorphologyService morphologyService = new();
 
-    public MainModel(IImageData imageData, IImageServiceProvider imageServiceProvider)
+    private readonly SegmentationService segmentationService = new();
+
+    public MainModel(ImageData imageData, IImageServiceProvider imageServiceProvider)
     {
         _imageServiceProvider = imageServiceProvider;
         ImageData = imageData;
     }
 
-    public IImageData ImageData { get; set; }
+    public ImageData ImageData { get; set; }
     public double ImageWidth => (double)(ImageData.Width * Scale);
     public double ImageHeight => (double)(ImageData.Height * Scale);
 
@@ -75,9 +77,9 @@ public class MainModel
         Scale *= 0.1m;
     }
 
-    public void OpenImage()
+    public async Task OpenImage()
     {
-        _imageServiceProvider.OpenImageService.OpenImage();
+        await _imageServiceProvider.OpenImageService.OpenImage();
     }
 
     public async Task SaveImage()
@@ -643,7 +645,7 @@ public class MainModel
         })
         {
             Value1 = 100,
-            Value1Label = "Próg 1", 
+            Value1Label = "Próg 1",
             Value1Min = 0,
             Value1Max = 255,
             Header = "Operacja progowania operatorem Canny'ego",
@@ -653,7 +655,7 @@ public class MainModel
             Value2Label = "Próg 2"
         };
 
-        viewModel.Refresh(); 
+        viewModel.Refresh();
 
         var view = new OptionsTwoValuesWindow
         {
@@ -681,8 +683,6 @@ public class MainModel
         var result = segmentationService.OtsuSegmentation(imageData);
         _imageServiceProvider.WindowService.ShowImageWindow(result);
     }
-
-    private readonly SegmentationService segmentationService = new SegmentationService();
 
     /// <summary>
     ///     - [ ] Implementacja detekcji krawędzi operatorami opartymi na maskach Sobela i Prewitta oraz operatorem Cannyego.
@@ -775,7 +775,7 @@ public class MainModel
 
         _imageServiceProvider.WindowService.ShowImageWindow(outputImageData);
     }
-    
+
     public void AddPeriodicNoise()
     {
         var outputImageData = new ImageData(ImageData);
@@ -789,6 +789,7 @@ public class MainModel
 
         _imageServiceProvider.WindowService.ShowImageWindow(outputImageData);
     }
+
     public void ToBinaryImage()
     {
         BinaryThreshold();
@@ -798,5 +799,4 @@ public class MainModel
     {
         Scale = 1;
     }
-
 }

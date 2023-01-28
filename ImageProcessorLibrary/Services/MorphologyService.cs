@@ -1,36 +1,38 @@
-﻿using OpenCvSharp;
+﻿using ImageProcessorLibrary.DataStructures;
+using OpenCvSharp;
 
 namespace ImageProcessorLibrary.Services;
 
-public class MorphologyService: OpenCvService
+public class MorphologyService : OpenCvService
 {
-    public IImageData Erosion(IImageData imageData)
+    public ImageData Erosion(ImageData imageData)
     {
         var mat = ToMatrix(imageData);
         mat = Erosion(mat);
         return ToImageDataFromUC3(mat);
     }
 
-    public IImageData Dilation(IImageData imageData)
+    public ImageData Dilation(ImageData imageData)
     {
         var mat = ToMatrix(imageData);
         mat = Dilation(mat);
         return ToImageDataFromUC3(mat);
     }
 
-    public IImageData Opening(IImageData imageData)
+    public ImageData Opening(ImageData imageData)
     {
         var mat = ToMatrix(imageData);
         mat = Opening(mat);
         return ToImageDataFromUC3(mat);
     }
 
-    public IImageData Closing(IImageData imageData)
+    public ImageData Closing(ImageData imageData)
     {
         var mat = ToMatrix(imageData);
         mat = Closing(mat);
         return ToImageDataFromUC3(mat);
     }
+
     public Mat Erosion(Mat mat)
     {
         Cv2.Erode(mat, mat, new Mat());
@@ -54,7 +56,4 @@ public class MorphologyService: OpenCvService
         Cv2.MorphologyEx(mat, mat, MorphTypes.Close, new Mat());
         return mat;
     }
-
-
-
 }

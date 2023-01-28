@@ -38,7 +38,7 @@ public class ImageOperationService
                     if (maxL < L) maxL = L;
                     break;
                 case ImageCombinationsEnum.SUBTRACT_IMAGES:
-                    L =Math.Abs( hsl1.L - hsl2.L);
+                    L = Math.Abs(hsl1.L - hsl2.L);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(operation), operation, null);

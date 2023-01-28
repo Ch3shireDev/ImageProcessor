@@ -4,5 +4,5 @@ namespace ImageProcessorLibrary.Services;
 
 public interface ISaveImageService
 {
-    public Task SaveImageAsync(IImageData imageData);
+    public Task SaveImageAsync(ImageData imageData);
 }

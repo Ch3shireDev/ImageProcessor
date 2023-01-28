@@ -5,19 +5,19 @@
         mc:Ignorable="d" Width="400" Height="200"
         x:Class="ImageProcessorGUI.Views.EdgeDetectionView"
         Title="{Binding Title}">
-	<Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto" />
-			<RowDefinition Height="Auto" />
-			<RowDefinition Height="*" />
-			<RowDefinition Height="Auto" />
-			</Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="{Binding Title}"/>
-		<StackPanel Grid.Row="1" Orientation="Horizontal">
-			<Label>Typ krawędzi</Label>
-			<ComboBox Items="{Binding EdgeTypes}" SelectedItem="{Binding SelectedEdgeType}"/>
-		</StackPanel>
-		<TextBlock Grid.Row="2" Text="{Binding ErrorMessage}" Foreground="DarkRed"/>
-		<Button Grid.Row="3" Command="{Binding RefreshCommand}">Odśwież</Button>
-	</Grid>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="{Binding Title}" />
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Label>Typ krawędzi</Label>
+            <ComboBox Items="{Binding EdgeTypes}" SelectedItem="{Binding SelectedEdgeType}" />
+        </StackPanel>
+        <TextBlock Grid.Row="2" Text="{Binding ErrorMessage}" Foreground="DarkRed" />
+        <Button Grid.Row="3" Command="{Binding RefreshCommand}">Odśwież</Button>
+    </Grid>
 </Window>

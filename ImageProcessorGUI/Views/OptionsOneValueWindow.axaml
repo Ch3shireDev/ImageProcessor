@@ -3,32 +3,33 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-		Width="300"
-		Height="200"
+        Width="300"
+        Height="200"
         x:Class="ImageProcessorGUI.Views.OptionsOneValueWindow"
         Title="{Binding Header}">
-	<Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto" />
-			<RowDefinition Height="Auto" />
-			<RowDefinition Height="Auto" />
-			<RowDefinition Height="*" />
-		</Grid.RowDefinitions>
-		<Label Grid.Row="0" Content="{Binding Header}"/>
-		<Label Grid.Row="1" Content="{Binding Value1Label}" />
-		<Grid Grid.Row="2">
-			<Grid.RowDefinitions>
-				<RowDefinition/>
-				<RowDefinition/>
-			</Grid.RowDefinitions>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition />
-				<ColumnDefinition />
-			</Grid.ColumnDefinitions>
-			<Slider Grid.Column="0" Value="{Binding Value1, Mode=TwoWay}" Minimum="{Binding Value1Min}" Maximum="{Binding Value1Max}" />
-			<TextBox Grid.Column="1" Text="{Binding Value1, Mode=TwoWay}" />
-			<CheckBox Grid.Row="1" Grid.ColumnSpan="2" IsChecked="{Binding AutoRefresh}">Aktualizuj automatycznie</CheckBox>
-		</Grid>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="{Binding Header}" />
+        <Label Grid.Row="1" Content="{Binding Value1Label}" />
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Slider Grid.Column="0" Value="{Binding Value1, Mode=TwoWay}" Minimum="{Binding Value1Min}"
+                    Maximum="{Binding Value1Max}" />
+            <TextBox Grid.Column="1" Text="{Binding Value1, Mode=TwoWay}" />
+            <CheckBox Grid.Row="1" Grid.ColumnSpan="2" IsChecked="{Binding AutoRefresh}">Aktualizuj automatycznie</CheckBox>
+        </Grid>
         <Button Grid.Row="3" Command="{Binding RefreshCommand}">Zatwierdź</Button>
-	</Grid>
+    </Grid>
 </Window>

@@ -1,12 +1,11 @@
 using Avalonia.Controls;
 
-namespace ImageProcessorGUI.Views
+namespace ImageProcessorGUI.Views;
+
+public partial class MathOperationWindow : Window
 {
-    public partial class MathOperationWindow : Window
+    public MathOperationWindow()
     {
-        public MathOperationWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

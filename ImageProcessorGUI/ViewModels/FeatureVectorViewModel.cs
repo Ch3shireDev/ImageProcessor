@@ -5,6 +5,7 @@ using System.Windows.Input;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
+using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.Services;
 using ReactiveUI;
 
@@ -12,13 +13,13 @@ namespace ImageProcessorGUI.ViewModels;
 
 public class FeatureVectorViewModel : ReactiveObject
 {
-    private string? errorMessage;
+    private string errorMessage = "";
 
-    public IImageData ImageData;
+    public ImageData ImageData;
 
-    private string result;
+    private string result = "";
 
-    public FeatureVectorViewModel(IImageData imageData)
+    public FeatureVectorViewModel(ImageData imageData)
     {
         FeatureVectorService = new FeatureVectorService();
         CsvService = new CsvService();
@@ -36,7 +37,7 @@ public class FeatureVectorViewModel : ReactiveObject
     }
 
 
-    public string? ErrorMessage
+    public string ErrorMessage
     {
         get => errorMessage;
         set
@@ -52,7 +53,12 @@ public class FeatureVectorViewModel : ReactiveObject
     public string FeatureVectorText { get; set; }
 
     public ICommand SaveCommand => ReactiveCommand.CreateFromTask(Save);
-    
+
+    private Window? MainWindow =>
+        Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop
+            ? desktop.MainWindow
+            : null;
+
     public void Run()
     {
         Result = GetFeatureVectorCsv();
@@ -71,8 +77,7 @@ public class FeatureVectorViewModel : ReactiveObject
         var dialog = new SaveFileDialog();
         dialog.Filters.Add(new FileDialogFilter
         {
-            Name = "CSV", Extensions = { "csv" },
-
+            Name = "CSV", Extensions = { "csv" }
         });
 
         dialog.InitialFileName = "result.csv";
@@ -80,8 +85,4 @@ public class FeatureVectorViewModel : ReactiveObject
 
         await File.WriteAllTextAsync(path, result);
     }
-    private Window? MainWindow =>
-        Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop
-            ? desktop.MainWindow
-            : null;
 }

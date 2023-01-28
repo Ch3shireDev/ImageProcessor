@@ -6,30 +6,31 @@ namespace ImageProcessorTests.Mockups;
 public class MockProcessService : IProcessService
 {
     public bool IsNegated { get; set; }
-    public IImageData NegateImage(IImageData imageData)
+
+    public bool IsBinaryThresholdWindowOpen { get; set; }
+
+    public bool IsGreyscaleThresholdTwoSlidersWindowOpen { get; set; }
+
+    public bool IsGreyscaleThresholdWindowOpen { get; set; }
+
+    public ImageData NegateImage(ImageData imageData)
     {
         IsNegated = true;
         return imageData;
     }
 
-    public void OpenBinaryThresholdWindow(IImageData imageData)
+    public void OpenBinaryThresholdWindow(ImageData imageData)
     {
         IsBinaryThresholdWindowOpen = true;
     }
 
-    public bool IsBinaryThresholdWindowOpen { get; set; }
-
-    public void OpenGreyscaleThresholdOneSliderWindow(IImageData imageData)
+    public void OpenGreyscaleThresholdOneSliderWindow(ImageData imageData)
     {
         IsGreyscaleThresholdWindowOpen = true;
     }
 
-    public void OpenGreyscaleThresholdTwoSlidersWindow(IImageData imageData)
+    public void OpenGreyscaleThresholdTwoSlidersWindow(ImageData imageData)
     {
         IsGreyscaleThresholdTwoSlidersWindowOpen = true;
     }
-
-    public bool IsGreyscaleThresholdTwoSlidersWindowOpen { get; set; }
-
-    public bool IsGreyscaleThresholdWindowOpen { get; set; }
 }

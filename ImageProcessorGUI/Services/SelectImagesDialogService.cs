@@ -17,7 +17,7 @@ public class SelectImagesDialogService : ISelectImagesDialogService
             ? desktop.MainWindow
             : null;
 
-    public async Task<ImageData[]> SelectImages(bool allowMultiple=false)
+    public async Task<ImageData[]> SelectImages(bool allowMultiple = false)
     {
         var fileDialog = new OpenFileDialog
         {

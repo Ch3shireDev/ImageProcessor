@@ -3,16 +3,9 @@ using OpenCvSharp;
 
 namespace ImageProcessorLibrary.Services;
 
-public enum PrewittType
-{
-    PREWITT_X,
-    PREWITT_Y,
-    PREWITT_XY
-}
-
 public class EdgeDetectionService : OpenCvService
 {
-    public IImageData SobelEdgeDetection(IImageData imageData, SobelEdgeType edgeType = SobelEdgeType.EAST)
+    public ImageData SobelEdgeDetection(ImageData imageData, SobelEdgeType edgeType = SobelEdgeType.EAST)
     {
         if (edgeType == SobelEdgeType.ALL)
         {
@@ -40,7 +33,7 @@ public class EdgeDetectionService : OpenCvService
         return mat2;
     }
 
-    public IImageData PrewittEdgeDetection(IImageData imageData, PrewittType prewittType = PrewittType.PREWITT_XY)
+    public ImageData PrewittEdgeDetection(ImageData imageData, PrewittType prewittType = PrewittType.PREWITT_XY)
     {
         var mat = ToMatrix(imageData);
         Mat kernel;
@@ -114,7 +107,7 @@ public class EdgeDetectionService : OpenCvService
         };
     }
 
-    public IImageData CannyOperatorEdgeDetection(IImageData imageData, int threshold1=100, int threshold2=200)
+    public ImageData CannyOperatorEdgeDetection(ImageData imageData, int threshold1 = 100, int threshold2 = 200)
     {
         var mat = ToMatrix(imageData);
         var result = CannyOperatorEdgeDetection(mat, threshold1, threshold2);

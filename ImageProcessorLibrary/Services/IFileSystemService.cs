@@ -2,6 +2,6 @@
 
 public interface IFileSystemService
 {
-    Task<byte[]> ReadAllBytesAsync(string filename);
-    Task WriteAllBytesAsync(string filename, byte[] filebytes);
+    Task<byte[]?> ReadAllBytesAsync(string filename);
+    Task WriteAllBytesAsync(string filename, byte[]? filebytes);
 }

@@ -2,29 +2,28 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:viewModels="clr-namespace:ImageProcessorGUI.ViewModels"
         mc:Ignorable="d" Width="300" Height="150"
         x:Class="ImageProcessorGUI.Views.BinaryOperationsWindow"
         Title="BinaryOperationsWindow">
     <Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto" />
-			<RowDefinition Height="Auto" />
-			<RowDefinition Height="Auto" />
-			<RowDefinition Height="*" />
-			<RowDefinition Height="Auto" />
-		</Grid.RowDefinitions>
-		<Label Grid.Row="0">Operacja binarna</Label>
-		<StackPanel Orientation="Horizontal" Grid.Row="1">
-			<Label Content="Rodzaj operacji"/>
-			<ComboBox Items="{Binding Operations}" SelectedItem="{Binding SelectedOperation}" />
-		</StackPanel>
-		<StackPanel Grid.Row="2" Orientation="Horizontal">
-			<Button Content="Wybierz plik" Command="{Binding OpenFileCommand}" />
-			<Label Content="{Binding Filepath}" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0">Operacja binarna</Label>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <Label Content="Rodzaj operacji" />
+            <ComboBox Items="{Binding Operations}" SelectedItem="{Binding SelectedOperation}" />
         </StackPanel>
-		<StackPanel Grid.Row="4">
-			<Button Content="Pokaż" Command="{Binding ShowCommand}"/>
-		</StackPanel>
-	</Grid>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Button Content="Wybierz plik" Command="{Binding OpenFileCommand}" />
+            <Label Content="{Binding Filepath}" />
+        </StackPanel>
+        <StackPanel Grid.Row="4">
+            <Button Content="Pokaż" Command="{Binding ShowCommand}" />
+        </StackPanel>
+    </Grid>
 </Window>

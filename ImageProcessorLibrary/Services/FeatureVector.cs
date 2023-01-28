@@ -9,7 +9,7 @@ public class FeatureVector
     public double M11 { get; set; }
     public double M02 { get; set; }
     public double SurfaceArea { get; set; }
-    public double Circumference{ get; set; }
+    public double Circumference { get; set; }
     public double Solidity { get; set; }
     public double EquivalentDiameter { get; set; }
     public double W1 { get; set; }

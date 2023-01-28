@@ -1,4 +1,5 @@
-﻿using OpenCvSharp;
+﻿using ImageProcessorLibrary.DataStructures;
+using OpenCvSharp;
 
 namespace ImageProcessorLibrary.Services;
 
@@ -21,7 +22,7 @@ public class FeatureVectorService : OpenCvService
         return spatialMoments;
     }
 
-    public double GetCountourArea(IImageData imageData)
+    public double GetCountourArea(ImageData imageData)
     {
         var mat = ToMatrix(imageData);
         return GetCountourArea(mat);
@@ -33,31 +34,31 @@ public class FeatureVectorService : OpenCvService
     }
 
 
-    public List<double> GetSpatialMoments(IImageData imageData)
+    public List<double> GetSpatialMoments(ImageData imageData)
     {
         var mat = ToMatrix(imageData);
         return GetSpatialMoments(mat);
     }
 
-    public List<double> GetCentralMoments(IImageData imageData)
+    public List<double> GetCentralMoments(ImageData imageData)
     {
         var mat = ToMatrix(imageData);
         var centralMoments = GetCentralMoments(mat);
         return centralMoments;
     }
 
-    public List<double> GetNormalizedCentralMoments(IImageData imageData)
+    public List<double> GetNormalizedCentralMoments(ImageData imageData)
     {
         var mat = ToMatrix(imageData);
         var normalizedCentralMoments = GetNormalizedCentralMoments(mat);
         return normalizedCentralMoments;
     }
 
-    public IEnumerable<FeatureVector> GetFeatureVectors(IImageData imageData)
+    public IEnumerable<FeatureVector> GetFeatureVectors(ImageData imageData)
     {
         var mat = ToGrayMatrix(imageData);
         var contours = GetContours(mat);
-        
+
         foreach (var contour in contours)
         {
             var moments = Cv2.Moments(mat);
@@ -129,7 +130,7 @@ public class FeatureVectorService : OpenCvService
     {
         var L = GetContourLength(contour);
         var S = GetContourArea(contour);
-        
+
         return 2 * Math.Sqrt(Math.PI * S) / L;
     }
 

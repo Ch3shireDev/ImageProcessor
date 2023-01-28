@@ -30,16 +30,27 @@ public static class ColorTools
             double hue;
 
             if (r == max)
+            {
                 hue = (g - b) / 6 / delta;
+            }
             else if (g == max)
+            {
                 hue = 1.0f / 3 + (b - r) / 6 / delta;
+            }
             else
+            {
                 hue = 2.0f / 3 + (r - g) / 6 / delta;
+            }
 
             if (hue < 0)
+            {
                 hue += 1;
+            }
+
             if (hue > 1)
+            {
                 hue -= 1;
+            }
 
             hsl.H = (int)(hue * 360);
         }
@@ -76,19 +87,29 @@ public static class ColorTools
     private static double HueToRGB(double v1, double v2, double vH)
     {
         if (vH < 0)
+        {
             vH += 1;
+        }
 
         if (vH > 1)
+        {
             vH -= 1;
+        }
 
         if (6 * vH < 1)
+        {
             return v1 + (v2 - v1) * 6 * vH;
+        }
 
         if (2 * vH < 1)
+        {
             return v2;
+        }
 
         if (3 * vH < 2)
+        {
             return v1 + (v2 - v1) * (2.0f / 3 - vH) * 6;
+        }
 
         return v1;
     }

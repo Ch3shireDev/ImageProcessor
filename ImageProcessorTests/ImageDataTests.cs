@@ -40,7 +40,7 @@ public class ImageDataTests
     public void FileSizeTest()
     {
         var imageData = new ImageData("lion.jpg", File.ReadAllBytes("Resources/lion.jpg"));
-        Assert.IsTrue(imageData.Filebytes.Length > 0);
+        Assert.IsTrue(imageData?.Filebytes?.Length > 0);
     }
 
     [TestMethod]

@@ -1,12 +1,11 @@
 using Avalonia.Controls;
 
-namespace ImageProcessorGUI.Views
+namespace ImageProcessorGUI.Views;
+
+public partial class AddImagesWindow : Window
 {
-    public partial class AddImagesWindow : Window
+    public AddImagesWindow()
     {
-        public AddImagesWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

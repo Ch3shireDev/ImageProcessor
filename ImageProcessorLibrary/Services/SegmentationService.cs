@@ -7,7 +7,7 @@ public class SegmentationService
 {
     private readonly OpenCvService cvService = new OpenCvService();
 
-    public IImageData OtsuSegmentation(IImageData image)
+    public ImageData OtsuSegmentation(ImageData image)
     {
         var mat = cvService.ToGrayMatrix(image);
 
@@ -17,7 +17,7 @@ public class SegmentationService
         return cvService.ToImageDataFromUC3(mat);
     }
 
-    public IImageData AdaptiveThresholding(IImageData imageData)
+    public ImageData AdaptiveThresholding(ImageData imageData)
     {
         var mat = cvService.ToGrayMatrix(imageData);
 

@@ -7,59 +7,60 @@
         Title="RemovePeriodicNoiseView">
     <StackPanel Orientation="Vertical">
         <Label>Usuwanie zakłóceń periodycznych</Label>
-		<Grid>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="100"/>
-				<ColumnDefinition Width="1*"/>
-				<ColumnDefinition Width="100"/>
-			</Grid.ColumnDefinitions>
-			<Label Grid.Column="0" VerticalContentAlignment="Center">Pozycja x</Label>
-			<Slider Grid.Column="1"  Minimum="0" Maximum="{Binding FourierMaxWidth}" Value="{Binding X1}" Margin="10"/>
-			<TextBox Grid.Column="2" Text="{Binding X1, Mode=TwoWay}" Margin="10"/>
-		</Grid>
-		<Grid>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="100"/>
-				<ColumnDefinition Width="1*"/>
-				<ColumnDefinition Width="100"/>
-			</Grid.ColumnDefinitions>
-			<Label Grid.Column="0" VerticalContentAlignment="Center">Pozycja y</Label>
-			<Slider Grid.Column="1" Margin="10"  Minimum="0" Maximum="{Binding FourierMaxWidth}"  Value="{Binding Y1}"/>
-			<TextBox Grid.Column="2" Text="{Binding Y1, Mode=TwoWay}" Margin="10"/>
-		</Grid>
-		<Grid>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="100"/>
-				<ColumnDefinition Width="1*"/>
-				<ColumnDefinition Width="100"/>
-			</Grid.ColumnDefinitions>
-			<Label Grid.Column="0" VerticalContentAlignment="Center">Szerokość</Label>
-			<Slider Grid.Column="1"  Margin="10" Minimum="0" Maximum="{Binding FourierMaxWidth}" Value="{Binding Width}"/>
-			<TextBox Grid.Column="2" Text="{Binding Width, Mode=TwoWay}" Margin="10"/>
-		</Grid>
-		<Grid>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="100"/>
-				<ColumnDefinition Width="1*"/>
-				<ColumnDefinition Width="100"/>
-			</Grid.ColumnDefinitions>
-			<Label Grid.Column="0" VerticalContentAlignment="Center">Wysokość</Label>
-			<Slider Grid.Column="1" Margin="10"  Minimum="0" Maximum="{Binding FourierMaxWidth}"  Value="{Binding Height}"/>
-			<TextBox Grid.Column="2" Text="{Binding Height, Mode=TwoWay}" Margin="10"/>
-		</Grid>
         <Grid>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="100"/>
-				<ColumnDefinition Width="1*"/>
-			</Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" VerticalContentAlignment="Center">Pozycja x</Label>
+            <Slider Grid.Column="1" Minimum="0" Maximum="{Binding FourierMaxWidth}" Value="{Binding X1}" Margin="10" />
+            <TextBox Grid.Column="2" Text="{Binding X1, Mode=TwoWay}" Margin="10" />
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" VerticalContentAlignment="Center">Pozycja y</Label>
+            <Slider Grid.Column="1" Margin="10" Minimum="0" Maximum="{Binding FourierMaxWidth}" Value="{Binding Y1}" />
+            <TextBox Grid.Column="2" Text="{Binding Y1, Mode=TwoWay}" Margin="10" />
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" VerticalContentAlignment="Center">Szerokość</Label>
+            <Slider Grid.Column="1" Margin="10" Minimum="0" Maximum="{Binding FourierMaxWidth}" Value="{Binding Width}" />
+            <TextBox Grid.Column="2" Text="{Binding Width, Mode=TwoWay}" Margin="10" />
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" VerticalContentAlignment="Center">Wysokość</Label>
+            <Slider Grid.Column="1" Margin="10" Minimum="0" Maximum="{Binding FourierMaxWidth}"
+                    Value="{Binding Height}" />
+            <TextBox Grid.Column="2" Text="{Binding Height, Mode=TwoWay}" Margin="10" />
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
             <Label Grid.Column="0">Tryb</Label>
             <ComboBox Grid.Column="1" Items="{Binding Modes}" SelectedItem="{Binding Mode, Mode=TwoWay}" />
         </Grid>
         <Grid>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="1*"/>
-				<ColumnDefinition Width="1*"/>
-			</Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Vertical">
                 <Label>Widmo przed</Label>
                 <Image Source="{Binding FourierAmplitudeBefore}" Width="200" Height="200" />

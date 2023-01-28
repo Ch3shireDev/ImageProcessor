@@ -12,7 +12,7 @@ public class MockSaveImageDialogService : ISaveImageDialogService
 
     public string Filename { get; set; }
 
-    public Task<string?> GetSaveImageFileName(IImageData imageData)
+    public Task<string?> GetSaveImageFileName(ImageData imageData)
     {
         return Task.FromResult(Filename);
     }

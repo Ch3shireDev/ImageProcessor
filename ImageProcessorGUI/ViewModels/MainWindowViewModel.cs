@@ -15,7 +15,7 @@ public class MainWindowViewModel : ReactiveObject
 
     public string Title => MainModel?.ImageData?.Filename ?? "";
 
-    public ICommand OpenImageCommand => ReactiveCommand.Create(() => MainModel?.OpenImage());
+    public ICommand OpenImageCommand => ReactiveCommand.Create(async () => await MainModel?.OpenImage()!);
     public ICommand SaveImageCommand => ReactiveCommand.Create(() => MainModel?.SaveImage());
     public ICommand DuplicateImageCommand => ReactiveCommand.Create(() => MainModel?.DuplicateImage());
     public ICommand ShowValueHistogramCommand => ReactiveCommand.Create(() => MainModel?.ShowValueHistogram());

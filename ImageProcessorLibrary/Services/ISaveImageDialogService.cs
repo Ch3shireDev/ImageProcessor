@@ -4,5 +4,5 @@ namespace ImageProcessorLibrary.Services;
 
 public interface ISaveImageDialogService
 {
-    Task<string?> GetSaveImageFileName(IImageData imageData);
+    Task<string?> GetSaveImageFileName(ImageData imageData);
 }

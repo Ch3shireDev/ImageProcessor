@@ -6,7 +6,7 @@ namespace ImageProcessorTests;
 [TestClass]
 public class EdgeDetectionServiceTests
 {
-    private EdgeDetectionService edgeDetectionService;
+    private EdgeDetectionService? edgeDetectionService;
 
     [TestInitialize]
     public void TestInitialize()
@@ -25,7 +25,7 @@ public class EdgeDetectionServiceTests
             { 0, 0, 0 }
         });
 
-        var result = edgeDetectionService.SobelEdgeDetection(imageData);
+        var result = edgeDetectionService?.SobelEdgeDetection(imageData);
 
         Assert.AreEqual(3, result.Width);
         Assert.AreEqual(4, result.Height);
@@ -42,7 +42,7 @@ public class EdgeDetectionServiceTests
             { 0, 0, 0 }
         });
 
-        var result = edgeDetectionService.PrewittEdgeDetection(imageData);
+        var result = edgeDetectionService?.PrewittEdgeDetection(imageData);
 
         Assert.AreEqual(3, result.Width);
         Assert.AreEqual(4, result.Height);
@@ -61,7 +61,7 @@ public class EdgeDetectionServiceTests
             { 100, 100, 100, 100 }
         });
 
-        var result = edgeDetectionService.PrewittEdgeDetection(imageData, PrewittType.PREWITT_Y);
+        var result = edgeDetectionService?.PrewittEdgeDetection(imageData, PrewittType.PREWITT_Y);
 
         Assert.AreEqual(4, result.Width);
         Assert.AreEqual(6, result.Height);
@@ -87,7 +87,7 @@ public class EdgeDetectionServiceTests
             { 255, 255, 100, 100 }
         });
 
-        var result = edgeDetectionService.PrewittEdgeDetection(imageData, PrewittType.PREWITT_X);
+        var result = edgeDetectionService?.PrewittEdgeDetection(imageData, PrewittType.PREWITT_X);
 
         Assert.AreEqual(4, result.Width);
         Assert.AreEqual(6, result.Height);
@@ -111,7 +111,7 @@ public class EdgeDetectionServiceTests
             { 100, 100, 100, 100 }
         });
 
-        var result = edgeDetectionService.PrewittEdgeDetection(imageData, PrewittType.PREWITT_XY);
+        var result = edgeDetectionService?.PrewittEdgeDetection(imageData);
 
         Assert.AreEqual(4, result.Width);
         Assert.AreEqual(6, result.Height);
@@ -160,7 +160,7 @@ public class EdgeDetectionServiceTests
             { 0, 0, 0 }
         });
 
-        var result = edgeDetectionService.CannyOperatorEdgeDetection(imageData);
+        var result = edgeDetectionService?.CannyOperatorEdgeDetection(imageData);
 
         Assert.AreEqual(3, result.Width);
         Assert.AreEqual(4, result.Height);
@@ -185,11 +185,11 @@ public class EdgeDetectionServiceTests
             { 200, 200, 200, 200, 200, 200, 200, 200, 200, 200 }
         });
 
-        var result = edgeDetectionService.CannyOperatorEdgeDetection(imageData);
+        var result = edgeDetectionService?.CannyOperatorEdgeDetection(imageData);
 
         Assert.AreEqual(10, result.Width);
         Assert.AreEqual(12, result.Height);
-        
+
         var expected = new byte[,]
         {
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -230,7 +230,7 @@ public class EdgeDetectionServiceTests
             { 200, 200, 200, 200, 200, 200, 200, 200, 200, 200 }
         });
 
-        var result = edgeDetectionService.SobelEdgeDetection(imageData);
+        var result = edgeDetectionService?.SobelEdgeDetection(imageData);
 
         var expected = new ImageData(new byte[,]
         {
