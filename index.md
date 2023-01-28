@@ -1,4 +1,4 @@
-﻿# ImageProcessor
+# ImageProcessor
 
 Projekt na zaliczenie przedmiotu Algorytmy Przetwarzania Obrazów.
 

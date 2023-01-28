@@ -134,12 +134,7 @@ public class FftService
         var green = Resize(input.Data[1], height, width);
         var blue = Resize(input.Data[2], height, width);
         var outputData = new[] { red, green, blue };
-        return new ComplexData
-        {
-            Data = outputData,
-            Width = width,
-            Height = height
-        };
+        return new ComplexData(outputData, width, height);
     }
 
     /// <summary>

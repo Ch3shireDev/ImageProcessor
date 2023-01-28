@@ -1,0 +1,257 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>ImageProcessor </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="ImageProcessor ">
+  
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta property="docfx:navrel" content="toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+  
+  
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="imageprocessor">ImageProcessor</h1>
+
+<p>Projekt na zaliczenie zajęć z Algorytmów Przetwarzania Obrazów.</p>
+<h2 id="1-odczyt-i-zapis-obrazów">1. Odczyt i zapis obrazów</h2>
+<p>Aplikacja powinna:</p>
+<ul>
+<li>[x] pracować z obrazami zapisanymi w formatach: <code>.bmp; .tif; .png; .jpg</code>)</li>
+<li>[x] zapewniać opcje:
+<ul>
+<li>[x] wczytywania obrazu,</li>
+<li>[x] zapisywania obrazu,</li>
+<li>[x] duplikacji obrazu,</li>
+<li>[x] jednoczesnego wyświetlania wielu obrazów.</li>
+</ul>
+</li>
+<li>[x] wyświetlać histogram wczytanych obrazów monochromatycznych.</li>
+<li>[x] wyświetlać histogram wczytanych obrazów kolorowych.</li>
+</ul>
+<h2 id="2-wyświetlanie-obrazów">2. Wyświetlanie obrazów</h2>
+<p>Aplikacja powinna:</p>
+<ul>
+<li>[x] pokazywać obrazy w powiększeniach:
+<ul>
+<li>[x] dopasowany do szerokości ekranu,</li>
+<li>[x] 100% czyli piksel w piksel,</li>
+<li>[x] pomniejszony (50%, 25%, 20% i 10%) i</li>
+<li>[x] powiększony (150%, 200%)</li>
+</ul>
+</li>
+<li>[x] dostarczać prowadnice do przesuwania obrazu w pionie i poziomie.</li>
+</ul>
+<h2 id="3-operacje-na-histogramach">3. Operacje na histogramach</h2>
+<ul>
+<li>[x] opracować algorytmy (metodami przedstawionymi na wykładzie):
+<ul>
+<li>[x] rozciągania liniowego</li>
+<li>[x] rozciągania nieliniowego</li>
+<li>[x] wyrównywania przez eqalizację histogramu.</li>
+</ul>
+</li>
+</ul>
+<p>Rozciąganie histogramu: w zakresach <code>[min; max]</code> i <code>[a; b]</code> zarówno gdy a i b są większe lub mniejsze od zakresu poziomów jasności występujących w obrazie w wersji liniowej i nielinowej.</p>
+<p>Rozciąganie nieliniowe zaimplementować przez funkcję korekcji gamma ze współczynnikiem wyznaczanym przez użytkownika.</p>
+<h2 id="4-operacje-punktowe-jednoargumentowe">4. Operacje punktowe jednoargumentowe</h2>
+<ul>
+<li><p>[x] opracować algorytm i uruchomić aplikację realizującą typowe operacje punktowe jednoargumentowe takie jak:</p>
+<ul>
+<li>[x] negacja,</li>
+<li>[x] progowanie binarne z zamianą liczby poziomów szarości z jednym lub dwoma progami wskazywanymi suwakiem i wpisanymi jako parametr,</li>
+<li>[x] progowanie bez zamiany liczby poziomów szarości z dwoma progami wskazanymi przez wskazywanym suwakiem i wpisanym jako parametr.</li>
+</ul>
+</li>
+<li><p>[ ] przygotować własne monochromatyczne obrazy testowe.</p>
+</li>
+</ul>
+<p>Powyższe funkcjonalności proszę przetestować na obrazach, których histogramy pokazują rozdzielność zakres poziomów szarości obiektów i tła (obrazy o histogramie dwumodalnym o głębokiej dolince) i obrazach o zawężonym zakresie tonów (brak wypełnienia tonacji skrajnie ciemnych i skrajnie jasnych) oraz o pełnym wykorzystaniu całego zakresu tonów.</p>
+<h2 id="5-operacje-punktowe-wieloargumentowe">5. Operacje punktowe wieloargumentowe</h2>
+<p>Opracowanie algorytmu i uruchomienie funkcjonalności realizującej operacje punktowe wieloargumentowe:</p>
+<ul>
+<li>[x] dodawania obrazów z wysyceniem</li>
+<li>[x] dodawanie obrazów bez wysycenia</li>
+<li>[x] dodawanie, dzielenie i mnożenie obrazów przez liczbę całkowitą z wysyceniem i bez wysycenia</li>
+<li>[x] liczenia różnicy bezwzględnej obrazów.</li>
+</ul>
+<h2 id="6-operacje-logiczne">6. Operacje logiczne</h2>
+<p>Opracowanie algorytmu i uruchomienie funkcjonalności realizującej operacje logiczne na obrazach monochromatycznych i binarnych:</p>
+<ul>
+<li>[x] not,</li>
+<li>[x] and,</li>
+<li>[x] or,</li>
+<li>[x] xor,</li>
+<li>[x] zamiana obrazów z maski binarnej na maskę zapisaną na 8 bitach i na odwrót</li>
+</ul>
+<p>Należy pamiętać o sprawdzeniu zgodności typów i rozmiarów obrazów stanowiących operandy.</p>
+<p>Proszę pamiętać: w operacjach jednopunktowych dwuargumentowych logicznych na obrazach działania prowadzone są na odpowiednich pikselach obrazów stanowiących argumenty danej operacji. W szczególności działania prowadzone są na bitach o tej samej wadze.</p>
+<p>Proszę o przygotowanie własnych monochromatycznych i binarnych obrazów testowych.</p>
+<h2 id="7-opencv">7. OpenCV</h2>
+<p>Proszę dołączyć bibliotekę OpenCV i korzystać z niej przygotowując poszczególne funkcjonalności.</p>
+<ul>
+<li><p>[x] Opracowanie algorytmu i uruchomienie funkcjonalności realizującej operacje:</p>
+<ul>
+<li>[x] wygładzania liniowego oparte na typowych maskach wygładzania:
+<ul>
+<li>[x] uśrednienie,</li>
+<li>[x] uśrednienie z wagami,</li>
+<li>[x] filtr gaussowski
+przestawionych użytkownikowi jako maski do wyboru,</li>
+</ul>
+</li>
+<li>[x] wyostrzania liniowego oparte na 3 maskach laplasjanowych (podanych w wykładzie) przestawionych użytkownikowi maski do wyboru,</li>
+<li>[x] kierunkowej detekcji krawędzi w oparciu o maski 8 kierunkowych masek Sobela (podstawowe 8 kierunków) przestawionych użytkownikowi do wyboru,</li>
+</ul>
+</li>
+<li><p>[x] Zaimplementować wybór sposobu uzupełnienie marginesów/brzegów w operacjach sąsiedztwa według zasady wybranej spośród następujących zasad:</p>
+<ul>
+<li>[x] wypełnienie ramki wybraną wartością stałą <code>n</code> narzuconą przez użytkownika: <code>BORDER_CONSTANT</code></li>
+<li>[x] wypełnienie wyniku wybraną wartością stałą <code>n</code> narzuconą przez użytkownika</li>
+<li>[x] wyliczenie ramki według <code>BORDER_REFLECT</code></li>
+<li>[x] wyliczenie ramki według <code>BORDER_WRAP</code></li>
+</ul>
+</li>
+<li><p>[x] Opracowanie algorytmu i uruchomienie aplikacji realizującej uniwersalną operację medianową opartą na:</p>
+<ul>
+<li>[x] otoczeniu 3x3,</li>
+<li>[x] 5x5,</li>
+<li>[x] 7x7,</li>
+<li>[x] 9x9
+zadawanym w sposób interaktywny: wybór z list, przesuwanie baru lub wpisanie w przygotowane pole).</li>
+</ul>
+</li>
+</ul>
+<p>Zastosować powyższych metod uzupełniania brzegowych pikselach obrazu, dając użytkownikowi możliwość wyboru, jak w zadaniu 1.</p>
+<h2 id="8-detekcja-krawędzi">8. Detekcja krawędzi</h2>
+<ul>
+<li><p>[x] Implementacja detekcji krawędzi operatorami opartymi na maskach:</p>
+<ul>
+<li>[x] Sobela,</li>
+<li>[x] Prewitta,</li>
+<li>[x] operatorem Cannyego.</li>
+</ul>
+</li>
+<li><p>[x] Opracować algorytm i uruchomić funkcjonalność realizującą segmentację obrazów następującymi metodami:
+– [x] Dostosowanie obsługi do wykonywania prostego interaktywnego progowania z jednym i dwoma progami (zad 2 lab 2) tak, aby prezentować wyniki w chwili zmiany progu związanego z przesunięciem wskaźnika lub wpisania nowej wartości. Ponadto jako część „interface” operacji występuje wykonanie pozostałych dwóch poniżej wymienionych wersji progowania.
+– [x] Progowanie metodą Otsu,
+– [x] Progowanie adaptacyjne (adaptive threshold)</p>
+</li>
+</ul>
+<h2 id="9-algorytmy-morfologii">9. Algorytmy morfologii</h2>
+<ul>
+<li>[x] Opracować algorytm i uruchomić funkcjonalność wykonywania podstawowych operacji morfologii matematycznej:
+<ul>
+<li>[x] erozji,</li>
+<li>[x] dylatacji,</li>
+<li>[x] otwarcia,</li>
+<li>[x] zamknięcia
+wykorzystując podstawowy element strukturalny dysk 3x3.</li>
+</ul>
+</li>
+</ul>
+<h2 id="10-składowe-wektora-cech-obiektu-binarnego">10. Składowe wektora cech obiektu binarnego</h2>
+<ul>
+<li><p>[x] Opracować algorytm i uruchomić funkcjonalność realizującą wyznaczanie następujących składowych wektora cech obiektu binarnego:</p>
+<ul>
+<li>[x] Momenty</li>
+<li>[x] Pole powierzchni i obwód</li>
+<li>[x] Współczynniki kształtu: aspectRatio, extent, solidity, equivalentDiameter</li>
+</ul>
+</li>
+<li><p>[x] Przygotować zapis wyników w postaci pliku tekstowego do wczytania do oprogramowania Excel.</p>
+</li>
+</ul>
+<p>Program przetestować na podstawowych figurach znakach graficznych (gwiazdka, wykrzyknik, dwukropek, przecinek, średnik, itp.).</p>
+<h2 id="11-implementacja-narzędzia-do-manipulacji-widmem-amplitudowym-obrazu-w-celu-likwidacji-zakłóceń-periodycznych">11. Implementacja narzędzia do manipulacji widmem amplitudowym obrazu w celu likwidacji zakłóceń periodycznych</h2>
+<ul>
+<li>[ ] Zaimplementować wskazany algorytm.</li>
+</ul>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/README.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

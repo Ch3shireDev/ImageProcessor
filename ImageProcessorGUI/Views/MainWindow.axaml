@@ -6,7 +6,6 @@
         x:Class="ImageProcessorGUI.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="{Binding Title}"
-
         MinWidth="600"
         MinHeight="400"
         ExtendClientAreaToDecorationsHint="True"
@@ -20,13 +19,109 @@
         </DockPanel>
         <Menu DockPanel.Dock="Top" IsHitTestVisible="True">
 
-
             <MenuItem Header="_Plik">
                 <MenuItem Header="_Otwórz" Command="{Binding OpenImageCommand}" />
                 <MenuItem Header="_Zapisz" Command="{Binding SaveImageCommand}" />
                 <MenuItem Header="_Duplikuj" Command="{Binding DuplicateImageCommand}" />
             </MenuItem>
+            <MenuItem Header="Wyświetl">
+                <MenuItem Header="_Histogramy">
+                    <MenuItem Header="Histogram intensywności" Command="{Binding ShowValueHistogramCommand}" />
+                    <MenuItem Header="Histogram RGB" Command="{Binding ShowRgbHistogramCommand}" />
+                    <MenuItem Header="Histogram R" Command="{Binding ShowRHistogramCommand}" />
+                    <MenuItem Header="Histogram G" Command="{Binding ShowGHistogramCommand}" />
+                    <MenuItem Header="Histogram B" Command="{Binding ShowBHistogramCommand}" />
+                </MenuItem>
+                <MenuItem Header="Skaluj">
+                    <MenuItem Header="Resetuj skalę" Command="{Binding ShowNormalScaleCommand}" />
+                    <MenuItem Header="Skaluj 200%" Command="{Binding ShowScaledUp200PercentCommand}" />
+                    <MenuItem Header="Skaluj 150%" Command="{Binding ShowScaledUp150PercentCommand}" />
+                    <MenuItem Header="Skaluj 50%" Command="{Binding ShowScaledDown50PercentCommand}" />
+                    <MenuItem Header="Skaluj 25%" Command="{Binding ShowScaledDown25PercentCommand}" />
+                    <MenuItem Header="Skaluj 20%" Command="{Binding ShowScaledDown20PercentCommand}" />
+                    <MenuItem Header="Skaluj 10%" Command="{Binding ShowScaledDown10PercentCommand}" />
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Transformuj">
+                <MenuItem Header="Stwórz obraz w skali szarości" Command="{Binding CreateGrayscaleCommand}" />
+                <MenuItem Header="Przerzuć obraz w poziomie" Command="{Binding SwapHorizontalCommand}" />
+                <MenuItem Header="Rozciągnij liniowo" Command="{Binding LinearStretchingCommand}" />
+                <MenuItem Header="Rozciągnij z użyciem funkcji gamma"
+                          Command="{Binding GammaStretchingCommand}" />
+                <MenuItem Header="Wyrównaj poprzez equalizację histogramu"
+                          Command="{Binding EqualizeHistogramCommand}" />
+                <MenuItem Header="_Operacje punktowe">
+                    <MenuItem Header="Negacja" Command="{Binding NegateImageCommand}" />
+                    <MenuItem Header="Progowanie binarne" Command="{Binding BinaryThresholdCommand}" />
+                    <MenuItem Header="Progowanie z jednym suwakiem"
+                              Command="{Binding GreyscaleThresholdOneSliderCommand}" />
+                    <MenuItem Header="Progowanie z dwoma suwakami"
+                              Command="{Binding GreyscaleThresholdTwoSlidersCommand}" />
+                    <MenuItem Header="Dodaj obrazy / Uzyskaj różnicę obrazów"
+                              Command="{Binding AddImageCommand}" />
+                    <MenuItem Header="Operacje matematyczne" Command="{Binding MathOperationCommand}" />
+                    <MenuItem Header="Operacje logiczne" Command="{Binding BinaryOperationCommand}" />
+                </MenuItem>
+                <MenuItem Header="_Przetwórz">
+                    <MenuItem Header="Wygładzanie liniowe">
+                        <MenuItem Header="Uśrednianie bez wag"
+                                  Command="{Binding MedianBlurWithoutWeightsCommand}" />
+                        <MenuItem Header="Uśrednianie z wagami"
+                                  Command="{Binding MedianBlurWithWeightsCommand}" />
+                        <MenuItem Header="Filtr gaussowski" Command="{Binding GaussianBlurCommand}" />
+                    </MenuItem>
+                    <MenuItem Header="Wyostrzanie liniowe">
+                        <MenuItem Header="Maska 1" Command="{Binding SharpeningMask1Command}" />
+                        <MenuItem Header="Maska 2" Command="{Binding SharpeningMask2Command}" />
+                        <MenuItem Header="Maska 3" Command="{Binding SharpeningMask3Command}" />
+                    </MenuItem>
+                    <MenuItem Header="Detekcja krawędzi metodą Sobela">
+                        <MenuItem Header="E" Command="{Binding EdgeSobelEastCommand}" />
+                        <MenuItem Header="NE" Command="{Binding EdgeSobelNorthEastCommand}" />
+                        <MenuItem Header="N" Command="{Binding EdgeSobelNorthCommand}" />
+                        <MenuItem Header="NW" Command="{Binding EdgeSobelNorthWestCommand}" />
+                        <MenuItem Header="W" Command="{Binding EdgeSobelWestCommand}" />
+                        <MenuItem Header="SW" Command="{Binding EdgeSobelSouthWestCommand}" />
+                        <MenuItem Header="S" Command="{Binding EdgeSobelSouthCommand}" />
+                        <MenuItem Header="SE" Command="{Binding EdgeSobelSouthEastCommand}" />
+                    </MenuItem>
+                    <MenuItem Header="Operacja medianowa" Command="{Binding CalculateMedianCommand}" />
+                    <MenuItem Header="Segmentacja obrazu">
+                        <MenuItem Header="Metoda Otsu" Command="{Binding OtsuSegmentationCommand}" />
+                        <MenuItem Header="Progowanie adaptacyjne"
+                                  Command="{Binding AdaptiveThresholdSegmentationCommand}" />
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="_Detekcja krawędzi">
+                    <MenuItem Header="Metoda Sobela" Command="{Binding SobelEdgeDetectionCommand}" />
+                    <MenuItem Header="Metoda Prewitta" Command="{Binding PrewittEdgeDetectionCommand}" />
+                    <MenuItem Header="Operator Canny'ego" Command="{Binding CannyOperatorEdgeDetectionCommand}" />
+                </MenuItem>
+                <MenuItem Header="_Morfologia">
+                    <MenuItem Header="Erozja" Command="{Binding MorphologyErosionCommand}" />
+                    <MenuItem Header="Dylatacja" Command="{Binding MorphologyDilationCommand}" />
+                    <MenuItem Header="Otwarcie" Command="{Binding MorphologyOpeningCommand}" />
+                    <MenuItem Header="Zamknięcie" Command="{Binding MorphologyClosingCommand}" />
+                </MenuItem>
+                <MenuItem Header="_Segmentacja">
+                    <MenuItem Header="Progowanie binarne" Command="{Binding BinaryThresholdCommand}" />
+                    <MenuItem Header="Progowanie z jednym suwakiem"
+                              Command="{Binding GreyscaleThresholdOneSliderCommand}" />
+                    <MenuItem Header="Progowanie z dwoma suwakami"
+                              Command="{Binding GreyscaleThresholdTwoSlidersCommand}" />
+                    <MenuItem Header="Progrowanie metodą Otsu" Command="{Binding OtsuSegmentationCommand}" />
+                    <MenuItem Header="Progowanie adaptacyjne"
+                              Command="{Binding AdaptiveThresholdSegmentationCommand}" />
+                </MenuItem>
+                <MenuItem Header="_Transformacja Fouriera">
+                    <MenuItem Header="Dodanie zakłóceń" Command="{Binding AddPeriodicNoiseCommand}" />
+                    <MenuItem Header="Usunięcie zakłóceń" Command="{Binding RemovePeriodicNoiseCommand}" />
+                </MenuItem>
+            </MenuItem>
 
+            <MenuItem Header="_Analiza">
+                <MenuItem Header="Oblicz wektor cech" Command="{Binding CalculateFeatureVectorCommand}" />
+            </MenuItem>
         </Menu>
         <Panel>
             <Panel.ContextMenu>
@@ -62,73 +157,77 @@
                                   Command="{Binding GammaStretchingCommand}" />
                         <MenuItem Header="Wyrównaj poprzez equalizację histogramu"
                                   Command="{Binding EqualizeHistogramCommand}" />
-                    </MenuItem>
-                    <MenuItem Header="_Operacje punktowe">
-                        <MenuItem Header="Negacja" Command="{Binding NegateImageCommand}" />
-                        <MenuItem Header="Progowanie binarne" Command="{Binding BinaryThresholdCommand}" />
-                        <MenuItem Header="Progowanie z jednym suwakiem"
-                                  Command="{Binding GreyscaleThresholdOneSliderCommand}" />
-                        <MenuItem Header="Progowanie z dwoma suwakami"
-                                  Command="{Binding GreyscaleThresholdTwoSlidersCommand}" />
-                        <MenuItem Header="Dodaj obrazy / Uzyskaj różnicę obrazów" Command="{Binding AddImageCommand}" />
-                        <MenuItem Header="Operacje matematyczne" Command="{Binding MathOperationCommand}" />
-                        <MenuItem Header="Operacje logiczne" Command="{Binding BinaryOperationCommand}" />
-                    </MenuItem>
-                    <MenuItem Header="_Przetwórz">
-                        <MenuItem Header="Wygładzanie liniowe">
-                            <MenuItem Header="Uśrednianie bez wag" Command="{Binding MedianBlurWithoutWeightsCommand}" />
-                            <MenuItem Header="Uśrednianie z wagami" Command="{Binding MedianBlurWithWeightsCommand}" />
-                            <MenuItem Header="Filtr gaussowski" Command="{Binding GaussianBlurCommand}" />
+                        <MenuItem Header="_Operacje punktowe">
+                            <MenuItem Header="Negacja" Command="{Binding NegateImageCommand}" />
+                            <MenuItem Header="Progowanie binarne" Command="{Binding BinaryThresholdCommand}" />
+                            <MenuItem Header="Progowanie z jednym suwakiem"
+                                      Command="{Binding GreyscaleThresholdOneSliderCommand}" />
+                            <MenuItem Header="Progowanie z dwoma suwakami"
+                                      Command="{Binding GreyscaleThresholdTwoSlidersCommand}" />
+                            <MenuItem Header="Dodaj obrazy / Uzyskaj różnicę obrazów"
+                                      Command="{Binding AddImageCommand}" />
+                            <MenuItem Header="Operacje matematyczne" Command="{Binding MathOperationCommand}" />
+                            <MenuItem Header="Operacje logiczne" Command="{Binding BinaryOperationCommand}" />
                         </MenuItem>
-                        <MenuItem Header="Wyostrzanie liniowe">
-                            <MenuItem Header="Maska 1" Command="{Binding SharpeningMask1Command}" />
-                            <MenuItem Header="Maska 2" Command="{Binding SharpeningMask2Command}" />
-                            <MenuItem Header="Maska 3" Command="{Binding SharpeningMask3Command}" />
+                        <MenuItem Header="_Przetwórz">
+                            <MenuItem Header="Wygładzanie liniowe">
+                                <MenuItem Header="Uśrednianie bez wag"
+                                          Command="{Binding MedianBlurWithoutWeightsCommand}" />
+                                <MenuItem Header="Uśrednianie z wagami"
+                                          Command="{Binding MedianBlurWithWeightsCommand}" />
+                                <MenuItem Header="Filtr gaussowski" Command="{Binding GaussianBlurCommand}" />
+                            </MenuItem>
+                            <MenuItem Header="Wyostrzanie liniowe">
+                                <MenuItem Header="Maska 1" Command="{Binding SharpeningMask1Command}" />
+                                <MenuItem Header="Maska 2" Command="{Binding SharpeningMask2Command}" />
+                                <MenuItem Header="Maska 3" Command="{Binding SharpeningMask3Command}" />
+                            </MenuItem>
+                            <MenuItem Header="Detekcja krawędzi metodą Sobela">
+                                <MenuItem Header="E" Command="{Binding EdgeSobelEastCommand}" />
+                                <MenuItem Header="NE" Command="{Binding EdgeSobelNorthEastCommand}" />
+                                <MenuItem Header="N" Command="{Binding EdgeSobelNorthCommand}" />
+                                <MenuItem Header="NW" Command="{Binding EdgeSobelNorthWestCommand}" />
+                                <MenuItem Header="W" Command="{Binding EdgeSobelWestCommand}" />
+                                <MenuItem Header="SW" Command="{Binding EdgeSobelSouthWestCommand}" />
+                                <MenuItem Header="S" Command="{Binding EdgeSobelSouthCommand}" />
+                                <MenuItem Header="SE" Command="{Binding EdgeSobelSouthEastCommand}" />
+                            </MenuItem>
+                            <MenuItem Header="Operacja medianowa" Command="{Binding CalculateMedianCommand}" />
+                            <MenuItem Header="Segmentacja obrazu">
+                                <MenuItem Header="Metoda Otsu" Command="{Binding OtsuSegmentationCommand}" />
+                                <MenuItem Header="Progowanie adaptacyjne"
+                                          Command="{Binding AdaptiveThresholdSegmentationCommand}" />
+                            </MenuItem>
                         </MenuItem>
-                        <MenuItem Header="Detekcja krawędzi metodą Sobela">
-                            <MenuItem Header="E" Command="{Binding EdgeSobelEastCommand}" />
-                            <MenuItem Header="NE" Command="{Binding EdgeSobelNorthEastCommand}" />
-                            <MenuItem Header="N" Command="{Binding EdgeSobelNorthCommand}" />
-                            <MenuItem Header="NW" Command="{Binding EdgeSobelNorthWestCommand}" />
-                            <MenuItem Header="W" Command="{Binding EdgeSobelWestCommand}" />
-                            <MenuItem Header="SW" Command="{Binding EdgeSobelSouthWestCommand}" />
-                            <MenuItem Header="S" Command="{Binding EdgeSobelSouthCommand}" />
-                            <MenuItem Header="SE" Command="{Binding EdgeSobelSouthEastCommand}" />
+                        <MenuItem Header="_Detekcja krawędzi">
+                            <MenuItem Header="Metoda Sobela" Command="{Binding SobelEdgeDetectionCommand}" />
+                            <MenuItem Header="Metoda Prewitta" Command="{Binding PrewittEdgeDetectionCommand}" />
+                            <MenuItem Header="Operator Canny'ego" Command="{Binding CannyOperatorEdgeDetectionCommand}" />
                         </MenuItem>
-                        <MenuItem Header="Operacja medianowa" Command="{Binding CalculateMedianCommand}" />
-                        <MenuItem Header="Segmentacja obrazu">
-                            <MenuItem Header="Metoda Otsu" Command="{Binding OtsuSegmentationCommand}" />
+                        <MenuItem Header="_Morfologia">
+                            <MenuItem Header="Erozja" Command="{Binding MorphologyErosionCommand}" />
+                            <MenuItem Header="Dylatacja" Command="{Binding MorphologyDilationCommand}" />
+                            <MenuItem Header="Otwarcie" Command="{Binding MorphologyOpeningCommand}" />
+                            <MenuItem Header="Zamknięcie" Command="{Binding MorphologyClosingCommand}" />
+                        </MenuItem>
+                        <MenuItem Header="_Segmentacja">
+                            <MenuItem Header="Progowanie binarne" Command="{Binding BinaryThresholdCommand}" />
+                            <MenuItem Header="Progowanie z jednym suwakiem"
+                                      Command="{Binding GreyscaleThresholdOneSliderCommand}" />
+                            <MenuItem Header="Progowanie z dwoma suwakami"
+                                      Command="{Binding GreyscaleThresholdTwoSlidersCommand}" />
+                            <MenuItem Header="Progrowanie metodą Otsu" Command="{Binding OtsuSegmentationCommand}" />
                             <MenuItem Header="Progowanie adaptacyjne"
                                       Command="{Binding AdaptiveThresholdSegmentationCommand}" />
                         </MenuItem>
+                        <MenuItem Header="_Transformacja Fouriera">
+                            <MenuItem Header="Dodanie zakłóceń" Command="{Binding AddPeriodicNoiseCommand}" />
+                            <MenuItem Header="Usunięcie zakłóceń" Command="{Binding RemovePeriodicNoiseCommand}" />
+                        </MenuItem>
                     </MenuItem>
-                    <MenuItem Header="_Detekcja krawędzi">
-                        <MenuItem Header="Metoda Sobela" Command="{Binding SobelEdgeDetectionCommand}" />
-                        <MenuItem Header="Metoda Prewitta" Command="{Binding PrewittEdgeDetectionCommand}" />
-                        <MenuItem Header="Operator Canny'ego" Command="{Binding CannyOperatorEdgeDetectionCommand}" />
-                    </MenuItem>
-                    <MenuItem Header="_Morfologia">
-                        <MenuItem Header="Erozja" Command="{Binding MorphologyErosionCommand}" />
-                        <MenuItem Header="Dylatacja" Command="{Binding MorphologyDilationCommand}" />
-                        <MenuItem Header="Otwarcie" Command="{Binding MorphologyOpeningCommand}" />
-                        <MenuItem Header="Zamknięcie" Command="{Binding MorphologyClosingCommand}" />
-                    </MenuItem>
-                    <MenuItem Header="_Segmentacja">
-                        <MenuItem Header="Progowanie binarne" Command="{Binding BinaryThresholdCommand}" />
-                        <MenuItem Header="Progowanie z jednym suwakiem"
-                                  Command="{Binding GreyscaleThresholdOneSliderCommand}" />
-                        <MenuItem Header="Progowanie z dwoma suwakami"
-                                  Command="{Binding GreyscaleThresholdTwoSlidersCommand}" />
-                        <MenuItem Header="Progrowanie metodą Otsu" Command="{Binding OtsuSegmentationCommand}" />
-                        <MenuItem Header="Progowanie adaptacyjne"
-                                  Command="{Binding AdaptiveThresholdSegmentationCommand}" />
-                    </MenuItem>
+
                     <MenuItem Header="_Analiza">
                         <MenuItem Header="Oblicz wektor cech" Command="{Binding CalculateFeatureVectorCommand}" />
-                    </MenuItem>
-                    <MenuItem Header="_Transformacja Fouriera">
-                        <MenuItem Header="Dodanie zakłóceń" Command="{Binding AddPeriodicNoiseCommand}" />
-                        <MenuItem Header="Usunięcie zakłóceń" Command="{Binding RemovePeriodicNoiseCommand}" />
                     </MenuItem>
                 </ContextMenu>
             </Panel.ContextMenu>

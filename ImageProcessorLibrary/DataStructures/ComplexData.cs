@@ -8,17 +8,35 @@ namespace ImageProcessorLibrary.DataStructures;
 /// </summary>
 public class ComplexData
 {
-    public ComplexData()
-    {
-    }
 
+    /// <summary>
+    /// Konstruktor kopiujący.
+    /// </summary>
+    /// <param name="complexData"></param>
     public ComplexData(ComplexData complexData)
     {
         Data = complexData.Data;
         Width = complexData.Width;
         Height = complexData.Height;
     }
+    /// <summary>
+    /// Konstruktor tworzący obiekt na podstawie tablicy liczb zespolonych.
+    /// </summary>
+    /// <param name="data"></param>
+    /// <param name="width"></param>
+    /// <param name="height"></param>
 
+    public ComplexData(Complex[][,] data, int width, int height)
+    {
+        Data = data;
+        Width = width;
+        Height = height;
+    }
+
+    /// <summary>
+    /// Konstruktor tworzący obiekt na podstawie obrazu w skali szarości.
+    /// </summary>
+    /// <param name="GreyImage"></param>
     public ComplexData(byte[,] GreyImage)
     {
         var width = GreyImage.GetLength(1);
