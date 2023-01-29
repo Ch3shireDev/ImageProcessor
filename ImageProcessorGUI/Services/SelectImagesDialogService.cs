@@ -10,17 +10,24 @@ using ImageProcessorLibrary.Services.DialogServices;
 
 namespace ImageProcessorGUI.Services;
 
-
 /// <summary>
-/// Serwis do obsługi okna dialogowego wyboru obrazu.
+///     Serwis do obsługi okna dialogowego wyboru obrazu.
 /// </summary>
 public class SelectImagesDialogService : ISelectImagesDialogService
 {
+    /// <summary>
+    /// Wskaźnik na główne okno aplikacji.
+    /// </summary>
     private Window? MainWindow =>
         Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop
             ? desktop.MainWindow
             : null;
 
+    /// <summary>
+    ///     Zwraca ścieżkę lub ścieżki plików obrazów do otwarcia.
+    /// </summary>
+    /// <param name="allowMultiple"></param>
+    /// <returns></returns>
     public async Task<ImageData[]> SelectImages(bool allowMultiple = false)
     {
         var fileDialog = new OpenFileDialog

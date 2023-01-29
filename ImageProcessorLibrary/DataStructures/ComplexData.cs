@@ -71,10 +71,21 @@ public class ComplexData
         Height = GreyImage.Height;
     }
 
+    /// <summary>
+    /// Dane w postaci tablicy liczb zespolonych.
+    /// Pierwszy indeks - barwa - od 0 do 2 (R, G, B). Kolejne dwa indeksy - współrzędne na osi pionowej i poziomej.
+    /// </summary>
     public Complex[][,] Data { get; set; }
+    /// <summary>
+    /// Pierwotna szerokość obrazu. Nie zmienia się po transformacji Fouriera.
+    /// </summary>
     public int Width { get; set; }
+    /// <summary>
+    /// Pierwotna wysokość obrazu. Nie zmienia się po transformacji Fouriera.
+    /// </summary>
     public int Height { get; set; }
 
+    
     public Complex[,] this[int i] => Data[i];
 
     public ImageData ToImageData()

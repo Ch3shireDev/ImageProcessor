@@ -12,8 +12,15 @@ namespace ImageProcessorGUI.Services;
 /// </summary>
 public class WindowService : IWindowService
 {
+    /// <summary>
+    ///     Dostarczyciel serwisów.
+    /// </summary>
     public IImageServiceProvider imageServiceProvider { get; set; }
 
+    /// <summary>
+    ///     Pokazuje nowe okno dla wybranego obrazu.
+    /// </summary>
+    /// <param name="imageData"></param>
     public void ShowImageWindow(ImageData imageData)
     {
         var imageModel = new MainModel(imageData, imageServiceProvider);
@@ -71,7 +78,7 @@ public class WindowService : IWindowService
     }
 
     /// <summary>
-    ///    Wyświetla okno z operacją matematyczną.
+    ///     Wyświetla okno z operacją matematyczną.
     /// </summary>
     /// <param name="mathOperationViewModel"></param>
     public void ShowMathOperationViewModel(object mathOperationViewModel)
@@ -85,7 +92,7 @@ public class WindowService : IWindowService
     }
 
     /// <summary>
-    ///    Wyświetla okno z operacją binarną.
+    ///     Wyświetla okno z operacją binarną.
     /// </summary>
     /// <param name="binaryOperationViewModel"></param>
     public void ShowBinaryOperationViewModel(object binaryOperationViewModel)

@@ -8,47 +8,66 @@ using ImageProcessorGUI.Views;
 using ImageProcessorLibrary.DataStructures;
 using ImageProcessorLibrary.ServiceProviders;
 using ImageProcessorLibrary.Services.ImageServices;
-using ImageProcessorLibrary.Services.NegateImageServices;
 using ImageProcessorLibrary.Services.OpenCvServices;
-using ImageProcessorLibrary.Services.StretchingServices;
 
 namespace ImageProcessorGUI.Models;
 
 /// <summary>
-///    Model głównego okna aplikacji.
+///     Model głównego okna aplikacji.
 /// </summary>
 public class MainModel
 {
-    private readonly FilterService _filterService = new();
+    /// <summary>
+    ///     Serwis dostarczający pośrednie serwisy do modelu.
+    /// </summary>
     private readonly IImageServiceProvider _imageServiceProvider;
-    
-    private readonly MorphologyService morphologyService = new();
 
-    private readonly SegmentationService segmentationService = new();
 
+    /// <summary>
+    ///     Konstruktor obrazu.
+    /// </summary>
+    /// <param name="imageData"></param>
+    /// <param name="imageServiceProvider"></param>
     public MainModel(ImageData imageData, IImageServiceProvider imageServiceProvider)
     {
         _imageServiceProvider = imageServiceProvider;
         ImageData = imageData;
     }
 
+    /// <summary>
+    ///     Dane wyświetlanego obrazu.
+    /// </summary>
     public ImageData ImageData { get; set; }
+
+    /// <summary>
+    ///     Obserwowana szerokość obrazu.
+    /// </summary>
     public double ImageWidth => (double)(ImageData.Width * Scale);
+
+    /// <summary>
+    ///     Obserwowana wysokość obrazu.
+    /// </summary>
     public double ImageHeight => (double)(ImageData.Height * Scale);
 
+    /// <summary>
+    ///     Skala przedstawienia obrazu.
+    /// </summary>
     public decimal Scale { get; set; } = 1;
-    public IImage AvaloniaImage => GetImage();
 
-    private IImage GetImage()
-    {
-        return new Bitmap(new MemoryStream(ImageData.Filebytes));
-    }
+    /// <summary>
+    ///     Obiekt obrazu do wyświetlenia w formacie obrazu Avalonii.
+    /// </summary>
+    public IImage AvaloniaImage => new Bitmap(new MemoryStream(ImageData.Filebytes));
 
+    /// <summary>
+    ///     Zdarzenie zmiany obrazu. Wywoływane gdy obiekt obrazu podniesie zdarzenie zmiany.
+    /// </summary>
     public event EventHandler<EventArgs> ImageChanged
     {
         add => ImageData.ImageChanged += value;
         remove => ImageData.ImageChanged -= value;
     }
+
 
     public void ShowScaledUp200Percent()
     {
@@ -97,13 +116,13 @@ public class MainModel
 
     public void CreateGrayscale()
     {
-        var imageData =  _imageServiceProvider.ImageProcessor.ToGrayscale(ImageData);
+        var imageData = _imageServiceProvider.ImageProcessor.ToGrayscale(ImageData);
         ImageData.Update(imageData);
     }
 
     public void SwapHorizontal()
     {
-        var imageData =  _imageServiceProvider.ImageProcessor.SwapHorizontal(ImageData);
+        var imageData = _imageServiceProvider.ImageProcessor.SwapHorizontal(ImageData);
         ImageData.Update(imageData);
     }
 
@@ -420,7 +439,7 @@ public class MainModel
             { 0, -1, 0 }
         };
 
-        kernel = _filterService.Normalize(kernel);
+        kernel = new FilterService().Normalize(kernel);
 
         Filter(kernel);
     }
@@ -683,7 +702,7 @@ public class MainModel
     public void OtsuSegmentation()
     {
         var imageData = new ImageData(ImageData);
-        var result = segmentationService.OtsuSegmentation(imageData);
+        var result = new SegmentationService().OtsuSegmentation(imageData);
         _imageServiceProvider.WindowService.ShowImageWindow(result);
     }
 
@@ -700,7 +719,7 @@ public class MainModel
     public void AdaptativeThresholdSegmentation()
     {
         var imageData = new ImageData(ImageData);
-        var result = segmentationService.AdaptiveThresholding(imageData);
+        var result = new SegmentationService().AdaptiveThresholding(imageData);
         _imageServiceProvider.WindowService.ShowImageWindow(result);
     }
 
@@ -715,28 +734,28 @@ public class MainModel
     public void MorphologyErosion()
     {
         var imageData = new ImageData(ImageData);
-        var result = morphologyService.Erosion(imageData);
+        var result = new MorphologyService().Erosion(imageData);
         _imageServiceProvider.WindowService.ShowImageWindow(result);
     }
 
     public void MorphologyDilation()
     {
         var imageData = new ImageData(ImageData);
-        var result = morphologyService.Dilation(imageData);
+        var result = new MorphologyService().Dilation(imageData);
         _imageServiceProvider.WindowService.ShowImageWindow(result);
     }
 
     public void MorphologyOpening()
     {
         var imageData = new ImageData(ImageData);
-        var result = morphologyService.Opening(imageData);
+        var result = new MorphologyService().Opening(imageData);
         _imageServiceProvider.WindowService.ShowImageWindow(result);
     }
 
     public void MorphologyClosing()
     {
         var imageData = new ImageData(ImageData);
-        var result = morphologyService.Closing(imageData);
+        var result = new MorphologyService().Closing(imageData);
         _imageServiceProvider.WindowService.ShowImageWindow(result);
     }
 
@@ -774,11 +793,13 @@ public class MainModel
             DataContext = viewModel
         };
         viewModel.Refresh();
-        window.Show();
-
         _imageServiceProvider.WindowService.ShowImageWindow(outputImageData);
+        window.Show();
     }
 
+    /// <summary>
+    ///    Implementacja narzędzia do manipulacji widmem amplitudowym obrazu w celu dodania zakłóceń periodycznych.
+    /// </summary>
     public void AddPeriodicNoise()
     {
         var outputImageData = new ImageData(ImageData);
@@ -788,9 +809,9 @@ public class MainModel
             DataContext = viewModel
         };
         viewModel.Refresh();
+        _imageServiceProvider.WindowService.ShowImageWindow(outputImageData);
         window.Show();
 
-        _imageServiceProvider.WindowService.ShowImageWindow(outputImageData);
     }
 
     public void ToBinaryImage()

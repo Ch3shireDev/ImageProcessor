@@ -17,6 +17,11 @@ public class SaveImageDialogService : ISaveImageDialogService
             ? desktop.MainWindow
             : null;
 
+    /// <summary>
+    ///     Zwraca wybraną przez użytkownika ścieżkę pliku do zapisu obrazu.
+    /// </summary>
+    /// <param name="imageData">Obiekt obrazu do zapisu.</param>
+    /// <returns></returns>
     public async Task<string?> GetSaveImageFileName(ImageData imageData)
     {
         var fileDialog = new SaveFileDialog

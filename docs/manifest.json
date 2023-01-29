@@ -1,0 +1,1956 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Users/cheshire/Documents/GitHub/ImageProcessor",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.App.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.App.html",
+          "hash": "FCKSS0AjSbJvhb88EzDKsmVJTaDXdukHHzkF56C18gc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.Models.MainModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.Models.MainModel.html",
+          "hash": "5nulxpTMW/5b4qlBvz6UQ+TuWfwrLfgczjV6NNaS5+0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.Models.html",
+          "hash": "RF2B9X4ECrSxAuaQEUnUxKs/IRjLRjrOsjA8r6I9ihw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.Services.SaveImageDialogService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.Services.SaveImageDialogService.html",
+          "hash": "BVcGvdDd9LrOKEr2aI8wqwtYmN4eSEFNlCZ93q8z8KU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.Services.SelectImagesDialogService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.Services.SelectImagesDialogService.html",
+          "hash": "HJqMe7KXV6KFDOkfTMWSK2423oZvfAClZUxcO/rGgOk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.Services.WindowService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.Services.WindowService.html",
+          "hash": "RQARR8OpBK+jr646M4KBjubtet0vX/v0QFwNzbgtGsM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.Services.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.Services.html",
+          "hash": "BYbZDKTQVK3l3YDS4diCTNsgdw/KPYwWsPonIf3/R78="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.ViewLocator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.ViewLocator.html",
+          "hash": "GP6XjnFU2N6KoRl85j0ph+jFNYabxlatE6oKeHisupk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.ViewModels.AddImagesViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.ViewModels.AddImagesViewModel.html",
+          "hash": "uFUUyq98TfNIDGxxDt7NqlSHlohqA19EijfTPmM19LY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.ViewModels.AddPeriodicNoiseViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.ViewModels.AddPeriodicNoiseViewModel.html",
+          "hash": "gZIBZM2ABY1JGkOiH5w7306Yddo5UsEaxn27vkwviBk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.ViewModels.BinaryOperationViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.ViewModels.BinaryOperationViewModel.html",
+          "hash": "fdiljHD2XRKddRl27ezOLL9nBN9jVfXYyfxftLfP1Ek="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.ViewModels.FeatureVectorViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.ViewModels.FeatureVectorViewModel.html",
+          "hash": "AWGQxD7+vqtILZvLUs3GL6wLe0IecdE3t6ACPpgQASU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.ViewModels.FilterBorderViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.ViewModels.FilterBorderViewModel.html",
+          "hash": "GiH+mpLiKlgBVvSZKjJkhFJzdn7tVUpaK+ZE2HGDV3U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.ViewModels.MainWindowViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.ViewModels.MainWindowViewModel.html",
+          "hash": "D28TlI5a0XWLuTecgpYkuBFF0Ans35aUlO2/11ixmLc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.ViewModels.MathOperationViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.ViewModels.MathOperationViewModel.html",
+          "hash": "DX8HumMwqWhy3J8bgWqIhGAVjJEAQ4XaYBdoJBIlD+M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.ViewModels.OptionsOneValueViewModel-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.ViewModels.OptionsOneValueViewModel-1.html",
+          "hash": "7OWzOrUHccMwQXY3Kkg7ra2ypv1hoGTx4MH09/XfFGk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.ViewModels.OptionsTwoValuesViewModel-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.ViewModels.OptionsTwoValuesViewModel-2.html",
+          "hash": "Z6t6M2HsTv5fvAfOV7ZfIDrO2/zOSYgFyrbwGBk4/dQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.ViewModels.PrewittEdgeDetectionViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.ViewModels.PrewittEdgeDetectionViewModel.html",
+          "hash": "AnzpU3zOkr0q50CRmdQtYm0tvMGtnWcqlWugWyOBSiI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.ViewModels.RemovePeriodicNoiseViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.ViewModels.RemovePeriodicNoiseViewModel.html",
+          "hash": "6SnH2hp4jBX4UXknK5fcuIJW46mS2oYnB6BFqeMMTRM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.ViewModels.SobelEdgeDetectionViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.ViewModels.SobelEdgeDetectionViewModel.html",
+          "hash": "+8qmy1HZ3R4EaIyVe79GxELPAiN+iXhnJkRgYLf0US0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.html",
+          "hash": "+aLWLx9c1y17l4AbK2ChiMPExsOCqBCcdv6a6nT6EYo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.ViewModels.html",
+          "hash": "Lh5q20+nOieu9H73NMdEP4QTW3Pv/DOAUcp9X2anVOM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.Views.AddImagesWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.Views.AddImagesWindow.html",
+          "hash": "xBe6QDqO85SqBXUsL7rMKP4W/Zhf46MWAbgRSSGinOE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.Views.AddPeriodicNoiseView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.Views.AddPeriodicNoiseView.html",
+          "hash": "wEOhAuAAUjIwdHn0tXHq61P5INJtD0wOcHIq8gQCpPc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.Views.BinaryOperationsWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.Views.BinaryOperationsWindow.html",
+          "hash": "HJXzLCLDs1KQYSbnwmdqtqSeBo1Z2n6hBPrQh+s7jao="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.Views.EdgeDetectionView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.Views.EdgeDetectionView.html",
+          "hash": "0CFmyqM4aHiUeddTShjIK6Atu+4LAZaXfHrtLZGr7hc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.Views.FeatureVectorWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.Views.FeatureVectorWindow.html",
+          "hash": "iQ5Omg0Cb2fINRj9SJVED1r7Whdp6Xl2w8OgjD4A/2s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.Views.FilterBorderWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.Views.FilterBorderWindow.html",
+          "hash": "gAOWuKsZhxV5OFrON53/VsldJzj3p7WflpY4Ulfkx6M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.Views.MainWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.Views.MainWindow.html",
+          "hash": "MKC2yjlq28yxnB/MMqoNlBNjFQwjlkbnrDHzRvCEDMI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.Views.MathOperationWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.Views.MathOperationWindow.html",
+          "hash": "Vf+mf+8KA61mMctQgetdkV/6Y1LyenepMKlVOr+iCY4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.Views.OptionsOneValueWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.Views.OptionsOneValueWindow.html",
+          "hash": "hn57dUYvi/TH8K74DFbXjHSCo+fDqnqRNI7/Acu0VOI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.Views.OptionsTwoValuesWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.Views.OptionsTwoValuesWindow.html",
+          "hash": "0CdgD9DddU67YeaeiGnTpa+CMTKfAR9ynROL1Hca4Y0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.Views.RemovePeriodicNoiseView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.Views.RemovePeriodicNoiseView.html",
+          "hash": "ZtKBcezcPvBM3ZqUqWkgSvxPDfarwShTeye9nR65FK8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.Views.UniversalMedianOperationWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.Views.UniversalMedianOperationWindow.html",
+          "hash": "xG+d2B0V6+6+mRWvmKdlL28Mrc+pztC8mtE81dgEaC0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.Views.html",
+          "hash": "UDI9V9Pk/GCEG+4iiFqxCrzm6w7WcJY5vx71Y8jydk4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorGUI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorGUI.html",
+          "hash": "qmq+loyuxClvTQkawvh9SINcRICKvkd3B+lYouy0lqg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.DataStructures.ComplexData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.DataStructures.ComplexData.html",
+          "hash": "8CxHGI6K0/xNcgXGhcehwS5YM5VBvPeTP/4tXsXg3/k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.DataStructures.FeatureVector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.DataStructures.FeatureVector.html",
+          "hash": "DULMv6EDagAoY6XN8Z6hXfwUzMRvlUCq9q1fysUqbXI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.DataStructures.HSL.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.DataStructures.HSL.html",
+          "hash": "83cDprpZw1Mp2vKKJ/XLDtFP2V/Re8WCvLiGLOH3vWg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.DataStructures.ImageData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.DataStructures.ImageData.html",
+          "hash": "XigwJmUsHfNHDe8my1L87AyVmftOZznZ9P80kpDUCuU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.DataStructures.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.DataStructures.html",
+          "hash": "XGbOExiJLLRQuCc5UOgShgq2AN0qdtGxnedZHC+/8Vk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Helpers.ColorTools.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Helpers.ColorTools.html",
+          "hash": "1MhCE5MYNGbzjs5g5Y7r1QqTWzd2QA8YBa0OZDajiFE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Helpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Helpers.html",
+          "hash": "2DPe+4MJpx0q4FPH7yneybz8gV562VSPvOzQDQhnOJs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.ServiceProviders.IImageServiceProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.ServiceProviders.IImageServiceProvider.html",
+          "hash": "vDks5hK9GScWAsWl1oM5JX/6W/RCOkvxkxrBjpaCnZE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.ServiceProviders.ImageServiceProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.ServiceProviders.ImageServiceProvider.html",
+          "hash": "WvVi0IVMM77nzue64uizoYRyZyrUOwE6ktjgV5SbcCw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.ServiceProviders.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.ServiceProviders.html",
+          "hash": "dySc7K7P6WnDeeVt3RKsTvrwt6k+w5w/LQcFx/u7Pvo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.DialogServices.ISaveImageDialogService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.DialogServices.ISaveImageDialogService.html",
+          "hash": "8+djIlY6Uc6Z2LD09lbiAIy6L4XkQFYs6dX+MBBcSLc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.DialogServices.ISelectImagesDialogService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.DialogServices.ISelectImagesDialogService.html",
+          "hash": "X4BN5OYpzLD9+30GcfGhDjuLeOIigyx2mpYDiS1Yvgg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.DialogServices.IWindowService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.DialogServices.IWindowService.html",
+          "hash": "v8zKHJU+5+UOiAce6t/BZ4MkP2B5JK4EoG8X5oUAn50="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.DialogServices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.DialogServices.html",
+          "hash": "sAVtS8bjcPCFhe9QxDaj/PWAQb34MDIxVTzjcSWRgG0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.DuplicateImageServices.DuplicateImageService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.DuplicateImageServices.DuplicateImageService.html",
+          "hash": "dt25TONYMZy/mLkM5/6mlasTxRJoMANYkUKvlB8bLZ8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.DuplicateImageServices.IDuplicateImageService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.DuplicateImageServices.IDuplicateImageService.html",
+          "hash": "YKPrsOjVLupXfTcrJtKUc/nsa4XCylYA0VuJbOIk/Nk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.DuplicateImageServices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.DuplicateImageServices.html",
+          "hash": "5f1OFKIjkWdZisFBphBtEzGPGKXilCdvIAoNdrHF590="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.Enums.BinaryOperationType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.Enums.BinaryOperationType.html",
+          "hash": "dGhn9Aii8tDln5G6VV4S1r/Apmo0PkjjMl0lUAY7Olc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.Enums.ImageCombinationsEnum.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.Enums.ImageCombinationsEnum.html",
+          "hash": "G1+gVR3XFPgylNGr6XyXugySFNtBGBRNcrVJyFv6rcY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.Enums.MathOperation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.Enums.MathOperation.html",
+          "hash": "A8Ds2OkP5nbrGy48il6R8fsWZt/UFd1AHSGbkR3XBt0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.Enums.MedianBlurType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.Enums.MedianBlurType.html",
+          "hash": "puW0t3DgS+/dHmk4BWWnSoWjb9F+i4KvI788gP07CrI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.Enums.PrewittType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.Enums.PrewittType.html",
+          "hash": "JOX5kMb/jYwXaN2K9bvxreyihT0MVGVKkv4QKl+aZPk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.Enums.SobelEdgeType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.Enums.SobelEdgeType.html",
+          "hash": "ki8D2gZMdg7iBkEZYM8+zo5FEz950qpNFYosp3YT0mA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.Enums.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.Enums.html",
+          "hash": "O42w7aqua4meC5V7rmCNxX3Uv078hEYG2Jg48cVxjUc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.FileSystemServices.FileSystemService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.FileSystemServices.FileSystemService.html",
+          "hash": "h0a1hhRo9xf+OTRqPIuOUwjvwxUt+rqcUxQv8dL8ebk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.FileSystemServices.IFileSystemService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.FileSystemServices.IFileSystemService.html",
+          "hash": "Bzlqpeq3DgFPHlMX1f/lcCBJJk5Gu7D5vJneZF3UvQ8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.FileSystemServices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.FileSystemServices.html",
+          "hash": "IDj7qcokh6T3RnscMf71O7ZPgxutJEi0Ugcw97EWhmU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.FourierServices.FftService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.FourierServices.FftService.html",
+          "hash": "MwueTYsReAy0niauIN7ATgY7A/99vKqpIPxKhyNX7QY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.FourierServices.FourierDirection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.FourierServices.FourierDirection.html",
+          "hash": "diGyM1gfWWwLLVYckFftNrtKHkveed1Lhua1lD8x+Hc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.FourierServices.FourierService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.FourierServices.FourierService.html",
+          "hash": "+ZPVfUisZtExbCKrtAfhGZSj1fKqZAWiSw0IOijNjaw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.FourierServices.IFourierService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.FourierServices.IFourierService.html",
+          "hash": "g4kyYd+/m20bstVxtYISYZ3rOvbEgg3IU/ibNJ6czRA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.FourierServices.RemoveRecanglesModeEnum.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.FourierServices.RemoveRecanglesModeEnum.html",
+          "hash": "Ut3yffbj5bno9U3KnS7W4VpykQo8gpoFVdBqq6Lwrv0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.FourierServices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.FourierServices.html",
+          "hash": "Og/qY45miSv9vzFE75DGV7N3On0OqSMpiJn2KnfXq2g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.HistogramServices.HistogramService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.HistogramServices.HistogramService.html",
+          "hash": "Zn07OqDqR8Yb9x0DBcKzbQaNl77Kwh7XFLPtrJxbedQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.HistogramServices.IHistogramService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.HistogramServices.IHistogramService.html",
+          "hash": "3vjMQKxFo9IDYf1hixA/61EPzpyVFN+oIO3Gj8NnCq0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.HistogramServices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.HistogramServices.html",
+          "hash": "uDqaETIFpk9JDXlP446nyt7PlhFIdAlkuTCwqkNf/bw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.ImageServices.BinaryOperationService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.ImageServices.BinaryOperationService.html",
+          "hash": "d7lCLg9Tv0PscNFNRwWBND6OJIgpBipFC7K41L9ngaQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.ImageServices.CsvService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.ImageServices.CsvService.html",
+          "hash": "2y5tiOIK1L//+IdJgFbCiAqc5SO7XLvyTYf98s7KjhE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.ImageServices.IImageProcessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.ImageServices.IImageProcessor.html",
+          "hash": "FgSidqXbgOklpDbJS8GLZhqmnUDb+r+GpQpS91OIgFY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.ImageServices.ImageOperationService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.ImageServices.ImageOperationService.html",
+          "hash": "f+z5hmVfqAW3DuCShhbgfpvXQ8H/vKlqOrwv40r1fQg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.ImageServices.ImageProcessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.ImageServices.ImageProcessor.html",
+          "hash": "jO3WPML8AjqFVcrsFmPPAygjXTWbXUOUuvCTmQYMbM4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.ImageServices.MathService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.ImageServices.MathService.html",
+          "hash": "+gM8moOOtzzqcxiT5U80RXozArQXh9SOqLy9yJsfpoY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.ImageServices.StretchingService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.ImageServices.StretchingService.html",
+          "hash": "3Yt64CMAjfMG1A+HPRx2tuJlcPCEn8KlbMROX7mJmKM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.ImageServices.ThresholdService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.ImageServices.ThresholdService.html",
+          "hash": "ae5/1OEhKPCW8ocMPl0HRknr8kKvjeh7SMv+6/HC4is="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.ImageServices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.ImageServices.html",
+          "hash": "kT+HSSqXv6PW7aOY+RPjRQjXqWysiJbM16Q1HTlrbHw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.LutServices.ILutService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.LutServices.ILutService.html",
+          "hash": "tOpPWIo+BHZoCcyD+yF5bMFXGg3PeXz51/YnMAqEGSk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.LutServices.LutService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.LutServices.LutService.html",
+          "hash": "zoMfsCIwOZiO0E99SomwCfPVRUAgIKpRQqHhLLZ16uI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.LutServices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.LutServices.html",
+          "hash": "AN+etrzy91eFP34MLWluZLUGucDb2jD32JJcPpD8Lss="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.OpenCvServices.EdgeDetectionService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.OpenCvServices.EdgeDetectionService.html",
+          "hash": "XqZS8utGOcWzJi6LVam+JYSsbOPweRVdUgz9YQLpF4o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.OpenCvServices.FeatureVectorService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.OpenCvServices.FeatureVectorService.html",
+          "hash": "kDzTFIsK99zyWquA7ShTqKFP7c67p/EiFHQbh5dR6yg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.OpenCvServices.FilterService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.OpenCvServices.FilterService.html",
+          "hash": "HYp7Q0ERKrU1lqa1raZ2XntwhKxz9Y5yGte9hvjoA64="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.OpenCvServices.MorphologyService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.OpenCvServices.MorphologyService.html",
+          "hash": "xqSUlGfPiqDkOIAg1ZTwmHLr6SFt4250vkN9qBcroUk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.OpenCvServices.OpenCvService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.OpenCvServices.OpenCvService.html",
+          "hash": "YVdfuapxhPURtAnxwNp40CYNezyqYCj5+1m51T4qTwo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.OpenCvServices.SegmentationService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.OpenCvServices.SegmentationService.html",
+          "hash": "YhMA2qQHsMlXgXxWd1UbX3de6AvB9bqFBalfc4L/6/w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.OpenCvServices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.OpenCvServices.html",
+          "hash": "ujMU5r80LNOzaeAAekn2HTrqd6cTsdH6TFtOk4ioyno="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.OpenImageServices.IOpenImageService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.OpenImageServices.IOpenImageService.html",
+          "hash": "2cKcC7jri8QjxR0fuO+eB8uMnhSGOP3zbw+gsJDhlM0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.OpenImageServices.OpenImageService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.OpenImageServices.OpenImageService.html",
+          "hash": "RROEh6MYa4C+QpaPohT7Ibc/8CtEsbPRRizGYpAvHO0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.OpenImageServices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.OpenImageServices.html",
+          "hash": "LnhxoMA6D3YvRWNsVGNm1zbJ8aquVcnl4LzSKhaMgBI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.SaveImageServices.ISaveImageService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.SaveImageServices.ISaveImageService.html",
+          "hash": "OgcG22eQ/q8PHKd6MqQjBM66JQhF1swVwQ6mK5jopzg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.SaveImageServices.SaveImageService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.SaveImageServices.SaveImageService.html",
+          "hash": "JWp4ECchpTcbRHyGwoxYn4ew5JNVNiLARQRT0CDakqA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ImageProcessorLibrary.Services.SaveImageServices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ImageProcessorLibrary.Services.SaveImageServices.html",
+          "hash": "utwSHQuXtwvu4bwBlyDalWeCo78JX9N4EIXSTYwPjYY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "RQmwfywORkmqqWHnnyWNXRA7uiMTKTiIFWJsYcHiUBI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "Lcj3AEm0aRz/TBf0dfPoG5JXIPT6bjrvovbpRh1pOlE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "docs/_site/_site/images/clown-periodic.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "docs/_site/_site/images/clown-periodic.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "docs/_site/_site/images/cosx.png",
+      "output": {
+        "resource": {
+          "relative_path": "docs/_site/_site/images/cosx.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "docs/_site/_site/images/cosx_fourier.png",
+      "output": {
+        "resource": {
+          "relative_path": "docs/_site/_site/images/cosx_fourier.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "docs/_site/_site/images/goose-periodic.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "docs/_site/_site/images/goose-periodic.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "docs/_site/_site/images/goose.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "docs/_site/_site/images/goose.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "docs/_site/_site/images/lena-periodic.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "docs/_site/_site/images/lena-periodic.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "docs/_site/_site/images/lion-1.png",
+      "output": {
+        "resource": {
+          "relative_path": "docs/_site/_site/images/lion-1.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "docs/_site/_site/images/xkcd.webp",
+      "output": {
+        "resource": {
+          "relative_path": "docs/_site/_site/images/xkcd.webp"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "docs/_site/images/clown-periodic.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "docs/_site/images/clown-periodic.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "docs/_site/images/cosx.png",
+      "output": {
+        "resource": {
+          "relative_path": "docs/_site/images/cosx.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "docs/_site/images/cosx_fourier.png",
+      "output": {
+        "resource": {
+          "relative_path": "docs/_site/images/cosx_fourier.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "docs/_site/images/goose-periodic.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "docs/_site/images/goose-periodic.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "docs/_site/images/goose.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "docs/_site/images/goose.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "docs/_site/images/lena-periodic.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "docs/_site/images/lena-periodic.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "docs/_site/images/lena-periodic.png",
+      "output": {
+        "resource": {
+          "relative_path": "docs/_site/images/lena-periodic.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "docs/_site/images/lion-1.png",
+      "output": {
+        "resource": {
+          "relative_path": "docs/_site/images/lion-1.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "docs/_site/images/xkcd.webp",
+      "output": {
+        "resource": {
+          "relative_path": "docs/_site/images/xkcd.webp"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/FFTW.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/FFTW.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/MSTest.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/MSTest.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/aerial-clean.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/aerial-clean.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/aerial-fourier-removed.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/aerial-fourier-removed.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/aerial-fourier.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/aerial-fourier.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/aerial-fourier.webp",
+      "output": {
+        "resource": {
+          "relative_path": "images/aerial-fourier.webp"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/aerial-periodic.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/aerial-periodic.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/aerial-periodic.webp",
+      "output": {
+        "resource": {
+          "relative_path": "images/aerial-periodic.webp"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/aerialpompeiiclean.webp",
+      "output": {
+        "resource": {
+          "relative_path": "images/aerialpompeiiclean.webp"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/animation-1.gif",
+      "output": {
+        "resource": {
+          "relative_path": "images/animation-1.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/animation-2.gif",
+      "output": {
+        "resource": {
+          "relative_path": "images/animation-2.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/arrow.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/arrow.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/avalonia.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/avalonia.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/brain-mri.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "images/brain-mri.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/clown-periodic.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "images/clown-periodic.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/cosx.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/cosx.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/cosx_fourier.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/cosx_fourier.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/docfx.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/docfx.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/fourier.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/fourier.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/fourier.webp",
+      "output": {
+        "resource": {
+          "relative_path": "images/fourier.webp"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/github.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/github.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/goose-fft.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/goose-fft.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/goose-periodic.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "images/goose-periodic.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/goose.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "images/goose.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/ip-1.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/ip-1.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/ip-2.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/ip-2.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/ip-3.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/ip-3.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/lena-fft.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/lena-fft.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/lena-fft.tif",
+      "output": {
+        "resource": {
+          "relative_path": "images/lena-fft.tif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/lena-periodic-fft.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/lena-periodic-fft.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/lena-periodic.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/lena-periodic.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/lena.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/lena.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/lena_gray.gif",
+      "output": {
+        "resource": {
+          "relative_path": "images/lena_gray.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/lion-1.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/lion-1.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/mvvm.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/mvvm.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/old-photo.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "images/old-photo.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/opencv.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/opencv.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/sawtooth.gif",
+      "output": {
+        "resource": {
+          "relative_path": "images/sawtooth.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/soldier-fourier-removed.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/soldier-fourier-removed.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/soldier-fourier.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/soldier-fourier.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/soldier-fourier.webp",
+      "output": {
+        "resource": {
+          "relative_path": "images/soldier-fourier.webp"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/soldier-periodic.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/soldier-periodic.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/vs.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/vs.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/xkcd.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/xkcd.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/xkcd.webp",
+      "output": {
+        "resource": {
+          "relative_path": "images/xkcd.webp"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "AkPlMduhUxtFGyCwgLtVsjtiXmQipE0LmH9ZTXrpoEo="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "GkgKIRR6KnQdv6mVbjCHbk+OHNwsQIs7H5DsurbVjCg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 2,
+          "skipped_file_count": 2
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ManagedReferenceDocumentProcessor disable incremental build because last build doesn't contain version .",
+          "incrementalPhase": "build",
+          "total_file_count": 97,
+          "skipped_file_count": 0
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

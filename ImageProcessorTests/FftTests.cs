@@ -5,16 +5,13 @@ using ImageProcessorLibrary.Services.FourierServices;
 
 namespace ImageProcessorTests;
 
+/// <summary>
+///     Klasa testów jednostkowych dla serwisu FftService.
+/// </summary>
 [TestClass]
 public class FftTests
 {
-    private FftService fftService;
-
-    [TestInitialize]
-    public void Initialize()
-    {
-        fftService = new FftService();
-    }
+    private readonly FftService fftService = new();
 
     [TestMethod]
     public void SimpleFourierTransform()
@@ -26,17 +23,9 @@ public class FftTests
             { 0, 254, 0, 254 },
             { 0, 254, 0, 254 }
         });
-
-        inputImage.Write("a-1.jpg");
-
+        
         var complex = new ComplexData(inputImage);
         var fourier = fftService.ForwardFFT(complex);
-
-        var f2 = fftService.FFTShift(fourier);
-        f2 = fftService.Normalize(f2);
-        var f3 = f2.ToImageData();
-        f3.Write("a-2.jpg");
-
 
         Assert.AreEqual(127, fourier[0][0, 0].Magnitude);
         Assert.AreEqual(127, fourier[0][0, 2].Magnitude);
@@ -118,8 +107,6 @@ public class FftTests
 
         var fourier = fftService.ForwardFFT(complex);
         var result = fftService.InverseFFT(fourier);
-
-        //result = fftService.Resize(fourier, inputImage.Height, inputImage.Width);
 
         var resultImage = result.ToImageData();
         var resultImageGray = resultImage.GetGrayArray();

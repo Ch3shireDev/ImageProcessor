@@ -5,6 +5,13 @@
 /// </summary>
 public enum ImageCombinationsEnum
 {
+    /// <summary>
+    ///     Dodawanie obrazów.
+    /// </summary>
     ADD_IMAGES,
+
+    /// <summary>
+    ///     Odejmowanie obrazów.
+    /// </summary>
     SUBTRACT_IMAGES
 }

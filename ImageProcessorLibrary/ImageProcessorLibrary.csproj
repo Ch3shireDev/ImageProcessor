@@ -24,4 +24,8 @@
 		<None Remove="C:\Users\cheshire\.nuget\packages\fftw.net\1.0.1\build\netstandard1.3\libfftw3-3-x86.dll" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Services\NegateImageServices\" />
+	</ItemGroup>
+
 </Project>

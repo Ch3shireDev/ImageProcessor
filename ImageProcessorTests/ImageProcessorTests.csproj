@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <AvaloniaXaml Remove="Properties\**" />
+    <Compile Remove="Properties\**" />
+    <EmbeddedResource Remove="Properties\**" />
+    <None Remove="Properties\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Avalonia" Version="0.10.18" />
     <PackageReference Include="Avalonia.Desktop" Version="0.10.18" />
     <PackageReference Include="Avalonia.Diagnostics" Version="0.10.18" />
@@ -27,10 +34,6 @@
   <ItemGroup>
     <ProjectReference Include="..\ImageProcessorGUI\ImageProcessorGUI.csproj" />
     <ProjectReference Include="..\ImageProcessorLibrary\ImageProcessorLibrary.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Properties\" />
   </ItemGroup>
 
   <ItemGroup>

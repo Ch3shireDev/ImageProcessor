@@ -11,8 +11,8 @@ public static class ColorTools
     /// <summary>
     ///     Konwersja z modelu RGB do HSL.
     /// </summary>
-    /// <param name="rgb"></param>
-    /// <returns></returns>
+    /// <param name="rgb">Pixel w formacie RGB.</param>
+    /// <returns>Piksel w formacie HSL.</returns>
     public static HSL RGBToHSL(Color rgb)
     {
         var r = rgb.R / 255.0f;

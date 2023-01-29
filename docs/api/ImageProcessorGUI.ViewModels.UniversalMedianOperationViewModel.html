@@ -1,0 +1,677 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class UniversalMedianOperationViewModel
+ </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class UniversalMedianOperationViewModel
+ ">
+  
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+  
+  
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel">
+
+
+  <h1 id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel" class="text-break">Class UniversalMedianOperationViewModel
+</h1>
+  <div class="markdown level0 summary"><p>Model widoku do uniwersalnej operacji medianowej.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ReactiveUI.ReactiveObject</span></div>
+    <div class="level2"><span class="xref">UniversalMedianOperationViewModel</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">ReactiveUI.IReactiveNotifyPropertyChanged</span>&lt;<span class="xref">ReactiveUI.IReactiveObject</span>&gt;</div>
+    <div><span class="xref">ReactiveUI.IHandleObservableErrors</span></div>
+    <div><span class="xref">ReactiveUI.IReactiveObject</span></div>
+    <div><span class="xref">System.ComponentModel.INotifyPropertyChanged</span></div>
+    <div><span class="xref">System.ComponentModel.INotifyPropertyChanging</span></div>
+    <div><span class="xref">Splat.IEnableLogger</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">ReactiveUI.ReactiveObject.ReactiveUI.IReactiveObject.RaisePropertyChanging(System.ComponentModel.PropertyChangingEventArgs)</span>
+    </div>
+    <div>
+      <span class="xref">ReactiveUI.ReactiveObject.ReactiveUI.IReactiveObject.RaisePropertyChanged(System.ComponentModel.PropertyChangedEventArgs)</span>
+    </div>
+    <div>
+      <span class="xref">ReactiveUI.ReactiveObject.SuppressChangeNotifications()</span>
+    </div>
+    <div>
+      <span class="xref">ReactiveUI.ReactiveObject.AreChangeNotificationsEnabled()</span>
+    </div>
+    <div>
+      <span class="xref">ReactiveUI.ReactiveObject.DelayChangeNotifications()</span>
+    </div>
+    <div>
+      <span class="xref">ReactiveUI.ReactiveObject.Changing</span>
+    </div>
+    <div>
+      <span class="xref">ReactiveUI.ReactiveObject.Changed</span>
+    </div>
+    <div>
+      <span class="xref">ReactiveUI.ReactiveObject.ThrownExceptions</span>
+    </div>
+    <div>
+      <span class="xref">ReactiveUI.ReactiveObject.PropertyChanging</span>
+    </div>
+    <div>
+      <span class="xref">ReactiveUI.ReactiveObject.PropertyChanged</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ImageProcessorGUI.ViewModels.html">ImageProcessorGUI.ViewModels</a></h6>
+  <h6><strong>Assembly</strong>: ImageProcessorGUI.dll</h6>
+  <h5 id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class UniversalMedianOperationViewModel : ReactiveObject, IReactiveNotifyPropertyChanged&lt;IReactiveObject&gt;, IHandleObservableErrors, IReactiveObject, INotifyPropertyChanged, INotifyPropertyChanging, IEnableLogger</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel__ctor_ImageProcessorLibrary_DataStructures_ImageData_System_String_.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.%23ctor(ImageProcessorLibrary.DataStructures.ImageData%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/UniversalMedianOperationViewModel.cs/#L21">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel__ctor_" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.#ctor*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel__ctor_ImageProcessorLibrary_DataStructures_ImageData_System_String_" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.#ctor(ImageProcessorLibrary.DataStructures.ImageData,System.String)">UniversalMedianOperationViewModel(ImageData, String)</h4>
+  <div class="markdown level1 summary"><p>Model widoku do uniwersalnej operacji medianowej.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public UniversalMedianOperationViewModel(ImageData imageData, string title = &quot;Uniwersalna operacja medianowa&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ImageProcessorLibrary.DataStructures.ImageData.html">ImageData</a></td>
+        <td><span class="parametername">imageData</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">title</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_BorderAfterTransform.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.BorderAfterTransform%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/UniversalMedianOperationViewModel.cs/#L59">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_BorderAfterTransform_" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.BorderAfterTransform*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_BorderAfterTransform" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.BorderAfterTransform">BorderAfterTransform</h4>
+  <div class="markdown level1 summary"><p>Model widoku do uniwersalnej operacji medianowej.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool BorderAfterTransform { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_BorderBeforeTransform.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.BorderBeforeTransform%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/UniversalMedianOperationViewModel.cs/#L58">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_BorderBeforeTransform_" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.BorderBeforeTransform*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_BorderBeforeTransform" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.BorderBeforeTransform">BorderBeforeTransform</h4>
+  <div class="markdown level1 summary"><p>Model widoku do uniwersalnej operacji medianowej.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool BorderBeforeTransform { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_BorderPixels.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.BorderPixels%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/UniversalMedianOperationViewModel.cs/#L44">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_BorderPixels_" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.BorderPixels*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_BorderPixels" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.BorderPixels">BorderPixels</h4>
+  <div class="markdown level1 summary"><p>Model widoku do uniwersalnej operacji medianowej.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int BorderPixels { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_BorderTypesList.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.BorderTypesList%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/UniversalMedianOperationViewModel.cs/#L35">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_BorderTypesList_" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.BorderTypesList*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_BorderTypesList" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.BorderTypesList">BorderTypesList</h4>
+  <div class="markdown level1 summary"><p>Model widoku do uniwersalnej operacji medianowej.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;BorderTypes&gt; BorderTypesList { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">OpenCvSharp.BorderTypes</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_ErrorMessage.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.ErrorMessage%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/UniversalMedianOperationViewModel.cs/#L48">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_ErrorMessage_" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.ErrorMessage*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_ErrorMessage" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.ErrorMessage">ErrorMessage</h4>
+  <div class="markdown level1 summary"><p>Model widoku do uniwersalnej operacji medianowej.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ErrorMessage { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_MedianBlurTypes.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.MedianBlurTypes%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/UniversalMedianOperationViewModel.cs/#L61">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_MedianBlurTypes_" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.MedianBlurTypes*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_MedianBlurTypes" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.MedianBlurTypes">MedianBlurTypes</h4>
+  <div class="markdown level1 summary"><p>Model widoku do uniwersalnej operacji medianowej.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;MedianBlurType&gt; MedianBlurTypes { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="ImageProcessorLibrary.Services.Enums.MedianBlurType.html">MedianBlurType</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_OriginalImageData.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.OriginalImageData%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/UniversalMedianOperationViewModel.cs/#L28">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_OriginalImageData_" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.OriginalImageData*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_OriginalImageData" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.OriginalImageData">OriginalImageData</h4>
+  <div class="markdown level1 summary"><p>Model widoku do uniwersalnej operacji medianowej.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ImageData OriginalImageData { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ImageProcessorLibrary.DataStructures.ImageData.html">ImageData</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_SelectedBorderType.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.SelectedBorderType%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/UniversalMedianOperationViewModel.cs/#L42">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_SelectedBorderType_" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.SelectedBorderType*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_SelectedBorderType" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.SelectedBorderType">SelectedBorderType</h4>
+  <div class="markdown level1 summary"><p>Model widoku do uniwersalnej operacji medianowej.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BorderTypes SelectedBorderType { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">OpenCvSharp.BorderTypes</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_SelectedMedianBlurType.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.SelectedMedianBlurType%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/UniversalMedianOperationViewModel.cs/#L69">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_SelectedMedianBlurType_" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.SelectedMedianBlurType*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_SelectedMedianBlurType" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.SelectedMedianBlurType">SelectedMedianBlurType</h4>
+  <div class="markdown level1 summary"><p>Model widoku do uniwersalnej operacji medianowej.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MedianBlurType SelectedMedianBlurType { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ImageProcessorLibrary.Services.Enums.MedianBlurType.html">MedianBlurType</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_ShowCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.ShowCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/UniversalMedianOperationViewModel.cs/#L46">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_ShowCommand_" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.ShowCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_ShowCommand" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.ShowCommand">ShowCommand</h4>
+  <div class="markdown level1 summary"><p>Model widoku do uniwersalnej operacji medianowej.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand ShowCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_Title.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.Title%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/UniversalMedianOperationViewModel.cs/#L33">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_Title_" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.Title*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_Title" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.Title">Title</h4>
+  <div class="markdown level1 summary"><p>Model widoku do uniwersalnej operacji medianowej.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Title { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_ValueN.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.ValueN%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/UniversalMedianOperationViewModel.cs/#L43">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_ValueN_" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.ValueN*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_ValueN" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.ValueN">ValueN</h4>
+  <div class="markdown level1 summary"><p>Model widoku do uniwersalnej operacji medianowej.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ValueN { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_GetMedianBoxSize.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.GetMedianBoxSize%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/UniversalMedianOperationViewModel.cs/#L100">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_GetMedianBoxSize_" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.GetMedianBoxSize*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_GetMedianBoxSize" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.GetMedianBoxSize">GetMedianBoxSize()</h4>
+  <div class="markdown level1 summary"><p>Model widoku do uniwersalnej operacji medianowej.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetMedianBoxSize()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_Show.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.Show%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/UniversalMedianOperationViewModel.cs/#L82">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_Show_" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.Show*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel_Show" data-uid="ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel.Show">Show()</h4>
+  <div class="markdown level1 summary"><p>Model widoku do uniwersalnej operacji medianowej.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Show()</code></pre>
+  </div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">ReactiveUI.IReactiveNotifyPropertyChanged&lt;TSender&gt;</span>
+  </div>
+  <div>
+      <span class="xref">ReactiveUI.IHandleObservableErrors</span>
+  </div>
+  <div>
+      <span class="xref">ReactiveUI.IReactiveObject</span>
+  </div>
+  <div>
+      <span class="xref">System.ComponentModel.INotifyPropertyChanged</span>
+  </div>
+  <div>
+      <span class="xref">System.ComponentModel.INotifyPropertyChanging</span>
+  </div>
+  <div>
+      <span class="xref">Splat.IEnableLogger</span>
+  </div>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_UniversalMedianOperationViewModel.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.UniversalMedianOperationViewModel%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/UniversalMedianOperationViewModel.cs/#L15" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

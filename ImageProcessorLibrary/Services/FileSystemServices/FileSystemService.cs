@@ -13,6 +13,7 @@ public class FileSystemService : IFileSystemService
     /// <returns></returns>
     public async Task WriteAllBytesAsync(string filename, byte[]? filebytes)
     {
+        if (filebytes == null) return;
         await File.WriteAllBytesAsync(filename, filebytes);
     }
 }

@@ -9,26 +9,52 @@ namespace ImageProcessorLibrary.DataStructures;
 /// </summary>
 public class ImageData
 {
+    /// <summary>
+    ///     Konstruktor klasy ImageData.
+    /// </summary>
+    /// <param name="binaryPixels">
+    ///     Piksel w postaci binarnej:
+    ///     1 - biały piksel,
+    ///     0 - czarny piksel.
+    /// </param>
     public ImageData(bool[,] binaryPixels)
     {
         Pixels = ToPixels(binaryPixels);
     }
 
+    /// <summary>
+    ///     Konstruktor klasy ImageData.
+    /// </summary>
+    /// <param name="pixels"></param>
     public ImageData(Color[,] pixels)
     {
         Pixels = pixels;
     }
 
+    /// <summary>
+    ///    Konstruktor klasy ImageData.
+    /// </summary>
+    /// <param name="pixels"></param>
     public ImageData(byte[,] pixels)
     {
         Pixels = ToPixels(pixels);
     }
 
+    /// <summary>
+    /// Konstruktor.
+    /// </summary>
+    /// <param name="width"></param>
+    /// <param name="height"></param>
     public ImageData(int width, int height)
     {
         Pixels = new Color[height, width];
     }
 
+    /// <summary>
+    /// Konstruktor.
+    /// </summary>
+    /// <param name="filepath"></param>
+    /// <param name="filebytes"></param>
     public ImageData(string filepath, byte[]? filebytes)
     {
         Filepath = filepath;
@@ -37,6 +63,10 @@ public class ImageData
         Pixels = ToPixels(new Bitmap(new MemoryStream(filebytes)));
     }
 
+    /// <summary>
+    /// Konstruktor.
+    /// </summary>
+    /// <param name="imageData"></param>
     public ImageData(ImageData imageData)
     {
         Filepath = imageData.Filename;
@@ -45,24 +75,57 @@ public class ImageData
         Pixels = ToPixels(imageData.Pixels);
     }
 
+    /// <summary>
+    /// Rozdzielczość w osi poziomej.
+    /// </summary>
     public double HorizontalDPI => Bitmap.HorizontalResolution;
+    /// <summary>
+    /// Rozdzielczość w osi pionowej.
+    /// </summary>
     public double VerticalDPI => Bitmap.VerticalResolution;
 
+    /// <summary>
+    /// Bitmapa.
+    /// </summary>
     public Bitmap Bitmap => GetBitmap();
 
+    /// <summary>
+    /// Macierz pikseli.
+    /// </summary>
     public Color[,] Pixels { get; set; }
 
 
-    public string Filename { get; set; }
+    /// <summary>
+    ///     Nazwa pliku.
+    /// </summary>
+    public string Filename { get; set; } = "untitled.png";
 
-    public string Filepath { get; set; }
+    /// <summary>
+    ///     Ścieżka pliku.
+    /// </summary>
+
+    public string Filepath { get; set; } = "untitled.png";
+
+    /// <summary>
+    ///     Plik w postaci binarnej.
+    /// </summary>
 
     public byte[]? Filebytes => GetFilebytes();
 
+    /// <summary>
+    ///     Rozszerzenie pliku.
+    /// </summary>
+    public string Extension { get; set; } = ".png";
 
-    public string Extension { get; set; }
+    /// <summary>
+    ///     Szerokość obrazu.
+    /// </summary>
 
     public int Width => Pixels.GetLength(1);
+
+    /// <summary>
+    ///     Wysokość obrazu.
+    /// </summary>
 
     public int Height => Pixels.GetLength(0);
 
@@ -90,14 +153,27 @@ public class ImageData
         });
     }
 
+    /// <summary>
+    /// Przedstawienie piksela z pozycji x,y w postaci binarną.
+    /// </summary>
+    /// <param name="x">Współrzędna pozioma.</param>
+    /// <param name="y">Współrzędna pionowa.</param>
+    /// <returns></returns>
     public bool GetPixelBinary(int x, int y)
     {
         var pixel = Pixels[y, x];
         return !(pixel.R == 0 && pixel.G == 0 && pixel.B == 0);
     }
 
+    /// <summary>
+    /// Zdarzenie wywoływane w momencie zmiany obrazu.
+    /// </summary>
     public event EventHandler<EventArgs>? ImageChanged;
 
+    /// <summary>
+    /// Aktualizacja obrazu. Wyzwala zdarzenie ImageChanged.
+    /// </summary>
+    /// <param name="result"></param>
     public void Update(ImageData result)
     {
         Filepath = result.Filepath;
@@ -108,6 +184,7 @@ public class ImageData
         ImageChanged?.Invoke(null, EventArgs.Empty);
     }
 
+    
     public Color GetPixelRgb(int x, int y)
     {
         return Pixels[y, x];

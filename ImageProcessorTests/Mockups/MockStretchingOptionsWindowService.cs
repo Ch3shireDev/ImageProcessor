@@ -1,9 +1,8 @@
 ﻿using ImageProcessorLibrary.DataStructures;
-using ImageProcessorLibrary.Services.StretchingServices;
 
 namespace ImageProcessorTests.Mockups;
 
-public class MockStretchingOptionsWindowService : IStretchingOptionsService
+public class MockStretchingOptionsWindowService 
 {
     public bool IsLinearStretchingWindowShown { get; set; }
     public bool IsGammaStretchingWindowShown { get; set; }

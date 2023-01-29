@@ -1,0 +1,2111 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class MainWindowViewModel
+ </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class MainWindowViewModel
+ ">
+  
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+  
+  
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel">
+
+
+  <h1 id="ImageProcessorGUI_ViewModels_MainWindowViewModel" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel" class="text-break">Class MainWindowViewModel
+</h1>
+  <div class="markdown level0 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ReactiveUI.ReactiveObject</span></div>
+    <div class="level2"><span class="xref">MainWindowViewModel</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">ReactiveUI.IReactiveNotifyPropertyChanged</span>&lt;<span class="xref">ReactiveUI.IReactiveObject</span>&gt;</div>
+    <div><span class="xref">ReactiveUI.IHandleObservableErrors</span></div>
+    <div><span class="xref">ReactiveUI.IReactiveObject</span></div>
+    <div><span class="xref">System.ComponentModel.INotifyPropertyChanged</span></div>
+    <div><span class="xref">System.ComponentModel.INotifyPropertyChanging</span></div>
+    <div><span class="xref">Splat.IEnableLogger</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">ReactiveUI.ReactiveObject.ReactiveUI.IReactiveObject.RaisePropertyChanging(System.ComponentModel.PropertyChangingEventArgs)</span>
+    </div>
+    <div>
+      <span class="xref">ReactiveUI.ReactiveObject.ReactiveUI.IReactiveObject.RaisePropertyChanged(System.ComponentModel.PropertyChangedEventArgs)</span>
+    </div>
+    <div>
+      <span class="xref">ReactiveUI.ReactiveObject.SuppressChangeNotifications()</span>
+    </div>
+    <div>
+      <span class="xref">ReactiveUI.ReactiveObject.AreChangeNotificationsEnabled()</span>
+    </div>
+    <div>
+      <span class="xref">ReactiveUI.ReactiveObject.DelayChangeNotifications()</span>
+    </div>
+    <div>
+      <span class="xref">ReactiveUI.ReactiveObject.Changing</span>
+    </div>
+    <div>
+      <span class="xref">ReactiveUI.ReactiveObject.Changed</span>
+    </div>
+    <div>
+      <span class="xref">ReactiveUI.ReactiveObject.ThrownExceptions</span>
+    </div>
+    <div>
+      <span class="xref">ReactiveUI.ReactiveObject.PropertyChanging</span>
+    </div>
+    <div>
+      <span class="xref">ReactiveUI.ReactiveObject.PropertyChanged</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="ImageProcessorGUI.ViewModels.html">ImageProcessorGUI.ViewModels</a></h6>
+  <h6><strong>Assembly</strong>: ImageProcessorGUI.dll</h6>
+  <h5 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class MainWindowViewModel : ReactiveObject, IReactiveNotifyPropertyChanged&lt;IReactiveObject&gt;, IHandleObservableErrors, IReactiveObject, INotifyPropertyChanged, INotifyPropertyChanging, IEnableLogger</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel__ctor_ImageProcessorGUI_Models_MainModel_.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.%23ctor(ImageProcessorGUI.Models.MainModel)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L17">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel__ctor_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.#ctor*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel__ctor_ImageProcessorGUI_Models_MainModel_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.#ctor(ImageProcessorGUI.Models.MainModel)">MainWindowViewModel(MainModel)</h4>
+  <div class="markdown level1 summary"><p>Konstruktor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MainWindowViewModel(MainModel mainModel)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ImageProcessorGUI.Models.MainModel.html">MainModel</a></td>
+        <td><span class="parametername">mainModel</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_AdaptiveThresholdSegmentationCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.AdaptiveThresholdSegmentationCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L226">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_AdaptiveThresholdSegmentationCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.AdaptiveThresholdSegmentationCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_AdaptiveThresholdSegmentationCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.AdaptiveThresholdSegmentationCommand">AdaptiveThresholdSegmentationCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand AdaptiveThresholdSegmentationCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_AddImageCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.AddImageCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L205">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_AddImageCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.AddImageCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_AddImageCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.AddImageCommand">AddImageCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand AddImageCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_AddPeriodicNoiseCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.AddPeriodicNoiseCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L233">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_AddPeriodicNoiseCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.AddPeriodicNoiseCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_AddPeriodicNoiseCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.AddPeriodicNoiseCommand">AddPeriodicNoiseCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand AddPeriodicNoiseCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_BinaryOperationCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.BinaryOperationCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L171">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_BinaryOperationCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.BinaryOperationCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_BinaryOperationCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.BinaryOperationCommand">BinaryOperationCommand</h4>
+  <div class="markdown level1 summary"><p>Polecenie wywołania okna operacji binarnych.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand BinaryOperationCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_BinaryThresholdCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.BinaryThresholdCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L201">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_BinaryThresholdCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.BinaryThresholdCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_BinaryThresholdCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.BinaryThresholdCommand">BinaryThresholdCommand</h4>
+  <div class="markdown level1 summary"><p>Polecenie progowania binarnego obrazu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand BinaryThresholdCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_CalculateFeatureVectorCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.CalculateFeatureVectorCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L231">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_CalculateFeatureVectorCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.CalculateFeatureVectorCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_CalculateFeatureVectorCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.CalculateFeatureVectorCommand">CalculateFeatureVectorCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand CalculateFeatureVectorCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_CalculateMedianCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.CalculateMedianCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L221">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_CalculateMedianCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.CalculateMedianCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_CalculateMedianCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.CalculateMedianCommand">CalculateMedianCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand CalculateMedianCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_CannyOperatorEdgeDetectionCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.CannyOperatorEdgeDetectionCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L224">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_CannyOperatorEdgeDetectionCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.CannyOperatorEdgeDetectionCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_CannyOperatorEdgeDetectionCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.CannyOperatorEdgeDetectionCommand">CannyOperatorEdgeDetectionCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand CannyOperatorEdgeDetectionCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_CreateGrayscaleCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.CreateGrayscaleCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L162">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_CreateGrayscaleCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.CreateGrayscaleCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_CreateGrayscaleCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.CreateGrayscaleCommand">CreateGrayscaleCommand</h4>
+  <div class="markdown level1 summary"><p>Polecenie przedstawienia obrazu w skali szarości.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand CreateGrayscaleCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_DuplicateImageCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.DuplicateImageCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L62">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_DuplicateImageCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.DuplicateImageCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_DuplicateImageCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.DuplicateImageCommand">DuplicateImageCommand</h4>
+  <div class="markdown level1 summary"><p>Polecenie duplikacji okna obrazu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand DuplicateImageCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_EdgeSobelEastCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.EdgeSobelEastCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L213">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_EdgeSobelEastCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.EdgeSobelEastCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_EdgeSobelEastCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.EdgeSobelEastCommand">EdgeSobelEastCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand EdgeSobelEastCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_EdgeSobelNorthCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.EdgeSobelNorthCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L215">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_EdgeSobelNorthCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.EdgeSobelNorthCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_EdgeSobelNorthCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.EdgeSobelNorthCommand">EdgeSobelNorthCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand EdgeSobelNorthCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_EdgeSobelNorthEastCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.EdgeSobelNorthEastCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L214">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_EdgeSobelNorthEastCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.EdgeSobelNorthEastCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_EdgeSobelNorthEastCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.EdgeSobelNorthEastCommand">EdgeSobelNorthEastCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand EdgeSobelNorthEastCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_EdgeSobelNorthWestCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.EdgeSobelNorthWestCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L216">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_EdgeSobelNorthWestCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.EdgeSobelNorthWestCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_EdgeSobelNorthWestCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.EdgeSobelNorthWestCommand">EdgeSobelNorthWestCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand EdgeSobelNorthWestCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_EdgeSobelSouthCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.EdgeSobelSouthCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L219">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_EdgeSobelSouthCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.EdgeSobelSouthCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_EdgeSobelSouthCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.EdgeSobelSouthCommand">EdgeSobelSouthCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand EdgeSobelSouthCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_EdgeSobelSouthEastCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.EdgeSobelSouthEastCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L220">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_EdgeSobelSouthEastCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.EdgeSobelSouthEastCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_EdgeSobelSouthEastCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.EdgeSobelSouthEastCommand">EdgeSobelSouthEastCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand EdgeSobelSouthEastCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_EdgeSobelSouthWestCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.EdgeSobelSouthWestCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L218">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_EdgeSobelSouthWestCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.EdgeSobelSouthWestCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_EdgeSobelSouthWestCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.EdgeSobelSouthWestCommand">EdgeSobelSouthWestCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand EdgeSobelSouthWestCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_EdgeSobelWestCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.EdgeSobelWestCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L217">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_EdgeSobelWestCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.EdgeSobelWestCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_EdgeSobelWestCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.EdgeSobelWestCommand">EdgeSobelWestCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand EdgeSobelWestCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_EqualizeHistogramCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.EqualizeHistogramCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L191">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_EqualizeHistogramCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.EqualizeHistogramCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_EqualizeHistogramCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.EqualizeHistogramCommand">EqualizeHistogramCommand</h4>
+  <div class="markdown level1 summary"><p>Polecenie equalizacji histogramu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand EqualizeHistogramCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_GammaStretchingCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.GammaStretchingCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L186">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_GammaStretchingCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.GammaStretchingCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_GammaStretchingCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.GammaStretchingCommand">GammaStretchingCommand</h4>
+  <div class="markdown level1 summary"><p>Polecenie rozciągania gamma histogramu obrazu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand GammaStretchingCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_GaussianBlurCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.GaussianBlurCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L209">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_GaussianBlurCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.GaussianBlurCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_GaussianBlurCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.GaussianBlurCommand">GaussianBlurCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand GaussianBlurCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_GreyscaleThresholdOneSliderCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.GreyscaleThresholdOneSliderCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L203">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_GreyscaleThresholdOneSliderCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.GreyscaleThresholdOneSliderCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_GreyscaleThresholdOneSliderCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.GreyscaleThresholdOneSliderCommand">GreyscaleThresholdOneSliderCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand GreyscaleThresholdOneSliderCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_GreyscaleThresholdTwoSlidersCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.GreyscaleThresholdTwoSlidersCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L204">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_GreyscaleThresholdTwoSlidersCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.GreyscaleThresholdTwoSlidersCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_GreyscaleThresholdTwoSlidersCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.GreyscaleThresholdTwoSlidersCommand">GreyscaleThresholdTwoSlidersCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand GreyscaleThresholdTwoSlidersCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_Image.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.Image%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L36">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_Image_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.Image*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_Image" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.Image">Image</h4>
+  <div class="markdown level1 summary"><p>Obraz.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IImage Image { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Avalonia.Media.IImage</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_ImageHeight.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.ImageHeight%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L46">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ImageHeight_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ImageHeight*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ImageHeight" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ImageHeight">ImageHeight</h4>
+  <div class="markdown level1 summary"><p>Obserwowana wysokość obrazu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double ImageHeight { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_ImageWidth.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.ImageWidth%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L41">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ImageWidth_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ImageWidth*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ImageWidth" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ImageWidth">ImageWidth</h4>
+  <div class="markdown level1 summary"><p>Obserwowana szerokość obrazu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double ImageWidth { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_LinearStretchingCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.LinearStretchingCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L181">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_LinearStretchingCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.LinearStretchingCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_LinearStretchingCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.LinearStretchingCommand">LinearStretchingCommand</h4>
+  <div class="markdown level1 summary"><p>Polecenie rozciągnięcia liniowego histogramu obrazu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand LinearStretchingCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_MainModel.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.MainModel%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L26">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_MainModel_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.MainModel*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_MainModel" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.MainModel">MainModel</h4>
+  <div class="markdown level1 summary"><p>Model główny.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MainModel MainModel { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="ImageProcessorGUI.Models.MainModel.html">MainModel</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_MathOperationCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.MathOperationCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L206">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_MathOperationCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.MathOperationCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_MathOperationCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.MathOperationCommand">MathOperationCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand MathOperationCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_MedianBlurWithoutWeightsCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.MedianBlurWithoutWeightsCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L207">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_MedianBlurWithoutWeightsCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.MedianBlurWithoutWeightsCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_MedianBlurWithoutWeightsCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.MedianBlurWithoutWeightsCommand">MedianBlurWithoutWeightsCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand MedianBlurWithoutWeightsCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_MedianBlurWithWeightsCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.MedianBlurWithWeightsCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L208">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_MedianBlurWithWeightsCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.MedianBlurWithWeightsCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_MedianBlurWithWeightsCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.MedianBlurWithWeightsCommand">MedianBlurWithWeightsCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand MedianBlurWithWeightsCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_MorphologyClosingCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.MorphologyClosingCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L230">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_MorphologyClosingCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.MorphologyClosingCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_MorphologyClosingCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.MorphologyClosingCommand">MorphologyClosingCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand MorphologyClosingCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_MorphologyDilationCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.MorphologyDilationCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L228">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_MorphologyDilationCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.MorphologyDilationCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_MorphologyDilationCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.MorphologyDilationCommand">MorphologyDilationCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand MorphologyDilationCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_MorphologyErosionCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.MorphologyErosionCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L227">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_MorphologyErosionCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.MorphologyErosionCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_MorphologyErosionCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.MorphologyErosionCommand">MorphologyErosionCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand MorphologyErosionCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_MorphologyOpeningCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.MorphologyOpeningCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L229">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_MorphologyOpeningCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.MorphologyOpeningCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_MorphologyOpeningCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.MorphologyOpeningCommand">MorphologyOpeningCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand MorphologyOpeningCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_NegateImageCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.NegateImageCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L196">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_NegateImageCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.NegateImageCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_NegateImageCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.NegateImageCommand">NegateImageCommand</h4>
+  <div class="markdown level1 summary"><p>Polecenie negowania obrazu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand NegateImageCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_OpenImageCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.OpenImageCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L52">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_OpenImageCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.OpenImageCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_OpenImageCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.OpenImageCommand">OpenImageCommand</h4>
+  <div class="markdown level1 summary"><p>Polecenie otwarcia obrazu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand OpenImageCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_OtsuSegmentationCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.OtsuSegmentationCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L225">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_OtsuSegmentationCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.OtsuSegmentationCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_OtsuSegmentationCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.OtsuSegmentationCommand">OtsuSegmentationCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand OtsuSegmentationCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_PrewittEdgeDetectionCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.PrewittEdgeDetectionCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L223">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_PrewittEdgeDetectionCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.PrewittEdgeDetectionCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_PrewittEdgeDetectionCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.PrewittEdgeDetectionCommand">PrewittEdgeDetectionCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand PrewittEdgeDetectionCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_RemovePeriodicNoiseCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.RemovePeriodicNoiseCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L232">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_RemovePeriodicNoiseCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.RemovePeriodicNoiseCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_RemovePeriodicNoiseCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.RemovePeriodicNoiseCommand">RemovePeriodicNoiseCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand RemovePeriodicNoiseCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_SaveImageCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.SaveImageCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L57">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_SaveImageCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.SaveImageCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_SaveImageCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.SaveImageCommand">SaveImageCommand</h4>
+  <div class="markdown level1 summary"><p>Polecenie zapisu obrazu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand SaveImageCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_SharpeningMask1Command.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.SharpeningMask1Command%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L210">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_SharpeningMask1Command_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.SharpeningMask1Command*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_SharpeningMask1Command" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.SharpeningMask1Command">SharpeningMask1Command</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand SharpeningMask1Command { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_SharpeningMask2Command.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.SharpeningMask2Command%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L211">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_SharpeningMask2Command_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.SharpeningMask2Command*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_SharpeningMask2Command" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.SharpeningMask2Command">SharpeningMask2Command</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand SharpeningMask2Command { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_SharpeningMask3Command.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.SharpeningMask3Command%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L212">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_SharpeningMask3Command_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.SharpeningMask3Command*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_SharpeningMask3Command" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.SharpeningMask3Command">SharpeningMask3Command</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand SharpeningMask3Command { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowBHistogramCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowBHistogramCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L87">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowBHistogramCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowBHistogramCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowBHistogramCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowBHistogramCommand">ShowBHistogramCommand</h4>
+  <div class="markdown level1 summary"><p>Polecenie otwarcia histogramu dla koloru niebieskiego.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand ShowBHistogramCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowGHistogramCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowGHistogramCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L82">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowGHistogramCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowGHistogramCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowGHistogramCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowGHistogramCommand">ShowGHistogramCommand</h4>
+  <div class="markdown level1 summary"><p>Polecenie otwarcia histogramu dla koloru zielonego.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand ShowGHistogramCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowNormalScaleCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowNormalScaleCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L92">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowNormalScaleCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowNormalScaleCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowNormalScaleCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowNormalScaleCommand">ShowNormalScaleCommand</h4>
+  <div class="markdown level1 summary"><p>Polecenie przedstawienia obrazu w pierwotnej skali..</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand ShowNormalScaleCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowRgbHistogramCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowRgbHistogramCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L72">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowRgbHistogramCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowRgbHistogramCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowRgbHistogramCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowRgbHistogramCommand">ShowRgbHistogramCommand</h4>
+  <div class="markdown level1 summary"><p>Polecenie otwarcia histogramów dla trzech barw.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand ShowRgbHistogramCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowRHistogramCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowRHistogramCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L77">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowRHistogramCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowRHistogramCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowRHistogramCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowRHistogramCommand">ShowRHistogramCommand</h4>
+  <div class="markdown level1 summary"><p>Polecenie otwarcia histogramu dla koloru czerwonego.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand ShowRHistogramCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowScaledDown10PercentCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowScaledDown10PercentCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L152">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowScaledDown10PercentCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowScaledDown10PercentCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowScaledDown10PercentCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowScaledDown10PercentCommand">ShowScaledDown10PercentCommand</h4>
+  <div class="markdown level1 summary"><p>Polecenie przedstawienia obrazu w 10% skali.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand ShowScaledDown10PercentCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowScaledDown20PercentCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowScaledDown20PercentCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L142">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowScaledDown20PercentCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowScaledDown20PercentCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowScaledDown20PercentCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowScaledDown20PercentCommand">ShowScaledDown20PercentCommand</h4>
+  <div class="markdown level1 summary"><p>Polecenie przedstawienia obrazu w 20% skali.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand ShowScaledDown20PercentCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowScaledDown25PercentCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowScaledDown25PercentCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L132">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowScaledDown25PercentCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowScaledDown25PercentCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowScaledDown25PercentCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowScaledDown25PercentCommand">ShowScaledDown25PercentCommand</h4>
+  <div class="markdown level1 summary"><p>Polecenie przedstawienia obrazu w 25% skali.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand ShowScaledDown25PercentCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowScaledDown50PercentCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowScaledDown50PercentCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L122">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowScaledDown50PercentCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowScaledDown50PercentCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowScaledDown50PercentCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowScaledDown50PercentCommand">ShowScaledDown50PercentCommand</h4>
+  <div class="markdown level1 summary"><p>Polecenie przedstawienia obrazu w 50% skali.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand ShowScaledDown50PercentCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowScaledUp150PercentCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowScaledUp150PercentCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L112">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowScaledUp150PercentCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowScaledUp150PercentCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowScaledUp150PercentCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowScaledUp150PercentCommand">ShowScaledUp150PercentCommand</h4>
+  <div class="markdown level1 summary"><p>Polecenie przedstawienia obrazu w 150% skali.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand ShowScaledUp150PercentCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowScaledUp200PercentCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowScaledUp200PercentCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L102">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowScaledUp200PercentCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowScaledUp200PercentCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowScaledUp200PercentCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowScaledUp200PercentCommand">ShowScaledUp200PercentCommand</h4>
+  <div class="markdown level1 summary"><p>Polecenie przedstawienia obrazu w 200% skali.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand ShowScaledUp200PercentCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowValueHistogramCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowValueHistogramCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L67">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowValueHistogramCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowValueHistogramCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ShowValueHistogramCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ShowValueHistogramCommand">ShowValueHistogramCommand</h4>
+  <div class="markdown level1 summary"><p>Polecenie otwarcia histogramu wartości pikseli.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand ShowValueHistogramCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_SobelEdgeDetectionCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.SobelEdgeDetectionCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L222">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_SobelEdgeDetectionCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.SobelEdgeDetectionCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_SobelEdgeDetectionCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.SobelEdgeDetectionCommand">SobelEdgeDetectionCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand SobelEdgeDetectionCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_SwapHorizontalCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.SwapHorizontalCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L176">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_SwapHorizontalCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.SwapHorizontalCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_SwapHorizontalCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.SwapHorizontalCommand">SwapHorizontalCommand</h4>
+  <div class="markdown level1 summary"><p>Polecenie odbicia obrazu w osi poziomej.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand SwapHorizontalCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_Title.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.Title%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L31">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_Title_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.Title*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_Title" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.Title">Title</h4>
+  <div class="markdown level1 summary"><p>Tytuł okna.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Title { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel_ToBinaryImageCommand.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel.ToBinaryImageCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L234">View Source</a>
+  </span>
+  <a id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ToBinaryImageCommand_" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ToBinaryImageCommand*"></a>
+  <h4 id="ImageProcessorGUI_ViewModels_MainWindowViewModel_ToBinaryImageCommand" data-uid="ImageProcessorGUI.ViewModels.MainWindowViewModel.ToBinaryImageCommand">ToBinaryImageCommand</h4>
+  <div class="markdown level1 summary"><p>Widok modelu głównego okna aplikacji.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand ToBinaryImageCommand { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">ReactiveUI.IReactiveNotifyPropertyChanged&lt;TSender&gt;</span>
+  </div>
+  <div>
+      <span class="xref">ReactiveUI.IHandleObservableErrors</span>
+  </div>
+  <div>
+      <span class="xref">ReactiveUI.IReactiveObject</span>
+  </div>
+  <div>
+      <span class="xref">System.ComponentModel.INotifyPropertyChanged</span>
+  </div>
+  <div>
+      <span class="xref">System.ComponentModel.INotifyPropertyChanging</span>
+  </div>
+  <div>
+      <span class="xref">Splat.IEnableLogger</span>
+  </div>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Ch3shireDev/ImageProcessor/new/master/apiSpec/new?filename=ImageProcessorGUI_ViewModels_MainWindowViewModel.md&amp;value=---%0Auid%3A%20ImageProcessorGUI.ViewModels.MainWindowViewModel%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Ch3shireDev/ImageProcessor/blob/master/ImageProcessorGUI/ViewModels/MainWindowViewModel.cs/#L11" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

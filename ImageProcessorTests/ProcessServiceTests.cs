@@ -1,11 +1,13 @@
 ﻿using ImageProcessorLibrary.DataStructures;
-using ImageProcessorLibrary.Services.NegateImageServices;
+using ImageProcessorLibrary.Services.ImageServices;
 
 namespace ImageProcessorTests;
 
 [TestClass]
 public class ProcessServiceTests
 {
+    private readonly ImageProcessor processService = new();
+
     [TestMethod]
     public void SwapHorizontalTest()
     {
@@ -16,7 +18,6 @@ public class ProcessServiceTests
             { false, false, true }
         });
 
-        var processService = new ImageProcessor();
         var result = processService.SwapHorizontal(imageData);
 
         Assert.AreEqual(3, result.Width);
