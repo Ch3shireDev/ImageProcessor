@@ -2,6 +2,8 @@
 
 Projekt na zaliczenie przedmiotu Algorytmy Przetwarzania Obrazów.
 
+Dokumentacja: https://ch3shiredev.github.io/ImageProcessor/
+
 <hr>
 
 <img src="images/lion-1.png" width="400" />
