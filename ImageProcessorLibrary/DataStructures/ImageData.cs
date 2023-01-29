@@ -198,7 +198,17 @@ public class ImageData
 
     private Bitmap GetBitmap()
     {
-        return new Bitmap(new MemoryStream(Filebytes));
+        var bitmap = new Bitmap(Width, Height);
+
+        for (var x = 0; x < Width; x++)
+        {
+            for (var y = 0; y < Height; y++)
+            {
+                bitmap.SetPixel(x, y, GetPixelRgb(x, y));
+            }
+        }
+
+        return bitmap;
     }
 
     private Color[,] ToPixels(bool[,] bools)
